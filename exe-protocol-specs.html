@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exe Protocol Specs</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22t%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22.5%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230b1636%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23050a1c%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22url%28%23t%29%22/%3E%3Cg%20transform%3D%22translate%2813.3%2014.15%29%20scale%28.9%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22f0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23f0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23f1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23f2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2226.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2331d4ac%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040815;--bg2:#080e1f;--ink:#f3f1f6;--dim:rgba(238,242,252,.66);--faint:rgba(238,242,252,.45);--line:rgba(140,170,230,.18);
+  --blue:#4d8dff;--teal:#2ccfc2;--card:rgba(255,255,255,.035);--edge:rgba(160,190,245,.22);
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;--gut:max(16px,min(6vw,96px));color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-20% -10% auto auto;width:70vw;height:70vh;pointer-events:none;
+  background:radial-gradient(ellipse at 70% 30%,rgba(45,180,227,.14),transparent 65%);filter:blur(20px);z-index:0}
+a{color:inherit}
+.risk{position:relative;z-index:2;background:#2a2f38;color:#fff;font-size:13.5px;font-weight:600;line-height:1.45;padding:12px var(--gut);text-align:center}
+nav{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px var(--gut);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:500;text-decoration:none}
+.logo i{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#9cc0ff,#4d8dff 55%,#2a5bd7);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.back{font-size:14px;font-weight:500;color:#e6eaf3;text-decoration:none;border:1px solid var(--edge);border-radius:999px;padding:9px 16px;white-space:nowrap}
+.back:hover{border-color:var(--blue)}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:200px minmax(0,780px);gap:clamp(32px,5vw,72px);padding:56px var(--gut) 80px;justify-content:center}
+.toc{position:sticky;top:24px;align-self:start;display:grid;gap:4px;font-size:14px}
+.toc p{margin:0 0 8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.toc a{color:var(--dim);text-decoration:none;padding:5px 0 5px 12px;border-left:1px solid var(--line)}
+.toc a:hover{color:var(--ink);border-left-color:var(--blue)}
+.eyebrow{margin:0 0 14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:600}
+h1{margin:0 0 22px;font-weight:300;font-size:clamp(40px,6vw,64px);line-height:1.05;letter-spacing:-.02em}
+h1 .fade{color:transparent;background:linear-gradient(100deg,var(--ink) 0%,#7aa8ff 45%,#6ab6ff 100%);-webkit-background-clip:text;background-clip:text}
+.lead{font-size:17px;color:var(--dim);margin:0 0 12px}
+.tag{display:inline-block;margin:6px 0 40px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#ffc56b;border:1px solid rgba(255,197,107,.5);border-radius:999px;padding:4px 10px}
+.sec{border-top:1px solid var(--line);padding:34px 0 8px;scroll-margin-top:24px}
+h2{margin:0 0 14px;font-weight:500;font-size:26px;letter-spacing:-.01em}
+p{margin:0 0 14px;color:var(--dim)}
+strong{color:var(--ink);font-weight:600}
+ul{margin:0 0 16px;padding-left:20px;color:var(--dim)} li{margin:0 0 8px} li::marker{color:var(--blue)}
+.tw{overflow-x:auto;margin:6px 0 18px;border:1px solid var(--edge);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:12px 14px;border-bottom:1px solid var(--line)}
+td{padding:11px 14px;border-bottom:1px solid rgba(140,170,230,.10);color:var(--dim);vertical-align:top}
+tr:last-child td{border-bottom:0} td:first-child{color:var(--ink)}
+pre{margin:4px 0 16px;padding:14px 18px;border-radius:12px;background:var(--bg2);border:1px solid var(--edge);overflow-x:auto}
+code{font:500 15px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#cfe0ff}
+footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px var(--gut) 40px;font-size:13px;color:var(--faint);text-align:center}
+@media (max-width:860px){.wrap{grid-template-columns:minmax(0,1fr);padding-top:36px}.toc{display:none}nav .back{padding:8px 12px}}
+
+.logo{font-family:"Outfit","Hanken Grotesk",sans-serif;font-weight:700;letter-spacing:-.02em;gap:.4em}
+.logo i{width:1.28em;height:1.13em;border-radius:0;box-shadow:none;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2041.4%2035.7%22%20aria-hidden%3D%22true%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22m0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23m0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23m1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23m2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2226.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2331d4ac%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/svg%3E") center/contain no-repeat}
+</style>
+</head>
+<body>
+<nav><a class="logo" href="index.html"><i></i>Exe Protocol</a><a class="back" href="index.html">← Back to Exe Protocol</a></nav>
+<div class="wrap">
+  <aside class="toc"><p>On this page</p><a href="#positioning">Positioning</a><a href="#mechanism">Mechanism</a><a href="#whos-who-and-who-pays">Who’s who and who pays</a><a href="#app-funding">App funding</a><a href="#agent-payments">Agent payments</a><a href="#evidence">Evidence</a><a href="#roadmap-and-open-items">Roadmap and open items</a><a href="#pending-legal-advice">Pending legal advice</a></aside>
+  <main>
+    <p class="eyebrow">Exe Protocol · Specs · 21 October 2026</p>
+    <h1>Exe Protocol <span class="fade">specs</span></h1>
+    <p class="lead">Exe Protocol is a policy-governed execution layer for apps, wallets and agents. Rails like x402, cards or Stripe move the money; Exe Protocol makes each payment smarter: fees priced by verified signal (XPR), within budgets set in advance, settled net. Exeswap is the first app built on Exe Protocol. Exeswap is a working prototype: every figure on this page is simulated unless marked measured or sourced.</p>
+    <span class="tag">Prototype · every figure simulated unless marked</span>
+    <section class="sec"><h2 id="positioning">Positioning</h2>
+<p>Rails move the money. Today's rails are blind to the value a payer's activity creates: fees follow the transaction, or at best its volume. Exe Protocol decides what each payment costs by signal, giving the most fee redemption to the strongest verified signal.</p>
+<p>As AI agents grow more capable, the payments they make need to become smarter too, so apps, agents and wallets get the most value: Exe Protocol values the signal agents generate and applies that value at the moment of payment.</p>
+<p>Exe Protocol is a horizontal layer that makes spending signal-aware: apps and their agents sit above it, payment rails and chains below.</p>
+<div class="tw"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>What it does</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Apps and their agents</td>
+<td>Use Exe Protocol through an SDK (intent)</td>
+<td>Trading apps, Telegram apps, AI agents and services</td>
+</tr>
+<tr class="even">
+<td><strong>Exe Protocol</strong></td>
+<td><strong>Prices each payment by verified signal, within budgets set
+in advance, and settles net</strong></td>
+<td><strong>Fee redemption, budgets and policy, shared pool,
+netting</strong></td>
+</tr>
+<tr class="odd">
+<td>Rails</td>
+<td>Move the money</td>
+<td>x402, cards, Stripe, direct on-chain</td>
+</tr>
+<tr class="even">
+<td>Chains</td>
+<td>Final settlement</td>
+<td>Base, Solana, Ethereum</td>
+</tr>
+</tbody>
+</table></div>
+<p>x402 is the pipe, not the rival: it moves money between agents and
+does nothing else. Exe Protocol adds what x402 does not have: fees
+priced by the payer’s signal, budgets and policy decided before each
+payment, a shared pool that funds redemption, and settlement netted
+across all agents. Working with any rail is a statement of intent until
+built.</p>
+</section><section class="sec"><h2 id="mechanism">Mechanism</h2>
+<p>Exe Protocol makes every payment smarter. Faster and cheaper follow
+from that.</p>
+<ul>
+<li><strong>Priced by signal.</strong> A wallet’s XPR (Exe Protocol
+Rate), earned through verified on-chain activity, decides how much of
+each fee is redeemed. At Tier 1 with the pool at full strength, XPR 0.60
+redeems 60%. Paymasters elsewhere subsidise blindly; Exe pays strong
+signal most.</li>
+<li><strong>Funded by a shared pool.</strong> Redemption comes first
+from the payer’s own fees (up to 70% of the protocol fee they paid),
+then from the Sponsorship Pool. In every stress we tested, 9 of 9 over
+24 months each, the pool never ran dry.</li>
+<li><strong>Decided before it happens.</strong> Pre-funded budgets,
+policy and tiers approve each payment at the quote. A rogue agent cannot
+spend beyond its budget. Measured in the prototype: 0.054 ms to decide
+the fee relief.</li>
+<li><strong>Settled net.</strong> Payments are recorded the moment they
+are approved; at each batch only what each agent owes or is owed overall
+goes on-chain. One fingerprint per batch lets any agent check its own
+balance.</li>
+</ul>
+<p>The loop, and how far each step is proven:</p>
+<ol type="1">
+<li>Strong verified signal gives a higher XPR. <em>Design.</em></li>
+<li>A higher XPR redeems more of each fee, from the payer’s own fees and
+the shared pool. <em>Tested in simulation.</em></li>
+<li>Rewarding the most valuable activity is designed to attract more of
+it. <em>Hypothesis, for a pilot.</em></li>
+<li>More activity means more fees funding redemption, and netting saves
+more as payments per agent rise. <em>Simulated.</em></li>
+</ol>
+</section><section class="sec"><h2 id="whos-who-and-who-pays">Who’s who and who pays</h2>
+<div class="tw"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Party</th>
+<th>What it is</th>
+<th>What it pays</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Wallet (person or agent)</td>
+<td>Holds an XPR. The XPR belongs to the wallet, is calculated the same
+way everywhere and is designed to travel across apps</td>
+<td>The protocol fee (0.10% on low-fee chains, 0.25% on Ethereum) plus
+gas, less what its XPR redeems</td>
+</tr>
+<tr class="even">
+<td>App</td>
+<td>Integrates Exe Protocol; our client commercially</td>
+<td>Nothing is required from apps for fee redemption. An app may add a
+budget so XPR also discounts its own fee</td>
+</tr>
+<tr class="odd">
+<td>Agent</td>
+<td>Software with its own wallet and budget, run by an app or by its
+users</td>
+<td>The payer pays. The fee falls on whoever funds the agent’s
+budget</td>
+</tr>
+<tr class="even">
+<td>Exe Protocol</td>
+<td>Runs the policy, the pool and the ledger</td>
+<td>Puts 70% of its revenue into the pool; 30% goes to operations</td>
+</tr>
+</tbody>
+</table></div>
+<p>Each wallet keeps its own XPR, including each agent’s wallet; apps
+see the totals. New wallets share only a small, capped part of the pool,
+so spinning up fresh wallets or agents cannot farm it.</p>
+</section><section class="sec"><h2 id="app-funding">App funding</h2>
+<ul>
+<li><strong>The pool:</strong> funded by 70% of Exe Protocol’s revenue,
+from Exeswap’s fees and the protocol fees that apps’ users pay. Users’
+own money never enters it.</li>
+<li><strong>One account per app:</strong> each app’s users draw on the
+revenue they generate, so no app subsidises another. Exe Protocol starts
+each new app’s account with about 1.9 months of its expected income; a
+fifth of that is a buffer that is never spent.</li>
+<li><strong>What an app pays:</strong> nothing is required for fee
+redemption. On a low-fee chain, 70% of the protocol fee covers what
+users’ XPR earns with room to spare. On an expensive chain gas
+dominates, for every app.</li>
+<li><strong>Optional app budgets:</strong> an app can fund a budget so
+XPR also discounts its own fee. That money goes to its users under the
+same rules.</li>
+<li><strong>Surplus:</strong> held for $XPT buybacks once legally
+cleared. Buybacks are off until legal advice.</li>
+</ul>
+</section><section class="sec"><h2 id="agent-payments">Agent payments</h2>
+<p>x402 moves the money; Exe decides what it costs, by signal. Every
+figure below is simulated for one day: 1,000 agents, 1,000,000 payments
+a day mostly to popular services, settled hourly.</p>
+<div class="tw"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>x402 alone</th>
+<th>x402 with Exe Protocol</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Payment accepted</td>
+<td>Instantly, by a signed voucher (batch scheme)</td>
+<td>Instantly, by policy against a pre-funded budget</td>
+</tr>
+<tr class="even">
+<td>Fee priced by the payer’s signal</td>
+<td>No</td>
+<td>Yes: XPR redeems the fee, to zero at XPR 1.00</td>
+</tr>
+<tr class="odd">
+<td>Protocol fee</td>
+<td>None</td>
+<td>0.10%, less what XPR redeems</td>
+</tr>
+<tr class="even">
+<td>Deposits to pay 200 different agents</td>
+<td>200, one channel each</td>
+<td>1 budget</td>
+</tr>
+<tr class="odd">
+<td>On-chain transactions a day</td>
+<td>546,742 settling per buyer–seller pair</td>
+<td>24,000 netted (22.8× fewer)</td>
+</tr>
+<tr class="even">
+<td>Facilitator fees a day, at Coinbase’s $0.001 per on-chain
+transaction</td>
+<td>About $1,000 paying one by one; about $547 per pair</td>
+<td>About $24</td>
+</tr>
+</tbody>
+</table></div>
+<ul>
+<li><strong>Speed, plainly:</strong> any design that approves payments
+off-chain decides as fast as the network allows, x402’s batch scheme
+included. Exe Protocol’s edge is what grows with volume: one budget for
+every counterparty, settlement netted across all agents, and a fee the
+payer’s own activity redeems.</li>
+<li><strong>Checkable settlement:</strong> each batch publishes one
+fingerprint. Any of 1,000 agents checks its own net position with 10
+hashes (320 bytes).</li>
+<li><strong>Custody, planned:</strong> each agent’s budget sits in an
+escrow contract the agent controls. A batch settles only payments the
+agent signed, and unspent funds can be withdrawn. The prototype still
+settles through one settlement account, holding funds for the payee for
+at most one batch interval.</li>
+</ul>
+</section><section class="sec"><h2 id="evidence">Evidence</h2>
+<div class="tw"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Economic model</td>
+<td>Master Doc Revision 010.6, frozen 19 Oct 2026</td>
+</tr>
+<tr class="even">
+<td>Automated tests</td>
+<td>752 passing at the freeze; 767 passing after the agent payments work</td>
+</tr>
+<tr class="odd">
+<td>Mutation check</td>
+<td>77 of 77 deliberate code faults caught</td>
+</tr>
+<tr class="even">
+<td>Review</td>
+<td>Independently reviewed by two AI reviewers; both approved Revision
+010.6</td>
+</tr>
+<tr class="odd">
+<td>Stress</td>
+<td>Pool never ran dry in 9 of 9 stress tests, 24 months each, including
+bots, whales and wallet farms (simulated)</td>
+</tr>
+<tr class="even">
+<td>Fee-relief decision</td>
+<td>0.054 ms; 18,406 a second on one computer, in memory (measured)</td>
+</tr>
+<tr class="odd">
+<td>Netting</td>
+<td>100,000 payments between 1,000 agents netted in 0.9 ms
+(measured)</td>
+</tr>
+<tr class="even">
+<td>Audit</td>
+<td>Not audited. A developer review and security audit come before any
+real funds, after fundraising</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec"><h2 id="roadmap-and-open-items">Roadmap and open items</h2>
+<div class="tw"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SDK, so any app can use Exe Protocol</td>
+<td>Intent</td>
+</tr>
+<tr class="even">
+<td>Working with x402 and other rails</td>
+<td>Intent</td>
+</tr>
+<tr class="odd">
+<td>Escrow custody for agent budgets</td>
+<td>Planned design</td>
+</tr>
+<tr class="even">
+<td>Wallet linking: one person’s wallets and agents under one XPR</td>
+<td>Open</td>
+</tr>
+<tr class="odd">
+<td>XPR across chains</td>
+<td>Open</td>
+</tr>
+<tr class="even">
+<td>Cold start, and whether XPR predicts valuable activity</td>
+<td>Pilot question</td>
+</tr>
+<tr class="odd">
+<td>Agent payment fee as a share of the gas saved (option C)</td>
+<td>Later; needs an engine change and review</td>
+</tr>
+<tr class="even">
+<td>Split-ledger benchmark (scaling with machines)</td>
+<td>Parked until an investor asks</td>
+</tr>
+<tr class="odd">
+<td>Where each batch fingerprint is published</td>
+<td>Open</td>
+</tr>
+</tbody>
+</table></div>
+</section><section class="sec"><h2 id="pending-legal-advice">Pending legal advice</h2>
+<ul>
+<li>Custody wording, including any “non-custodial” claim for agent
+payments.</li>
+<li>$XPT buybacks: off until cleared; surplus held for them.</li>
+<li>Paying for, or selling access to, order flow.</li>
+<li>No public claim on these points until advice is in.</li>
+</ul></section>
+  </main>
+</div>
+<footer>Everything on this page comes from Exe Protocol's simulation. It is not live data and not a promise of any user's outcome.</footer>
+</body>
+</html>

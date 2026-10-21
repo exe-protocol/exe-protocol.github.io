@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Exeswap Specs</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22t%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22.5%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230b1636%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23050a1c%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22url%28%23t%29%22/%3E%3Cg%20transform%3D%22translate%2813.3%2014.15%29%20scale%28.9%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22f0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23f0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23f1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23f2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2226.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2331d4ac%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#040815;--bg2:#080e1f;--ink:#f3f1f6;--dim:rgba(238,242,252,.66);--faint:rgba(238,242,252,.45);--line:rgba(140,170,230,.18);
+  --blue:#4d8dff;--teal:#2ccfc2;--card:rgba(255,255,255,.035);--edge:rgba(160,190,245,.22);
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;--gut:max(16px,min(6vw,96px));color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-20% -10% auto auto;width:70vw;height:70vh;pointer-events:none;
+  background:radial-gradient(ellipse at 70% 30%,rgba(45,180,227,.14),transparent 65%);filter:blur(20px);z-index:0}
+a{color:inherit}
+.risk{position:relative;z-index:2;background:#2a2f38;color:#fff;font-size:13.5px;font-weight:600;line-height:1.45;padding:12px var(--gut);text-align:center}
+nav{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px var(--gut);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:500;text-decoration:none}
+.logo i{width:22px;height:22px;border-radius:6px;background:linear-gradient(135deg,#9cc0ff,#4d8dff 55%,#2a5bd7);box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.back{font-size:14px;font-weight:500;color:#e6eaf3;text-decoration:none;border:1px solid var(--edge);border-radius:999px;padding:9px 16px;white-space:nowrap}
+.back:hover{border-color:var(--blue)}
+.wrap{position:relative;z-index:1;display:grid;grid-template-columns:200px minmax(0,780px);gap:clamp(32px,5vw,72px);padding:56px var(--gut) 80px;justify-content:center}
+.toc{position:sticky;top:24px;align-self:start;display:grid;gap:4px;font-size:14px}
+.toc p{margin:0 0 8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:600}
+.toc a{color:var(--dim);text-decoration:none;padding:5px 0 5px 12px;border-left:1px solid var(--line)}
+.toc a:hover{color:var(--ink);border-left-color:var(--blue)}
+.eyebrow{margin:0 0 14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-weight:600}
+h1{margin:0 0 22px;font-weight:300;font-size:clamp(40px,6vw,64px);line-height:1.05;letter-spacing:-.02em}
+h1 .fade{color:transparent;background:linear-gradient(100deg,var(--ink) 0%,#7aa8ff 45%,#6ab6ff 100%);-webkit-background-clip:text;background-clip:text}
+.lead{font-size:17px;color:var(--dim);margin:0 0 12px}
+.tag{display:inline-block;margin:6px 0 40px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#ffc56b;border:1px solid rgba(255,197,107,.5);border-radius:999px;padding:4px 10px}
+.sec{border-top:1px solid var(--line);padding:34px 0 8px;scroll-margin-top:24px}
+h2{margin:0 0 14px;font-weight:500;font-size:26px;letter-spacing:-.01em}
+p{margin:0 0 14px;color:var(--dim)}
+strong{color:var(--ink);font-weight:600}
+ul{margin:0 0 16px;padding-left:20px;color:var(--dim)} li{margin:0 0 8px} li::marker{color:var(--blue)}
+.tw{overflow-x:auto;margin:6px 0 18px;border:1px solid var(--edge);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:520px}
+th{text-align:left;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);font-weight:600;padding:12px 14px;border-bottom:1px solid var(--line)}
+td{padding:11px 14px;border-bottom:1px solid rgba(140,170,230,.10);color:var(--dim);vertical-align:top}
+tr:last-child td{border-bottom:0} td:first-child{color:var(--ink)}
+pre{margin:4px 0 16px;padding:14px 18px;border-radius:12px;background:var(--bg2);border:1px solid var(--edge);overflow-x:auto}
+code{font:500 15px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace;color:#cfe0ff}
+footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px var(--gut) 40px;font-size:13px;color:var(--faint);text-align:center}
+@media (max-width:860px){.wrap{grid-template-columns:minmax(0,1fr);padding-top:36px}.toc{display:none}nav .back{padding:8px 12px}}
+
+.logo{font-family:"Outfit","Hanken Grotesk",sans-serif;font-weight:700;letter-spacing:-.02em;gap:.4em}
+.logo i{width:1.28em;height:1.13em;border-radius:0;box-shadow:none;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2041.4%2035.7%22%20aria-hidden%3D%22true%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22m0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23m0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23m1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23m2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2226.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2331d4ac%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/svg%3E") center/contain no-repeat}
+</style>
+</head>
+<body>
+<nav><a class="logo" href="index.html"><i></i>Exe Protocol</a><a class="back" href="simulator.html">← Back to Exeswap</a></nav>
+<div class="wrap">
+  <aside class="toc"><p>On this page</p><a href="#what-it-is">What it is</a><a href="#fees">Fees</a><a href="#xpr">XPR</a><a href="#tiers">Tiers</a><a href="#funding">Funding</a><a href="#safeguards">Safeguards</a><a href="#settlement-and-custody">Settlement and custody</a><a href="#status">Status</a></aside>
+  <main>
+    <p class="eyebrow">Exeswap · Specs · 20 October 2026</p>
+    <h1>Exeswap <span class="fade">specs</span></h1>
+    <p class="lead">Exeswap is the first app built on Exe Protocol, a policy-governed
+execution layer for apps, wallets and agents. Exeswap is a DEX
+aggregator where the user’s verified signal (XPR) decides how much of
+each trade’s fee is redeemed for that user. Exe Protocol is the
+horizontal layer; Exeswap is the first vertical app built on it, using
+the same rules other client apps and agents are designed to use through
+an SDK. It is a working prototype: every figure here comes from
+simulation, not live trading.</p>
+    <span class="tag">Prototype · every figure simulated</span>
+    <section class="sec"><h2 id="what-it-is">What it is</h2>
+<p>Exeswap finds a route for each trade across exchanges, like any
+aggregator. Our aim is the cheapest route, to be verified before
+launch.</p>
+<ul>
+<li><strong>Without XPR:</strong> Exeswap works as a regular aggregator.
+The user trades and pays the normal fee.</li>
+<li><strong>With XPR (opt-in):</strong> the user’s verified on-chain
+activity sets their XPR, and XPR redeems part of each trade’s fee.</li>
+<li><strong>Before signing:</strong> every quote shows the full fee,
+what XPR redeems and what the user pays (see “Your quote” in the Exeswap
+simulator). Once approved, that price is fixed.</li>
+</ul>
+</section><section class="sec"><h2 id="fees">Fees</h2>
+<p>Each trade costs the network’s gas plus Exe Protocol’s fee of 0.10%
+of the trade. XPR redeems a share of that total: at Tier 1, with the
+pool at full strength, XPR 0.60 redeems 60%.</p>
+<p>Worked example: a $1,000 trade on a low-fee chain ($0.01 gas), Tier
+1, pool at full strength. Simulated.</p>
+<div class="tw"><table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>XPR</th>
+<th>Full fee</th>
+<th>From the user’s own fees</th>
+<th>From the pool</th>
+<th>User pays</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0.00 (no XPR)</td>
+<td>$1.01</td>
+<td>$0.00</td>
+<td>$0.00</td>
+<td>$1.01</td>
+</tr>
+<tr class="even">
+<td>0.20</td>
+<td>$1.01</td>
+<td>$0.20</td>
+<td>$0.00</td>
+<td>$0.81</td>
+</tr>
+<tr class="odd">
+<td>0.60</td>
+<td>$1.01</td>
+<td>$0.61</td>
+<td>$0.00</td>
+<td>$0.40</td>
+</tr>
+<tr class="even">
+<td>1.00</td>
+<td>$1.01</td>
+<td>$0.70</td>
+<td>$0.31</td>
+<td>$0.00</td>
+</tr>
+</tbody>
+</table></div>
+<p>The user’s own fees can redeem up to 70% of the protocol fee they
+paid ($0.70 here); the pool covers the rest of what their XPR earns.</p>
+</section><section class="sec"><h2 id="xpr">XPR</h2>
+<p>XPR (Exe Protocol Rate) is a wallet’s exchange rate, earned through
+verified on-chain activity. It runs from 0.00 to 1.00, and up to 1.10 at
+Tiers 2 and 3.</p>
+<ul>
+<li><p><strong>Belongs to the wallet:</strong> person or agent. It is
+calculated the same way everywhere and is designed to travel across
+every app using Exe Protocol.</p></li>
+<li><p><strong>Moves gradually:</strong> each month counts for 30% of
+the rate, so it follows recent activity without jumping
+overnight.</p></li>
+<li><p><strong>Higher tiers earn more from the same XPR.</strong> What a
+wallet’s XPR earns:</p>
+<p>earned = 1 − (1 − XPR) ^ (tier multiplier × surplus factor)</p></li>
+</ul>
+<p>At Tier 1 with no surplus, that is exactly the XPR. Tier 1 is never
+above 1.00, including after falling back from a higher tier.</p>
+</section><section class="sec"><h2 id="tiers">Tiers</h2>
+<p>Tiers belong to the user, not the app. Every wallet starts at Tier 1;
+higher tiers are earned, not bought.</p>
+<div class="tw"><table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tier</th>
+<th>How to reach it</th>
+<th>Max XPR</th>
+<th>How it is lost</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Everyone starts here</td>
+<td>1.00</td>
+<td>—</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Set aside a budget in your own wallet: usually about 10% of a
+month’s trading (5% to 25%, lower for a long, steady history)</td>
+<td>1.10</td>
+<td>Budget commitment ends</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Stay at Tier 2 with a smoothed XPR of 0.75 or more for four months
+in a row</td>
+<td>1.10</td>
+<td>Two months below 0.75: back to Tier 2</td>
+</tr>
+</tbody>
+</table></div>
+<p>A budget above the minimum is headroom for a busier month only. It
+does not raise the rate: redemption is earned through signal, never
+bought.</p>
+</section><section class="sec"><h2 id="funding">Funding</h2>
+<p>Redemption is paid first from the user’s own fees, then from the
+Sponsorship Pool. Users’ own money never enters the pool.</p>
+<ul>
+<li><strong>Own fees:</strong> up to 70% of the protocol fee the user
+paid. This part is never cut, whatever the pool’s state.</li>
+<li><strong>The pool:</strong> funded by 70% of Exe Protocol’s revenue;
+the other 30% goes to operations. Each app has its own account in the
+pool, built from the fees its users pay, so no app subsidises
+another.</li>
+<li><strong>Pool strength:</strong> how much of what users’ XPR earns
+the pool can pay right now. At 100%, users redeem all of it. If the pool
+runs low, everyone’s pool share shrinks by the same proportion.</li>
+<li><strong>Surplus:</strong> when the pool holds more than it needs,
+the surplus lifts what Tiers 2 and 3 earn (the surplus factor above).
+Beyond a reserve of three months of redemption, the share earmarked for
+$XPT buybacks is held until legally cleared.</li>
+<li><strong>Under stress:</strong> in every stress we tested, the pool
+never ran dry; it steps down gracefully under load.</li>
+</ul>
+</section><section class="sec"><h2 id="safeguards">Safeguards</h2>
+<p>The rules are built so fresh wallets and fake activity cannot drain
+the pool.</p>
+<ul>
+<li><strong>New and risky wallets:</strong> wallets in their first
+months, or flagged last month, share a capped part of the pool: together
+at most 5% of its monthly allocation. Their own-fee redemption is
+unaffected.</li>
+<li><strong>Flags:</strong> a flagged wallet drops to Tier 1 for that
+month and receives no shared redemption. Its XPR history is kept, so
+once cleared it loses nothing in later months.</li>
+<li><strong>Caps on shared redemption:</strong> a daily fee cap ($50 a
+day) and a trade cap (500 trades) limit what the pool pays any one
+wallet. Own-fee redemption uses all trades.</li>
+<li><strong>Tested against farming:</strong> farm-defence and stress
+scenarios were run against the engine and reviewed.</li>
+</ul>
+</section><section class="sec"><h2 id="settlement-and-custody">Settlement and custody</h2>
+<p>Users’ money stays in their own wallets; Exe Protocol never holds
+it.</p>
+<ul>
+<li><strong>Tier budgets</strong> are set aside in the user’s own
+non-custodial wallet. The user keeps control of them.</li>
+<li><strong>Recorded at once, settled in batches:</strong> a trade’s fee
+redemption is recorded when the user approves the quote, then settled
+on-chain in batches to keep costs down.</li>
+<li><strong>Gas:</strong> paid through Exe Protocol’s paymaster, so
+redemption can cover gas as well as the protocol fee.</li>
+</ul>
+<p>Any public claim about custody waits for legal advice.</p>
+</section><section class="sec"><h2 id="status">Status</h2>
+<p>Exeswap is a working prototype on a simulated world. It is not live,
+and no real funds are involved.</p>
+<div class="tw"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Economic model</td>
+<td>Master Doc Revision 010.6, frozen 19 Oct 2026</td>
+</tr>
+<tr class="even">
+<td>Automated tests</td>
+<td>752 passing at the freeze; 77 of 77 deliberate code faults caught
+(mutation check)</td>
+</tr>
+<tr class="odd">
+<td>Review</td>
+<td>Independently reviewed by two AI reviewers; both approved Revision
+010.6</td>
+</tr>
+<tr class="even">
+<td>Audit</td>
+<td>Not audited. A developer review and security audit come before any
+real funds, after fundraising</td>
+</tr>
+<tr class="odd">
+<td>Cheapest route</td>
+<td>A statement of intent, to be verified before launch</td>
+</tr>
+<tr class="even">
+<td>$XPT buybacks</td>
+<td>Off until legal advice; surplus held for them once legally
+cleared</td>
+</tr>
+<tr class="odd">
+<td>Custody wording</td>
+<td>Pending legal advice</td>
+</tr>
+</tbody>
+</table></div></section>
+  </main>
+</div>
+<footer>Everything on this page comes from Exe Protocol's simulation. It is not live data and not a promise of any user's outcome.</footer>
+</body>
+</html>
