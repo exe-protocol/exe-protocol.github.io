@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Exeswap Simulator</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Hanken+Grotesk:wght@300;400;500;600&display=swap">
@@ -406,6 +408,129 @@ img.coin { background: none !important; object-fit: contain }
 h1::before { width: 20px !important; height: 17.5px !important }
 .xh-tok i { width: 22px !important; height: 19px !important }
 .side-brand .bt b { font-family: "Outfit", "Hanken Grotesk", sans-serif !important; font-weight: 700 !important; font-size: 17px !important; letter-spacing: -.02em !important }
+
+/* 2026-10-21 (David): "Details" reads as a link, the same as "Change XPR range" */
+.swmore summary .swd { font-style: normal; font-size: 13px; font-weight: 400; color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px }
+.swmore summary:hover .swd { color: var(--ink) }
+/* 2026-10-21 (David): "Three things happen before you sign." matches the other section headings */
+.xw-head h2 { font-size: clamp(40px, 4.6vw, 80px); line-height: 1 }
+/* 2026-10-21 (David): one text measure across the simulator home: every section heading and lede has the same right edge */
+.xw-head { max-width: none } .xw-head h2 { max-width: none; margin-bottom: 28px } .xw-head .xh-lede { max-width: 30ch }   /* heading on two lines, broken after "happen" (David's mock-up, 21 Oct); lede keeps the shared measure */
+
+/* 2026-10-21 (David): back-to-top arrow, appears after scrolling down */
+.totop{position:fixed;right:20px;bottom:20px;z-index:60;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,16,34,.82);color:#e8eefc;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s,transform .2s,border-color .2s;backdrop-filter:blur(6px)}
+.totop.on{opacity:1;pointer-events:auto;transform:none}.totop:hover{border-color:rgba(122,168,255,.7)}
+@media (prefers-reduced-motion:reduce){.totop{transition:none}}
+
+/* 2026-10-22 (David): phone motion in the Exeswap home hero, ported from the Exeswap Phone Motion artifact with a brand pass:
+   Exeswap mark, site fonts and colours, the simulator's own figures (they follow the XPR slider), no unbacked claims,
+   and it only runs while on screen. */
+.xm { margin: 0; display: flex; flex-direction: column; align-items: center; min-width: 0; position: relative }
+.xm-glow { position: absolute; inset: 0; pointer-events: none; z-index: 0 }
+.xm-glow::before { content: ""; position: absolute; left: 50%; top: -6%; width: 190%; height: 80%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(45,180,227,.42), rgba(45,180,227,.2) 50%, rgba(45,180,227,0) 100%) }
+.xm-glow::after { content: ""; position: absolute; left: 50%; bottom: -12%; width: 190%; height: 28%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(44,207,194,.26), rgba(44,207,194,0) 100%) }
+.xm-under { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%); width: min(340px, 100%); display: flex; flex-direction: column; align-items: center; gap: 12px }
+#p-swap > .xh:first-child { padding-bottom: 130px }   /* the glow fades out inside its own box, so nothing is clipped */   /* room for the phone's controls and note, which hang below it so the phone centres on the hero text */
+.xm-phone { --pw: clamp(136px, 15.6vw, 271px);   /* height = 7 x the hero heading size, as on the home page */ --scr: #0a1228; --sf: #111c38; --sf2: #18254a; --ln: #1f2c50; --ink: #e9effb; --mut: #8392b6;
+  --grad: linear-gradient(120deg, #2f63e0, #25c4d3); --teal: #2ccfc2;
+  /* frame proportions and colours from the home page phones (scratchpad mk_cascade.py): metal rail, black bezel, screen radius */
+  width: var(--pw); max-width: 100%; aspect-ratio: 1282 / 2644; position: relative; box-sizing: border-box; padding: calc(var(--pw) * .0172);
+  border-radius: calc(var(--pw) * .172); background: linear-gradient(180deg, #6e727c 0%, #a9adb8 30%, #b6bac6 50%, #a9adb8 70%, #6e727c 100%);
+  box-shadow: inset 0 0 0 1px rgba(235,238,245,.55), 0 40px 70px -30px rgba(0,0,0,.85); z-index: 1;
+  font-size: calc(var(--pw) / 24.7); font-family: var(--f-body); color: var(--ink); text-align: left }
+.xm-phone::before, .xm-phone::after { content: ""; position: absolute; width: calc(var(--pw) * .014); border-radius: 3px; background: #787c86 }
+.xm-phone::before { right: calc(var(--pw) * -.011); top: 31%; height: 10% }
+.xm-phone::after { left: calc(var(--pw) * -.011); top: 21%; height: 3%; box-shadow: 0 calc(var(--pw) * .25) 0 0 #787c86, 0 calc(var(--pw) * .41) 0 0 #787c86 }
+.xm-bez { width: 100%; height: 100%; box-sizing: border-box; padding: calc(var(--pw) * .0265); border-radius: calc(var(--pw) * .155); background: #08090c }
+.xm-screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: calc(var(--pw) * .129);
+  background: radial-gradient(130% 55% at 50% -8%, rgba(77,141,255,.2), transparent 62%), var(--scr) }
+.xm-screen::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 7; border-radius: inherit;
+  background: linear-gradient(to bottom right, rgba(255,255,255,.19) 0%, rgba(255,255,255,.14) 25%, rgba(255,255,255,0) 35%) }
+.xm-status { position: absolute; inset: 0 0 auto; height: 3em; display: flex; align-items: center; justify-content: space-between; padding: 0 1.9em; font-size: .82em; font-weight: 600; z-index: 5 }
+.xm-island { position: absolute; left: 50%; top: .7em; width: 7.6em; height: 2.1em; transform: translateX(-50%); border-radius: 2em; background: #000 }
+.xm-sys { display: flex; gap: .45em; align-items: center } .xm-bars { display: flex; gap: .15em; align-items: flex-end; height: .8em }
+.xm-bars i { width: .22em; background: var(--ink); border-radius: 1px } .xm-bars i:nth-child(1) { height: 35% } .xm-bars i:nth-child(2) { height: 55% } .xm-bars i:nth-child(3) { height: 78% } .xm-bars i:nth-child(4) { height: 100% }
+.xm-batt { width: 1.6em; height: .8em; border: 1.5px solid var(--ink); border-radius: .25em; padding: 1px; box-sizing: border-box } .xm-batt i { display: block; height: 100%; width: 72%; background: var(--ink); border-radius: 1px }
+.xm-layer { position: absolute; inset: 0; padding: 3.7em 1.15em 1.3em; display: flex; flex-direction: column; gap: .6em; box-sizing: border-box; visibility: hidden }
+.xm-mark { display: block; flex: none }
+.xm-center { align-items: center; justify-content: center; text-align: center }
+.xm-word { font-family: "Outfit", var(--f-body); font-weight: 700; font-size: 2.1em; letter-spacing: -.02em; margin: .35em 0 0 }
+.xm-tag { color: var(--mut); font-size: .95em; margin: .2em 0 0 }
+.xm-endl { font-weight: 300; font-size: 1.6em; line-height: 1.2; letter-spacing: -.03em; margin: .7em 0 0; max-width: 11em }
+.xm-endl em, .xm-num { font-style: normal; background: linear-gradient(100deg, #f3f1f6, #7aa8ff 45%, #6ab6ff); -webkit-background-clip: text; background-clip: text; color: transparent }
+.xm-endm { margin-top: 1.6em; display: grid; gap: .35em; font-size: .82em; color: var(--mut) } .xm-endm b { color: var(--ink); font-weight: 600 }
+.xm-handle { font-family: var(--f-num); font-size: .78em; color: var(--mut); margin-top: 1.4em }
+.xm-appbar { display: flex; align-items: center; justify-content: space-between; height: 2.4em }
+.xm-brand { display: flex; align-items: center; gap: .45em; font-family: "Outfit", var(--f-body); font-weight: 700; font-size: 1em; letter-spacing: -.02em }
+.xm-chip { display: inline-flex; align-items: center; gap: .4em; font-size: .75em; font-weight: 500; padding: .35em .7em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln); color: var(--mut) }
+.xm-chip i { width: .5em; height: .5em; border-radius: 50%; background: var(--teal) }
+.xm-pair { position: relative; display: grid; gap: .35em }
+.xm-card { background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .8em .95em }
+.xm-ct { display: flex; justify-content: space-between; font-size: .72em; color: var(--mut) }
+.xm-cr { display: flex; align-items: center; justify-content: space-between; gap: .6em; margin-top: .35em }
+.xm-amt { font-weight: 400; font-size: 1.9em; letter-spacing: -.02em; display: flex; align-items: center; min-height: 1.25em; font-variant-numeric: tabular-nums }
+.xm-amt.ph { color: var(--mut) } .xm-caret { display: inline-block; width: .07em; height: .95em; background: var(--teal); margin-left: .06em; border-radius: 1px }
+.xm-tok { display: inline-flex; align-items: center; gap: .45em; font-weight: 600; font-size: .9em; padding: .3em .75em .3em .3em; border-radius: 2em; background: var(--sf2) }
+.xm-tok img { width: 1.6em; height: 1.6em; border-radius: 50% }
+.xm-flip { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 2.3em; height: 2.3em; border-radius: .8em; background: var(--scr); border: 1px solid var(--ln); display: grid; place-items: center }
+.xm-flip svg { width: 1.05em; height: 1.05em; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round }
+.xm-route { position: relative; height: 2em; font-size: .78em } .xm-route > div { position: absolute; inset: 0; display: flex; align-items: center; gap: .7em; color: var(--mut) }
+.xm-rbar { flex: 1; height: .3em; border-radius: 1em; background: var(--ln); overflow: hidden } .xm-rbar i { display: block; height: 100%; width: 0; background: var(--grad) }
+.xm-best { font-weight: 600; color: var(--teal); padding: .2em .55em; border-radius: .5em; background: rgba(44,207,194,.12) }
+.xm-fees { display: flex; justify-content: space-between; align-items: baseline; font-size: .82em; color: var(--mut); padding: 0 .15em }
+.xm-fv { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums } .xm-fv s { color: var(--mut); margin-right: .35em; font-weight: 400 }
+.xm-xpr { background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .75em .95em }
+.xm-xh { display: flex; justify-content: space-between; align-items: center; font-size: .85em; font-weight: 500 }
+.xm-tg { --k: 0; position: relative; width: 2.7em; height: 1.55em; border-radius: 1em; background: var(--ln); flex: none }
+.xm-tg::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--grad); opacity: var(--k) }
+.xm-tg i { position: absolute; left: .18em; top: .18em; width: 1.19em; height: 1.19em; border-radius: 50%; background: var(--ink) }
+.xm-xb { height: 0; overflow: hidden } .xm-xi { padding-top: .7em }
+.xm-xr { display: flex; justify-content: space-between; align-items: baseline }
+.xm-num { font-weight: 300; font-size: 1.85em; letter-spacing: -.03em; font-variant-numeric: tabular-nums }
+.xm-num small { font-size: .42em; font-weight: 500; color: var(--mut); -webkit-text-fill-color: var(--mut); margin-right: .4em; letter-spacing: .08em }
+.xm-pct { font-size: .78em; font-variant-numeric: tabular-nums }
+.xm-meter { height: .38em; border-radius: 1em; background: var(--ln); margin-top: .5em; overflow: hidden } .xm-meter i { display: block; height: 100%; width: 0; background: var(--grad); border-radius: inherit }
+.xm-xl { font-size: .74em; color: var(--mut); margin: .55em 0 0 }
+.xm-swipe { margin-top: auto; position: relative; height: 3.5em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln) }
+.xm-sl { position: absolute; inset: 0; display: grid; place-items: center; font-size: .85em; font-weight: 500; color: var(--mut) }
+.xm-thumb { position: absolute; left: .3em; top: .3em; width: 2.9em; height: 2.9em; border-radius: 50%; background: var(--grad); display: grid; place-items: center }
+.xm-thumb svg { width: 1.1em; height: 1.1em; stroke: var(--scr); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round }
+.xm-eye { font-size: .7em; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin: 1.6em 0 0 }
+.xm-et { font-weight: 300; font-size: 1.6em; letter-spacing: -.03em; margin: .2em 0 0 } .xm-et span { color: var(--mut) }
+.xm-es { font-size: .82em; color: var(--mut); margin: .1em 0 0 }
+.xm-steps { list-style: none; padding: 0; margin: 1.6em 0 0; display: grid; gap: 1.15em }
+.xm-steps li { position: relative; display: grid; grid-template-columns: 2.2em 1fr; align-items: start }
+.xm-steps li:not(:last-child)::before { content: ""; position: absolute; left: .79em; top: 1.75em; height: calc(100% - .4em); width: 2px; background: var(--ln) }
+.xm-steps li.done:not(:last-child)::before { background: var(--teal) }
+.xm-st { width: 1.6em; height: 1.6em; border-radius: 50%; border: 2px solid var(--ln); box-sizing: border-box; position: relative }
+.xm-steps li.active .xm-st { border-top-color: var(--teal) } .xm-steps li.done .xm-st { border: 0; background: var(--grad) }
+.xm-steps li.done .xm-st::after { content: ""; position: absolute; left: .52em; top: .32em; width: .34em; height: .64em; border: solid var(--scr); border-width: 0 2.4px 2.4px 0; transform: rotate(45deg) }
+.xm-steps b { display: block; font-size: .92em; font-weight: 600 } .xm-steps span { display: block; font-size: .74em; color: var(--mut); margin-top: .15em }
+.xm-steps li.pending { opacity: .45 }
+.xm-by { margin-top: auto; font-size: .72em; color: var(--mut); text-align: center } .xm-by b { color: var(--ink); font-weight: 500 }
+.xm-check { width: 4.4em; height: 4.4em; margin-top: 1.4em } .xm-check circle { fill: url(#xmGrad) }
+.xm-check path { fill: none; stroke: var(--scr); stroke-width: 4.2; stroke-linecap: round; stroke-linejoin: round }
+.xm-settled { font-size: .9em; color: var(--mut); margin: .9em 0 0; font-weight: 500 }
+.xm-big { font-weight: 300; font-size: 2.3em; letter-spacing: -.03em; margin: .1em 0 0; font-variant-numeric: tabular-nums }
+.xm-big small { font-size: .42em; color: var(--mut); font-weight: 500; margin-left: .25em; letter-spacing: 0 }
+.xm-sub { font-size: .78em; color: var(--mut); margin: .15em 0 0 }
+.xm-rc { width: 100%; margin: 1.3em 0 0; background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .3em .95em; box-sizing: border-box; text-align: left }
+.xm-rc div { display: flex; justify-content: space-between; gap: 1em; padding: .62em 0; font-size: .8em } .xm-rc div + div { border-top: 1px solid var(--ln) }
+.xm-rc dt { color: var(--mut) } .xm-rc dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums } .xm-rc dd.mono { font-family: var(--f-num); font-size: .92em } .xm-rc s { color: var(--mut); font-weight: 400; margin-right: .3em }
+.xm-donebtn { margin-top: auto; width: 100%; height: 3.2em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln); display: grid; place-items: center; font-weight: 600; font-size: .9em }
+.xm-tap { position: absolute; left: 0; top: 0; width: 2.8em; height: 2.8em; border-radius: 50%; background: rgba(233,239,251,.16); border: 1.5px solid rgba(233,239,251,.5); pointer-events: none; opacity: 0; z-index: 6 }
+.xm-ctl { display: flex; align-items: center; gap: 10px; width: min(330px, 100%) }
+.xm-btn { font: 500 13px/1 var(--f-body); color: var(--ink); background: rgba(255,255,255,.04); border: 1px solid rgba(140,170,230,.22); border-radius: 999px; padding: 9px 14px; cursor: pointer; flex: none }
+.xm-btn:hover { border-color: rgba(122,168,255,.6) }
+.xm-scrub { flex: 1; min-width: 0; accent-color: #25c4d3; cursor: pointer }
+.xm-time { font: 12px var(--f-num); color: var(--ink-3); flex: none; font-variant-numeric: tabular-nums }
+.xm-note { font-size: 12px; color: var(--ink-3); text-align: center; margin: 0; max-width: 44ch; line-height: 1.5 }
+.xh-route { margin-top: clamp(56px, 9vh, 110px) }
+.shell { overflow-x: clip }   /* the hero glow may reach past the content column; clip only at the window edge */
+@media (max-width: 1000px) { .xm-phone { --pw: clamp(160px, 43vw, 300px) } }
+/* 2026-10-22 (David): stacked layout matches the home page: text runs the full width, and the space from the buttons to the phone is about 50px + 10% of the window */
+@media (max-width: 1000px) { #p-swap .xh h2, #p-swap .xh .xh-lede, #p-swap .xw-head .xh-lede { max-width: none } #p-swap > .xh:first-child { row-gap: calc(50px + 10vw); padding-top: 2px } }   /* nav bar to eyebrow: 20px, as on the home page */   /* stacked under the text: about 0.89 x the window width tall, as the home page phones (capped near 620px) */
+@media (max-width: 1000px) { .xm { gap: 16px } .xm-under { position: static; transform: none } #p-swap > .xh:first-child { padding-bottom: 0 } }
 /* Exe Protocol simulator design (approved 2026-10-12), taken from the home page design: deep navy, glass panels,
    Hanken Grotesk, one blue accent with the home page's pink / lilac / mint for chart series. Always dark, like the site. */
 html:root:not(.x) {
@@ -671,13 +796,44 @@ tr.b td:first-child { color: var(--r3) }
 .world .wctl .ic-apps { color: #3fd8cf; filter: drop-shadow(0 0 6px rgba(63, 216, 207, .55)) }
 .world .ic { width: 18px; height: 18px; stroke-width: 1.8 }
 
+/* 2026-10-21 (David): on a narrowed desktop window the tabs fold into a menu button (current page + ☰) with a dropdown,
+   instead of a scrolling row. Touch screens keep the swipeable row. */
+.side-nav::-webkit-scrollbar { display: none }
+.burger, .side-more { display: none }
+@media (max-width: 900px) and (hover: hover) and (pointer: fine) {
+  .side { position: relative; z-index: 50; overflow: visible }
+  .burger { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; padding: 8px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: rgba(255, 255, 255, .04); color: var(--ink); font: 500 14px var(--f-body); cursor: pointer }
+  .burger:hover, .side.open .burger { border-color: rgba(122, 168, 255, .6); background: rgba(77, 141, 255, .12) }
+  .burger svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round }
+  .side-nav { display: none }
+  .side.open .side-nav { display: grid; gap: 14px; position: absolute; top: calc(100% - 6px); right: 16px; width: 270px; overflow: visible;
+    padding: 14px 10px; border: 1px solid var(--line); border-radius: 16px; background: #0b1328; box-shadow: 0 18px 40px rgba(0, 0, 0, .5) }
+  .side.open .sgrp { display: grid; gap: 2px }
+  .side.open .slab { display: flex }
+  .side.open .side-nav button { width: 100%; border-radius: 10px; padding: 9px 12px }
+  /* one header row: logo | My XPR | menu button; Exeswap specs moves into the menu (David, 21 Oct) */
+  .shell.compact .topbar { display: none }
+  .side-brand .hright { margin-left: auto; gap: 12px }
+  .side-brand .hright #specsBtn { display: none }
+  .side.open .side-more { display: grid; border-top: 1px solid var(--line); padding-top: 12px }
+  .side-more a { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-radius: 10px; color: var(--ink-2); font: 500 14.5px var(--f-body); text-decoration: none }
+  .side-more a:hover { background: rgba(255, 255, 255, .05); color: var(--ink) }
+}
+@media (max-width: 560px) and (hover: hover) and (pointer: fine) {
+  /* very narrow desktop window: the menu button shows only ☰ and the row tightens, so the header fits the window (David, 22 Oct) */
+  #burgerLab { display: none } .burger { padding: 8px 10px } .side-brand { gap: 8px } .side-brand .hright { gap: 8px }
+}
+@media (max-width: 900px) { .shell, .shell.mini { grid-template-columns: minmax(0, 1fr) } }
+
 </style>
 
 <div class="shell" id="shell">
 <aside class="side" aria-label="Navigation">
   <div class="side-brand"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="sideNav" aria-label="Menu"><span id="burgerLab">Home</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <button class="fold" id="fold" aria-label="Collapse navigation" title="Collapse"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/><path d="M19 6l-6 6 6 6" opacity=".5"/></svg></button></div>
-  <nav class="side-nav" role="tablist" aria-orientation="vertical">
+  <nav class="side-nav" id="sideNav" role="tablist" aria-orientation="vertical">
     <div class="sgrp app"><div class="slab"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg><span>Exeswap</span></div>
       <button role="tab" id="t-swap" aria-selected="false" title="Home"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6.5 8 6.5"/><path d="M6.5 9.5V19h11V9.5"/><path d="M10 19v-5h4v5"/></svg><span>Home</span></button>
       <button role="tab" id="t-trade" aria-selected="false" title="Swap"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8 10h7.5l-2-2M16 14H8.5l2 2"/></svg><span>Swap</span></button>
@@ -688,6 +844,7 @@ tr.b td:first-child { color: var(--r3) }
       <button role="tab" id="t-stress" aria-selected="false" title="Stress test"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span>Stress test</span></button>
       <button role="tab" id="t-calc" aria-selected="false" title="App funding"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></svg><span>App funding</span></button>
       <button role="tab" id="t-speed" aria-selected="false" title="Agent payments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg><span>Agent payments</span></button></div>
+    <div class="side-more"><a href="exeswap-specs.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/></svg><span>Exeswap specs</span></a></div>
   </nav>
   <div class="side-foot"><span class="chip-meta">Master Doc Revision 010.6</span></div>
 </aside>
@@ -736,6 +893,53 @@ tr.b td:first-child { color: var(--r3) }
         <button class="xh-go" id="xhGo" type="button"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button>
         <button class="xh-how" id="xhHow" type="button">How it works</button>
       </div>
+      <figure class="xm" id="xm" aria-label="Animated example: a $1,000 USDC to SOL swap in Exeswap, with XPR fee redemption">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="xmGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f63e0"/><stop offset="1" stop-color="#25c4d3"/></linearGradient></defs></svg>
+        <div class="xm-glow" aria-hidden="true"></div><div class="xm-phone" aria-hidden="true"><div class="xm-bez"><div class="xm-screen" id="xmScreen">
+          <div class="xm-status"><span>9:41</span><span class="xm-island"></span><span class="xm-sys"><span class="xm-bars"><i></i><i></i><i></i><i></i></span><span class="xm-batt"><i></i></span></span></div>
+          <section class="xm-layer xm-center" id="xmL0"><svg class="xm-mark" style="width:4.4em;height:3.794em" viewBox="0 0 41.4 35.7" aria-hidden="true"><defs><linearGradient id="xmA0" x1="0" x2="1"><stop offset="0" stop-color="#2350e6"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="xmA1" x1="0" x2="1"><stop offset="0" stop-color="#25b0e8"/><stop offset="1" stop-color="#5fe3ec"/></linearGradient><linearGradient id="xmA2" x1="0" x2="1"><stop offset="0" stop-color="#31d4ac"/><stop offset="1" stop-color="#b8fbe2"/></linearGradient></defs><rect x="14.25" y="0.35" width="26.8" height="9" fill="url(#xmA0)" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="13.35" width="15.3" height="9" fill="url(#xmA1)" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="26.35" width="22.3" height="9" fill="url(#xmA2)" stroke="#c4fbe8" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="0.35" width="9.9" height="9" fill="#2350e6" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="13.35" width="9.9" height="9" fill="#25b0e8" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/></svg><p class="xm-word">Exeswap</p><p class="xm-tag">Built on Exe Protocol</p></section>
+          <section class="xm-layer" id="xmL1">
+            <div class="xm-appbar"><span class="xm-brand"><svg class="xm-mark" style="width:1.5em;height:1.293em" viewBox="0 0 41.4 35.7" aria-hidden="true"><defs><linearGradient id="xmB0" x1="0" x2="1"><stop offset="0" stop-color="#2350e6"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="xmB1" x1="0" x2="1"><stop offset="0" stop-color="#25b0e8"/><stop offset="1" stop-color="#5fe3ec"/></linearGradient><linearGradient id="xmB2" x1="0" x2="1"><stop offset="0" stop-color="#31d4ac"/><stop offset="1" stop-color="#b8fbe2"/></linearGradient></defs><rect x="14.25" y="0.35" width="26.8" height="9" fill="url(#xmB0)" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="13.35" width="15.3" height="9" fill="url(#xmB1)" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="26.35" width="22.3" height="9" fill="url(#xmB2)" stroke="#c4fbe8" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="0.35" width="9.9" height="9" fill="#2350e6" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="13.35" width="9.9" height="9" fill="#25b0e8" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/></svg>Exeswap</span><span class="xm-chip"><i></i>Solana</span></div>
+            <div class="xm-pair">
+              <div class="xm-card"><div class="xm-ct"><span>You sell</span><span>≈ $1,000.00</span></div><div class="xm-cr"><span class="xm-amt" id="xmPay"><span id="xmPayT">0</span><i class="xm-caret" id="xmCaret"></i></span><span class="xm-tok"><img data-tok="USDC" alt="">USDC</span></div></div>
+              <div class="xm-flip"><svg viewBox="0 0 24 24"><path d="M8 4v15M4 15l4 4 4-4M16 20V5M12 9l4-4 4 4"/></svg></div>
+              <div class="xm-card"><div class="xm-ct"><span>You receive</span><span id="xmRcvUsd">Estimated</span></div><div class="xm-cr"><span class="xm-amt ph" id="xmRcv">—</span><span class="xm-tok"><img data-tok="SOL" alt="">SOL</span></div></div>
+            </div>
+            <div class="xm-route"><div id="xmFind"><span>Comparing venues</span><span class="xm-rbar"><i id="xmBar"></i></span></div><div id="xmBest"><span class="xm-best">Route</span><span id="xmVia"></span></div></div>
+            <div class="xm-fees" id="xmFees"><span>Swap cost</span><span class="xm-fv"><s id="xmOld"></s><span id="xmNew"></span></span></div>
+            <div class="xm-xpr" id="xmXpr"><div class="xm-xh"><span>XPR fee redemption</span><span class="xm-tg" id="xmTg"><i id="xmKnob"></i></span></div>
+              <div class="xm-xb" id="xmXb"><div class="xm-xi" id="xmXi"><div class="xm-xr"><span class="xm-num"><small>XPR</small><span id="xmX">0.00</span></span><span class="xm-pct" id="xmPct">0% fee redemption</span></div><div class="xm-meter"><i id="xmMeter"></i></div><p class="xm-xl" id="xmXl">Earned through verified on-chain activity.</p></div></div></div>
+            <div class="xm-swipe" id="xmSwipe"><span class="xm-sl" id="xmSl">Swipe to swap</span><span class="xm-thumb" id="xmThumb"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </section>
+          <section class="xm-layer" id="xmL2"><p class="xm-eye">Swapping</p><p class="xm-et">1,000 USDC <span>→</span> SOL</p><p class="xm-es">On Solana</p>
+            <ol class="xm-steps" id="xmSteps">
+              <li data-a="11400" data-b="11850"><i class="xm-st"></i><div><b>Route selected</b><span id="xmS1"></span></div></li>
+              <li data-a="11850" data-b="12350"><i class="xm-st"></i><div><b>Costs calculated</b><span id="xmS2"></span></div></li>
+              <li data-a="12350" data-b="12950"><i class="xm-st"></i><div><b>Fee redemption checked</b><span id="xmS3"></span></div></li>
+              <li data-a="12950" data-b="13350"><i class="xm-st"></i><div><b>Signed in your wallet</b><span>Non-custodial: your keys, your funds</span></div></li>
+            </ol><p class="xm-by">Priced by <b>Exe Protocol</b></p></section>
+          <section class="xm-layer" id="xmL3" style="align-items:center;text-align:center">
+            <svg class="xm-check" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30"/><path id="xmCheck" d="M20 33l8.5 8.5L45 24"/></svg>
+            <p class="xm-settled">Swap settled</p><p class="xm-big"><span id="xmBig"></span><small>SOL</small></p><p class="xm-sub">received on Solana</p>
+            <dl class="xm-rc" id="xmRc"><div><dt>You sold</dt><dd>1,000 USDC</dd></div><div><dt>Swap cost</dt><dd><s id="xmRcOld"></s><span id="xmRcNew"></span></dd></div><div><dt>Fee redemption</dt><dd id="xmRcRed"></dd></div><div><dt>Reference</dt><dd class="mono">exe_7f3a…c91e</dd></div></dl>
+            <span class="xm-donebtn">Done</span></section>
+          <section class="xm-layer xm-center" id="xmL4"><svg class="xm-mark" style="width:3.4em;height:2.932em" viewBox="0 0 41.4 35.7" aria-hidden="true"><defs><linearGradient id="xmC0" x1="0" x2="1"><stop offset="0" stop-color="#2350e6"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="xmC1" x1="0" x2="1"><stop offset="0" stop-color="#25b0e8"/><stop offset="1" stop-color="#5fe3ec"/></linearGradient><linearGradient id="xmC2" x1="0" x2="1"><stop offset="0" stop-color="#31d4ac"/><stop offset="1" stop-color="#b8fbe2"/></linearGradient></defs><rect x="14.25" y="0.35" width="26.8" height="9" fill="url(#xmC0)" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="13.35" width="15.3" height="9" fill="url(#xmC1)" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="26.35" width="22.3" height="9" fill="url(#xmC2)" stroke="#c4fbe8" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="0.35" width="9.9" height="9" fill="#2350e6" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="13.35" width="9.9" height="9" fill="#25b0e8" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/></svg><p class="xm-endl">Your activity <em>pays for your execution.</em></p><div class="xm-endm"><span><b>Exeswap</b> · Built on Exe Protocol</span></div><p class="xm-handle">x.com/Exeswap</p></section>
+          <div class="xm-tap" id="xmTap"></div>
+        </div></div></div>
+        <div class="xm-under"><div class="xm-ctl"><button class="xm-btn" id="xmPlay" type="button">Pause</button><button class="xm-btn" id="xmReplay" type="button">Replay</button><input class="xm-scrub" id="xmScrub" type="range" min="0" max="19000" step="10" value="0" aria-label="Animation position"><span class="xm-time" id="xmTime">0:00 / 0:19</span></div>
+        <p class="xm-note">Illustrative demo with figures from our simulation; they follow your XPR. XPR fee redemption is opt-in; without it you pay the normal fee.</p></div>
+      </figure>
+    </div>
+    <!-- 2026-10-20 (David): Exeswap's numbers, then the XPR slider (moved here from the home page) -->
+    <div class="xh-proof" id="xhProof"></div>
+    <p class="xh-proofnote" id="xhProofNote"></p>
+    <!-- 2026-10-22 (David): the route card moves down a band when the phone motion takes the hero -->
+    <div class="xh xh-route">
+      <div>
+        <p class="xh-eye">Example route</p>
+        <h2>Venues compared. <span class="fade">One route picked.</span></h2>
+        <p class="xh-lede">A $1,000 swap, routed. Exeswap compares the venues it can reach, picks one route and shows what your XPR redeems, before you sign.</p>
+      </div>
       <figure class="xh-card">
         <div class="xh-head">
           <div>
@@ -749,9 +953,6 @@ tr.b td:first-child { color: var(--r3) }
         <p class="xh-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span id="xhNote"></span></p>
       </figure>
     </div>
-    <!-- 2026-10-20 (David): Exeswap's numbers, then the XPR slider (moved here from the home page) -->
-    <div class="xh-proof" id="xhProof"></div>
-    <p class="xh-proofnote" id="xhProofNote"></p>
     <div class="xh xh-try" id="xhTry">
       <div>
         <p class="xh-eye">Try it for yourself</p>
@@ -777,7 +978,7 @@ tr.b td:first-child { color: var(--r3) }
     </div>
     <!-- 2026-10-21 (David): third band, for casual users: how easy it is, in three steps (scroll-led on desktop) -->
     <div class="xw" id="xhWorks">
-      <div class="xw-head"><p class="xh-eye">How it works</p><h2>Three things happen <span class="fade">before you sign.</span></h2>
+      <div class="xw-head"><p class="xh-eye">How it works</p><h2>Three things happen<br> <span class="fade">before you sign.</span></h2>
         <p class="xh-lede">Exeswap finds the route. You see every cost. Then Exe Protocol works out how much of the fee your activity pays.</p></div>
       <div class="xw-grid">
         <figure class="xh-card xw-fig" aria-hidden="true"><div class="xw-vis on" data-v="0"><p class="xw-vt">Route · example</p><svg class="xw-route" viewBox="0 0 420 170" aria-hidden="true">
@@ -816,7 +1017,7 @@ tr.b td:first-child { color: var(--r3) }
             <div class="xw-inline"><div class="xw-vis on" data-v="2"><p class="xw-vt">At your XPR <span class="xwX"></span> · Tier <span class="xwT"></span></p>
             <div class="xw-eq"><div class="term"><span>Full fee</span><b class="xwFull"></b></div><i>−</i><div class="term"><span>Redeemed by your XPR</span><b class="xwRed"></b></div><i>=</i>
             <div class="term res"><span>You pay</span><b class="xwPay"></b></div></div><p class="xw-cap">Move the slider above and this follows.</p></div></div>
-            <div class="xw-end"><button class="xh-go" type="button" data-go="trade"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button><a class="xh-how" href="exeswap-specs.html" style="text-decoration:none">Read Exeswap specs</a></div></article>
+            <div class="xw-end"><button class="xh-go" type="button" data-go="trade"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button><a class="xh-how" href="exeswap-specs.html" style="text-decoration:none">Exeswap specs</a></div></article>
         </div>
       </div>
     </div>
@@ -840,7 +1041,7 @@ tr.b td:first-child { color: var(--r3) }
       <div class="tryrow"><button class="try" id="swTry" aria-expanded="false">Change XPR range</button></div>
       <div id="swSlide" hidden><input id="swXpr" type="range" min="0" max="100" value="60" aria-label="Change XPR">
         <div class="seg swtierseg" id="swTier" role="group" aria-label="Tier"></div></div>
-      <details class="swmore" id="swMore"><summary>Details <span id="swSum"></span></summary>
+      <details class="swmore" id="swMore"><summary><em class="swd">Details</em> <span id="swSum"></span></summary>
         <table class="swct" id="swCost"></table>
         <div class="swrd" id="swRd"></div></details>
       <button class="btn swcta" id="swCta">Swap</button>
@@ -1466,7 +1667,8 @@ swTokens();
   const CH = { solana: ["USDC", "SOL"], ethereum: ["USDC", "ETH"] };
   let cur = "solana", W = 0, H = 0, P = [], A, B, t0 = performance.now(), raf = 0, vis = true;
   const bez = (a, b, d, e, t) => { const u = 1 - t; return [u*u*u*a[0] + 3*u*u*t*b[0] + 3*u*t*t*d[0] + t*t*t*e[0], u*u*u*a[1] + 3*u*u*t*b[1] + 3*u*t*t*d[1] + t*t*t*e[1]] };
-  function figs() { const ch = SW.chains[cur], q = swSplit(1000, ch.gas, ch.tiers.tier1[60], ch.fee_rate); return { full: q.fee, pay: q.fee - q.red, pct: q.red / q.fee, venues: ch.venues } }
+  function figs() { const ch = SW.chains[cur], x = Math.min(100, S.sig), t = S.tier === 1 ? 1 : 2, q = swSplit(1000, ch.gas, ch.tiers["tier" + t][x], ch.fee_rate);   // follows the slider and My XPR (David, 21 Oct)
+    return { full: q.fee, pay: q.fee - q.red, pct: q.red / q.fee, venues: ch.venues, x, t } }
   function geo() { const r = cv.getBoundingClientRect(), k = Math.min(2, devicePixelRatio || 1), V = SW.chains[cur].venues; W = r.width; H = r.height; if (!W) return;
     cv.width = Math.round(W * k); cv.height = Math.round(H * k); c.setTransform(k, 0, 0, k, 0, 0);
     A = [W * .09, H * .5]; B = [W * .91, H * .5]; const mx = W * .5, n = V.length;
@@ -1495,10 +1697,10 @@ swTokens();
   function kick() { if (!raf) raf = requestAnimationFrame(loop) }
   function fill() { const f = figs(); $("xhPct").textContent = Math.round(100 * f.pct) + "%"; $("xhSub").textContent = `you pay ${usd(f.pay)} instead of ${usd(f.full)}`;
     $("xhFull").textContent = usd(f.full); $("xhPay").textContent = usd(f.pay); $("xhVia").textContent = f.venues[0]; $("xhN").textContent = "Route, of " + f.venues.length;
-    $("xhNote").textContent = `Example route, Tier 1 at XPR 0.60, ${(100 * SW.chains[cur].fee_rate).toFixed(2)}% protocol fee. Routing is not modelled; fees simulated. Not a live price.`;
+    $("xhNote").textContent = `Example route, Tier ${f.t} at XPR ${(f.x / 100).toFixed(2)}, ${(100 * SW.chains[cur].fee_rate).toFixed(2)}% protocol fee. Routing is not modelled; fees simulated. Not a live price.`;
     cv.setAttribute("aria-label", `${CH[cur][0]} to ${CH[cur][1]}: ${f.venues.length} venues compared, ${f.venues[0]} selected`);
     seg($("xhTabs"), Object.entries(SW.chains).map(([k, v]) => [k, v.name]), cur, v => { cur = v; t0 = performance.now(); fill(); geo() }) }
-  fill();
+  fill(); window.xhFill = fill;
   if ("ResizeObserver" in window) new ResizeObserver(geo).observe(cv); else { geo(); addEventListener("resize", geo) }
   if ("IntersectionObserver" in window) new IntersectionObserver(es => { const was = vis; vis = es[0].isIntersecting; if (vis && !was) t0 = performance.now(); kick() }).observe(cv);
   document.addEventListener("visibilitychange", kick);
@@ -1537,8 +1739,8 @@ function xtShow() {
   $("xtSp").textContent = Math.round(100 * row[2]) + "%";
   $("xtTabs").querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.t === t)));
 }
-$("xtX").addEventListener("input", e => { S.sig = +e.target.value; if (S.tier === 3 && S.sig < 75) S.tier = 2; xtShow(); xwShow(); xtTop() });
-$("xtTabs").querySelectorAll("button").forEach(b => b.onclick = () => { S.tier = +b.dataset.t; xtShow(); xwShow(); xtTop() });
+$("xtX").addEventListener("input", e => { S.sig = +e.target.value; if (S.tier === 3 && S.sig < 75) S.tier = 2; xtShow(); xwShow(); xtTop(); window.xhFill && window.xhFill(); window.xmRedraw && window.xmRedraw() });
+$("xtTabs").querySelectorAll("button").forEach(b => b.onclick = () => { S.tier = +b.dataset.t; xtShow(); xwShow(); xtTop(); window.xhFill && window.xhFill(); window.xmRedraw && window.xmRedraw() });
 (function () {
   const c = SW.chains.solana, full = swSplit(D.trade, c.gas, c.tiers.tier1[100], c.fee_rate),
     mm = Object.entries(D.worlds[0].routes).find(([k]) => k.startsWith("MetaMask")),
@@ -1581,7 +1783,7 @@ function render() { tcSync();
   $("world").hidden = ["swap", "trade", "stress", "calc", "speed"].includes(S.tab);
   $("pageFoot").hidden = S.tab === "trade";   // the swap card carries its own one-line note
   $("intro").hidden = !["rate", "quote"].includes(S.tab);   // the headline and equation belong to the Exeswap pages
-  if (S.tab === "swap") { window.xhKick && window.xhKick(); xtShow(); xwShow() }
+  if (S.tab === "swap") { window.xhKick && window.xhKick(); window.xhFill && window.xhFill(); xtShow(); xwShow() }
   if (S.tab === "trade") renderSwap();
   if (S.tab === "rate") renderRate();
   if (S.tab === "quote") renderQuote();
@@ -1598,4 +1800,80 @@ render();
   close = () => { h.hidden = true; document.body.style.overflow = "" };
   $("xhHow").onclick = open; h.querySelectorAll("[data-close]").forEach(b => b.onclick = close);
   addEventListener("keydown", e => { if (e.key === "Escape" && !h.hidden) close() }); if (location.hash === "#how") open() })();
+</script>
+<button class="totop" id="toTop" type="button" aria-label="Back to top">&uarr;</button>
+<script>(function(){var b=document.getElementById("toTop");function f(){b.classList.toggle("on",scrollY>600)}addEventListener("scroll",f,{passive:true});f();b.onclick=function(){scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}})();</script>
+<script>(function(){ /* 2026-10-21 (David): menu button for narrowed desktop windows */
+  var side = document.querySelector(".side"), b = document.getElementById("burger"), lab = document.getElementById("burgerLab");
+  function sync(){ var t = side.querySelector('.side-nav [aria-selected="true"]'); if (t) lab.textContent = t.title || t.textContent.trim() }
+  function set(o){ side.classList.toggle("open", o); b.setAttribute("aria-expanded", String(o)); sync() }
+  b.onclick = function(e){ e.stopPropagation(); set(!side.classList.contains("open")) };
+  side.querySelectorAll(".side-nav button").forEach(function(t){ t.addEventListener("click", function(){ setTimeout(function(){ set(false) }, 0) }) });
+  document.addEventListener("click", function(e){ if (!side.contains(e.target)) set(false) });
+  addEventListener("keydown", function(e){ if (e.key === "Escape") set(false) });
+  addEventListener("hashchange", sync); setTimeout(sync, 0);
+  /* one header row on a narrowed desktop window: My XPR moves up beside the menu button */
+  var shell = document.getElementById("shell"), hr = document.querySelector(".hright"), home = hr.parentNode,
+      mq = matchMedia("(max-width: 900px) and (hover: hover) and (pointer: fine)");
+  function place(){ if (mq.matches) { side.querySelector(".side-brand").insertBefore(hr, b); shell.classList.add("compact") }
+    else { home.appendChild(hr); shell.classList.remove("compact"); set(false) } }
+  (mq.addEventListener ? mq.addEventListener("change", place) : mq.addListener(place)); place() })();</script>
+<script>
+/* 2026-10-22 (David): phone motion in the Exeswap home hero. Figures come from the same swap data as the swap card and follow the XPR slider. */
+(function () {
+  const T = 19000, $m = id => document.getElementById(id), clamp = x => Math.max(0, Math.min(1, x)),
+    ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2, p = (t, a, b) => ease(clamp((t - a) / (b - a))),
+    lin = (t, a, b) => clamp((t - a) / (b - a)), win = (t, ia, ib, oa, ob) => Math.min(p(t, ia, ib), 1 - p(t, oa, ob)),
+    reduce = matchMedia("(prefers-reduced-motion: reduce)").matches, DY = reduce ? 0 : 6;
+  const L = [0, 1, 2, 3, 4].map(i => $m("xmL" + i)), steps = [...document.querySelectorAll("#xmSteps li")], scr = $m("xmScreen"),
+    chk = $m("xmCheck"); let chkLen = 40; try { chkLen = chk.getTotalLength() } catch (e) {} chk.style.strokeDasharray = chkLen;
+  function figs() { const c = SW.chains.solana, x = Math.min(100, S.sig), t = S.tier === 1 ? 1 : 2, q = swSplit(1000, c.gas, c.tiers["tier" + t][x], c.fee_rate),
+      pay = q.fee - q.red; return { x: x / 100, t, full: q.fee, pay, red: q.red / q.fee, rcv: swAmt((1000 - pay) / SW.prices.SOL, "SOL"), net: 1000 - pay, via: c.venues[0], n: c.venues.length, rate: c.fee_rate } }
+  function show(n, o) { n.style.opacity = o; n.style.transform = `translateY(${(1 - o) * DY}px)`; n.style.visibility = o <= .001 ? "hidden" : "visible" }
+  function ctr(n) { const s = scr.getBoundingClientRect(), r = n.getBoundingClientRect(); return { x: r.left - s.left + r.width / 2, y: r.top - s.top + r.height / 2 } }
+  function render(t) { const f = figs();
+    show(L[0], win(t, -1, 0, 1900, 2300)); show(L[1], win(t, 2100, 2550, 10950, 11350)); show(L[2], win(t, 11050, 11450, 13250, 13650));
+    show(L[3], win(t, 13350, 13750, 15300, 15700)); show(L[4], win(t, 15450, 15950, T - 450, T));
+    const n = [2700, 2900, 3100, 3300].filter(k => t >= k).length; $m("xmPayT").textContent = n ? "1000".slice(0, n) : "0"; $m("xmPay").classList.toggle("ph", n === 0);
+    $m("xmCaret").style.opacity = (t >= 2450 && t < 3300) || (t >= 3300 && t < 4000 && Math.floor((t - 3300) / 280) % 2 === 0) ? 1 : 0;
+    $m("xmFind").style.opacity = win(t, 3950, 4150, 5100, 5300); $m("xmBar").style.width = lin(t, 4000, 5150) * 100 + "%";
+    $m("xmBest").style.opacity = p(t, 5200, 5500); $m("xmVia").textContent = `${f.via}, of ${f.n} venues compared`;
+    const r = $m("xmRcv"); if (t < 5200) { r.textContent = "—"; r.classList.add("ph"); $m("xmRcvUsd").textContent = "Estimated" }
+    else { r.textContent = (parseFloat(f.rcv) * p(t, 5200, 6000)).toFixed(4); r.classList.remove("ph"); $m("xmRcvUsd").textContent = "≈ " + swUsd(f.net) + " after fees" }
+    $m("xmFees").style.opacity = p(t, 5300, 5700);
+    const k = p(t, 6850, 7150), g = p(t, 7300, 8300), x = f.x * g, cost = f.full - (f.full - f.pay) * g;
+    $m("xmOld").textContent = swUsd(f.full); $m("xmOld").style.display = t < 7300 ? "none" : ""; $m("xmOld").style.opacity = p(t, 7300, 7600);
+    $m("xmNew").textContent = swUsd(t < 7300 ? f.full : cost);
+    $m("xmTg").style.setProperty("--k", k); $m("xmKnob").style.transform = `translateX(${k * 1.15}em)`; $m("xmXpr").style.boxShadow = `0 0 0 1px rgba(44,207,194,${(k * .45).toFixed(3)})`;
+    $m("xmXb").style.height = $m("xmXi").scrollHeight * p(t, 7000, 7550) + "px";
+    $m("xmX").textContent = x.toFixed(2); $m("xmPct").textContent = Math.round(100 * f.red * g) + "% fee redemption"; $m("xmMeter").style.width = 100 * f.red * g + "%";
+    $m("xmXl").style.opacity = p(t, 8400, 8800);
+    const sw = p(t, 10000, 10850), th = $m("xmThumb"), sp = $m("xmSwipe"), tr = Math.max(0, sp.clientWidth - th.offsetWidth - th.offsetLeft * 2);
+    th.style.transform = `translateX(${sw * tr}px)`; $m("xmSl").style.opacity = clamp(1 - sw * 1.6);
+    let o = 0, c = null, sc = 1; const tap = $m("xmTap");
+    if (t >= 6550 && t < 7150) { c = ctr($m("xmTg")); o = win(t, 6550, 6700, 6950, 7150); sc = .75 + .25 * p(t, 6550, 6900) }
+    else if (t >= 9750 && t < 11050) { c = ctr(th); o = win(t, 9750, 9950, 10850, 11050) }
+    tap.style.opacity = o; if (c) { const rr = tap.offsetWidth / 2; tap.style.transform = `translate(${c.x - rr}px, ${c.y - rr}px) scale(${sc})` }
+    $m("xmS1").textContent = `${f.via}, of ${f.n} venues compared`; $m("xmS2").textContent = `Network fee + ${(100 * f.rate).toFixed(2)}% protocol fee`;
+    $m("xmS3").textContent = `XPR ${f.x.toFixed(2)}: ${Math.round(100 * f.red)}% of the fee redeemed`;
+    for (const li of steps) { const a = +li.dataset.a, b = +li.dataset.b; li.className = t < a ? "pending" : t < b ? "active" : "done";
+      li.querySelector(".xm-st").style.transform = t >= a && t < b && !reduce ? `rotate(${(t * .5) % 360}deg)` : "" }
+    chk.style.strokeDashoffset = chkLen * (1 - p(t, 13750, 14250)); $m("xmRc").style.opacity = p(t, 13950, 14400);
+    $m("xmBig").textContent = f.rcv; $m("xmRcOld").textContent = swUsd(f.full); $m("xmRcNew").textContent = swUsd(f.pay);
+    $m("xmRcRed").textContent = `${Math.round(100 * f.red)}% · XPR ${f.x.toFixed(2)}`;
+  }
+  const pb = $m("xmPlay"), sb = $m("xmScrub"), te = $m("xmTime"); let t = reduce ? 8900 : 0, playing = !reduce, last = null, seen = false, raf = 0;
+  const fmt = ms => "0:" + String(Math.floor(ms / 1000)).padStart(2, "0"), sync = () => pb.textContent = playing ? "Pause" : "Play";
+  function frame(now) { raf = 0; if (playing) { if (last != null) t += Math.min(100, now - last); if (t >= T) t -= T }
+    last = now; render(t); if (document.activeElement !== sb) sb.value = t; te.textContent = `${fmt(t)} / ${fmt(T)}`;
+    if (playing && seen && !document.hidden) raf = requestAnimationFrame(frame) }
+  const go = () => { if (!raf) { last = null; raf = requestAnimationFrame(frame) } };
+  pb.onclick = () => { playing = !playing; sync(); go() }; $m("xmReplay").onclick = () => { t = 0; playing = true; sync(); go() };
+  sb.oninput = () => { t = +sb.value; playing = false; sync(); go() };
+  /* runs only while on screen and the tab is visible; redraws when the XPR slider moves */
+  new IntersectionObserver(es => es.forEach(e => { seen = e.isIntersecting; if (seen) go() })).observe($m("xm"));
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) go() });
+  document.querySelectorAll("#xm img[data-tok]").forEach(i => i.src = TOKI[i.dataset.tok] || "");
+  window.xmRedraw = go; sync(); go();
+})();
 </script>
