@@ -531,6 +531,17 @@ h1::before { width: 20px !important; height: 17.5px !important }
 /* 2026-10-22 (David): stacked layout matches the home page: text runs the full width, and the space from the buttons to the phone is about 50px + 10% of the window */
 @media (max-width: 1000px) { #p-swap .xh h2, #p-swap .xh .xh-lede, #p-swap .xw-head .xh-lede { max-width: none } #p-swap > .xh:first-child { row-gap: calc(50px + 10vw); padding-top: 2px } }   /* nav bar to eyebrow: 20px, as on the home page */   /* stacked under the text: about 0.89 x the window width tall, as the home page phones (capped near 620px) */
 @media (max-width: 1000px) { .xm { gap: 16px } .xm-under { position: static; transform: none } #p-swap > .xh:first-child { padding-bottom: 0 } }
+
+/* 2026-10-22 (David): the demo note moves into an ⓘ beside the controls (hover, focus or tap), so nothing crowds the space below the phone */
+.xm-under { z-index: 2 }   /* the note opens above the phone, not behind it */
+@media (max-width: 1000px) { .xm-under { padding-bottom: 32px } }   /* stacked: breathing room between the controls and the figures band */
+.xm-info { position: relative; flex: none }
+.xm-ib { width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(140,170,230,.3); background: rgba(255,255,255,.04); color: var(--ink-3); font: italic 600 13px/1 Georgia, serif; cursor: pointer; display: grid; place-items: center; padding: 0 }
+.xm-ib:hover, .xm-info.open .xm-ib { border-color: rgba(122,168,255,.7); color: var(--ink) }
+.xm-pop { position: absolute; right: -6px; bottom: calc(100% + 10px); z-index: 30; width: 270px; padding: 12px 14px; border-radius: 12px; background: #0d1426; border: 1px solid rgba(140,170,230,.22);
+  box-shadow: 0 16px 40px rgba(0,0,0,.5); font-size: 12.5px; line-height: 1.5; color: var(--ink-2); text-align: left; opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity .15s, transform .15s, visibility .15s }
+.xm-info:hover .xm-pop, .xm-info:focus-within .xm-pop, .xm-info.open .xm-pop { opacity: 1; visibility: visible; transform: none }
+@media (prefers-reduced-motion: reduce) { .xm-pop { transition: none } }
 /* Exe Protocol simulator design (approved 2026-10-12), taken from the home page design: deep navy, glass panels,
    Hanken Grotesk, one blue accent with the home page's pink / lilac / mint for chart series. Always dark, like the site. */
 html:root:not(.x) {
@@ -926,8 +937,8 @@ tr.b td:first-child { color: var(--r3) }
           <section class="xm-layer xm-center" id="xmL4"><svg class="xm-mark" style="width:3.4em;height:2.932em" viewBox="0 0 41.4 35.7" aria-hidden="true"><defs><linearGradient id="xmC0" x1="0" x2="1"><stop offset="0" stop-color="#2350e6"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="xmC1" x1="0" x2="1"><stop offset="0" stop-color="#25b0e8"/><stop offset="1" stop-color="#5fe3ec"/></linearGradient><linearGradient id="xmC2" x1="0" x2="1"><stop offset="0" stop-color="#31d4ac"/><stop offset="1" stop-color="#b8fbe2"/></linearGradient></defs><rect x="14.25" y="0.35" width="26.8" height="9" fill="url(#xmC0)" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="13.35" width="15.3" height="9" fill="url(#xmC1)" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="26.35" width="22.3" height="9" fill="url(#xmC2)" stroke="#c4fbe8" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="0.35" width="9.9" height="9" fill="#2350e6" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="13.35" width="9.9" height="9" fill="#25b0e8" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/></svg><p class="xm-endl">Your activity <em>pays for your execution.</em></p><div class="xm-endm"><span><b>Exeswap</b> · Built on Exe Protocol</span></div><p class="xm-handle">x.com/Exeswap</p></section>
           <div class="xm-tap" id="xmTap"></div>
         </div></div></div>
-        <div class="xm-under"><div class="xm-ctl"><button class="xm-btn" id="xmPlay" type="button">Pause</button><button class="xm-btn" id="xmReplay" type="button">Replay</button><input class="xm-scrub" id="xmScrub" type="range" min="0" max="19000" step="10" value="0" aria-label="Animation position"><span class="xm-time" id="xmTime">0:00 / 0:19</span></div>
-        <p class="xm-note">Illustrative demo with figures from our simulation; they follow your XPR. XPR fee redemption is opt-in; without it you pay the normal fee.</p></div>
+        <div class="xm-under"><div class="xm-ctl"><button class="xm-btn" id="xmPlay" type="button">Pause</button><button class="xm-btn" id="xmReplay" type="button">Replay</button><input class="xm-scrub" id="xmScrub" type="range" min="0" max="19000" step="10" value="0" aria-label="Animation position"><span class="xm-time" id="xmTime">0:00 / 0:19</span><span class="xm-info"><button class="xm-ib" id="xmInfo" type="button" aria-label="About this demo" aria-expanded="false" aria-controls="xmNote">i</button><span class="xm-pop" id="xmNote" role="note">Illustrative demo with figures from our simulation; they follow your XPR. XPR fee redemption is opt-in; without it you pay the normal fee.</span></span></div>
+        </div>
       </figure>
     </div>
     <!-- 2026-10-20 (David): Exeswap's numbers, then the XPR slider (moved here from the home page) -->
@@ -1877,3 +1888,4 @@ render();
   window.xmRedraw = go; sync(); go();
 })();
 </script>
+<script>(function(){var w=document.querySelector(".xm-info"),b=document.getElementById("xmInfo");function set(o){w.classList.toggle("open",o);b.setAttribute("aria-expanded",String(o))}b.onclick=function(e){e.stopPropagation();set(!w.classList.contains("open"))};document.addEventListener("click",function(e){if(!w.contains(e.target))set(false)});addEventListener("keydown",function(e){if(e.key==="Escape")set(false)})})();</script>
