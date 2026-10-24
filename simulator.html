@@ -857,7 +857,7 @@ tr.b td:first-child { color: var(--r3) }
       <button role="tab" id="t-speed" aria-selected="false" title="Agent payments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg><span>Agent payments</span></button></div>
     <div class="side-more"><a href="exeswap-specs.html"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/></svg><span>Exeswap specs</span></a></div>
   </nav>
-  <div class="side-foot"><span class="chip-meta">Master Doc Revision 010.6</span></div>
+  <div class="side-foot"><span class="chip-meta">Master Doc Revision 010.8</span></div>
 </aside>
 <div class="wrap">
   <header class="topbar">
@@ -1803,7 +1803,7 @@ function render() { tcSync();
   if (S.tab === "calc") renderCalc();
   if (S.tab === "speed") renderSpeed();
 }
-$("foot").textContent = `Rules: Master Doc Revision 010.6. Exeswap fee ${(100 * D.exe_fee_rates.low_fee).toFixed(2)}% on low-fee chains, ${(100 * D.exe_fee_rates.ethereum).toFixed(2)}% on Ethereum. The pool's reserve starts at ${usdM(D.reserve)}.`;
+$("foot").textContent = `Rules: Master Doc Revision 010.8 (engine as frozen at Revision 010.6). Exeswap fee ${(100 * D.exe_fee_rates.low_fee).toFixed(2)}% on low-fee chains, ${(100 * D.exe_fee_rates.ethereum).toFixed(2)}% on Ethereum. The pool's reserve starts at ${usdM(D.reserve)}.`;
 const h = location.hash.slice(1); if (TABS.includes(h)) S.tab = h;
 render();
 /* "How it works" panel: open from the top bar or with #how in the address */
