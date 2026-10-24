@@ -1524,14 +1524,14 @@ function renderCalc() {
     ["  70% of Exe's fee → this app's users' account", usdS(t.to_pool), usdS(tr.to_pool)],
     ["  to Exe operations (30%)", usdS(t.ops), usdS(tr.ops)],
     ["Surplus held from the account (for $XPT buybacks once legally cleared)", usdS(t.buyback), usdS(tr.buyback)],
-    ["Account seeded by Exe Protocol (one-off)", usdS(t.seed), usdS(tr.seed)],
+    ["Account seed from Exe Protocol (total, not monthly; paid in monthly parts, each up to the app's own inflow)", usdS(t.seed), usdS(tr.seed)],
     ["App's account top-up (optional; all of it goes into the account)", usdS(t.topup), "—"],
     ["App's own fee revenue (" + C.options.app_fee[ak] + ")", usdS(t.app_fee_revenue[ak]), "—"],
     ["Optional app budget to discount its own fee by XPR", usdS(t.app_budget[ak]), "—"],
   ];
   $("calcMoney").innerHTML = `<thead><tr><th>${esc(C.options.users[CS.users])}, per month</th><th class="r">This app</th><th class="r">Exeswap</th></tr></thead><tbody>`
     + money.map(([l, a, b]) => `<tr><td>${esc(l)}</td><td class="r num">${esc(a)}</td><td class="r num">${esc(b)}</td></tr>`).join("") + "</tbody>";
-  $("calcAssume").textContent = "Simulated, one run per setting. " + C.assumption + ". Not a quote.";
+  $("calcAssume").textContent = "Simulated, one run per setting. " + C.assumption.replace(/\.$/, "") + ". Simulated with the seed paid at launch; in production a new app's seed is sized on its evidenced trading volume and paid monthly, so its first months can be weaker. Not a quote.";
 }
 
 /* ---------- 6 · speed and friction (looked-up figures; labels say where each comes from) ---------- */
