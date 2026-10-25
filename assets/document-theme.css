@@ -1,0 +1,7 @@
+@font-face{font-family:ExeInter;src:url("asset-29160a80ff49.ttf") format("truetype");font-weight:100 900;font-display:swap}
+:root{--bg:#050a10;--bg2:#101b2b;--ink:#f7f9fc;--dim:#a8b9d5;--blue:#1677ff;--teal:#1677ff;--sans:ExeInter,Inter,system-ui,sans-serif}
+body{background:#050a10}body::before{background:radial-gradient(ellipse at 70% 30%,rgba(43,64,96,.15),transparent 65%)}
+h1{font-weight:600;letter-spacing:-.045em}h1 .fade{color:#1677ff;background:none;-webkit-text-fill-color:#1677ff}.logo{font-family:var(--sans);font-weight:700}
+.tw{background:linear-gradient(180deg,rgba(34,59,82,.6),rgba(9,28,46,.08));border-color:rgba(123,153,186,.2)}
+.back{background:linear-gradient(180deg,rgba(32,48,69,.45),rgba(15,26,41,.18))}
+@media(max-width:560px){nav{flex-direction:column;align-items:flex-start;gap:16px}.logo{white-space:nowrap}.back{font-size:13px}}
