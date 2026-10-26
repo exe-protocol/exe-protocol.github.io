@@ -21,3 +21,26 @@
  .side-brand .wallet-note{right:-45px}
 }
 @media(max-width:360px){.side-brand .wallet-connect{padding:9px 11px;font-size:11px}}
+
+/* Closing example: a single equation row and matching button-label alignment. */
+#p-swap .xw-end{align-items:center}
+#p-swap .xw-end>.xh-go,#p-swap .xw-end>.xh-how{display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;height:48px;min-height:48px;margin:0;font-family:ExeInter,Inter,sans-serif;font-size:13px;line-height:1.2;text-align:center;white-space:nowrap}
+@media(max-width:1000px){
+ #p-swap .xw-inline .xw-vis[data-v="2"]{padding:16px 12px}
+ #p-swap .xw-eq{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,1.33fr) auto minmax(0,1.27fr);align-items:stretch;gap:clamp(4px,1.2vw,10px)}
+ #p-swap .xw-eq>i{align-self:center;text-align:center;font-size:18px}
+ #p-swap .xw-eq .term{padding:10px 6px;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(32px,auto) auto;align-content:stretch;gap:4px}
+ #p-swap .xw-eq .term span{font-size:11px;line-height:1.4;white-space:normal}
+ #p-swap .xw-eq .term b{font-size:clamp(20px,5.8vw,28px);line-height:1.2;white-space:nowrap;align-self:end}
+}
+@media(max-width:560px){
+ #p-swap .xw-end{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:360px}
+ #p-swap .xw-end>.xh-go,#p-swap .xw-end>.xh-how{min-width:0;height:46px;min-height:46px;padding:5px 10px;font-size:12px}
+ #p-swap .xw-end>.xh-go{gap:7px}
+ #p-swap .xw-end>.xh-go i{width:28px;height:28px;flex:none}
+}
+@media(max-width:360px){
+ #p-swap .xw-end>.xh-go,#p-swap .xw-end>.xh-how{font-size:11.5px;padding:5px 6px}
+ #p-swap .xw-end>.xh-go{gap:6px}
+ #p-swap .xw-end>.xh-go i{width:22px;height:22px}
+}
