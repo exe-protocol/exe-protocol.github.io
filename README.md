@@ -1,9 +1,11 @@
 # Exe Protocol website
 
-Static website for Exe Protocol and the Exeswap simulator, using the approved Inter, blue-gray lighting, matte granite, and fading-glass design.
+Approved static website design, 26 October 2026.
 
-Serve this directory directly with GitHub Pages. `index.html` is the product homepage; `simulator.html` contains the existing interactive simulation; the other three HTML pages contain specifications and information. Keep `assets/` beside the HTML files. No build command or dependency installation is required.
+Serve these files from the repository root: `index.html`, `simulator.html`, `exe-protocol-specs.html`, `exeswap-specs.html`, `important-information.html`, `.nojekyll` and `assets/`.
 
-The supplied HTML pages are the maintained source for this version. An earlier README referred to `site/build_pages.py`; that generator was not included in the available source package. Reconcile its templates with this design before using it again, to avoid overwriting the design changes.
+Keep the assets directory beside the HTML files. There is no build step. Homepage design styles are in `assets/homepage.css`; Exeswap styles and behavior are in `simulator.html`.
 
-The design update preserves the existing simulation model and factual disclosures. The website redesign itself does not add live wallet connections, real trades, or backend integrations. Inter is bundled locally under the license in `assets/Inter-OFL.txt`.
+Existing copy, numerical assumptions, model outputs and qualifications are retained. The factual review is separate from this design release.
+
+An older generator was not supplied with this version. Preserve this HTML/CSS treatment before regenerating the pages from any other source.
