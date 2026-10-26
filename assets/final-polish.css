@@ -44,3 +44,6 @@
  #p-swap .xw-end>.xh-go{gap:6px}
  #p-swap .xw-end>.xh-go i{width:22px;height:22px}
 }
+
+/* Fix: stop hero glow pseudo-elements adding a horizontal scrollbar at desktop widths (body already clips; html did not). Visual glows unchanged. */
+html{overflow-x:clip}
