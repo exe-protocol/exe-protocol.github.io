@@ -808,10 +808,10 @@ tr.b td:first-child { color: var(--r3) }
 .world .ic { width: 18px; height: 18px; stroke-width: 1.8 }
 
 /* 2026-10-21 (David): on a narrowed desktop window the tabs fold into a menu button (current page + ☰) with a dropdown,
-   instead of a scrolling row. Touch screens keep the swipeable row. */
+   instead of a scrolling row. Touch screens use the same compact menu. */
 .side-nav::-webkit-scrollbar { display: none }
 .burger, .side-more { display: none }
-@media (max-width: 900px) and (hover: hover) and (pointer: fine) {
+@media (max-width: 900px) {
   .side { position: relative; z-index: 50; overflow: visible }
   .burger { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; padding: 8px 14px; border-radius: 999px;
     border: 1px solid var(--line); background: rgba(255, 255, 255, .04); color: var(--ink); font: 500 14px var(--f-body); cursor: pointer }
@@ -831,7 +831,7 @@ tr.b td:first-child { color: var(--r3) }
   .side-more a { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-radius: 10px; color: var(--ink-2); font: 500 14.5px var(--f-body); text-decoration: none }
   .side-more a:hover { background: rgba(255, 255, 255, .05); color: var(--ink) }
 }
-@media (max-width: 560px) and (hover: hover) and (pointer: fine) {
+@media (max-width: 560px) {
   /* very narrow desktop window: the menu button shows only ☰ and the row tightens, so the header fits the window (David, 22 Oct) */
   #burgerLab { display: none } .burger { padding: 8px 10px } .side-brand { gap: 8px } .side-brand .hright { gap: 8px }
 }
@@ -925,6 +925,33 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 #p-swap .xh-proofnote{padding-left:16px;padding-right:16px}
 @media(max-width:900px){#p-swap .xh-route{padding-top:68px;padding-bottom:68px}#p-swap .xh-try{padding-top:72px;padding-bottom:66px}#p-swap .xw{padding-top:70px;padding-bottom:56px}#p-swap .xh-route::before,#p-swap .xh-try::before,#p-swap .xw::before{left:-16px;right:-16px}#p-swap .xh-route::after{left:-16px;right:-16px}#p-swap .xw-steps{gap:56px;padding:0}#p-swap .xh-proof{padding:0 6px}#p-swap .xh-proofnote{padding-left:6px;padding-right:6px}}
 </style>
+<style>
+/* Use one compact header on touch phones and narrow desktop windows. */
+@media(max-width:900px){
+ .side-brand{flex-wrap:nowrap;min-width:0}
+ .side-brand .hright{flex:none}
+ .burger{flex:none}
+ .shell.compact>.wrap{padding-top:14px}
+}
+@media(max-width:560px){
+ .side-brand{gap:8px;padding:2px 0 0}
+ .side-brand .hright{gap:8px}
+ .myxpr{gap:7px}
+ .myxpr .ring{width:32px;height:32px}
+ .myxpr .l{font-size:9px;letter-spacing:.12em}
+ .myxpr .v{font-size:20px}
+ .burger{width:40px;height:40px;justify-content:center;padding:0;margin-left:0}
+}
+@media(max-width:360px){
+ .side{padding-inline:12px}
+ .side-brand{gap:7px}
+ .myxpr{gap:6px}
+ .myxpr .ring{width:28px;height:28px}
+ .myxpr .v{font-size:18px}
+ .myxpr .l{font-size:8px}
+}
+</style>
+<link rel="stylesheet" href="assets/mobile-layout.css">
 </head><body><script>if(!location.hash)location.hash="swap";</script><div class="shell" id="shell">
 <aside class="side" aria-label="Navigation">
   <div class="side-brand"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div>
@@ -955,7 +982,6 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
           <circle cx="30" cy="30" r="25" class="trk"/><circle cx="30" cy="30" r="25" class="val" id="myXprRing" stroke-dasharray="157.1" stroke-dashoffset="62.8"/></svg></span>
         <span class="t"><span class="l">My XPR</span><span class="v" id="myXpr">0.6000</span></span>
       </span>
-      <span class="badge">Simulated</span>
     </div>
   </header>
 
@@ -987,8 +1013,8 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
         <p class="xh-eye">Exeswap · the first app on Exe Protocol</p>
         <h2>The cheapest route is just <span class="fade">the beginning.</span></h2>
         <p class="xh-lede">Compare routes. Understand your costs. See your fee redemption before you sign.</p>
-        <button class="xh-go" id="xhGo" type="button"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button>
-        <button class="xh-how" id="xhHow" type="button">How it works</button>
+        <div class="xh-copy-actions"><button class="xh-go" id="xhGo" type="button"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button>
+        <button class="xh-how" id="xhHow" type="button">How it works</button></div>
       </div>
       <figure class="xm" id="xm" aria-label="Animated example: a $1,000 USDC to SOL swap in Exeswap, with XPR fee redemption">
         <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="xmGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f63e0"/><stop offset="1" stop-color="#25c4d3"/></linearGradient></defs></svg>
@@ -1905,7 +1931,7 @@ render();
 </script>
 <button class="totop" id="toTop" type="button" aria-label="Back to top">&uarr;</button>
 <script>(function(){var b=document.getElementById("toTop");function f(){b.classList.toggle("on",scrollY>600)}addEventListener("scroll",f,{passive:true});f();b.onclick=function(){scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}})();</script>
-<script>(function(){ /* 2026-10-21 (David): menu button for narrowed desktop windows */
+<script>(function(){ /* 2026-10-21 (David): menu button for narrow windows and touch phones */
   var side = document.querySelector(".side"), b = document.getElementById("burger"), lab = document.getElementById("burgerLab");
   function sync(){ var t = side.querySelector('.side-nav [aria-selected="true"]'); if (t) lab.textContent = t.title || t.textContent.trim() }
   function set(o){ side.classList.toggle("open", o); b.setAttribute("aria-expanded", String(o)); sync() }
@@ -1916,7 +1942,7 @@ render();
   addEventListener("hashchange", sync); setTimeout(sync, 0);
   /* one header row on a narrowed desktop window: My XPR moves up beside the menu button */
   var shell = document.getElementById("shell"), hr = document.querySelector(".hright"), home = hr.parentNode,
-      mq = matchMedia("(max-width: 900px) and (hover: hover) and (pointer: fine)");
+      mq = matchMedia("(max-width: 900px)");
   function place(){ if (mq.matches) { side.querySelector(".side-brand").insertBefore(hr, b); shell.classList.add("compact") }
     else { home.appendChild(hr); shell.classList.remove("compact"); set(false) } }
   (mq.addEventListener ? mq.addEventListener("change", place) : mq.addListener(place)); place() })();</script>

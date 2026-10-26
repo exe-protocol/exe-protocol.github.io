@@ -1,0 +1,196 @@
+.xh { justify-self: stretch; width: 100%; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 88px); align-items: center;
+  padding: clamp(28px, 6vh, 72px) 0 clamp(48px, 9vh, 96px);   /* 2026-10-19 (David): edges aligned to the top bar */ font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
+.xh-eye { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: rgba(238, 242, 252, .5); margin: 0 0 22px }
+.xh h1 { font-family: inherit; font-weight: 300; font-size: clamp(40px, 4.6vw, 80px); line-height: 1; letter-spacing: -.05em; margin: 0 0 28px; color: #f3f1f6; text-transform: none; max-width: 11ch }
+.xh h1 .fade { color: transparent; background: linear-gradient(100deg, #f3f1f6 0%, #7aa8ff 45%, #6ab6ff 100%); -webkit-background-clip: text; background-clip: text }
+.xh-lede { color: rgba(238, 242, 252, .6); font-size: 18px; line-height: 1.55; max-width: 30ch; margin: 0 0 30px }
+.xh-go { display: inline-flex; align-items: center; gap: 12px; padding: 6px 20px 6px 6px; border-radius: 999px; cursor: pointer; font: 500 15px "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6;
+  background: rgba(255, 255, 255, .05); border: 1px solid rgba(160, 190, 245, .32); transition: border-color .2s }
+.xh-go:hover { border-color: rgba(200, 220, 255, .6) }
+.xh-go i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: #f3f1f6; color: #050616 }
+.xh-go svg { width: 11px; height: 11px; margin-left: 2px }
+.xh-how { margin-left: 10px; font: 500 15px "Hanken Grotesk", system-ui, sans-serif; color: #fff; border: 0; border-radius: 999px; padding: 13px 24px; cursor: pointer;
+  transition: transform .2s; background: linear-gradient(120deg, #4a78c8, #2f5aa8); box-shadow: 0 10px 26px -12px rgba(74,120,200,.85), inset 0 1px 0 rgba(255,255,255,.22) }
+.xh-how:hover{transform:translateY(-2px)}
+.xm { margin: 0; display: flex; flex-direction: column; align-items: center; min-width: 0; position: relative }
+.xm-glow { position: absolute; inset: 0; pointer-events: none; z-index: 0 }
+.xm-glow::before { content: ""; position: absolute; left: 50%; top: -6%; width: 190%; height: 80%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(45,180,227,.42), rgba(45,180,227,.2) 50%, rgba(45,180,227,0) 100%) }
+.xm-glow::after { content: ""; position: absolute; left: 50%; bottom: -12%; width: 190%; height: 28%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(44,207,194,.26), rgba(44,207,194,0) 100%) }
+.xm-under { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%); width: min(340px, 100%); display: flex; flex-direction: column; align-items: center; gap: 12px }
+#p-swap > .xh:first-child { padding-bottom: 130px }   /* the glow fades out inside its own box, so nothing is clipped */   /* room for the phone's controls and note, which hang below it so the phone centres on the hero text */
+.xm-phone { --pw: clamp(136px, 15.6vw, 271px);   /* height = 7 x the hero heading size, as on the home page */ --scr: #0a1228; --sf: #111c38; --sf2: #18254a; --ln: #1f2c50; --ink: #e9effb; --mut: #8392b6;
+  --grad: linear-gradient(120deg, #2f63e0, #25c4d3); --teal: #2ccfc2;
+  /* frame proportions and colours from the home page phones (scratchpad mk_cascade.py): metal rail, black bezel, screen radius */
+  width: var(--pw); max-width: 100%; aspect-ratio: 1282 / 2644; position: relative; box-sizing: border-box; padding: calc(var(--pw) * .0172);
+  border-radius: calc(var(--pw) * .172); background: linear-gradient(180deg, #6e727c 0%, #a9adb8 30%, #b6bac6 50%, #a9adb8 70%, #6e727c 100%);
+  box-shadow: inset 0 0 0 1px rgba(235,238,245,.55), 0 40px 70px -30px rgba(0,0,0,.85); z-index: 1;
+  font-size: calc(var(--pw) / 24.7); font-family: var(--f-body); color: var(--ink); text-align: left }
+.xm-phone::before, .xm-phone::after { content: ""; position: absolute; width: calc(var(--pw) * .014); border-radius: 3px; background: #787c86 }
+.xm-phone::before { right: calc(var(--pw) * -.011); top: 31%; height: 10% }
+.xm-phone::after { left: calc(var(--pw) * -.011); top: 21%; height: 3%; box-shadow: 0 calc(var(--pw) * .25) 0 0 #787c86, 0 calc(var(--pw) * .41) 0 0 #787c86 }
+.xm-bez { width: 100%; height: 100%; box-sizing: border-box; padding: calc(var(--pw) * .0265); border-radius: calc(var(--pw) * .155); background: #08090c }
+.xm-screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: calc(var(--pw) * .129);
+  background: radial-gradient(130% 55% at 50% -8%, rgba(77,141,255,.2), transparent 62%), var(--scr) }
+.xm-screen::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 7; border-radius: inherit;
+  background: linear-gradient(to bottom right, rgba(255,255,255,.19) 0%, rgba(255,255,255,.14) 25%, rgba(255,255,255,0) 35%) }
+.xm-status { position: absolute; inset: 0 0 auto; height: 3em; display: flex; align-items: center; justify-content: space-between; padding: 0 1.9em; font-size: .82em; font-weight: 600; z-index: 5 }
+.xm-island { position: absolute; left: 50%; top: .7em; width: 7.6em; height: 2.1em; transform: translateX(-50%); border-radius: 2em; background: #000 }
+.xm-sys { display: flex; gap: .45em; align-items: center } .xm-bars { display: flex; gap: .15em; align-items: flex-end; height: .8em }
+.xm-bars i { width: .22em; background: var(--ink); border-radius: 1px } .xm-bars i:nth-child(1) { height: 35% } .xm-bars i:nth-child(2) { height: 55% } .xm-bars i:nth-child(3) { height: 78% } .xm-bars i:nth-child(4) { height: 100% }
+.xm-batt { width: 1.6em; height: .8em; border: 1.5px solid var(--ink); border-radius: .25em; padding: 1px; box-sizing: border-box } .xm-batt i { display: block; height: 100%; width: 72%; background: var(--ink); border-radius: 1px }
+.xm-layer { position: absolute; inset: 0; padding: 3.7em 1.15em 1.3em; display: flex; flex-direction: column; gap: .6em; box-sizing: border-box; visibility: hidden }
+.xm-mark { display: block; flex: none }
+.xm-center { align-items: center; justify-content: center; text-align: center }
+.xm-word { font-family: "Outfit", var(--f-body); font-weight: 700; font-size: 2.1em; letter-spacing: -.02em; margin: .35em 0 0 }
+.xm-tag { color: var(--mut); font-size: .95em; margin: .2em 0 0 }
+.xm-endl { font-weight: 300; font-size: 1.6em; line-height: 1.2; letter-spacing: -.03em; margin: .7em 0 0; max-width: 11em }
+.xm-endl em, .xm-num { font-style: normal; background: linear-gradient(100deg, #f3f1f6, #7aa8ff 45%, #6ab6ff); -webkit-background-clip: text; background-clip: text; color: transparent }
+.xm-endm { margin-top: 1.6em; display: grid; gap: .35em; font-size: .82em; color: var(--mut) } .xm-endm b { color: var(--ink); font-weight: 600 }
+.xm-handle { font-family: var(--f-num); font-size: .78em; color: var(--mut); margin-top: 1.4em }
+.xm-appbar { display: flex; align-items: center; justify-content: space-between; height: 2.4em }
+.xm-brand { display: flex; align-items: center; gap: .45em; font-family: "Outfit", var(--f-body); font-weight: 700; font-size: 1em; letter-spacing: -.02em }
+.xm-chip { display: inline-flex; align-items: center; gap: .4em; font-size: .75em; font-weight: 500; padding: .35em .7em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln); color: var(--mut) }
+.xm-chip i { width: .5em; height: .5em; border-radius: 50%; background: var(--teal) }
+.xm-pair { position: relative; display: grid; gap: .35em }
+.xm-card { background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .8em .95em }
+.xm-ct { display: flex; justify-content: space-between; font-size: .72em; color: var(--mut) }
+.xm-cr { display: flex; align-items: center; justify-content: space-between; gap: .6em; margin-top: .35em }
+.xm-amt { font-weight: 400; font-size: 1.9em; letter-spacing: -.02em; display: flex; align-items: center; min-height: 1.25em; font-variant-numeric: tabular-nums }
+.xm-amt.ph { color: var(--mut) } .xm-caret { display: inline-block; width: .07em; height: .95em; background: var(--teal); margin-left: .06em; border-radius: 1px }
+.xm-tok { display: inline-flex; align-items: center; gap: .45em; font-weight: 600; font-size: .9em; padding: .3em .75em .3em .3em; border-radius: 2em; background: var(--sf2) }
+.xm-tok img { width: 1.6em; height: 1.6em; border-radius: 50% }
+.xm-flip { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 2.3em; height: 2.3em; border-radius: .8em; background: var(--scr); border: 1px solid var(--ln); display: grid; place-items: center }
+.xm-flip svg { width: 1.05em; height: 1.05em; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round }
+.xm-route { position: relative; height: 2em; font-size: .78em } .xm-route > div { position: absolute; inset: 0; display: flex; align-items: center; gap: .7em; color: var(--mut) }
+.xm-rbar { flex: 1; height: .3em; border-radius: 1em; background: var(--ln); overflow: hidden } .xm-rbar i { display: block; height: 100%; width: 0; background: var(--grad) }
+.xm-best { font-weight: 600; color: var(--teal); padding: .2em .55em; border-radius: .5em; background: rgba(44,207,194,.12) }
+.xm-fees { display: flex; justify-content: space-between; align-items: baseline; font-size: .82em; color: var(--mut); padding: 0 .15em }
+.xm-fv { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums } .xm-fv s { color: var(--mut); margin-right: .35em; font-weight: 400 }
+.xm-xpr { background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .75em .95em }
+.xm-xh { display: flex; justify-content: space-between; align-items: center; font-size: .85em; font-weight: 500 }
+.xm-tg { --k: 0; position: relative; width: 2.7em; height: 1.55em; border-radius: 1em; background: var(--ln); flex: none }
+.xm-tg::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--grad); opacity: var(--k) }
+.xm-tg i { position: absolute; left: .18em; top: .18em; width: 1.19em; height: 1.19em; border-radius: 50%; background: var(--ink) }
+.xm-xb { height: 0; overflow: hidden } .xm-xi { padding-top: .7em }
+.xm-xr { display: flex; justify-content: space-between; align-items: baseline }
+.xm-num { font-weight: 300; font-size: 1.85em; letter-spacing: -.03em; font-variant-numeric: tabular-nums }
+.xm-num small { font-size: .42em; font-weight: 500; color: var(--mut); -webkit-text-fill-color: var(--mut); margin-right: .4em; letter-spacing: .08em }
+.xm-pct { font-size: .78em; font-variant-numeric: tabular-nums }
+.xm-meter { height: .38em; border-radius: 1em; background: var(--ln); margin-top: .5em; overflow: hidden } .xm-meter i { display: block; height: 100%; width: 0; background: var(--grad); border-radius: inherit }
+.xm-xl { font-size: .74em; color: var(--mut); margin: .55em 0 0 }
+.xm-swipe { margin-top: auto; position: relative; height: 3.5em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln) }
+.xm-sl { position: absolute; inset: 0; display: grid; place-items: center; font-size: .85em; font-weight: 500; color: var(--mut) }
+.xm-thumb { position: absolute; left: .3em; top: .3em; width: 2.9em; height: 2.9em; border-radius: 50%; background: var(--grad); display: grid; place-items: center }
+.xm-thumb svg { width: 1.1em; height: 1.1em; stroke: var(--scr); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round }
+.xm-eye { font-size: .7em; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin: 1.6em 0 0 }
+.xm-et { font-weight: 300; font-size: 1.6em; letter-spacing: -.03em; margin: .2em 0 0 } .xm-et span { color: var(--mut) }
+.xm-es { font-size: .82em; color: var(--mut); margin: .1em 0 0 }
+.xm-steps { list-style: none; padding: 0; margin: 1.6em 0 0; display: grid; gap: 1.15em }
+.xm-steps li { position: relative; display: grid; grid-template-columns: 2.2em 1fr; align-items: start }
+.xm-steps li:not(:last-child)::before { content: ""; position: absolute; left: .79em; top: 1.75em; height: calc(100% - .4em); width: 2px; background: var(--ln) }
+.xm-steps li.done:not(:last-child)::before { background: var(--teal) }
+.xm-st { width: 1.6em; height: 1.6em; border-radius: 50%; border: 2px solid var(--ln); box-sizing: border-box; position: relative }
+.xm-steps li.active .xm-st { border-top-color: var(--teal) } .xm-steps li.done .xm-st { border: 0; background: var(--grad) }
+.xm-steps li.done .xm-st::after { content: ""; position: absolute; left: .52em; top: .32em; width: .34em; height: .64em; border: solid var(--scr); border-width: 0 2.4px 2.4px 0; transform: rotate(45deg) }
+.xm-steps b { display: block; font-size: .92em; font-weight: 600 } .xm-steps span { display: block; font-size: .74em; color: var(--mut); margin-top: .15em }
+.xm-steps li.pending { opacity: .45 }
+.xm-by { margin-top: auto; font-size: .72em; color: var(--mut); text-align: center } .xm-by b { color: var(--ink); font-weight: 500 }
+.xm-check { width: 4.4em; height: 4.4em; margin-top: 1.4em } .xm-check circle { fill: url(#xmGrad) }
+.xm-check path { fill: none; stroke: var(--scr); stroke-width: 4.2; stroke-linecap: round; stroke-linejoin: round }
+.xm-settled { font-size: .9em; color: var(--mut); margin: .9em 0 0; font-weight: 500 }
+.xm-big { font-weight: 300; font-size: 2.3em; letter-spacing: -.03em; margin: .1em 0 0; font-variant-numeric: tabular-nums }
+.xm-big small { font-size: .42em; color: var(--mut); font-weight: 500; margin-left: .25em; letter-spacing: 0 }
+.xm-sub { font-size: .78em; color: var(--mut); margin: .15em 0 0 }
+.xm-rc { width: 100%; margin: 1.3em 0 0; background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .3em .95em; box-sizing: border-box; text-align: left }
+.xm-rc div { display: flex; justify-content: space-between; gap: 1em; padding: .62em 0; font-size: .8em } .xm-rc div + div { border-top: 1px solid var(--ln) }
+.xm-rc dt { color: var(--mut) } .xm-rc dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums } .xm-rc dd.mono { font-family: var(--f-num); font-size: .92em } .xm-rc s { color: var(--mut); font-weight: 400; margin-right: .3em }
+.xm-donebtn { margin-top: auto; width: 100%; height: 3.2em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln); display: grid; place-items: center; font-weight: 600; font-size: .9em }
+.xm-tap { position: absolute; left: 0; top: 0; width: 2.8em; height: 2.8em; border-radius: 50%; background: rgba(233,239,251,.16); border: 1.5px solid rgba(233,239,251,.5); pointer-events: none; opacity: 0; z-index: 6 }
+.xm-ctl { display: flex; align-items: center; gap: 10px; width: min(330px, 100%) }
+.xm-btn { font: 500 13px/1 var(--f-body); color: var(--ink); background: rgba(255,255,255,.04); border: 1px solid rgba(140,170,230,.22); border-radius: 999px; padding: 9px 14px; cursor: pointer; flex: none }
+.xm-btn:hover { border-color: rgba(122,168,255,.6) }
+.xm-scrub { flex: 1; min-width: 0; accent-color: #25c4d3; cursor: pointer }
+.xm-time { font: 12px var(--f-num); color: var(--ink-3); flex: none; font-variant-numeric: tabular-nums }
+.xm-note { font-size: 12px; color: var(--ink-3); text-align: center; margin: 0; max-width: 44ch; line-height: 1.5 }
+.xh-route { margin-top: clamp(56px, 9vh, 110px) }
+.shell { overflow-x: clip }   /* the hero glow may reach past the content column; clip only at the window edge */
+@media (max-width: 1000px) { .xm-phone { --pw: clamp(160px, 43vw, 300px) } }
+/* 2026-10-22 (David): stacked layout matches the home page: text runs the full width, and the space from the buttons to the phone is about 50px + 10% of the window */
+@media (max-width: 1000px) { #p-swap .xh h1, #p-swap .xh .xh-lede, #p-swap .xw-head .xh-lede { max-width: none } #p-swap > .xh:first-child { row-gap: calc(50px + 10vw); padding-top: 2px } }   /* nav bar to eyebrow: 20px, as on the home page */   /* stacked under the text: about 0.89 x the window width tall, as the home page phones (capped near 620px) */
+@media (max-width: 1000px) { .xm { gap: 16px } .xm-under { position: static; transform: none } #p-swap > .xh:first-child { padding-bottom: 0 } }
+
+/* 2026-10-22 (David): the demo note moves into an ⓘ beside the controls (hover, focus or tap), so nothing crowds the space below the phone */
+.xm-under { z-index: 2 }   /* the note opens above the phone, not behind it */
+@media (max-width: 1000px) { .xm-under { padding-bottom: 32px } }   /* stacked: breathing room between the controls and the figures band */
+.xm-info { position: relative; flex: none }
+.xm-ib { width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(140,170,230,.3); background: rgba(255,255,255,.04); color: var(--ink-3); font: italic 600 13px/1 Georgia, serif; cursor: pointer; display: grid; place-items: center; padding: 0 }
+.xm-ib:hover, .xm-info.open .xm-ib { border-color: rgba(122,168,255,.7); color: var(--ink) }
+.xm-pop { position: absolute; right: -6px; bottom: calc(100% + 10px); z-index: 30; width: 270px; padding: 12px 14px; border-radius: 12px; background: #0d1426; border: 1px solid rgba(140,170,230,.22);
+  box-shadow: 0 16px 40px rgba(0,0,0,.5); font-size: 12.5px; line-height: 1.5; color: var(--ink-2); text-align: left; opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity .15s, transform .15s, visibility .15s }
+.xm-info:hover .xm-pop, .xm-info:focus-within .xm-pop, .xm-info.open .xm-pop { opacity: 1; visibility: visible; transform: none }
+@media (prefers-reduced-motion: reduce) { .xm-pop { transition: none } }
+
+@font-face{font-family:ExeInter;src:url(asset-29160a80ff49.ttf) format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+body{background:#050a10}
+body::before{background:radial-gradient(ellipse 70% 65% at 80% 0%,rgba(38,63,96,.13),transparent 80%);opacity:1}
+.side{background:rgba(5,10,16,.96);border-color:rgba(123,153,186,.13)}
+.side,.topbar{font-family:ExeInter,Inter,sans-serif}
+.side-nav button,.side-brand .bt b,.crumb{font-family:ExeInter,Inter,sans-serif}
+.side-nav button[aria-selected="true"]{background:linear-gradient(90deg,rgba(22,119,255,.14),rgba(22,119,255,.025));border-left-color:#1677ff;color:#f7f9fc}
+.slab{color:#7297c9!important}
+#p-swap{font-family:ExeInter,Inter,sans-serif;color:#f7f9fc}
+#p-swap .xh,#p-swap .xw,#p-swap .xh-proof,#p-swap .xh-proofnote,#p-swap button,#p-swap h2,#p-swap h3,#p-swap .xt-small h3,#p-swap .xw-step h3{font-family:ExeInter,Inter,sans-serif}
+#p-swap .xh h1,#p-swap .xw-head h2{font-weight:600;font-size:clamp(36px,3.85vw,64px);line-height:1.07;letter-spacing:-.05em;max-width:13ch}
+#p-swap .xh-route h2,#p-swap .xh-try h2{font-size:clamp(34px,3.4vw,54px);max-width:15ch}
+#p-swap .xw-head h2{max-width:20ch;font-size:clamp(34px,3.4vw,54px)}
+#p-swap h2 .fade{background:none;color:#1677ff;-webkit-text-fill-color:#1677ff}
+#p-swap .xh-lede{font-size:16px;line-height:1.7;color:#a8b9cf;max-width:34ch}
+#p-swap .xh-eye,#p-swap .xw-k{font-size:10px;letter-spacing:.16em;color:#8b9eb6}
+#p-swap .xh-proof b{font-weight:600;font-size:clamp(30px,3.4vw,50px);letter-spacing:-.055em}
+#p-swap .xh-proof span{font-size:13px;color:#a8b9cf}
+#p-swap .xh-proof{gap:18px;border-color:rgba(123,153,186,.17)}
+#p-swap .xh-proofnote{color:#91a3bc;line-height:1.7}
+#p-swap .xh-card{border:0;background:linear-gradient(180deg,rgba(34,59,82,.83),rgba(25,47,69,.66) 34%,rgba(16,37,57,.34) 76%,rgba(9,28,46,0) 100%);border-radius:20px;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+#p-swap .xh-card::before{content:'';inset:0;position:absolute;pointer-events:none;padding:1px;border-radius:inherit;background:linear-gradient(180deg,rgba(145,174,206,.42),rgba(104,137,173,.18) 34%,rgba(74,108,145,.05) 73%,transparent 96%);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;animation:none;opacity:1}
+#p-swap .xh-card::after{display:none}
+#p-swap .xh-price b{font-weight:600;letter-spacing:-.05em}
+#p-swap .xt-small h3,#p-swap .xw-step h3{font-weight:600;font-size:23px;line-height:1.2}
+#p-swap .xt-small p,#p-swap .xw-step p{color:#a8b9cf;line-height:1.65}
+#p-swap .xh-how{background:linear-gradient(125deg,#176ee9,#1859b3);box-shadow:inset 0 1px rgba(211,229,255,.16),0 9px 23px -17px #1677ff;font-size:13px;font-weight:500}
+#p-swap .xh-go{background:linear-gradient(180deg,rgba(32,48,69,.45),rgba(15,26,41,.18));border-color:rgba(132,158,192,.25);font-size:13px}
+#p-swap .xm-glow::before{background:radial-gradient(closest-side,rgba(56,82,118,.22),rgba(32,55,88,.08) 50%,transparent)}
+#p-swap .xm-glow::after{background:radial-gradient(closest-side,rgba(33,65,108,.13),transparent)}
+#p-swap .xm-phone{--grad:linear-gradient(120deg,#1677ff,#245dba);--teal:#4f89d5}
+#p-swap .xm-scrub{accent-color:#1677ff}
+#p-swap .xt-slide input::-webkit-slider-runnable-track{background:linear-gradient(90deg,#244b7b,#1677ff,#5288c8)}
+#p-swap .xt-slide input::-moz-range-track{background:linear-gradient(90deg,#244b7b,#1677ff,#5288c8)}
+#p-swap .xt-slide input::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0 10px rgba(22,119,255,.25)}
+#p-swap .xh-tabs button[aria-pressed=true]{background:rgba(22,119,255,.22);box-shadow:inset 0 0 0 1px rgba(90,145,220,.24)}
+#p-swap .xw-step.on{border-left-color:#1677ff}
+#p-swap .xw-eq .term.res{border-color:rgba(85,139,211,.4);background:rgba(22,119,255,.08)}
+@media(max-width:1000px){#p-swap .xh h1{max-width:17ch;font-size:clamp(38px,6vw,58px)}#p-swap .xh-lede{max-width:48ch}#p-swap>.xh:first-child{row-gap:70px}}
+@media(max-width:560px){#p-swap .xh h1,#p-swap .xw-head h2{font-size:36px;line-height:1.08;max-width:15ch}#p-swap .xh-lede{font-size:15px}#p-swap .xh-how{padding:12px 17px;margin-left:6px}#p-swap .xh-go{padding-right:14px}#p-swap .xh-proof b{font-size:32px}#p-swap .xh-card{padding:20px}#p-swap .xw-fig{padding:0!important}#p-swap .xw-step h3{font-size:22px}}
+@media(prefers-reduced-motion:reduce){#p-swap .xh-card::before{animation:none}}
+
+:root{--home-edge:clamp(16px,4vw,64px)}
+nav,.exe-home-hero,#platform,#numbers,#contact{width:calc(100% - 2 * var(--home-edge));max-width:1180px;margin-left:auto;margin-right:auto}
+nav{padding-left:28px;padding-right:28px}
+.exe-home-hero{position:relative;isolation:isolate;overflow:clip;padding:0 28px;background:radial-gradient(ellipse 70% 65% at 80% 0%,rgba(38,63,96,.13),transparent 80%),#050a10;--f-body:ExeInter,Inter,sans-serif;--f-num:ExeInter,Inter,sans-serif;--ink-3:#94a6bf}
+#p-swap>.xh:first-child{padding-top:clamp(28px,6vh,72px);padding-bottom:130px}
+#p-swap .xh{font-family:ExeInter,Inter,sans-serif;position:relative;isolation:isolate}
+#p-swap .xh h1{font-family:inherit;font-weight:600;font-size:clamp(36px,3.85vw,64px);line-height:1.07;letter-spacing:-.05em;max-width:13ch;margin:0 0 28px;color:#f7f9fc;text-transform:none}
+#p-swap .xh .fade{color:#1677ff;-webkit-text-fill-color:#1677ff;background:none}
+#p-swap .xh a{display:inline-flex;vertical-align:middle;text-decoration:none}
+#p-swap .xh .xm-word{font-family:inherit}
+#p-swap .xh .xm-scrub{height:22px;width:80px;min-width:0;padding:0}
+#p-swap .xh .xm-scrub::-webkit-slider-runnable-track{height:4px;background:#294262;border-radius:4px}
+#p-swap .xh .xm-scrub::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;margin-top:-4px;border-radius:50%;background:#f7f9fc;box-shadow:0 0 0 3px rgba(22,119,255,.2)}
+#platform,#numbers,#contact{padding-left:28px;padding-right:28px}
+.proof,.proofnote{width:calc(100% - 2 * var(--home-edge) - 56px);max-width:1124px;margin-left:auto;margin-right:auto}
+@media(max-width:1000px){#p-swap>.xh:first-child{padding-top:2px;row-gap:70px;padding-bottom:0}#p-swap .xh{grid-template-columns:minmax(0,1fr)}#p-swap .xh h1{max-width:17ch;font-size:clamp(38px,6vw,58px)}#p-swap .xh-lede{max-width:48ch}}
+@media(max-width:900px){nav,.exe-home-hero,#platform,#numbers,#contact{padding-left:16px;padding-right:16px}.proof,.proofnote{width:calc(100% - 2 * var(--home-edge) - 32px)}nav{padding-top:18px;padding-bottom:18px}}
+@media(max-width:560px){#p-swap .xh h1{font-size:36px;line-height:1.08;max-width:15ch}#p-swap .xh-lede{font-size:15px}#p-swap .xh-how{margin-left:0}#p-swap .xh-copy-actions{display:flex;gap:10px;flex-wrap:wrap}}
+
+/* Match the small navigation-to-introduction gap on both homepages. */
+@media(max-width:1000px){#p-swap.exe-home-hero>.xh:first-child{padding-top:16px}}
+@media(max-width:380px){nav{padding-inline:8px;gap:6px}nav .logo{font-size:16px}nav .logo i{width:20px;height:18px}nav .cw .btn{font-size:11px;padding:9px}nav .mobile-menu-toggle{width:32px;flex-basis:32px}}

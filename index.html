@@ -419,7 +419,7 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 </style><style>
 /* Compact mobile navigation retains every original destination. */
 .mobile-menu-toggle{display:none}
-@media(max-width:860px){
+@media(max-width:1000px){
  nav{flex-wrap:nowrap;gap:8px;padding:18px clamp(12px,4vw,24px)}nav[data-mobile-open="true"]{flex-wrap:wrap}nav .brandrow{order:0;flex:0 1 auto;min-width:0}nav .cw{order:1;margin-left:auto}nav .proto{display:none}nav .logo{font-size:clamp(16px,4.6vw,20px);white-space:nowrap;gap:6px}nav .cw .btn{font-size:12px;padding:10px 12px;line-height:1.2}
  .mobile-menu-toggle{order:2;display:grid;place-items:center;flex:0 0 36px;width:36px;height:40px;padding:0;color:#d5e0ef;border:0;border-radius:8px;background:none;cursor:pointer}
  .mobile-menu-toggle .hamburger{width:18px;height:14px;display:block;position:relative}.hamburger i{display:block;position:absolute;left:0;width:18px;height:1.5px;border-radius:2px;background:currentColor;transition:transform .18s,opacity .18s}.hamburger i:nth-child(1){top:0}.hamburger i:nth-child(2){top:6px}.hamburger i:nth-child(3){top:12px}.mobile-menu-toggle[aria-expanded="true"] i:nth-child(1){transform:translateY(6px) rotate(45deg)}.mobile-menu-toggle[aria-expanded="true"] i:nth-child(2){opacity:0}.mobile-menu-toggle[aria-expanded="true"] i:nth-child(3){transform:translateY(-6px) rotate(-45deg)}.mobile-menu-toggle:focus-visible{outline:2px solid #1677ff;outline-offset:5px}
@@ -433,6 +433,8 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 }
 </style>
 <link rel="stylesheet" href="assets/homepage.css">
+<link rel="stylesheet" href="assets/exeswap-home-hero.css">
+<link rel="stylesheet" href="assets/mobile-layout.css">
 </head>
 <body>
 
@@ -451,24 +453,50 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
   <div class="track" id="track"></div>
 </div>
 
-<header class="hero" id="hero">
-  <div class="scene" id="scene" aria-hidden="true"><canvas id="sf"></canvas><div class="scrim"></div></div>
-  <div class="copy">
-    <p class="eyebrow">Exe Protocol · the execution layer for agents</p>
-    <h1>Your Activity Pays for Your <span class="fade">Execution</span></h1>
-    <p>Machine-speed execution for wallets, apps, and autonomous agents.</p>
-    <div class="cta">
-      <a class="btn solid" href="simulator.html#swap" target="_blank" rel="noopener">Launch Exeswap</a>
-      <a class="btn ghost" href="exe-protocol-specs.html">Exe Protocol specs</a>
-    </div>
-  </div>
-  <div class="product-stage"><figure class="product-peek">
-  <a href="simulator.html#rate" target="_blank" rel="noopener" aria-label="Open the Exeswap simulator">
-    <span class="peek-camera" aria-hidden="true"></span>
-    <img src="assets/exeswap-dashboard.jpg" alt="Top of the existing Exeswap simulator dashboard, showing Your rate and simulated figures.">
-  </a>
-</figure></div>
-</header>
+<div id="p-swap" class="exe-home-hero"><header class="xh" id="hero">
+      <div>
+        <p class="xh-eye">Exe Protocol · the execution layer for agents</p>
+        <h1>Your Activity Pays for Your <span class="fade">Execution</span></h1>
+        <p class="xh-lede">Machine-speed execution for wallets, apps, and autonomous agents.</p>
+        <div class="xh-copy-actions"><a class="xh-go" href="simulator.html#swap" target="_blank" rel="noopener"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Launch Exeswap</a><a class="xh-how" href="exe-protocol-specs.html">Exe Protocol specs</a></div>
+      </div>
+      <figure class="xm" id="xm" aria-label="Animated example: a $1,000 USDC to SOL swap in Exeswap, with XPR fee redemption">
+        <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="xmGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f63e0"/><stop offset="1" stop-color="#25c4d3"/></linearGradient></defs></svg>
+        <div class="xm-glow" aria-hidden="true"></div><div class="xm-phone" aria-hidden="true"><div class="xm-bez"><div class="xm-screen" id="xmScreen">
+          <div class="xm-status"><span>9:41</span><span class="xm-island"></span><span class="xm-sys"><span class="xm-bars"><i></i><i></i><i></i><i></i></span><span class="xm-batt"><i></i></span></span></div>
+          <section class="xm-layer xm-center" id="xmL0"><svg class="xm-mark" style="width:4.4em;height:3.794em" viewBox="0 0 41.4 35.7" aria-hidden="true"><defs><linearGradient id="xmA0" x1="0" x2="1"><stop offset="0" stop-color="#2350e6"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="xmA1" x1="0" x2="1"><stop offset="0" stop-color="#25b0e8"/><stop offset="1" stop-color="#5fe3ec"/></linearGradient><linearGradient id="xmA2" x1="0" x2="1"><stop offset="0" stop-color="#31d4ac"/><stop offset="1" stop-color="#b8fbe2"/></linearGradient></defs><rect x="14.25" y="0.35" width="26.8" height="9" fill="url(#xmA0)" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="13.35" width="15.3" height="9" fill="url(#xmA1)" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="26.35" width="22.3" height="9" fill="url(#xmA2)" stroke="#c4fbe8" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="0.35" width="9.9" height="9" fill="#2350e6" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="13.35" width="9.9" height="9" fill="#25b0e8" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/></svg><p class="xm-word">Exeswap</p><p class="xm-tag">Built on Exe Protocol</p></section>
+          <section class="xm-layer" id="xmL1">
+            <div class="xm-appbar"><span class="xm-brand"><svg class="xm-mark" style="width:1.5em;height:1.293em" viewBox="0 0 41.4 35.7" aria-hidden="true"><defs><linearGradient id="xmB0" x1="0" x2="1"><stop offset="0" stop-color="#2350e6"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="xmB1" x1="0" x2="1"><stop offset="0" stop-color="#25b0e8"/><stop offset="1" stop-color="#5fe3ec"/></linearGradient><linearGradient id="xmB2" x1="0" x2="1"><stop offset="0" stop-color="#31d4ac"/><stop offset="1" stop-color="#b8fbe2"/></linearGradient></defs><rect x="14.25" y="0.35" width="26.8" height="9" fill="url(#xmB0)" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="13.35" width="15.3" height="9" fill="url(#xmB1)" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="26.35" width="22.3" height="9" fill="url(#xmB2)" stroke="#c4fbe8" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="0.35" width="9.9" height="9" fill="#2350e6" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="13.35" width="9.9" height="9" fill="#25b0e8" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/></svg>Exeswap</span><span class="xm-chip"><i></i>Solana</span></div>
+            <div class="xm-pair">
+              <div class="xm-card"><div class="xm-ct"><span>You sell</span><span>≈ $1,000.00</span></div><div class="xm-cr"><span class="xm-amt" id="xmPay"><span id="xmPayT">0</span><i class="xm-caret" id="xmCaret"></i></span><span class="xm-tok"><img data-tok="USDC" alt="">USDC</span></div></div>
+              <div class="xm-flip"><svg viewBox="0 0 24 24"><path d="M8 4v15M4 15l4 4 4-4M16 20V5M12 9l4-4 4 4"/></svg></div>
+              <div class="xm-card"><div class="xm-ct"><span>You receive</span><span id="xmRcvUsd">Estimated</span></div><div class="xm-cr"><span class="xm-amt ph" id="xmRcv">—</span><span class="xm-tok"><img data-tok="SOL" alt="">SOL</span></div></div>
+            </div>
+            <div class="xm-route"><div id="xmFind"><span>Comparing venues</span><span class="xm-rbar"><i id="xmBar"></i></span></div><div id="xmBest"><span class="xm-best">Route</span><span id="xmVia"></span></div></div>
+            <div class="xm-fees" id="xmFees"><span>Swap cost</span><span class="xm-fv"><s id="xmOld"></s><span id="xmNew"></span></span></div>
+            <div class="xm-xpr" id="xmXpr"><div class="xm-xh"><span>XPR fee redemption</span><span class="xm-tg" id="xmTg"><i id="xmKnob"></i></span></div>
+              <div class="xm-xb" id="xmXb"><div class="xm-xi" id="xmXi"><div class="xm-xr"><span class="xm-num"><small>XPR</small><span id="xmX">0.00</span></span><span class="xm-pct" id="xmPct">0% fee redemption</span></div><div class="xm-meter"><i id="xmMeter"></i></div><p class="xm-xl" id="xmXl">Earned through verified on-chain activity.</p></div></div></div>
+            <div class="xm-swipe" id="xmSwipe"><span class="xm-sl" id="xmSl">Swipe to swap</span><span class="xm-thumb" id="xmThumb"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+          </section>
+          <section class="xm-layer" id="xmL2"><p class="xm-eye">Swapping</p><p class="xm-et">1,000 USDC <span>→</span> SOL</p><p class="xm-es">On Solana</p>
+            <ol class="xm-steps" id="xmSteps">
+              <li data-a="11400" data-b="11850"><i class="xm-st"></i><div><b>Route selected</b><span id="xmS1"></span></div></li>
+              <li data-a="11850" data-b="12350"><i class="xm-st"></i><div><b>Costs calculated</b><span id="xmS2"></span></div></li>
+              <li data-a="12350" data-b="12950"><i class="xm-st"></i><div><b>Fee redemption checked</b><span id="xmS3"></span></div></li>
+              <li data-a="12950" data-b="13350"><i class="xm-st"></i><div><b>Signed in your wallet</b><span>Non-custodial: your keys, your funds</span></div></li>
+            </ol><p class="xm-by">Priced by <b>Exe Protocol</b></p></section>
+          <section class="xm-layer" id="xmL3" style="align-items:center;text-align:center">
+            <svg class="xm-check" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30"/><path id="xmCheck" d="M20 33l8.5 8.5L45 24"/></svg>
+            <p class="xm-settled">Swap settled</p><p class="xm-big"><span id="xmBig"></span><small>SOL</small></p><p class="xm-sub">received on Solana</p>
+            <dl class="xm-rc" id="xmRc"><div><dt>You sold</dt><dd>1,000 USDC</dd></div><div><dt>Swap cost</dt><dd><s id="xmRcOld"></s><span id="xmRcNew"></span></dd></div><div><dt>Fee redemption</dt><dd id="xmRcRed"></dd></div><div><dt>Reference</dt><dd class="mono">exe_7f3a…c91e</dd></div></dl>
+            <span class="xm-donebtn">Done</span></section>
+          <section class="xm-layer xm-center" id="xmL4"><svg class="xm-mark" style="width:3.4em;height:2.932em" viewBox="0 0 41.4 35.7" aria-hidden="true"><defs><linearGradient id="xmC0" x1="0" x2="1"><stop offset="0" stop-color="#2350e6"/><stop offset="1" stop-color="#4d8dff"/></linearGradient><linearGradient id="xmC1" x1="0" x2="1"><stop offset="0" stop-color="#25b0e8"/><stop offset="1" stop-color="#5fe3ec"/></linearGradient><linearGradient id="xmC2" x1="0" x2="1"><stop offset="0" stop-color="#31d4ac"/><stop offset="1" stop-color="#b8fbe2"/></linearGradient></defs><rect x="14.25" y="0.35" width="26.8" height="9" fill="url(#xmC0)" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="13.35" width="15.3" height="9" fill="url(#xmC1)" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/><rect x="14.25" y="26.35" width="22.3" height="9" fill="url(#xmC2)" stroke="#c4fbe8" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="0.35" width="9.9" height="9" fill="#2350e6" stroke="#6b9bff" stroke-opacity=".5" stroke-width=".7"/><rect x=".35" y="13.35" width="9.9" height="9" fill="#25b0e8" stroke="#6fe6f2" stroke-opacity=".5" stroke-width=".7"/></svg><p class="xm-endl">Your activity <em>pays for your execution.</em></p><div class="xm-endm"><span><b>Exeswap</b> · Built on Exe Protocol</span></div><p class="xm-handle">x.com/Exeswap</p></section>
+          <div class="xm-tap" id="xmTap"></div>
+        </div></div></div>
+        <div class="xm-under"><div class="xm-ctl"><button class="xm-btn" id="xmPlay" type="button">Pause</button><button class="xm-btn" id="xmReplay" type="button">Replay</button><input class="xm-scrub" id="xmScrub" type="range" min="0" max="19000" step="10" value="0" aria-label="Animation position"><span class="xm-time" id="xmTime">0:00 / 0:19</span><span class="xm-info"><button class="xm-ib" id="xmInfo" type="button" aria-label="About this demo" aria-expanded="false" aria-controls="xmNote">i</button><span class="xm-pop" id="xmNote" role="note">Illustrative demo using the Exeswap simulation at XPR 0.60, Tier 1. Not live trading or a live price. XPR fee redemption is opt-in; without it you pay the normal fee.</span></span></div>
+        </div>
+      </figure>
+    </header></div>
 
 <div class="proof" id="proof"></div>
 <p class="proofnote" id="proofnote"></p>
@@ -529,97 +557,7 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
   $('proofnote').textContent=D.proof_note;   /* the XPR slider moved to the simulator's Exeswap home (2026-10-20, David) */
 })();
 </script>
-<script>
-(function(){
-  var cv=document.getElementById('sf'),hero=document.getElementById('hero'),ctx=cv.getContext('2d'),
-      reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,BG='#040815',A='77,141,255',W,H,S={},timer,vis=true;
-  var R=function(n){return Math.random()*n},hx=function(){return'0123456789abcdef'[(R(16))|0]};
-  function mask(x,y){var u=x/W,v=y/H;return Math.max(0,Math.min(1,(u-.16)/.4))*Math.min(1,v*6,(1-v)*6)}
-  function rr(x,y,w,h,r){ctx.beginPath();if(ctx.roundRect)ctx.roundRect(x,y,w,h,r);else ctx.rect(x,y,w,h)}
-  function clear(){ctx.fillStyle=BG;ctx.fillRect(0,0,W,H)}
-  /* 3 block chain */
-  function cInit(){var k=Math.max(.5,Math.min(1,W/1440)),bw=104*k,bh=56*k,gx=46*k,gy=64*k,rows=Math.ceil(H/(bh+gy))+1,cols=Math.ceil(W/(bw+gx))+2,hs=[],hash=[];
-    for(var r=0;r<rows;r++){hs.push((R(cols))|0);var row=[];for(var c=0;c<cols;c++)row.push('0x'+hx()+hx()+hx()+hx()+hx()+hx());hash.push(row)}
-    S={k:k,bw:bw,bh:bh,gx:gx,gy:gy,rows:rows,cols:cols,hs:hs,hash:hash}}
-  function cDraw(){clear();var q=S,k=q.k,r,c,x,y,m,g,now=performance.now(),G={};(q.gl||[]).forEach(function(o){var p=(now-o.t0)/o.d;if(p>=0&&p<1)G[o.r+','+o.c]=Math.sin(Math.PI*p)});
-    ctx.font=(10*k).toFixed(1)+'px ui-monospace,"SF Mono",Menlo,Consolas,monospace';ctx.textBaseline='top';ctx.textAlign='left';ctx.lineWidth=1;
-    for(r=0;r<q.rows;r++){y=r*(q.bh+q.gy)+20*k;
-      for(c=0;c<q.cols;c++){x=c*(q.bw+q.gx)+(r%2?-70:-14)*k;m=mask(x+q.bw/2,y+q.bh/2);if(m<.03)continue;g=G[r+','+c]||0;
-        ctx.strokeStyle='rgba(170,190,225,'+(.16*m).toFixed(3)+')';ctx.beginPath();ctx.moveTo(x+q.bw,y+q.bh/2);ctx.lineTo(x+q.bw+q.gx,y+q.bh/2);ctx.stroke();
-        rr(x,y,q.bw,q.bh,10*k);
-        if(g){ctx.fillStyle='rgba(77,141,255,'+(.07*g*m).toFixed(3)+')';ctx.fill();ctx.shadowColor='rgba(77,141,255,'+(.7*g).toFixed(3)+')';ctx.shadowBlur=14*g;
-          ctx.strokeStyle='rgba(120,170,255,'+((.16+.45*g)*m).toFixed(3)+')';ctx.stroke();ctx.shadowBlur=0}
-        else{ctx.strokeStyle='rgba(170,190,225,'+(.16*m).toFixed(3)+')';ctx.stroke()}
-        ctx.fillStyle=g?'rgba(200,220,255,'+((.32+.45*g)*m).toFixed(3)+')':'rgba(170,190,225,'+(.32*m).toFixed(3)+')';ctx.fillText(q.hash[r][c],x+12*k,y+12*k);
-        ctx.fillStyle=g?'rgba(77,141,255,'+((.2+.4*g)*m).toFixed(3)+')':'rgba(170,190,225,'+(.2*m).toFixed(3)+')';ctx.fillRect(x+12*k,y+32*k,((c*37%48)+16)*k,2*k)}}}
-  function cGlint(){var q=S,now=performance.now();q.gl=(q.gl||[]).filter(function(o){return now-o.t0<o.d});
-    while(q.gl.length<7){var r=(R(q.rows))|0,c=(R(q.cols))|0,x=c*(q.bw+q.gx),y=r*(q.bh+q.gy);if(mask(x+q.bw/2,y+q.bh/2)<.3)continue;q.gl.push({r:r,c:c,t0:now+R(2500),d:2200+R(1800)})}
-    if(vis)cDraw()}
-  function cTick(){var q=S;for(var r=0;r<q.rows;r++){if(Math.random()<.55){q.hs[r]++;if(q.hs[r]>q.cols+2)q.hs[r]=-(R(6))|0}}cDraw()}
 
-  /* 6 network lattice (triangulated mesh in perspective) */
-  function nInit(){var cols=64,rows=42,n=cols*rows,q={cols:cols,rows:rows,jx:[],jz:[],b:[],eH:[],eV:[],eD:[],P:[],pk:[],bk:[],t:0,tx:0,ty:0,cx:0,cy:0};for(var z=0;z<16;z++)q.bk.push({x:R(1),y:R(1),r:16+R(38),a:.05+R(.09),s:R(6)});
-    for(var i=0;i<n;i++){q.jx.push(R(1)-.5);q.jz.push(R(1)-.5);q.b.push(.45+R(.55));q.eH.push(Math.random()<.9);q.eV.push(Math.random()<.9);q.eD.push(Math.random()<.88);q.P.push([0,0,1])}
-    S=q;for(i=0;i<16;i++){var g=nStart();q.pk.push({a:g,b:nNext(g),p:R(1)})}}
-  function nStart(){var q=S;return[((R(q.cols-20))|0)+10,((R(q.rows-20))|0)+10]}
-  function nNext(g){var q=S,x=g[0],y=g[1],o=[],i=y*q.cols+x;
-    if(x<q.cols-1&&q.eH[i])o.push([x+1,y]);if(x>0&&q.eH[i-1])o.push([x-1,y]);if(y<q.rows-1&&q.eV[i])o.push([x,y+1]);if(y>0&&q.eV[i-q.cols])o.push([x,y-1]);
-    if(x<q.cols-1&&y<q.rows-1&&q.eD[i])o.push([x+1,y+1]);if(x>0&&y>0&&q.eD[i-q.cols-1])o.push([x-1,y-1]);
-    return o.length?o[(R(o.length))|0]:[Math.min(q.cols-1,x+1),y]}
-  function nFrame(){var q=S,c=q.cols,r=q.rows,x,y,i,p;q.t+=reduce?0:.011;q.cx+=(q.tx-q.cx)*.07;q.cy+=(q.ty-q.cy)*.07;
-    var th=1.08+q.cy*.1,sn=Math.sin(th),cs=Math.cos(th),sp=70,d=2250,foc=W*.92,camX=q.cx*260,cy0=H*.46,t=q.t;
-    for(y=0;y<r;y++)for(x=0;x<c;x++){i=y*c+x;var X=(x-c/2+q.jx[i])*sp-camX,Yp=(y-r/2+q.jz[i])*sp,
-      Zw=150*(Math.sin((x+q.jx[i])*.36+t*1.2)*Math.cos((y+q.jz[i])*.3-t*1.0)+.55*Math.sin((x-y)*.17+t*.8)),
-      zc=d-Yp*sn+Zw*cs,yp=Yp*cs+Zw*sn,f=foc/zc;p=q.P[i];p[0]=W/2+X*f;p[1]=cy0+yp*f;p[2]=f}
-    clear();ctx.lineCap='round';
-    var NB=6,la=[.24,.32,.4,.48,.56,.64],lw=[.6,.75,.9,1.1,1.35,1.7];
-    for(var b=0;b<NB;b++){var y0=Math.floor(b*r/NB),y1=Math.min(r-1,Math.floor((b+1)*r/NB)-1);
-      for(var pass=0;pass<(b>3?2:1);pass++){ctx.beginPath();
-        for(y=y0;y<=y1;y++)for(x=0;x<c;x++){i=y*c+x;var a=q.P[i],o;
-          if(x<c-1&&q.eH[i]){o=q.P[i+1];if(!((a[0]<-40&&o[0]<-40)||(a[0]>W+40&&o[0]>W+40)||(a[1]>H+40&&o[1]>H+40))){ctx.moveTo(a[0],a[1]);ctx.lineTo(o[0],o[1])}}
-          if(y<r-1&&q.eV[i]){o=q.P[i+c];if(!((a[0]<-40&&o[0]<-40)||(a[0]>W+40&&o[0]>W+40)||(a[1]>H+40&&o[1]>H+40))){ctx.moveTo(a[0],a[1]);ctx.lineTo(o[0],o[1])}}
-          if(x<c-1&&y<r-1&&q.eD[i]){o=q.P[i+c+1];if(!((a[0]<-40&&o[0]<-40)||(a[0]>W+40&&o[0]>W+40)||(a[1]>H+40&&o[1]>H+40))){ctx.moveTo(a[0],a[1]);ctx.lineTo(o[0],o[1])}}}
-        ctx.strokeStyle='rgba(110,240,190,'+(pass?la[b]*.2:la[b])+')';ctx.lineWidth=pass?lw[b]*4.5:lw[b];ctx.stroke()}
-      for(y=y0;y<=y1;y++)for(x=0;x<c;x++){i=y*c+x;p=q.P[i];var f=p[2];if(p[0]<-30||p[0]>W+30||p[1]<-30||p[1]>H+30)continue;var al=q.b[i];
-        if(f>1.35){var g=ctx.createRadialGradient(p[0],p[1],0,p[0],p[1],f*7);g.addColorStop(0,'rgba('+A+','+(.26*al).toFixed(3)+')');g.addColorStop(1,'rgba('+A+',0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(p[0],p[1],f*7,0,6.3);ctx.fill();
-          ctx.fillStyle='rgba(238,244,255,'+(.5*al).toFixed(3)+')';ctx.beginPath();ctx.arc(p[0],p[1],1.6,0,6.3);ctx.fill()}
-        else{var rad=.8+f*1.9;if(f>.5){ctx.fillStyle='rgba('+A+','+(.2*al).toFixed(3)+')';ctx.beginPath();ctx.arc(p[0],p[1],rad*3.2,0,6.3);ctx.fill()}
-          ctx.fillStyle='rgba(238,244,255,'+(.55+.45*al).toFixed(3)+')';ctx.beginPath();ctx.arc(p[0],p[1],rad,0,6.3);ctx.fill()}}}
-    q.bk.forEach(function(k){var bx=k.x*W+Math.sin(t*1.3+k.s)*14,by=k.y*H+Math.cos(t+k.s)*10,g=ctx.createRadialGradient(bx,by,0,bx,by,k.r);g.addColorStop(0,'rgba('+A+','+k.a+')');g.addColorStop(1,'rgba('+A+',0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(bx,by,k.r,0,6.3);ctx.fill()});
-    q.pk.forEach(function(k){k.p+=reduce?0:.03;if(k.p>=1){k.p=0;k.a=k.b;k.b=nNext(k.a);if(Math.random()<.04){var g=nStart();k.a=g;k.b=nNext(g)}}
-      var A1=q.P[k.a[1]*c+k.a[0]],B1=q.P[k.b[1]*c+k.b[0]],px=A1[0]+(B1[0]-A1[0])*k.p,py=A1[1]+(B1[1]-A1[1])*k.p,rr2=2+A1[2]*2.4;
-      var g2=ctx.createRadialGradient(px,py,0,px,py,rr2*5);g2.addColorStop(0,'rgba('+A+',.6)');g2.addColorStop(1,'rgba('+A+',0)');ctx.fillStyle=g2;ctx.beginPath();ctx.arc(px,py,rr2*5,0,6.3);ctx.fill();
-      ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(px,py,Math.min(rr2,4),0,6.3);ctx.fill()});
-    var lg=ctx.createLinearGradient(0,0,W*.55,0);lg.addColorStop(0,'rgba(4,8,21,.85)');lg.addColorStop(.55,'rgba(4,8,21,.4)');lg.addColorStop(1,'rgba(4,8,21,0)');ctx.fillStyle=lg;ctx.fillRect(0,0,W*.55,H);
-    var tg=ctx.createLinearGradient(0,0,0,H*.3);tg.addColorStop(0,'rgba(4,8,21,1)');tg.addColorStop(1,'rgba(4,8,21,0)');ctx.fillStyle=tg;ctx.fillRect(0,0,W,H*.3)}
-
-  /* 5 honeycomb lattice */
-  function hInit(){var R0=36,w=Math.sqrt(3)*R0,c=Math.ceil(W/w)+2,r=Math.ceil(H/(R0*1.5))+2,f={},ch=[];S={R:R0,w:w,c:c,r:r,f:f,ch:ch};
-    for(var i=0;i<c*r*.07;i++)f[((R(c))|0)+','+((R(r))|0)]=1;for(i=0;i<12;i++)ch.push(hSeed())}
-  function hSeed(){var q=S;return[[(q.c*.3+R(q.c*.65))|0,(R(q.r))|0]]}
-  function hPos(c,r){var q=S;return[c*q.w+(r%2?q.w/2:0)-q.w/2,r*q.R*1.5]}
-  function hPath(cx,cy,rad){ctx.beginPath();for(var i=0;i<6;i++){var a=(60*i-30)*Math.PI/180,x=cx+rad*Math.cos(a),y=cy+rad*Math.sin(a);i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath()}
-  function hDraw(){clear();var q=S,x,y,p,m;ctx.lineWidth=1;ctx.lineJoin='round';
-    for(y=0;y<q.r;y++)for(x=0;x<q.c;x++){p=hPos(x,y);m=mask(p[0],p[1]);if(m<.03)continue;hPath(p[0],p[1],q.R-2.5);
-      if(q.f[x+','+y]){ctx.fillStyle='rgba('+A+','+(.045*m).toFixed(3)+')';ctx.fill()}
-      ctx.strokeStyle='rgba(170,190,225,'+(.1*m).toFixed(3)+')';ctx.stroke()}
-    q.ch.forEach(function(c){var n=c.length;c.forEach(function(k,i){var al=(i+1)/n,pp=hPos(k[0],k[1]),m=mask(pp[0],pp[1]);if(m<.03)return;
-      if(i){var pr=hPos(c[i-1][0],c[i-1][1]);ctx.strokeStyle='rgba('+A+','+(.55*al*m).toFixed(3)+')';ctx.beginPath();ctx.moveTo(pr[0],pr[1]);ctx.lineTo(pp[0],pp[1]);ctx.stroke()}
-      hPath(pp[0],pp[1],q.R-2.5);ctx.fillStyle='rgba('+A+','+(.11*al*m).toFixed(3)+')';ctx.fill();
-      ctx.strokeStyle=i===n-1?'rgba(238,244,255,'+(.9*m).toFixed(3)+')':'rgba('+A+','+(.7*al*m).toFixed(3)+')';ctx.stroke();
-      ctx.fillStyle='rgba('+A+','+(.85*al*m).toFixed(3)+')';ctx.beginPath();ctx.arc(pp[0],pp[1],2.2,0,6.3);ctx.fill()})})}
-  function hTick(){var q=S;q.ch.forEach(function(c,i){var l=c[c.length-1],odd=l[1]%2,
-      d=odd?[[1,0],[1,-1],[0,-1],[1,1],[0,1]]:[[1,0],[0,-1],[-1,-1],[0,1],[-1,1]],v=d[(R(d.length))|0],n=[l[0]+v[0],l[1]+v[1]];
-    if(n[0]>=q.c||n[1]<0||n[1]>=q.r||Math.random()<.05){q.ch[i]=hSeed();return}c.push(n);if(c.length>8)c.shift()});hDraw()}
-
-  /* 2026-10-16 (David): lighter blocks with a subtle glimmer (about 7 blocks fade in and out; none with reduced motion); blocks scale with the screen (k = width / 1440, 0.5 to 1) */
-  function start(){clearInterval(timer)}  /* background blocks off for now (2026-10-16, David) */
-  function size(){var d=Math.min(devicePixelRatio||1,1.5);W=hero.clientWidth;H=hero.clientHeight;cv.width=W*d;cv.height=H*d;ctx.setTransform(d,0,0,d,0,0);start()}
-  addEventListener('resize',size);
-  new IntersectionObserver(function(e){vis=e[0].isIntersecting}).observe(hero);
-  size();
-})();
-</script>
 <script>
 (function(){
   document.querySelectorAll('nav li.dd>button').forEach(function(b){b.addEventListener('click',function(){
@@ -635,7 +573,7 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 <script>(function(){var w=document.querySelector(".proto"),b=w.querySelector(".protob");function set(o){w.classList.toggle("open",o);b.setAttribute("aria-expanded",String(o))}b.onclick=function(e){e.stopPropagation();set(!w.classList.contains("open"))};document.addEventListener("click",function(e){if(!w.contains(e.target))set(false)});addEventListener("keydown",function(e){if(e.key==="Escape")set(false)})})();</script>
 <script>
 (function(){
- var nav=document.querySelector('nav'),button=document.getElementById('mobileMenuToggle'),links=document.getElementById('primaryNav'),mobile=matchMedia('(max-width:860px)');
+ var nav=document.querySelector('nav'),button=document.getElementById('mobileMenuToggle'),links=document.getElementById('primaryNav'),mobile=matchMedia('(max-width:1000px)');
  function setOpen(open){nav.setAttribute('data-mobile-open',String(open));button.setAttribute('aria-expanded',String(open));if(!open)nav.querySelectorAll('li.dd.open').forEach(function(li){li.classList.remove('open');li.querySelector('button').setAttribute('aria-expanded','false')})}
  button.addEventListener('click',function(){setOpen(button.getAttribute('aria-expanded')!=='true')});
  links.addEventListener('click',function(event){if(mobile.matches&&event.target.closest('a'))setOpen(false)});
@@ -644,6 +582,7 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
  mobile.addEventListener('change',function(){setOpen(false)});
 })();
 </script>
+<script src="assets/exeswap-home-hero.js"></script>
 </body>
 </html>
 
