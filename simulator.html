@@ -953,6 +953,27 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 </style>
 <link rel="stylesheet" href="assets/mobile-layout.css">
 <link rel="stylesheet" href="assets/final-polish.css">
+<style id="hx-reorg">
+#p-swap #xhTry::before{background:linear-gradient(180deg,#050a10,rgba(5,10,16,0) 14%,rgba(5,10,16,0) 84%,#050a10),radial-gradient(ellipse 62% 90% at 86% 32%,rgba(47,72,104,.22),transparent 85%),linear-gradient(110deg,#0d1929,#101d2e 58%,#0a1523) !important}
+
+#p-swap .xw:not(.hx-band)::before{background:#070c14 !important}
+#p-swap .hx-band::before{background:linear-gradient(180deg,#050a10,rgba(5,10,16,0) 14%,rgba(5,10,16,0) 84%,#050a10),radial-gradient(ellipse 62% 90% at 86% 32%,rgba(47,72,104,.22),transparent 85%),linear-gradient(110deg,#0d1929,#101d2e 58%,#0a1523) !important}
+
+#p-swap .hx-h2{font-weight:600;font-size:clamp(34px,3.4vw,54px);line-height:1.08;max-width:20ch;letter-spacing:-.03em;margin:6px 0 4px}
+#p-swap .xw .xh-eye{display:block}
+#p-swap .hx-steps{list-style:none;counter-reset:s;padding:0;margin:30px 0 0;display:grid;gap:14px}
+#p-swap .hx-steps li{counter-increment:s;background:linear-gradient(180deg,rgba(34,59,82,.5),rgba(16,37,57,.22));border:1px solid rgba(123,153,186,.18);border-radius:14px;padding:18px 20px 18px 64px;position:relative;color:#a8b9cf;line-height:1.6}
+#p-swap .hx-steps li::before{content:counter(s);position:absolute;left:18px;top:17px;width:30px;height:30px;border-radius:50%;background:rgba(22,119,255,.18);border:1px solid rgba(22,119,255,.5);color:#8fb4ff;font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center}
+#p-swap .hx-steps li b{color:#f3f1f6}
+#p-swap .hx-faq{display:grid;gap:10px;margin-top:26px}
+#p-swap .hx-q{border:1px solid rgba(123,153,186,.18);border-radius:12px;background:rgba(255,255,255,.025);overflow:hidden}
+#p-swap .hx-q>summary{cursor:pointer;list-style:none;padding:16px 18px;font-weight:600;color:#f3f1f6;display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:16px}
+#p-swap .hx-q>summary::-webkit-details-marker{display:none}
+#p-swap .hx-q>summary::after{content:"+";color:#1677ff;font-size:20px;line-height:1}
+#p-swap .hx-q[open]>summary::after{content:"–"}
+#p-swap .hx-a{padding:0 18px 16px;color:#a8b9cf;line-height:1.6}
+#p-swap .hx-a b{color:#c7cedd}
+</style>
 </head><body><script>if(!location.hash)location.hash="swap";</script><div class="shell" id="shell">
 <aside class="side" aria-label="Navigation">
   <div class="side-brand"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div>
@@ -977,7 +998,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
   <header class="topbar">
     <div class="crumb"><span id="crumbG">Exeswap</span><span class="sep">/</span><b id="crumbT">Your rate</b></div>
     <div class="hright">
-      <a class="how-btn" id="specsBtn" href="exeswap-specs.html" style="text-decoration:none">Exeswap specs</a>   <!-- site/exeswap_specs.html, published as its own page -->
+         <!-- site/exeswap_specs.html, published as its own page -->
       <span class="myxpr" title="Your XPR: earned through verified on-chain activity. Higher XPR, lower fees.">
         <span class="ring"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f63e0"/><stop offset="1" stop-color="#25c4d3"/></linearGradient></defs>
           <circle cx="30" cy="30" r="25" class="trk"/><circle cx="30" cy="30" r="25" class="val" id="myXprRing" stroke-dasharray="157.1" stroke-dashoffset="62.8"/></svg></span>
@@ -1013,10 +1034,10 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
     <div class="xh">
       <div>
         <p class="xh-eye">Exeswap · the first app on Exe Protocol</p>
-        <h2>The cheapest route is just <span class="fade">the beginning.</span></h2>
-        <p class="xh-lede">Compare routes. Understand your costs. See your fee redemption before you sign.</p>
-        <div class="xh-copy-actions"><button class="xh-go" id="xhGo" type="button"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button>
-        <button class="xh-how" id="xhHow" type="button">How it works</button></div>
+        <h2>XPR makes the cheapest route <span class="fade">fee-free</span></h2>
+        <p class="xh-lede">Earn XPR to reduce fees by 0–100% on the cheapest swap route.</p>
+        <div class="xh-copy-actions"><button class="xh-go" id="xhGo" type="button"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button><a class="xh-how" href="exeswap-specs.html" style="text-decoration:none;display:inline-flex;align-items:center;margin-left:6px">Exeswap specs</a>
+        </div>
       </div>
       <figure class="xm" id="xm" aria-label="Animated example: a $1,000 USDC to SOL swap in Exeswap, with XPR fee redemption">
         <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="xmGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f63e0"/><stop offset="1" stop-color="#25c4d3"/></linearGradient></defs></svg>
@@ -1059,25 +1080,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
     <div class="xh-proof" id="xhProof"></div>
     <p class="xh-proofnote" id="xhProofNote"></p>
     <!-- 2026-10-22 (David): the route card moves down a band when the phone motion takes the hero -->
-    <div class="xh xh-route">
-      <div>
-        <p class="xh-eye">Example route</p>
-        <h2>Venues compared. <span class="fade">One route picked.</span></h2>
-        <p class="xh-lede">A $1,000 swap, routed. Exeswap compares the venues it can reach, picks one route and shows what your XPR redeems, before you sign.</p>
-      </div>
-      <figure class="xh-card">
-        <div class="xh-head">
-          <div>
-            <div class="xh-tok"><i></i>A $1,000 swap, routed <span class="xh-ex">Example</span></div>
-            <div class="xh-price"><b id="xhPct">—</b><span id="xhSub">—</span></div>
-          </div>
-          <div class="xh-tabs" id="xhTabs" role="group" aria-label="Chain"></div>
-        </div>
-        <div class="xh-map"><canvas id="xhMap" role="img" aria-label="Example route across venues"></canvas></div>
-        <div class="xh-stats"><div><b id="xhFull">—</b><span>Full fee</span></div><div><b id="xhPay">—</b><span>You pay</span></div><div><b id="xhVia">—</b><span id="xhN">—</span></div></div>
-        <p class="xh-note"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg><span id="xhNote"></span></p>
-      </figure>
-    </div>
+    <!-- Venues: CUT -->
     <div class="xh xh-try" id="xhTry">
       <div>
         <p class="xh-eye">Try it for yourself</p>
@@ -1102,48 +1105,30 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       </div>
     </div>
     <!-- 2026-10-21 (David): third band, for casual users: how easy it is, in three steps (scroll-led on desktop) -->
-    <div class="xw" id="xhWorks">
-      <div class="xw-head"><p class="xh-eye">How it works</p><h2>Three things happen<br> <span class="fade">before you sign.</span></h2>
-        <p class="xh-lede">Exeswap finds the route. You see every cost. Then Exe Protocol works out how much of the fee your activity pays.</p></div>
-      <div class="xw-grid">
-        <figure class="xh-card xw-fig" aria-hidden="true"><div class="xw-vis on" data-v="0"><p class="xw-vt">Route · example</p><svg class="xw-route" viewBox="0 0 420 170" aria-hidden="true">
-              <defs><linearGradient id="xwgDesktop" x1="0" x2="1"><stop offset="0" stop-color="#3987e5"/><stop offset="1" stop-color="#2ccfc2"/></linearGradient><mask id="routeNodeMaskDesktop" maskUnits="userSpaceOnUse" x="0" y="0" width="420" height="170"><rect width="420" height="170" fill="white"/><g fill="black"><circle cx="210" cy="70" r="4"/><circle cx="210" cy="105" r="4"/><circle cx="210" cy="140" r="4"/><circle cx="210" cy="32" r="6"/><circle cx="40" cy="85" r="9"/><circle cx="380" cy="85" r="9"/></g></mask></defs>
-              <g mask="url(#routeNodeMaskDesktop)"><g fill="none" stroke="rgba(160,190,245,.22)" stroke-width="1.4">
-                <path d="M40 85 C120 85,140 70,210 70 S300 85,380 85"/><path d="M40 85 C120 85,140 105,210 105 S300 85,380 85"/><path d="M40 85 C120 85,140 140,210 140 S300 85,380 85"/></g>
-              <path d="M40 85 C120 85,140 32,210 32 S300 85,380 85" fill="none" stroke="url(#xwgDesktop)" stroke-width="2.6"/></g>
-              <g fill="none" stroke="rgba(160,190,245,.5)" stroke-width="1.4"><circle cx="210" cy="70" r="4"/><circle cx="210" cy="105" r="4"/><circle cx="210" cy="140" r="4"/></g>
-              <circle cx="210" cy="32" r="6" fill="none" stroke="#6ab6ff" stroke-width="2"/>
-              <circle cx="40" cy="85" r="9" fill="none" stroke="#c9d6f2" stroke-width="1.8"/><circle cx="380" cy="85" r="9" fill="none" stroke="#2ccfc2" stroke-width="2"/>
-              <g font-family="Hanken Grotesk, system-ui, sans-serif" font-size="13" fill="rgba(238,242,252,.6)">
-                <text x="222" y="36" fill="#f3f1f6" font-weight="500">Raydium</text><text x="222" y="74">Orca</text><text x="222" y="109">Meteora</text><text x="222" y="144">Phoenix</text>
-                <text x="40" y="116" text-anchor="middle" fill="#f3f1f6">USDC</text><text x="380" y="116" text-anchor="middle" fill="#f3f1f6">SOL</text></g></svg><p class="xw-cap">4 venues compared, one route picked</p></div><div class="xw-vis" data-v="1"><p class="xw-vt">Your quote · <span class="xwTrade"></span> trade</p>
-            <div class="xw-mini"><div><span>Network fee (gas)</span><b class="xwGas"></b></div><div><span>Exchanges' own fees</span><b class="xw-dim">in the quoted price</b></div>
-            <div><span>Exe Protocol fee (<span class="xwRate"></span>)</span><b class="xwExe"></b></div><div class="tot"><span>Full fee</span><b class="xwFull"></b></div></div></div><div class="xw-vis" data-v="2"><p class="xw-vt">At your XPR <span class="xwX"></span> · Tier <span class="xwT"></span></p>
-            <div class="xw-eq"><div class="term"><span>Full fee</span><b class="xwFull"></b></div><i>−</i><div class="term"><span>Redeemed by your XPR</span><b class="xwRed"></b></div><i>=</i>
-            <div class="term res"><span>You pay</span><b class="xwPay"></b></div></div><p class="xw-cap">Move the slider above and this follows.</p></div></figure>
-        <div class="xw-steps">
-          <article class="xw-step on" data-i="0"><span class="xw-k">Step 1 of 3</span><h3>Find the route</h3><p>Exeswap compares the venues it can reach and picks a route for your trade. In this demo it compares Raydium, Orca, Meteora and Phoenix on Solana. The route comes first; fee redemption is worked out after.</p>
-            <div class="xw-inline"><div class="xw-vis on" data-v="0"><p class="xw-vt">Route · example</p><svg class="xw-route" viewBox="0 0 420 170" aria-hidden="true">
-              <defs><linearGradient id="xwgMobile" x1="0" x2="1"><stop offset="0" stop-color="#3987e5"/><stop offset="1" stop-color="#2ccfc2"/></linearGradient><mask id="routeNodeMaskMobile" maskUnits="userSpaceOnUse" x="0" y="0" width="420" height="170"><rect width="420" height="170" fill="white"/><g fill="black"><circle cx="210" cy="70" r="4"/><circle cx="210" cy="105" r="4"/><circle cx="210" cy="140" r="4"/><circle cx="210" cy="32" r="6"/><circle cx="40" cy="85" r="9"/><circle cx="380" cy="85" r="9"/></g></mask></defs>
-              <g mask="url(#routeNodeMaskMobile)"><g fill="none" stroke="rgba(160,190,245,.22)" stroke-width="1.4">
-                <path d="M40 85 C120 85,140 70,210 70 S300 85,380 85"/><path d="M40 85 C120 85,140 105,210 105 S300 85,380 85"/><path d="M40 85 C120 85,140 140,210 140 S300 85,380 85"/></g>
-              <path d="M40 85 C120 85,140 32,210 32 S300 85,380 85" fill="none" stroke="url(#xwgMobile)" stroke-width="2.6"/></g>
-              <g fill="none" stroke="rgba(160,190,245,.5)" stroke-width="1.4"><circle cx="210" cy="70" r="4"/><circle cx="210" cy="105" r="4"/><circle cx="210" cy="140" r="4"/></g>
-              <circle cx="210" cy="32" r="6" fill="none" stroke="#6ab6ff" stroke-width="2"/>
-              <circle cx="40" cy="85" r="9" fill="none" stroke="#c9d6f2" stroke-width="1.8"/><circle cx="380" cy="85" r="9" fill="none" stroke="#2ccfc2" stroke-width="2"/>
-              <g font-family="Hanken Grotesk, system-ui, sans-serif" font-size="13" fill="rgba(238,242,252,.6)">
-                <text x="222" y="36" fill="#f3f1f6" font-weight="500">Raydium</text><text x="222" y="74">Orca</text><text x="222" y="109">Meteora</text><text x="222" y="144">Phoenix</text>
-                <text x="40" y="116" text-anchor="middle" fill="#f3f1f6">USDC</text><text x="380" y="116" text-anchor="middle" fill="#f3f1f6">SOL</text></g></svg><p class="xw-cap">4 venues compared, one route picked</p></div></div></article>
-          <article class="xw-step" data-i="1"><span class="xw-k">Step 2 of 3</span><h3>See the full fee</h3><p>Every cost sits on its own line: the network fee and Exe Protocol's fee. The exchanges' own fees are already inside the quoted price, so they are never charged twice.</p>
-            <div class="xw-inline"><div class="xw-vis on" data-v="1"><p class="xw-vt">Your quote · <span class="xwTrade"></span> trade</p>
-            <div class="xw-mini"><div><span>Network fee (gas)</span><b class="xwGas"></b></div><div><span>Exchanges' own fees</span><b class="xw-dim">in the quoted price</b></div>
-            <div><span>Exe Protocol fee (<span class="xwRate"></span>)</span><b class="xwExe"></b></div><div class="tot"><span>Full fee</span><b class="xwFull"></b></div></div></div></div></article>
-          <article class="xw-step" data-i="2"><span class="xw-k">Step 3 of 3</span><h3>Your activity pays for your execution</h3><p>XPR is your exchange rate, earned through verified on-chain activity. Exe Protocol turns it into fee redemption, from 0% to 100% of the fee, on gas and on Exe Protocol's fee. Redemption never exceeds the fee on the trade, and if the pool runs short it steps down gracefully instead of running dry.</p>
-            <div class="xw-inline"><div class="xw-vis on" data-v="2"><p class="xw-vt">At your XPR <span class="xwX"></span> · Tier <span class="xwT"></span></p>
-            <div class="xw-eq"><div class="term"><span>Full fee</span><b class="xwFull"></b></div><i>−</i><div class="term"><span>Redeemed by your XPR</span><b class="xwRed"></b></div><i>=</i>
-            <div class="term res"><span>You pay</span><b class="xwPay"></b></div></div><p class="xw-cap">Move the slider above and this follows.</p></div></div>
-            <div class="xw-end"><button class="xh-go" type="button" data-go="trade"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button><a class="xh-how" href="exeswap-specs.html" style="text-decoration:none">Exeswap specs</a></div></article>
-        </div>
+    <!-- equation DITCHED (slider already shows it live) -->
+    <div class="xw">
+      <p class="xh-eye">HOW IT WORKS</p>
+      <h2 class="hx-h2">Lower fees, <span class="fade">in six steps.</span></h2>
+      <ol class="hx-steps">
+      <li><b>Connect your wallet.</b> Your money stays in your wallet. Exe Protocol never holds it.</li>
+      <li><b>Swap on Exeswap.</b> Exeswap finds the cheapest route for your trade, like any aggregator. That's all you need to do to trade.</li>
+      <li><b>Opt in to XPR, if you want lower fees.</b> It's optional. Once you opt in, your verified trading signal sets your XPR, your Exe Protocol Rate, which fluctuates from 0.00 to 1.00, depending on signal strength.</li>
+      <li><b>Higher XPR, lower fees.</b> XPR is the share of each trade's fee you redeem. XPR 0.40 means 40% redeemed; XPR 1.00 means the whole fee.</li>
+      <li><b>See it before you sign.</b> Every quote shows the full fee, what your XPR pays and what you pay. Approve it, and that price is fixed.</li>
+      <li><b>Settled for you.</b> Your trade is recorded the moment you approve it, then settled on-chain in batches to keep costs down.</li>
+      </ol>
+    </div>
+    <div class="xw hx-band">
+      <p class="xh-eye">COMMON QUESTIONS</p>
+      <h2 class="hx-h2">Good to <span class="fade">know.</span></h2>
+      <div class="hx-faq">
+      <details class="hx-q" open><summary>Do I have to use XPR?</summary><div class="hx-a">No. XPR is opt-in. Without it, Exeswap works as a regular aggregator: you get the cheapest route and pay the normal fee.</div></details>
+      <details class="hx-q"><summary>How is redemption funded?</summary><div class="hx-a">First from your own fees: up to 70% of the protocol fee you paid. The rest comes from Exe’s pool, funded by the apps using Exe Protocol. Redemption never exceeds the fee you paid.</div></details>
+      <details class="hx-q"><summary>What is pool strength?</summary><div class="hx-a">How much of what your XPR earns Exe’s pool can pay right now. At 100% you redeem it all. If Exe’s pool runs low, everyone’s share shrinks equally, but the part from your own fees never does.</div></details>
+      <details class="hx-q"><summary>What are tiers?</summary><div class="hx-a"><b>Tier 1</b> is where everyone starts. <b>Tier 2</b> adds a budget commitment and lets your XPR go up to 1.10. <b>Tier 3</b> is for wallets that keep a high XPR month after month.</div></details>
+      <details class="hx-q"><summary>How do I reach Tier 2?</summary><div class="hx-a">Set aside a budget in your own wallet, usually about 10% of what you trade in a month (between 5% and 25%, lower for long, steady history). You keep control of it.</div></details>
+      <details class="hx-q"><summary>How do I reach Tier 3?</summary><div class="hx-a">Stay at Tier 2 with an XPR of 0.75 or more for four months in a row. Two months below 0.75 and you move back to Tier 2.</div></details>
+      <details class="hx-q"><summary>Is this live?</summary><div class="hx-a">Not yet. Every figure on this site comes from our simulation and is not a live price.</div></details>
       </div>
     </div>
   </section>
@@ -1414,9 +1399,9 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <dt>Do I have to use XPR?</dt>
       <dd>No. XPR is opt-in. Without it, Exeswap works as a regular aggregator: you get the cheapest route and pay the normal fee.</dd>
       <dt>How is redemption funded?</dt>
-      <dd>First from your own fees: up to 70% of the protocol fee you paid. The rest comes from a shared pool funded by the apps using Exe Protocol.</dd>
+      <dd>First from your own fees: up to 70% of the protocol fee you paid. The rest comes from Exe’s pool, funded by the apps using Exe Protocol.</dd>
       <dt>What is pool strength?</dt>
-      <dd>How much of what your XPR earns the shared pool can pay right now. At 100% you redeem it all. If the pool runs low, everyone's pool share shrinks equally, but the part from your own fees never does.</dd>
+      <dd>How much of what your XPR earns Exe’s pool can pay right now. At 100% you redeem it all. If Exe’s pool runs low, everyone’s share shrinks equally, but the part from your own fees never does.</dd>
       <dt>What are tiers?</dt>
       <dd><b>Tier 1</b> is where everyone starts. <b>Tier 2</b> adds a budget commitment and lets your XPR go up to 1.10. <b>Tier 3</b> is for wallets that keep a high XPR month after month.</dd>
       <dt>How do I reach Tier 2?</dt>
@@ -1655,7 +1640,7 @@ function renderSpeed() {
   const m = SP.measured.paymaster, g = SP.grid[[SS.agents, SS.payments, SS.batch, SS.pattern].join("|")];
   const ex = SP.example, sg = SP.grid[ex.scale_key], fac = sg.facilitator, usd0 = v => "$" + Math.round(v).toLocaleString("en-US");
   const proof = (main, sub, k) => `${esc(main)}${sub ? `<span class="mk-sub">${esc(sub)}</span>` : ""} ${tag(k)}`;
-  $("mkSignal").innerHTML = proof("XPR " + ex.xpr.toFixed(2) + ": " + (ex.redemption).toLocaleString("en-US", { style: "percent" }) + " of the fee redeemed", "Tier 1, pool at full strength", "simulated");
+  $("mkSignal").innerHTML = proof("XPR " + ex.xpr.toFixed(2) + ": " + (ex.redemption).toLocaleString("en-US", { style: "percent" }) + " of the fee redeemed", "Tier 1, Exe’s pool at full strength", "simulated");
   $("mkPool").innerHTML = proof("Never ran dry in " + ex.stress_held + " of " + ex.stress_total + " stress tests", ex.stress_months + " months each, including bots and wallet farms", "simulated");
   $("mkDecide").innerHTML = proof(m.median_ms.toFixed(3) + " ms to decide the fee relief", "mock paymaster, in memory", "measured");
   $("mkNet").innerHTML = proof(sg.fewer_than_pairs.toFixed(1) + "× fewer on-chain transactions than per-pair settlement", "1,000 agents, 1M payments a day mostly to popular services, hourly", "simulated");
@@ -1788,7 +1773,7 @@ swTokens();
 })();
 /* ---------- Exeswap landing: route panel (engine figures from the same swap rows as the card below) ---------- */
 (function () {
-  const cv = $("xhMap"), c = cv.getContext("2d"), RM = matchMedia("(prefers-reduced-motion: reduce)");
+  const cv = $("xhMap"); if(!cv) return; const c = cv.getContext("2d"), RM = matchMedia("(prefers-reduced-motion: reduce)");
   const CH = { solana: ["USDC", "SOL"], ethereum: ["USDC", "ETH"] };
   let cur = "solana", W = 0, H = 0, P = [], A, B, t0 = performance.now(), raf = 0, vis = true;
   const bez = (a, b, d, e, t) => { const u = 1 - t; return [u*u*u*a[0] + 3*u*u*t*b[0] + 3*u*t*t*d[0] + t*t*t*e[0], u*u*u*a[1] + 3*u*u*t*b[1] + 3*u*t*t*d[1] + t*t*t*e[1]] };
@@ -1878,10 +1863,10 @@ $("xtTabs").querySelectorAll("button").forEach(b => b.onclick = () => { S.tier =
   $("xhProof").innerHTML = [
     [(100 * D.exe_fee_rates.low_fee).toFixed(2) + "%", "fee per swap (MetaMask: " + (100 * mm[1]).toFixed(3) + "%)"],
     [swUsd(full.fee - full.red), "fee at XPR 1.00"],
-    [held + " of " + D.stress.length, "stress tests, pool never ran dry"],
+    [held + " of " + D.stress.length, "stress tests, Exe’s pool never ran dry"],
     ["70%", "of protocol fees fund redemption"],
   ].map(([v, l]) => `<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
-  $("xhProofNote").textContent = "From our prototype, not live trading. Fees are sourced (Your quote lists every comparison). $0.00 is simulated for a $1,000 trade at Tier 1, pool at full strength. Stress tests are simulated over " + months + " months each, including bots, whales and wallet farms. 70% is Exe Protocol's design.";
+  $("xhProofNote").textContent = "From our prototype, not live trading. Fees are sourced (Your quote lists every comparison). $0.00 is simulated for a $1,000 trade at Tier 1, Exe’s pool at full strength. Stress tests are simulated over " + months + " months each, including bots, whales and wallet farms. 70% is Exe Protocol's design.";
 })();
 
 
@@ -1922,13 +1907,13 @@ function render() { tcSync();
   if (S.tab === "calc") renderCalc();
   if (S.tab === "speed") renderSpeed();
 }
-$("foot").textContent = `Rules: Master Doc Revision 010.8 (engine as frozen at Revision 010.6). Exeswap fee ${(100 * D.exe_fee_rates.low_fee).toFixed(2)}% on low-fee chains, ${(100 * D.exe_fee_rates.ethereum).toFixed(2)}% on Ethereum. The pool's reserve starts at ${usdM(D.reserve)}.`;
+$("foot").textContent = `Rules: Master Doc Revision 010.8 (engine as frozen at Revision 010.6). Exeswap fee ${(100 * D.exe_fee_rates.low_fee).toFixed(2)}% on low-fee chains, ${(100 * D.exe_fee_rates.ethereum).toFixed(2)}% on Ethereum. Exe’s pool reserve starts at ${usdM(D.reserve)}.`;
 const h = location.hash.slice(1); if (TABS.includes(h)) S.tab = h;
 render();
 /* "How it works" panel: open from the top bar or with #how in the address */
 (function () { const h = $("how"), open = () => { h.hidden = false; document.body.style.overflow = "hidden" },
   close = () => { h.hidden = true; document.body.style.overflow = "" };
-  $("xhHow").onclick = open; h.querySelectorAll("[data-close]").forEach(b => b.onclick = close);
+  var _xh=$("xhHow"); if(_xh)_xh.onclick = open; h.querySelectorAll("[data-close]").forEach(b => b.onclick = close);
   addEventListener("keydown", e => { if (e.key === "Escape" && !h.hidden) close() }); if (location.hash === "#how") open() })();
 </script>
 <button class="totop" id="toTop" type="button" aria-label="Back to top">&uarr;</button>
