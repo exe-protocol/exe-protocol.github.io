@@ -956,7 +956,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 <style id="hx-reorg">
 #p-swap #xhTry::before{background:linear-gradient(180deg,#050a10,rgba(5,10,16,0) 14%,rgba(5,10,16,0) 84%,#050a10),radial-gradient(ellipse 62% 90% at 86% 32%,rgba(47,72,104,.22),transparent 85%),linear-gradient(110deg,#0d1929,#101d2e 58%,#0a1523) !important}
 
-#p-swap .xw:not(.hx-band)::before{background:#070c14 !important}
+#p-swap .xw:not(.hx-band)::before{background:linear-gradient(180deg,#050a10,#070c14 7%,#070c14 93%,#050a10) !important}
 #p-swap .hx-band::before{background:linear-gradient(180deg,#050a10,rgba(5,10,16,0) 14%,rgba(5,10,16,0) 84%,#050a10),radial-gradient(ellipse 62% 90% at 86% 32%,rgba(47,72,104,.22),transparent 85%),linear-gradient(110deg,#0d1929,#101d2e 58%,#0a1523) !important}
 
 #p-swap .hx-h2{font-weight:600;font-size:clamp(34px,3.4vw,54px);line-height:1.08;max-width:20ch;letter-spacing:-.03em;margin:6px 0 4px}
@@ -1034,8 +1034,8 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
     <div class="xh">
       <div>
         <p class="xh-eye">Exeswap · the first app on Exe Protocol</p>
-        <h2>XPR makes the cheapest route <span class="fade">fee-free</span></h2>
-        <p class="xh-lede">Earn XPR to reduce fees by 0–100% on the cheapest swap route.</p>
+        <h2>XPR makes the cheapest route <span class="fade">fee-free.</span></h2>
+        <p class="xh-lede">Earn XPR through verified on-chain signal. Reduce fees by 0–100% on the cheapest swap route.</p>
         <div class="xh-copy-actions"><button class="xh-go" id="xhGo" type="button"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button><a class="xh-how" href="exeswap-specs.html" style="text-decoration:none;display:inline-flex;align-items:center;margin-left:6px">Exeswap specs</a>
         </div>
       </div>
@@ -1866,7 +1866,7 @@ $("xtTabs").querySelectorAll("button").forEach(b => b.onclick = () => { S.tier =
     [held + " of " + D.stress.length, "stress tests, Exe’s pool never ran dry"],
     ["70%", "of protocol fees fund redemption"],
   ].map(([v, l]) => `<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
-  $("xhProofNote").textContent = "From our prototype, not live trading. Fees are sourced (Your quote lists every comparison). $0.00 is simulated for a $1,000 trade at Tier 1, Exe’s pool at full strength. Stress tests are simulated over " + months + " months each, including bots, whales and wallet farms. 70% is Exe Protocol's design.";
+  $("xhProofNote").textContent = "From our prototype, not live trading. Fees are sourced (your quote lists every comparison). $0.00 is simulated for a $1,000 trade at Tier 1, Exe’s pool at full strength. Stress tests are simulated over " + months + " months each, including bots, whales and wallet farms. 70% is Exe Protocol's design.";
 })();
 
 
