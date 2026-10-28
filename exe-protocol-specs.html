@@ -63,12 +63,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px
 <div class="wrap">
   <aside class="toc"><p>On this page</p><a href="#positioning">Positioning</a><a href="#mechanism">Mechanism</a><a href="#whos-who-and-who-pays">Who’s who and who pays</a><a href="#app-funding">App funding</a><a href="#agent-payments">Agent payments</a><a href="#evidence">Evidence</a><a href="#roadmap-and-open-items">Roadmap and open items</a><a href="#pending-legal-advice">Pending legal advice</a></aside>
   <main>
-    <p class="eyebrow">Exe Protocol · Specs · 21 October 2026</p>
+    <p class="eyebrow">Exe Protocol · Specs · 28 October 2026</p>
     <h1>Exe Protocol <span class="fade">specs</span></h1>
     <p class="lead">Exe Protocol is a policy-governed execution layer for apps, wallets and agents. Rails like x402, cards or Stripe move the money; Exe Protocol makes each payment smarter: fees priced by verified signal (XPR), within budgets set in advance, settled net. Exeswap is the first app built on Exe Protocol. Exeswap is a working prototype: every figure on this page is simulated unless marked measured or sourced.</p>
     <span class="tag">Prototype · every figure simulated unless marked</span>
     <section class="sec"><h2 id="positioning">Positioning</h2>
-<p>Rails move the money. Today's rails are blind to the value a payer's activity creates: fees follow the transaction, or at best its volume. Exe Protocol decides what each payment costs by signal, giving the most fee redemption to the strongest verified signal.</p>
+<p>Rails move the money. Today's rails are blind to the value a payer's activity creates: fees follow the transaction, or at best its volume. Exe Protocol determines what each payment costs by signal, giving the most fee redemption to the strongest verified signal.</p>
 <p>As AI agents grow more capable, the payments they make need to become smarter too, so apps, agents and wallets get the most value: Exe Protocol values the signal agents generate and applies that value at the moment of payment.</p>
 <p>Exe Protocol is a horizontal layer that makes spending signal-aware: apps and their agents sit above it, payment rails and chains below.</p>
 <div class="tw"><table>
@@ -109,10 +109,8 @@ netting</strong></td>
 </tr>
 </tbody>
 </table></div>
-<p>x402 is the pipe, not the rival: it moves money between agents and
-does nothing else. Exe Protocol adds what x402 does not have: fees
-priced by the payer’s signal, budgets and policy decided before each
-payment, a shared pool that funds redemption, and settlement netted
+<p>x402 is the pipe, not the rival: it moves money between agents. Exe Protocol adds what x402 does not have: fees
+priced by the payer’s signal, budgets and policy set before each payment, a shared pool that funds redemption, and settlement netted
 across all agents. Working with any rail is a statement of intent until
 built.</p>
 </section><section class="sec"><h2 id="mechanism">Mechanism</h2>
@@ -120,22 +118,16 @@ built.</p>
 from that.</p>
 <ul>
 <li><strong>Priced by signal.</strong> A wallet’s XPR (Exe Protocol
-Rate), earned through verified on-chain activity, decides how much of
-each fee is redeemed. At Tier 1 with the pool at full strength, XPR 0.60
-redeems 60%. Paymasters elsewhere subsidise blindly; Exe pays strong
-signal most.</li>
+Rate), earned through verified on-chain signal, determines how much of each fee is redeemed. At Tier 1 with the pool at full strength, XPR 0.60
+redeems 60%. Exe Protocol redeems more of the fee for stronger signal.</li>
 <li><strong>Funded by a shared pool.</strong> Redemption comes first
 from the payer’s own fees (up to 70% of the protocol fee they paid),
-then from the Sponsorship Pool. In every stress we tested, 9 of 9 over
-24 months each, the pool never ran dry.</li>
-<li><strong>Decided before it happens.</strong> Pre-funded budgets,
-policy and tiers approve each payment at the quote. A rogue agent cannot
-spend beyond its budget. Measured in the prototype: 0.054 ms to decide
-the fee relief.</li>
+then from the Sponsorship Pool. In all nine stress tests (simulated, 24 months each), the pool never ran dry.</li>
+<li><strong>Determined before it happens.</strong> Pre-funded budgets,
+policy and tiers approve each payment at the quote. It is designed so a rogue agent cannot spend beyond its budget. Measured in the prototype: 0.054 ms to determine the fee relief.</li>
 <li><strong>Settled net.</strong> Payments are recorded the moment they
 are approved; at each batch only what each agent owes or is owed overall
-goes on-chain. One fingerprint per batch lets any agent check its own
-balance.</li>
+goes on-chain. One fingerprint per batch (a Merkle root) lets any agent check its own balance.</li>
 </ul>
 <p>The loop, and how far each step is proven:</p>
 <ol type="1">
@@ -191,19 +183,16 @@ budget</td>
 </table></div>
 <p>Each wallet keeps its own XPR, including each agent’s wallet; apps
 see the totals. New wallets share only a small, capped part of the pool,
-so spinning up fresh wallets or agents cannot farm it.</p>
+so the rules are designed to stop fresh wallets or agents farming it.</p>
 </section><section class="sec"><h2 id="app-funding">App funding</h2>
 <ul>
 <li><strong>The pool:</strong> funded by 70% of Exe Protocol’s revenue,
 from Exeswap’s fees and the protocol fees that apps’ users pay. Users’
 own money never enters it.</li>
 <li><strong>One account per app:</strong> each app’s users draw on the
-revenue they generate, so no app subsidises another. Exe Protocol starts
-each new app’s account with about 1.9 months of its expected income; a
-fifth of that is a buffer that is never spent.</li>
+revenue they generate, so no app subsidises another. Exe Protocol starts each new app’s account with about 1.9 months of its expected income; a fifth of that is a buffer that is never spent. In production, a new app’s seed is sized on its proven trading volume and paid monthly, so its first months can be weaker.</li>
 <li><strong>What an app pays:</strong> nothing is required for fee
-redemption. On a low-fee chain, 70% of the protocol fee covers what
-users’ XPR earns with room to spare. On an expensive chain gas
+redemption. On a low-fee chain, the 70% of protocol revenue that funds each app’s account covers what users’ XPR earns, with room to spare. On an expensive chain gas
 dominates, for every app.</li>
 <li><strong>Optional app budgets:</strong> an app can fund a budget so
 XPR also discounts its own fee. That money goes to its users under the
@@ -212,7 +201,7 @@ same rules.</li>
 cleared. Buybacks are off until legal advice.</li>
 </ul>
 </section><section class="sec"><h2 id="agent-payments">Agent payments</h2>
-<p>x402 moves the money; Exe decides what it costs, by signal. Every
+<p>x402 moves the money; Exe Protocol determines what it costs, by signal. Every
 figure below is simulated for one day: 1,000 agents, 1,000,000 payments
 a day mostly to popular services, settled hourly.</p>
 <div class="tw"><table>
@@ -237,7 +226,7 @@ a day mostly to popular services, settled hourly.</p>
 <tr class="even">
 <td>Fee priced by the payer’s signal</td>
 <td>No</td>
-<td>Yes: XPR redeems the fee, to zero at XPR 1.00</td>
+<td>Yes: XPR redeems the fee, to zero at XPR 1.00 (Tier 1, Exe’s pool at full strength)</td>
 </tr>
 <tr class="odd">
 <td>Protocol fee</td>
@@ -263,13 +252,11 @@ transaction</td>
 </tbody>
 </table></div>
 <ul>
-<li><strong>Speed, plainly:</strong> any design that approves payments
-off-chain decides as fast as the network allows, x402’s batch scheme
+<li><strong>Speed, plainly:</strong> any design that approves payments off-chain does so as fast as the network allows, x402’s batch scheme
 included. Exe Protocol’s edge is what grows with volume: one budget for
 every counterparty, settlement netted across all agents, and a fee the
 payer’s own activity redeems.</li>
-<li><strong>Checkable settlement:</strong> each batch publishes one
-fingerprint. Any of 1,000 agents checks its own net position with 10
+<li><strong>Checkable settlement:</strong> each batch publishes one fingerprint (a Merkle root). Any of 1,000 agents checks its own net position with 10
 hashes (320 bytes).</li>
 <li><strong>Custody, planned:</strong> each agent’s budget sits in an
 escrow contract the agent controls. A batch settles only payments the
@@ -366,12 +353,12 @@ real funds, after fundraising</td>
 <td>Pilot question</td>
 </tr>
 <tr class="odd">
-<td>Agent payment fee as a share of the gas saved (option C)</td>
+<td>Agent payment fee as a share of the gas saved</td>
 <td>Later; needs an engine change and review</td>
 </tr>
 <tr class="even">
 <td>Split-ledger benchmark (scaling with machines)</td>
-<td>Parked until an investor asks</td>
+<td>Later</td>
 </tr>
 <tr class="odd">
 <td>Where each batch fingerprint is published</td>

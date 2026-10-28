@@ -66,12 +66,11 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px
 <div class="wrap">
   <aside class="toc"><p>On this page</p><a href="#what-it-is">What it is</a><a href="#fees">Fees</a><a href="#xpr">XPR</a><a href="#tiers">Tiers</a><a href="#funding">Funding</a><a href="#safeguards">Safeguards</a><a href="#settlement-and-custody">Settlement and custody</a><a href="#status">Status</a></aside>
   <main>
-    <p class="eyebrow">Exeswap · Specs · 20 October 2026</p>
+    <p class="eyebrow">Exeswap · Specs · 28 October 2026</p>
     <h1>Exeswap <span class="fade">specs</span></h1>
     <p class="lead">Exeswap is the first app built on Exe Protocol, a policy-governed
 execution layer for apps, wallets and agents. Exeswap is a DEX
-aggregator where the user’s verified signal (XPR) decides how much of
-each trade’s fee is redeemed for that user. Exe Protocol is the
+aggregator where the user’s verified signal (XPR) determines how much of each trade’s fee is redeemed for that user. Exe Protocol is the
 horizontal layer; Exeswap is the first vertical app built on it, using
 the same rules other client apps and agents are designed to use through
 an SDK. It is a working prototype: every figure here comes from
@@ -84,16 +83,14 @@ launch.</p>
 <ul>
 <li><strong>Without XPR:</strong> Exeswap works as a regular aggregator.
 The user trades and pays the normal fee.</li>
-<li><strong>With XPR (opt-in):</strong> the user’s verified on-chain
-activity sets their XPR, and XPR redeems part of each trade’s fee.</li>
+<li><strong>With XPR (opt-in):</strong> the user’s verified on-chain signal sets their XPR, and XPR redeems part of each trade’s fee.</li>
 <li><strong>Before signing:</strong> every quote shows the full fee,
 what XPR redeems and what the user pays (see “Your quote” in the Exeswap
-simulator). Once approved, that price is fixed.</li>
+simulator). Once approved, that quote is fixed.</li>
 </ul>
 </section><section class="sec"><h2 id="fees">Fees</h2>
 <p>Each trade costs the network’s gas plus Exe Protocol’s fee of 0.10%
-of the trade. XPR redeems a share of that total: at Tier 1, with the
-pool at full strength, XPR 0.60 redeems 60%.</p>
+of the trade. XPR redeems a share of that total: at Tier 1, with Exe’s pool (the Sponsorship Pool) at full strength, XPR 0.60 redeems 60%.</p>
 <p>Worked example: a $1,000 trade on a low-fee chain ($0.01 gas), Tier
 1, pool at full strength. Simulated.</p>
 <div class="tw"><table>
@@ -147,8 +144,7 @@ pool at full strength, XPR 0.60 redeems 60%.</p>
 <p>The user’s own fees can redeem up to 70% of the protocol fee they
 paid ($0.70 here); the pool covers the rest of what their XPR earns.</p>
 </section><section class="sec"><h2 id="xpr">XPR</h2>
-<p>XPR (Exe Protocol Rate) is a wallet’s exchange rate, earned through
-verified on-chain activity. It runs from 0.00 to 1.00, and up to 1.10 at
+<p>XPR (Exe Protocol Rate) is a wallet’s exchange rate, earned through verified on-chain signal. It runs from 0.00 to 1.00, and up to 1.10 at
 Tiers 2 and 3.</p>
 <ul>
 <li><p><strong>Belongs to the wallet:</strong> person or agent. It is
@@ -204,9 +200,7 @@ in a row</td>
 </tr>
 </tbody>
 </table></div>
-<p>A budget above the minimum is headroom for a busier month only. It
-does not raise the rate: redemption is earned through signal, never
-bought.</p>
+<p>A budget above the minimum is headroom for a busier month only. It does not raise XPR: redemption is earned through signal, never bought.</p>
 </section><section class="sec"><h2 id="funding">Funding</h2>
 <p>Redemption is paid first from the user’s own fees, then from the
 Sponsorship Pool. Users’ own money never enters the pool.</p>
@@ -217,15 +211,12 @@ paid. This part is never cut, whatever the pool’s state.</li>
 the other 30% goes to operations. Each app has its own account in the
 pool, built from the fees its users pay, so no app subsidises
 another.</li>
-<li><strong>Pool strength:</strong> how much of what users’ XPR earns
-the pool can pay right now. At 100%, users redeem all of it. If the pool
+<li><strong>Pool strength:</strong> how much of what users’ XPR earns the pool can pay right now. At 100%, users redeem everything their XPR earns. If the pool
 runs low, everyone’s pool share shrinks by the same proportion.</li>
 <li><strong>Surplus:</strong> when the pool holds more than it needs,
 the surplus lifts what Tiers 2 and 3 earn (the surplus factor above).
-Beyond a reserve of three months of redemption, the share earmarked for
-$XPT buybacks is held until legally cleared.</li>
-<li><strong>Under stress:</strong> in every stress we tested, the pool
-never ran dry; it steps down gracefully under load.</li>
+Anything left after that is split: 70% grows the reserve, up to three months of redemption, and the rest is held for $XPT buybacks, which stay off until legally cleared.</li>
+<li><strong>Under stress:</strong> in all nine stress tests (simulated, 24 months each), the pool never ran dry. Under load, it steps down gradually.</li>
 </ul>
 </section><section class="sec"><h2 id="safeguards">Safeguards</h2>
 <p>The rules are built so fresh wallets and fake activity cannot drain
@@ -248,8 +239,7 @@ scenarios were run against the engine and reviewed.</li>
 <p>Users’ money stays in their own wallets; Exe Protocol never holds
 it.</p>
 <ul>
-<li><strong>Tier budgets</strong> are set aside in the user’s own
-non-custodial wallet. The user keeps control of them.</li>
+<li><strong>Tier budgets</strong> stay in the user’s own wallet; Exe Protocol never holds them.</li>
 <li><strong>Recorded at once, settled in batches:</strong> a trade’s fee
 redemption is recorded when the user approves the quote, then settled
 on-chain in batches to keep costs down.</li>
