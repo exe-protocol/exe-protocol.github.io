@@ -1090,7 +1090,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <p class="sub">Every figure is simulated, not live data.</p>
     </div>
     <p class="small muted rate-explanation" id="rateExplanation" hidden>Your XPR determines how much of each fee you can redeem. Redemption is paid first from your own fees, up to 70% of the protocol fee you paid. The rest comes from Exe’s pool. At 100% pool strength, you redeem everything your XPR earns. If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.</p>
-    <p class="small muted rate-explanation" id="quoteExplanation" hidden>Your XPR determines how much of each fee you can redeem. Redemption is paid first from your own fees, up to 70% of the protocol fee you paid. The rest comes from Exe’s pool. At 100% pool strength, you redeem everything your XPR earns. If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part from your own fees depends only on your XPR, never on pool strength.</p>
+    <p class="small muted rate-explanation" id="quoteExplanation" hidden>Your XPR determines how much of each fee you can redeem. Redemption is paid first from your own fees, up to 70% of the protocol fee you paid. The rest comes from Exe’s pool. At 100% pool strength, you redeem everything your XPR earns. If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.</p>
   </section>
 
 
@@ -1314,8 +1314,8 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
     <div class="panel">
       <div class="page-header">
         <p class="sp-eyebrow">Sponsorship Pool</p>
-        <h2 class="sp-h">The Sponsorship Pool (serving Exeswap users), <span>month by month</span></h2>
-      <p class="sp-lead">Exe Protocol pays fee redemption from the Sponsorship Pool (SP) (“Exe’s pool” for short), keeping a separate account for each app. The Exeswap aggregator is Exe Protocol’s own app, so its 0.10% fee goes straight to Exe Protocol, with no extra app fee on top. That’s why fee redemption on Exeswap can cover the whole fee. Other apps may charge a fee of their own, which the “App funding” section explains.</p>
+        <h2 class="sp-h">The Sponsorship Pool, <span>month by month</span></h2>
+      <p class="sp-lead">Exe Protocol pays fee redemption from the Sponsorship Pool (SP) (“Exe’s pool” for short), serving Exeswap users while keeping a separate account for each app. The Exeswap aggregator is Exe Protocol’s own app, so its 0.10% fee goes straight to Exe Protocol, with no extra app fee on top. That’s why fee redemption on Exeswap can cover the whole fee. Other apps may charge a fee of their own, which the “App funding” section explains.</p>
       </div>
       <div class="stats" id="poolStats"></div>
       <div class="legend"><span><i style="background:var(--s1)"></i>Pool balance</span><span><i style="background:var(--ref)"></i>Pool reserve (starts at $1.5M)</span><span><i class="dash"></i>Buffer $0.3M (never spent)</span></div>
@@ -1377,7 +1377,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <div class="page-header">
         <p class="sp-eyebrow">App funding</p>
         <h2 class="sp-h">App funding <span>calculator</span></h2>
-      <p class="sp-lead">When your app integrates Exe Protocol, your users get fee redemption on gas and the protocol fee, at no cost to you.</p>
+      <p class="sp-lead">When your app integrates Exe Protocol, your users get fee redemption on gas and the protocol fee – at no cost to you.</p>
       <p class="sp-lead">Exe Protocol keeps an account for your users in the Sponsorship Pool and funds it with 70% of the <b>protocol fee</b> your users pay.</p>
       <p class="sp-lead">Optional: on an expensive chain, top up the account to raise your users’ fee redemption. If you charge a fee of your own, add a budget so XPR reduces that fee too.</p>
       </div>
@@ -1404,7 +1404,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
     <div class="panel sp-hero">
       <p class="sp-eyebrow">Agent payments</p>
       <h2 class="sp-h">x402 moves the money. <span>Exe Protocol determines what it costs, by signal.</span></h2>
-      <p class="sp-lead">Rails like x402 move the money. Exe Protocol makes every payment smarter: fees priced by verified signal, within budgets you set, settled net. Agents can be run by an app or by its users; the fee falls on whoever funds the agent.</p>
+      <p class="sp-lead">Rails like x402 move the money. Exe Protocol makes every payment smarter: fees priced by verified signal, within budgets you set, settled net. Agents can be run by an app or by its users. The fee falls on whoever funds the agent.</p>
       <div class="mk-stack">
         <div class="mk-layer"><b>Apps and their agents</b><span>trading apps, Telegram apps, AI agents and services</span></div>
         <div class="mk-layer exe"><b>Exe Protocol: smarter</b><span>fees priced by signal · budgets and policy · shared pool · net settlement</span></div>
