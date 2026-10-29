@@ -67,7 +67,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px
     <h1>Exe Protocol <span class="fade">specs</span></h1>
     <p class="lead">Exe Protocol is a policy-governed execution layer for apps, wallets and agents. Rails like x402, cards or Stripe move the money; Exe Protocol makes each payment smarter: fees priced by verified signal (XPR), within budgets set in advance, settled net. Exeswap is the first app built on Exe Protocol. Exeswap is a working prototype: every figure on this page is simulated unless marked measured or sourced.</p>
     <span class="tag">Prototype · every figure simulated unless marked</span>
-    <section class="sec"><h2 id="positioning">Positioning</h2>
+    <section class="sec"><h2 id="positioning">Positioning: Faster <em>and</em> smarter</h2>
 <p>Rails move the money. Today's rails are blind to the value a payer's activity creates: fees follow the transaction, or at best its volume. Exe Protocol determines what each payment costs by signal, giving the most fee redemption to the strongest verified signal.</p>
 <p>As AI agents grow more capable, the payments they make need to become smarter too, so apps, agents and wallets get the most value: Exe Protocol values the signal agents generate and applies that value at the moment of payment.</p>
 <p>Exe Protocol is a horizontal layer that makes spending signal-aware: apps and their agents sit above it, payment rails and chains below.</p>
@@ -114,12 +114,9 @@ priced by the payer’s signal, budgets and policy set before each payment, a sh
 across all agents. Working with any rail is a statement of intent until
 built.</p>
 </section><section class="sec"><h2 id="mechanism">Mechanism</h2>
-<p>Exe Protocol makes every payment smarter. Faster and cheaper follow
-from that.</p>
+<p>Exe Protocol makes every payment smarter: faster and cheaper follow from that.</p>
 <ul>
-<li><strong>Priced by signal.</strong> A wallet’s XPR (Exe Protocol
-Rate), earned through verified on-chain signal, determines how much of each fee is redeemed. At Tier 1 with the pool at full strength, XPR 0.60
-redeems 60%. Exe Protocol redeems more of the fee for stronger signal.</li>
+<li><strong>Priced by signal.</strong> A wallet’s XPR (Exe Protocol Rate), earned through verified on-chain signal, determines how much of each fee is redeemed: the stronger the signal, the higher the XPR, and the more of each fee is redeemed.</li>
 <li><strong>Funded by a shared pool.</strong> Redemption comes first
 from the payer’s own fees (up to 70% of the protocol fee they paid),
 then from the Sponsorship Pool. In all nine stress tests (simulated, 24 months each), the pool never ran dry.</li>
@@ -134,8 +131,7 @@ goes on-chain. One fingerprint per batch (a Merkle root) lets any agent check it
 <li>Strong verified signal gives a higher XPR. <em>Design.</em></li>
 <li>A higher XPR redeems more of each fee, from the payer’s own fees and
 the shared pool. <em>Tested in simulation.</em></li>
-<li>Rewarding the most valuable activity is designed to attract more of
-it. <em>Hypothesis, for a pilot.</em></li>
+<li>Rewarding the most valuable activity is designed to attract more of that activity. <em>Hypothesis, for a pilot.</em></li>
 <li>More activity means more fees funding redemption, and netting saves
 more as payments per agent rise. <em>Simulated.</em></li>
 </ol>
@@ -156,7 +152,7 @@ more as payments per agent rise. <em>Simulated.</em></li>
 <tbody>
 <tr class="odd">
 <td>Wallet (person or agent)</td>
-<td>Holds an XPR. The XPR belongs to the wallet, is calculated the same
+<td>Earns an XPR (opt-in). The XPR belongs to the wallet, is calculated the same
 way everywhere and is designed to travel across apps</td>
 <td>The protocol fee (0.10% on low-fee chains, 0.25% on Ethereum) plus
 gas, less what its XPR redeems</td>
@@ -186,9 +182,7 @@ see the totals. New wallets share only a small, capped part of the pool,
 so the rules are designed to stop fresh wallets or agents farming it.</p>
 </section><section class="sec"><h2 id="app-funding">App funding</h2>
 <ul>
-<li><strong>The pool:</strong> funded by 70% of Exe Protocol’s revenue,
-from Exeswap’s fees and the protocol fees that apps’ users pay. Users’
-own money never enters it.</li>
+<li><strong>The pool:</strong> funded by 70% of Exe Protocol’s revenue, from Exeswap’s fees and the protocol fees that apps’ users pay. Users’ budgets and wallet balances never enter the pool.</li>
 <li><strong>One account per app:</strong> each app’s users draw on the
 revenue they generate, so no app subsidises another. Exe Protocol starts each new app’s account with about 1.9 months of its expected income; a fifth of that is a buffer that is never spent. In production, a new app’s seed is sized on its proven trading volume and paid monthly, so its first months can be weaker.</li>
 <li><strong>What an app pays:</strong> nothing is required for fee
