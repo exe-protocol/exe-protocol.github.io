@@ -1059,7 +1059,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 @media (max-width: 900px){#p-swap .xh h2{max-width:none !important;text-wrap:wrap !important}}
 #p-swap .xh h2 .fade{white-space:nowrap}
 </style>
-</head><body><script>if(!location.hash)location.hash="swap";</script><div class="shell" id="shell">
+</head><body><script>if(!location.hash)history.replaceState(null,"",location.pathname+location.search+"#swap");</script><div class="shell" id="shell">
 <aside class="side" aria-label="Navigation">
   <div class="side-brand"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="sideNav" aria-label="Menu"><span id="burgerLab">Home</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
@@ -1876,13 +1876,13 @@ swTokens();
   if ("IntersectionObserver" in window) new IntersectionObserver(es => { const was = vis; vis = es[0].isIntersecting; if (vis && !was) t0 = performance.now(); kick() }).observe(cv);
   document.addEventListener("visibilitychange", kick);
   window.xhKick = () => { t0 = performance.now(); geo() };
-  $("xhGo").onclick = () => { S.tab = "trade"; try { history.replaceState(null, "", "#trade") } catch {} render(); scrollTo(0, 0); setTimeout(() => $("swAmt").focus({ preventScroll: true }), 50) };
+  $("xhGo").onclick = () => { S.tab = "trade"; try { if (location.hash !== "#trade") history.pushState(null, "", "#trade") } catch {} render(); scrollTo(0, 0); setTimeout(() => $("swAmt").focus({ preventScroll: true }), 50) };
 })();
 /* ---------- shell ---------- */
 const TABS = ["swap", "trade", "rate", "quote", "pool", "stress", "calc", "speed"];
-TABS.forEach(t => $("t-" + t).onclick = () => { S.tab = t; try { history.replaceState(null, "", "#" + t) } catch {} render() });
+TABS.forEach(t => $("t-" + t).onclick = () => { S.tab = t; try { if (location.hash !== "#" + t) history.pushState(null, "", "#" + t) } catch {} render() });
 /* "Try a swap" opens the Swap tab; bound here so it works without the optional hero animation */
-{ const g = $("xhGo"); if (g) g.onclick = () => { S.tab = "trade"; try { history.replaceState(null, "", "#trade") } catch {} render(); scrollTo(0, 0); setTimeout(() => { const a = $("swAmt"); if (a) a.focus({ preventScroll: true }) }, 50) }; }
+{ const g = $("xhGo"); if (g) g.onclick = () => { S.tab = "trade"; try { if (location.hash !== "#trade") history.pushState(null, "", "#trade") } catch {} render(); scrollTo(0, 0); setTimeout(() => { const a = $("swAmt"); if (a) a.focus({ preventScroll: true }) }, 50) }; }
 $("sig").oninput = e => { S.sig = +e.target.value; if (S.tier === 3 && S.sig < 75) S.tier = 2; render() };
 const CRUMB = { swap: ["Exeswap", "Home"], trade: ["Exeswap", "Swap"], rate: ["Exeswap", "Your rate"], quote: ["Exeswap", "Your quote"], pool: ["Exe Protocol", "Sponsorship Pool"],
   stress: ["Exe Protocol", "Stress test"], calc: ["Exe Protocol", "App funding"], speed: ["Exe Protocol", "Agent payments"] };
@@ -1970,6 +1970,8 @@ function render() { tcSync();
 $("foot").textContent = `Rules: Master Doc Revision 010.8 (engine as frozen at Revision 010.6). Exeswap fee ${(100 * D.exe_fee_rates.low_fee).toFixed(2)}% on low-fee chains, ${(100 * D.exe_fee_rates.ethereum).toFixed(2)}% on Ethereum. Exe’s pool reserve starts at ${usdM(D.reserve)}.`;
 const h = location.hash.slice(1); if (TABS.includes(h)) S.tab = h;
 render();
+/* Back/Forward: show the screen the address points to */
+addEventListener("popstate", () => { const h = location.hash.slice(1) || "swap"; if (TABS.includes(h) && h !== S.tab) { S.tab = h; render(); } });
 
 </script>
 <button class="totop" id="toTop" type="button" aria-label="Back to top">&uarr;</button>
