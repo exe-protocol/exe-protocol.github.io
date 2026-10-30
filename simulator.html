@@ -1052,6 +1052,10 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 @media(max-width:900px){#p-pool>.panel:first-child,#p-stress>.panel:first-child,#p-calc>.panel:first-child{padding:22px}}
 @media(max-width:420px){#p-pool>.panel:first-child,#p-stress>.panel:first-child,#p-calc>.panel:first-child{padding:18px}.page-header .sp-eyebrow{margin-bottom:12px}.page-header .sp-h{font-size:26px}.page-header .sp-lead{font-size:14px}}
 </style>
+<style id="fix-2026-10-30">
+/* Exeswap mobile hero: same side margins as the Exe Protocol homepage (32px on phones, about 47px at tablet width) */
+@media (max-width: 900px){#p-swap > .xh > div:first-child{padding-inline:max(16px, calc(6.1vw - 16px));box-sizing:border-box}}
+</style>
 </head><body><script>if(!location.hash)location.hash="swap";</script><div class="shell" id="shell">
 <aside class="side" aria-label="Navigation">
   <div class="side-brand"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div>
@@ -1108,7 +1112,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <div>
         <p class="xh-eye">Exeswap · the first app on Exe Protocol</p>
         <h2>XPR makes the cheapest route <span class="fade">fee-free.</span></h2>
-        <p class="xh-lede">Earn XPR, your Exe Protocol Rate, through verified on-chain signal. Reduce fees by 0–100% on the cheapest swap route.</p>
+        <p class="xh-lede">Earn XPR, your Exe Protocol Rate, through verified on-chain signal. Reduce fees by <span style="white-space:nowrap">0–100%</span> on the cheapest swap route.</p>
         <div class="xh-copy-actions"><button class="xh-go" id="xhGo" type="button"><i><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z" fill="currentColor"/></svg></i>Try a swap</button><a class="xh-how" href="exeswap-specs.html" style="text-decoration:none;display:inline-flex;align-items:center;margin-left:6px">Exeswap specs</a>
         </div>
       </div>
@@ -1874,6 +1878,8 @@ swTokens();
 /* ---------- shell ---------- */
 const TABS = ["swap", "trade", "rate", "quote", "pool", "stress", "calc", "speed"];
 TABS.forEach(t => $("t-" + t).onclick = () => { S.tab = t; try { history.replaceState(null, "", "#" + t) } catch {} render() });
+/* "Try a swap" opens the Swap tab; bound here so it works without the optional hero animation */
+{ const g = $("xhGo"); if (g) g.onclick = () => { S.tab = "trade"; try { history.replaceState(null, "", "#trade") } catch {} render(); scrollTo(0, 0); setTimeout(() => { const a = $("swAmt"); if (a) a.focus({ preventScroll: true }) }, 50) }; }
 $("sig").oninput = e => { S.sig = +e.target.value; if (S.tier === 3 && S.sig < 75) S.tier = 2; render() };
 const CRUMB = { swap: ["Exeswap", "Home"], trade: ["Exeswap", "Swap"], rate: ["Exeswap", "Your rate"], quote: ["Exeswap", "Your quote"], pool: ["Exe Protocol", "Sponsorship Pool"],
   stress: ["Exe Protocol", "Stress test"], calc: ["Exe Protocol", "App funding"], speed: ["Exe Protocol", "Agent payments"] };

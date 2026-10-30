@@ -436,6 +436,33 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 <link rel="stylesheet" href="assets/exeswap-home-hero.css">
 <link rel="stylesheet" href="assets/mobile-layout.css">
 <link rel="stylesheet" href="assets/final-polish.css">
+<style id="fix-2026-10-30">
+/* Mobile menu: same floating card as the Exeswap menu (colours, border, radius, shadow, row spacing, active treatment). Desktop untouched. */
+@media(max-width:1000px){
+ nav[data-mobile-open="true"]{flex-wrap:nowrap;z-index:60}
+ nav #primaryNav{position:absolute;top:calc(100% - 10px);right:clamp(12px,4vw,24px);width:270px;max-width:calc(100vw - 24px);box-sizing:border-box;flex-direction:column;gap:2px;margin:0;padding:14px 10px;list-style:none;background:#0b1328;border:1px solid rgba(140,170,230,.18);border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.5);max-height:calc(100vh - 96px);overflow-y:auto;z-index:60;font-size:14.5px}
+ nav[data-mobile-open="true"] #primaryNav{display:flex}
+ nav #primaryNav>li{width:100%;margin:0}
+ nav #primaryNav>li>a,nav #primaryNav>li>button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;box-sizing:border-box;padding:9px 12px;font:500 14.5px/1.3 inherit;letter-spacing:-.005em;color:#b7c6d9;background:none;border:0;border-radius:10px;text-align:left;text-decoration:none;white-space:nowrap;cursor:pointer}
+ nav #primaryNav>li>a:hover,nav #primaryNav>li>a:focus-visible,nav #primaryNav>li>button:hover,nav #primaryNav>li>button:focus-visible,nav #primaryNav li.dd.open>button{color:#f7f9fc;background:linear-gradient(90deg,rgba(22,119,255,.14),rgba(22,119,255,.024));box-shadow:inset 2px 0 0 #1677ff;outline:none}
+ nav #primaryNav li.dd:first-of-type{margin-top:6px;padding-top:6px;border-top:1px solid rgba(140,170,230,.12)}
+ nav #primaryNav li.dd .ddm{display:none;position:static;min-width:0;margin:2px 0 4px;padding:0 0 0 12px;gap:0;background:none;border:0;box-shadow:none;border-radius:0}
+ nav #primaryNav li.dd.open .ddm{display:grid}
+ nav #primaryNav .ddm a{display:flex;align-items:center;gap:8px;padding:8px 12px;font-size:14px;line-height:1.3;color:#9fb0c6;border-radius:10px;white-space:nowrap;text-decoration:none}
+ nav #primaryNav .ddm a:hover,nav #primaryNav .ddm a:focus-visible{color:#f7f9fc;background:rgba(22,119,255,.08);outline:none}
+}
+
+/* Menu icons (phone/tablet only), same style as the Exeswap menu icons */
+.nic{display:none}
+@media(max-width:1000px){
+ nav #primaryNav .nic{display:block;width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+ nav #primaryNav .ddm .nic{width:16px;height:16px}
+ nav #primaryNav>li>a,nav #primaryNav>li>button{justify-content:flex-start}
+ nav #primaryNav li.dd>button::after{margin-left:auto}
+ nav #primaryNav .ddm a{gap:10px;justify-content:flex-start}
+ nav #primaryNav .ddm a>svg:not(.nic){margin-left:auto}
+}
+</style>
 </head>
 <body>
 
@@ -443,10 +470,10 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
   <span class="brandrow"><a class="logo" href="#"><i></i>Exe Protocol</a><span class="proto"><button type="button" class="protob" aria-expanded="false" aria-controls="protoNote">Prototype</button><span class="protonote" id="protoNote" role="note">Every figure on this site is simulated. Nothing here is an offer of tokens, an investment or financial advice. <a href="important-information.html">Important information</a></span></span></span>
   <button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Menu"><span class="hamburger" aria-hidden="true"><i></i><i></i><i></i></span></button>
   <ul id="primaryNav">
-    <li><a href="#platform">Exe Protocol</a></li>
-    <li><a href="#numbers">Exeswap</a></li>
-    <li class="dd"><button type="button" aria-haspopup="true" aria-expanded="false">Learn</button><div class="ddm"><a href="exe-protocol-specs.html">Exe Protocol specs</a><a href="important-information.html">Important information</a><a href="https://medium.com/@Exeswap" target="_blank" rel="noopener">Media Room<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li>
-    <li class="dd"><button type="button" aria-haspopup="true" aria-expanded="false">Community</button><div class="ddm"><a href="https://x.com/Exeswap" target="_blank" rel="noopener">X (Twitter)<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://t.me/Exeswap" target="_blank" rel="noopener">Telegram<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://bsky.app/profile/Exeswap.bsky.social" target="_blank" rel="noopener">Bluesky<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://medium.com/@Exeswap" target="_blank" rel="noopener">Medium<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li>
+    <li><a href="#platform"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M7 9l3 2.5L7 14M12.5 14H17"/></svg>Exe Protocol</a></li>
+    <li><a href="#numbers"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8 10h7.5l-2-2M16 14H8.5l2 2"/></svg>Exeswap</a></li>
+    <li class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5c2.6-1 5.4-1 8 .5 2.6-1.5 5.4-1.5 8-.5V19c-2.6-1-5.4-1-8 .5-2.6-1.5-5.4-1.5-8-.5z"/><path d="M12 6v13.5"/></svg>Learn</button><div class="ddm"><a href="exe-protocol-specs.html"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/></svg>Exe Protocol specs</a><a href="important-information.html"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><path d="M12 7.6v.1"/></svg>Important information</a><a href="https://medium.com/@Exeswap" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5h11v14H6.5A1.5 1.5 0 0 1 5 17.5z"/><path d="M16 9h3v8.5a1.5 1.5 0 0 1-3 0"/><path d="M8 9h5M8 12.5h5M8 16h3"/></svg>Media Room<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li>
+    <li class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.6 14.3A4.5 4.5 0 0 1 21 18.5"/></svg>Community</button><div class="ddm"><a href="https://x.com/Exeswap" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v9h-8l-4 3.5V15H5z"/></svg>X (Twitter)<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://t.me/Exeswap" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4L3.5 11l6 2.2 2.2 6.3 3.2-4.3 4.6 3.3z"/><path d="M9.5 13.2L20.5 4"/></svg>Telegram<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://bsky.app/profile/Exeswap.bsky.social" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 18h9.5a3.8 3.8 0 0 0 .4-7.6A5.8 5.8 0 0 0 6.3 11.6 3.2 3.2 0 0 0 7.5 18z"/></svg>Bluesky<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://medium.com/@Exeswap" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16 5l3 3L9 18z"/><path d="M14 7l3 3"/></svg>Medium<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li>
   </ul>
   <span class="cw"><button class="btn ghost" id="connectBtn" type="button" aria-describedby="cwNote">Connect Wallet</button><span class="cwnote" id="cwNote" role="status" hidden>Wallet connection arrives at launch.</span></span>
 </nav>
