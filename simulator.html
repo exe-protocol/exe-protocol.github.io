@@ -1055,6 +1055,9 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 <style id="fix-2026-10-30">
 /* Exeswap mobile hero: same side margins as the Exe Protocol homepage (32px on phones, about 47px at tablet width) */
 @media (max-width: 900px){#p-swap > .xh > div:first-child{padding-inline:max(16px, calc(6.1vw - 16px));box-sizing:border-box}}
+/* Exeswap mobile/narrow hero heading: use the full text width (no desktop width cap), and never split "fee-free." at its hyphen */
+@media (max-width: 900px){#p-swap .xh h2{max-width:none !important;text-wrap:wrap !important}}
+#p-swap .xh h2 .fade{white-space:nowrap}
 </style>
 </head><body><script>if(!location.hash)location.hash="swap";</script><div class="shell" id="shell">
 <aside class="side" aria-label="Navigation">
