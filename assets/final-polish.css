@@ -67,3 +67,12 @@ html{overflow-x:clip}
 @media(max-width:900px){
   .shell #p-swap > .xh:first-child::before{left:-16px;right:-16px}
 }
+
+/* Mobile/tablet Exe bands fill the screen; content and desktop insets stay unchanged. */
+@media(max-width:1000px){
+  .exe-hero-band ~ :is(#suite,#platform,#numbers,#contact){overflow:visible}
+  .exe-hero-band ~ :is(#suite,#platform,#numbers,#contact)::before,
+  .exe-hero-band ~ #suite::after{
+    left:calc(-1 * var(--home-edge));right:calc(-1 * var(--home-edge));width:auto;
+  }
+}
