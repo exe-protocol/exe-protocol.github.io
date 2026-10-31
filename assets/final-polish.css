@@ -57,10 +57,8 @@ html{overflow-x:clip}
   content:"";position:absolute;inset:0;width:auto;height:auto;max-width:none;
   transform:none;z-index:-1;pointer-events:none;background:var(--exe-hero-band);
 }
-@media(min-width:1001px){
   .exe-hero-band{display:flow-root;position:relative;isolation:isolate;background:var(--exe-hero-band)}
   .exe-hero-band #p-swap.exe-home-hero::before{background:none}
-}
 .shell #p-swap > .xh:first-child{position:relative;isolation:isolate}
 .shell #p-swap > .xh:first-child::before{
   content:"";position:absolute;inset:0 -28px;z-index:-1;
