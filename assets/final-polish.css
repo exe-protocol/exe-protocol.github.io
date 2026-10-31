@@ -47,3 +47,25 @@
 
 /* Fix: stop hero glow pseudo-elements adding a horizontal scrollbar at desktop widths (body already clips; html did not). Visual glows unchanged. */
 html{overflow-x:clip}
+
+/* Approved hero bands: full-width Exe landing page, inset Exeswap app. */
+:root{
+  --exe-hero-band:linear-gradient(180deg,#050a10,rgba(5,10,16,0) 14%,rgba(5,10,16,0) 84%,#050a10),radial-gradient(ellipse 62% 90% at 86% 32%,rgba(47,72,104,.22),transparent 85%),linear-gradient(110deg,#0d1929,#101d2e 58%,#0a1523);
+}
+.exe-hero-band #p-swap.exe-home-hero{background:none}
+.exe-hero-band #p-swap.exe-home-hero::before{
+  content:"";position:absolute;inset:0;width:auto;height:auto;max-width:none;
+  transform:none;z-index:-1;pointer-events:none;background:var(--exe-hero-band);
+}
+@media(min-width:1001px){
+  .exe-hero-band{display:flow-root;position:relative;isolation:isolate;background:var(--exe-hero-band)}
+  .exe-hero-band #p-swap.exe-home-hero::before{background:none}
+}
+.shell #p-swap > .xh:first-child{position:relative;isolation:isolate}
+.shell #p-swap > .xh:first-child::before{
+  content:"";position:absolute;inset:0 -28px;z-index:-1;
+  pointer-events:none;background:var(--exe-hero-band);
+}
+@media(max-width:900px){
+  .shell #p-swap > .xh:first-child::before{left:-16px;right:-16px}
+}
