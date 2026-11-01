@@ -99,28 +99,45 @@ html{overflow-x:clip}
 .shell #p-swap .hx-steps li::after{border-radius:14px}
 .shell #p-swap .hx-q>summary::before{border-radius:12px}
 
-/* Straight inset lower edges keep glass panels open at the bottom corners. */
+/* Approved glass definition: visible borders with feathered lower edges. */
 #suite .card,
 #platform .card,
 #numbers .meter,
 .shell #p-swap .xh-card,
 .shell .wrap > section .panel{
+  position:relative;isolation:isolate;
+  border:1px solid transparent!important;
+  background:linear-gradient(180deg,rgba(34,59,82,.83),rgba(25,47,69,.66) 34%,rgba(16,37,57,.34) 76%,rgba(9,28,46,0) 100%) no-repeat border-box!important;
   box-shadow:none!important;
 }
+/* Subdued lower reflection, feathered into the background at both ends. */
 #suite .card::before,
 #platform .card::before,
 #numbers .meter::before,
 .shell #p-swap .xh-card::after,
 .shell .wrap > section .panel::after{
   content:"";display:block!important;position:absolute;
-  inset:auto 20px 0;width:auto;height:1px;aspect-ratio:auto;
-  margin:0;padding:0;border:0;border-radius:0;
-  background:rgba(145,174,206,.18);
-  filter:none;opacity:1;transform:none;animation:none!important;
-  mask:none;-webkit-mask:none;box-shadow:none;
-  z-index:1;pointer-events:none;
+  inset:auto 12px 0;width:auto;height:1px;aspect-ratio:auto;margin:0;padding:0;
+  pointer-events:none;border:0;border-radius:0;
+  background:linear-gradient(90deg,transparent,rgba(145,174,206,.07) 18%,rgba(145,174,206,.14) 50%,rgba(145,174,206,.07) 82%,transparent) no-repeat;
+  opacity:1;filter:none;transform:none;animation:none!important;
+  -webkit-mask:none;mask:none;box-shadow:none;
 }
-
+/* Top and side outline, fading before the lower corners. */
+#suite .card::after,
+#platform .card::after,
+#numbers .meter::after,
+.shell #p-swap .xh-card::before,
+.shell .wrap > section .panel::before{
+  content:"";display:block;position:absolute;inset:0;
+  width:auto;height:auto;aspect-ratio:auto;margin:0;padding:0;
+  pointer-events:none;border:1px solid rgba(145,174,206,.42);
+  border-bottom:0;border-radius:inherit;background:none;
+  opacity:1;filter:none;transform:none;animation:none!important;
+  -webkit-mask:linear-gradient(180deg,#000,rgba(0,0,0,.65) 34%,rgba(0,0,0,.32) 73%,transparent 96%);
+  mask:linear-gradient(180deg,#000,rgba(0,0,0,.65) 34%,rgba(0,0,0,.32) 73%,transparent 96%);
+  box-shadow:none;
+}
 
 /* Approved homepage navigation and desktop launch action. */
 .exe-nav-header .nav-launch{display:none}
