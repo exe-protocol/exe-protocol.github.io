@@ -76,3 +76,25 @@ html{overflow-x:clip}
     left:calc(-1 * var(--home-edge));right:calc(-1 * var(--home-edge));width:auto;
   }
 }
+
+/* Approved glass fade: Exeswap six steps and FAQ. Text and layout stay unchanged. */
+.shell #p-swap .hx-steps li,
+.shell #p-swap .hx-q{
+  position:relative;
+  isolation:isolate;
+  border-color:transparent;
+  background:linear-gradient(180deg,rgba(34,59,82,.83),rgba(25,47,69,.66) 34%,rgba(16,37,57,.34) 76%,rgba(9,28,46,0) 100%);
+}
+.shell #p-swap .hx-steps li::after,
+.shell #p-swap .hx-q>summary::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border:1px solid rgba(145,174,206,.42);
+  border-bottom:0;
+  -webkit-mask:linear-gradient(180deg,#000,rgba(0,0,0,.45) 34%,rgba(0,0,0,.12) 73%,transparent 96%);
+  mask:linear-gradient(180deg,#000,rgba(0,0,0,.45) 34%,rgba(0,0,0,.12) 73%,transparent 96%);
+}
+.shell #p-swap .hx-steps li::after{border-radius:14px}
+.shell #p-swap .hx-q>summary::before{border-radius:12px}
