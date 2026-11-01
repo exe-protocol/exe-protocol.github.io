@@ -505,8 +505,7 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 @media (max-width:560px){#suite h2,#platform h2,#numbers h2,#contact h2{font-size:36px}}
 </style>
 </head>
-<body class="exe-risk-header">
-<aside class="investment-warning" aria-label="Investment risk warning"><div class="investment-warning-inner"><p>Don’t invest unless you’re prepared to lose all the money you invest. This is a high-risk investment and you should not expect to be protected if something goes wrong. <a href="https://exe-protocol.github.io/important-information.html" target="_blank" rel="noopener noreferrer">Take 2 mins to learn more.</a></p></div></aside>
+<body class="exe-nav-header">
 
 <nav aria-label="Main navigation">
   <span class="brandrow"><a class="logo" href="#"><i></i>Exe Protocol</a><span class="proto"><button type="button" class="protob" aria-expanded="false" aria-controls="protoNote">Prototype</button><span class="protonote" id="protoNote" role="note">Every figure on this site is simulated. Nothing here is an offer of tokens, an investment or financial advice. <a href="important-information.html">Important information</a></span></span></span>
@@ -673,17 +672,6 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 })();
 </script>
 <script src="assets/exeswap-home-hero.js"></script>
-<script>
-// Keep anchor targets and the mobile menu clear of the full risk warning.
-(function(){
-  var warning=document.querySelector('.investment-warning');
-  if(!warning)return;
-  function measureWarning(){document.documentElement.style.setProperty('--risk-warning-height',Math.ceil(warning.getBoundingClientRect().height)+'px');}
-  measureWarning();
-  if(window.ResizeObserver)new ResizeObserver(measureWarning).observe(warning);
-  window.addEventListener('resize',measureWarning);
-})();
-</script>
 </body>
 </html>
 
