@@ -505,7 +505,8 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 @media (max-width:560px){#suite h2,#platform h2,#numbers h2,#contact h2{font-size:36px}}
 </style>
 </head>
-<body>
+<body class="exe-risk-header">
+<aside class="investment-warning" aria-label="Investment risk warning"><div class="investment-warning-inner"><p>Don’t invest unless you’re prepared to lose all the money you invest. This is a high-risk investment and you should not expect to be protected if something goes wrong. <a href="https://exe-protocol.github.io/important-information.html" target="_blank" rel="noopener noreferrer">Take 2 mins to learn more.</a></p></div></aside>
 
 <nav aria-label="Main navigation">
   <span class="brandrow"><a class="logo" href="#"><i></i>Exe Protocol</a><span class="proto"><button type="button" class="protob" aria-expanded="false" aria-controls="protoNote">Prototype</button><span class="protonote" id="protoNote" role="note">Every figure on this site is simulated. Nothing here is an offer of tokens, an investment or financial advice. <a href="important-information.html">Important information</a></span></span></span>
@@ -517,6 +518,7 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
     <li class="dd"><button type="button" aria-haspopup="true" aria-expanded="false"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.6 14.3A4.5 4.5 0 0 1 21 18.5"/></svg>Community</button><div class="ddm"><a href="https://x.com/Exeswap" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v9h-8l-4 3.5V15H5z"/></svg>X (Twitter)<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://t.me/Exeswap" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 4L3.5 11l6 2.2 2.2 6.3 3.2-4.3 4.6 3.3z"/><path d="M9.5 13.2L20.5 4"/></svg>Telegram<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://bsky.app/profile/Exeswap.bsky.social" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.5 18h9.5a3.8 3.8 0 0 0 .4-7.6A5.8 5.8 0 0 0 6.3 11.6 3.2 3.2 0 0 0 7.5 18z"/></svg>Bluesky<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a><a href="https://medium.com/@Exeswap" target="_blank" rel="noopener"><svg class="nic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19l1-4L16 5l3 3L9 18z"/><path d="M14 7l3 3"/></svg>Medium<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg></a></div></li>
   </ul>
   <span class="cw"><button class="btn ghost" id="connectBtn" type="button" aria-describedby="cwNote">Connect Wallet</button><span class="cwnote" id="cwNote" role="status" hidden>Wallet connection arrives at launch.</span></span>
+  <a class="btn solid nav-launch" href="simulator.html#swap">Launch Exeswap</a>
 </nav>
 <div class="ticker" role="region" aria-label="Market prices, illustrative">
   <div class="track" id="track"></div>
@@ -671,6 +673,18 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 })();
 </script>
 <script src="assets/exeswap-home-hero.js"></script>
+<script>
+// Keep anchor targets and the mobile menu clear of the full risk warning.
+(function(){
+  var warning=document.querySelector('.investment-warning');
+  if(!warning)return;
+  function measureWarning(){document.documentElement.style.setProperty('--risk-warning-height',Math.ceil(warning.getBoundingClientRect().height)+'px');}
+  measureWarning();
+  if(window.ResizeObserver)new ResizeObserver(measureWarning).observe(warning);
+  window.addEventListener('resize',measureWarning);
+})();
+</script>
 </body>
 </html>
+
 
