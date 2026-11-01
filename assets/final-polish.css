@@ -98,3 +98,13 @@ html{overflow-x:clip}
 }
 .shell #p-swap .hx-steps li::after{border-radius:14px}
 .shell #p-swap .hx-q>summary::before{border-radius:12px}
+
+/* Approved lower edge: existing glass cards and panels retain their fading fills. */
+#suite .card,
+#platform .card,
+#numbers .meter,
+.shell #p-swap .xh-card,
+.shell .wrap > section .panel{
+  box-shadow:inset 0 -1px 0 rgba(145,174,206,.18)!important;
+}
+
