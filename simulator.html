@@ -1059,6 +1059,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 @media (max-width: 900px){#p-swap .xh h2{max-width:none !important;text-wrap:wrap !important}}
 #p-swap .xh h2 .fade{white-space:nowrap}
 </style>
+<link rel="stylesheet" href="assets/exe-ai.css">
 </head><body><script>if(!location.hash)history.replaceState(null,"",location.pathname+location.search+"#swap");</script><div class="shell" id="shell">
 <aside class="side" aria-label="Navigation">
   <div class="side-brand"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div>
@@ -2054,4 +2055,5 @@ addEventListener("popstate", () => { const h = location.hash.slice(1) || "swap";
 <script>(function(){var w=document.querySelector(".xm-info"),b=document.getElementById("xmInfo");function set(o){w.classList.toggle("open",o);b.setAttribute("aria-expanded",String(o))}b.onclick=function(e){e.stopPropagation();set(!w.classList.contains("open"))};document.addEventListener("click",function(e){if(!w.contains(e.target))set(false)});addEventListener("keydown",function(e){if(e.key==="Escape")set(false)})})();</script>
 
 <script>(function(){var b=document.getElementById('swapConnectWallet'),n=document.getElementById('swapWalletNote'),timer;b.addEventListener('click',function(){n.hidden=false;clearTimeout(timer);timer=setTimeout(function(){n.hidden=true},3200)});})();</script>
+<script src="assets/exe-ai.js" defer></script>
 </body></html>
