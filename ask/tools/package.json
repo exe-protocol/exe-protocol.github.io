@@ -1,0 +1,13 @@
+{
+  "name": "ask-exe-tools",
+  "private": true,
+  "type": "module",
+  "description": "Build and check scripts for Ask Exe. Not served by the site.",
+  "scripts": {
+    "build": "node build.mjs",
+    "check": "node check.mjs"
+  },
+  "dependencies": {
+    "onnxruntime-web": "1.31.1"
+  }
+}
