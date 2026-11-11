@@ -7,7 +7,9 @@ const CONTACT = { email: "mailto:Richexeswap@proton.me", telegram: "https://t.me
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const SPARK = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>';
 
-export async function mountAskExe(root) {
+// opts.url === false: do not read or write the page address (used when mounted inside the Exe AI panel).
+export async function mountAskExe(root, opts = {}) {
+  const useUrl = opts.url !== false;
   const form = root.querySelector("[data-ax-form]"), input = root.querySelector("[data-ax-input]");
   const log = root.querySelector("[data-ax-log]"), startersEl = root.querySelector("[data-ax-starters]");
   const status = root.querySelector("[data-ax-status]");
@@ -94,7 +96,7 @@ export async function mountAskExe(root) {
     try {
       const r = await search(q);
       render(q, r);
-      const u = new URL(location.href); u.searchParams.set("q", q); u.hash = ""; history.replaceState(null, "", u);
+      if (useUrl) { const u = new URL(location.href); u.searchParams.set("q", q); u.hash = ""; history.replaceState(null, "", u); }
     } finally { busy = false; form.removeAttribute("aria-busy"); }
   }
 
@@ -102,7 +104,7 @@ export async function mountAskExe(root) {
   root.addEventListener("click", (ev) => { const b = ev.target.closest("[data-ax-ask]"); if (b) { ev.preventDefault(); ask(b.dataset.axAsk); } });
   loadModel();
 
-  const q0 = new URL(location.href).searchParams.get("q");
+  const q0 = useUrl ? new URL(location.href).searchParams.get("q") : null;
   if (q0) ask(q0);
   return { ask };
 }

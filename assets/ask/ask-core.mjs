@@ -132,6 +132,8 @@ export function makeKeywordIndex(entries) {
 }
 
 // ---------- Ranking ----------
+// Two questions are "the same" when they match after lower-casing and dropping punctuation and extra spaces.
+export const sameQuestion = (s) => String(s).toLowerCase().normalize("NFKC").replace(/[^\p{L}\p{N}$]+/gu, " ").trim();
 // The keyword index must be built over the same kb.entries list.
 // Thresholds are set in ask/tools/check.mjs against the held-out test phrasings and recorded in knowledge.json.
 export function rank(kb, query, qvec, keywordScore) {
@@ -151,6 +153,14 @@ export function rank(kb, query, qvec, keywordScore) {
     return { entry: e, score, sem, cover: k.cover };
   }).filter((r) => r.entry.kind !== "fixed").sort((a, b) => b.score - a.score);
   const t = kb.thresholds;
+  // A question typed or clicked exactly as an entry's own question always gets that entry's answer. Without this,
+  // two entries with similar questions ("What is Exe Protocol?" / "Who is Exe Protocol for?") tie and neither answers.
+  const nq = sameQuestion(query);
+  const exact = nq ? scored.findIndex((r) => sameQuestion(r.entry.q) === nq) : -1;
+  if (exact >= 0) {
+    const hit = scored.splice(exact, 1)[0];
+    return { mode: qvec ? "semantic" : "keyword", level: "answer", ok: true, exact: true, results: [hit, ...scored.slice(0, 2)] };
+  }
   const top = scored[0];
   // level: "answer" (show the best answer), "suggest" (show the top questions as "Did you mean"), "none" (not covered yet)
   let level = "none";

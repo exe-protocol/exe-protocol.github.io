@@ -48,6 +48,10 @@ body.xai-lock{overflow:hidden}
 .xai-bot .b b{color:#fff}
 .xai-bot .b a{color:#6fa8ff;text-decoration:none}
 .xai-bot .b a:hover{text-decoration:underline}
+/* Ask Exe answers inside the panel (assets/ask/ask-exe.css): keep the host page's heading styles out */
+.xai .ax-q{text-transform:none;letter-spacing:normal;line-height:1.55;font-family:inherit}
+.xai .ax-q::before,.xai .ax-q::after{content:none}
+.xai .ax-log{margin-bottom:16px}
 .xai-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:820px){.xai{padding:22px 18px;border-radius:18px}.xai-grid{grid-template-columns:1fr;gap:20px}.xai-right{padding-top:0}.xai h2.xai-h{font-size:26px;padding-right:40px}}
 @media (max-width:560px){.xai-pill .long{display:none}}
