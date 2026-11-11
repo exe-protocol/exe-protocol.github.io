@@ -66,22 +66,18 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px
 <div class="wrap">
   <aside class="toc"><p>On this page</p><a href="#what-it-is">How Exeswap works</a><a href="#fees">Fees</a><a href="#xpr">XPR</a><a href="#tiers">Tiers</a><a href="#funding">Funding</a><a href="#safeguards">Safeguards</a><a href="#settlement-and-custody">Settlement and custody</a><a href="#status">Status</a></aside>
   <main>
-    <p class="eyebrow">Exeswap · Specs · 28 October 2026</p>
+    <p class="eyebrow">Exeswap · Specs · 11 November 2026</p>
     <h1>Exeswap <span class="fade">specs</span></h1>
     <p class="lead">Exeswap is the first app built on Exe Protocol, a policy-governed
-execution layer for apps, wallets and agents. Exeswap is a DEX aggregator where the user’s XPR (Exe Protocol Rate), earned through verified signal, determines how much of each trade’s fee is redeemed for that user. Exe Protocol is the
-horizontal layer; Exeswap is the first vertical app built on it, using
-the same rules other client apps and agents are designed to use through
-an SDK. Exeswap is a working prototype running in a simulated world: every figure here comes from simulation, not live trading.</p>
+execution layer for apps, wallets and agents. Exeswap is a DEX aggregator where the user’s XPR (Exe Protocol Rate), earned through verified signal, determines how much of each trade’s fee is redeemed for that user. Exe Protocol is the horizontal layer; Exeswap is the first vertical app built on it, with other client apps and agents designed to integrate through an SDK. Exeswap is a working prototype running in a simulated world: every figure here is simulated, not from live trades.</p>
     <span class="tag">Prototype · every figure simulated</span>
     <section class="sec"><h2 id="what-it-is">How Exeswap works</h2>
 <p>Exeswap finds a route for each trade across exchanges, like any
-aggregator. Our aim is the cheapest route, to be verified before
-launch.</p>
+aggregator. Our aim is the cheapest and most efficient route (to be verified before launch).</p>
 <ul>
 <li><strong>Without XPR:</strong> Exeswap works as a regular aggregator.
 The user trades and pays the normal fee.</li>
-<li><strong>With XPR (opt-in):</strong> the user’s verified on-chain signal sets their XPR, and XPR redeems part of each trade’s fee.</li>
+<li><strong>With XPR (opt-in):</strong> the user’s verified on-chain signal sets their XPR, and XPR redeems part of each trade’s fee, from 0–100%.</li>
 <li><strong>Before signing:</strong> every quote shows the full fee,
 what XPR redeems and what the user pays (see “Your quote” in the Exeswap
 simulator). Once approved, that quote is fixed.</li>
@@ -147,9 +143,7 @@ paid ($0.70 here); the pool covers the rest of what their XPR earns.</p>
 <li><p><strong>Belongs to the wallet:</strong> person or agent. It is
 calculated the same way everywhere and is designed to travel across
 every app using Exe Protocol.</p></li>
-<li><p><strong>Moves gradually:</strong> each month counts for 30% of
-the rate, so it follows recent activity without jumping
-overnight.</p></li>
+<li><p><strong>Moves steadily:</strong> XPR follows verified on-chain activity. Steady activity builds XPR, and a period of less activity lowers it gently. History counts too, so one burst of activity can’t send XPR soaring, and one quiet period won’t wipe it out.</p></li>
 <li><p><strong>Higher tiers earn more from the same XPR.</strong> What a
 wallet’s XPR earns:</p>
 <p>earned = 1 − (1 − XPR) ^ (tier multiplier × surplus factor)</p></li>
@@ -184,9 +178,9 @@ higher tiers are earned, not bought.</p>
 <tr class="even">
 <td>2</td>
 <td>Set aside a budget in your own wallet: usually about 10% of a
-month’s trading (5% to 25%, lower for a long, steady history)</td>
+month’s trading (5% to 25%, lower for a long, steady history). A new budget counts once it has been held for 30 days</td>
 <td>1.10</td>
-<td>Budget commitment ends</td>
+<td>Budget withdrawn (allowed at any time)</td>
 </tr>
 <tr class="odd">
 <td>3</td>
@@ -197,7 +191,7 @@ in a row</td>
 </tr>
 </tbody>
 </table></div>
-<p>A budget above the minimum is headroom for a busier month only. It does not raise XPR: redemption is earned through signal, never bought.</p>
+<p>A budget above the minimum is headroom for a busier month only. It does not raise XPR: redemption is earned through signal, never bought. The budget can be withdrawn at any time; Tier 2 or 3 then ends at once.</p>
 </section><section class="sec"><h2 id="funding">Funding</h2>
 <p>Redemption is paid first from the user’s own fees, then from the Sponsorship Pool. Users’ budgets and wallet balances never enter the pool.</p>
 <ul>
