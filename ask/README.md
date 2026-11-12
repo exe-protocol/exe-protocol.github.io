@@ -45,3 +45,5 @@ node check.mjs              # add --preview for a preview build; --out report.md
 ```
 
 Upload `assets/ask/knowledge.json` after every published build.
+
+<!-- Republished 12 Nov 2026 -->
