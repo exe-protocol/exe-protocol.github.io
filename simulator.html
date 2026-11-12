@@ -1048,6 +1048,8 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 .page-header .sp-h{font-size:clamp(24px,3vw,34px);font-weight:600;line-height:1.2;letter-spacing:-.035em;margin:0 0 12px;text-wrap:balance}
 .page-header .sp-h span{color:#1677ff}
 .page-header .sp-lead{font-size:15px;line-height:1.6;max-width:70ch;color:var(--ink-2);margin:0}
+.sp-flowlink{color:#6ab6ff;text-decoration:none;border-bottom:1px solid rgba(106,182,255,.4);white-space:nowrap}
+.sp-flowlink:hover,.sp-flowlink:focus-visible{border-bottom-color:#6ab6ff}
 .page-header .sp-lead+.sp-lead{margin-top:12px}
 @media(max-width:900px){#p-pool>.panel:first-child,#p-stress>.panel:first-child,#p-calc>.panel:first-child{padding:22px}}
 @media(max-width:420px){#p-pool>.panel:first-child,#p-stress>.panel:first-child,#p-calc>.panel:first-child{padding:18px}.page-header .sp-eyebrow{margin-bottom:12px}.page-header .sp-h{font-size:26px}.page-header .sp-lead{font-size:14px}}
@@ -1389,7 +1391,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
         <h2 class="sp-h">App funding <span>calculator</span></h2>
       <p class="sp-lead">When your app integrates Exe Protocol, your users get fee redemption on gas and Exe Protocol’s fee – <b>at no cost to you.</b></p>
       <p class="sp-lead">Exe Protocol holds an account for your app in the Sponsorship Pool and funds your app’s account with 70% of <b>Exe Protocol’s fee</b> that your users pay.</p>
-      <p class="sp-lead">Optional: on an expensive chain, top up the account to raise your users’ fee redemption. If you charge a fee of your own, add a budget so XPR reduces that fee too.</p>
+      <p class="sp-lead">Optional: on an expensive chain, top up the account to raise your users’ fee redemption. If you charge a fee of your own, add a budget so XPR reduces that fee too. <a class="sp-flowlink" href="exe-protocol-specs.html#for-apps">See how the fees flow&nbsp;→</a></p>
       </div>
       <div class="calcgrid" id="calcCtl"></div>
     </div>
