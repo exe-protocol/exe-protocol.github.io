@@ -1,6 +1,8 @@
 /* Exe AI preview overlay (in development) — shared by index.html and simulator.html.
-   The question box is Ask Exe, running inside the panel: the same search code and approved Q&A bank as ask.html
-   (assets/ask/). Answers come from that bank, not from Exe AI. The Ask Exe code loads when the panel first opens. */
+   The question box runs the Ask Exe code (assets/ask/): the same search and approved Q&A bank as ask.html. Answers
+   come from that bank. The code loads when the panel first opens.
+   Layout: the panel does not scroll. .xai-body scrolls; the header (.xai-head, with the close button) and the
+   question box (.xai-dock) stay put. */
 (function () {
   if (document.getElementById("xaiFab")) return;
   var here = (document.currentScript && document.currentScript.src) || new URL("assets/exe-ai.js", document.baseURI).href;
@@ -40,30 +42,33 @@
   var scrim = document.createElement("div");
   scrim.className = "xai-scrim"; scrim.id = "xaiScrim"; scrim.hidden = true;
   scrim.innerHTML =
-    '<div class="xai" role="dialog" aria-modal="true" aria-labelledby="xaiTitle">' +
-    '<button type="button" class="xai-x" id="xaiClose" aria-label="Close">×</button>' +
-    '<div class="xai-grid"><div class="xai-left">' +
-    '<div class="xai-eyebrow">' + spark + ' Exe AI <span class="xai-badge"><i></i>In development</span></div>' +
+    '<div class="xai" role="dialog" aria-modal="true" aria-labelledby="xaiTitle" tabindex="-1">' +
+    '<div class="xai-head"><div class="xai-eyebrow">' + spark + ' Exe AI <span class="xai-badge"><i></i>In development</span></div>' +
+    '<button type="button" class="xai-x" id="xaiClose" aria-label="Close">×</button></div>' +
+    '<div class="xai-body"><div class="xai-grid"><div class="xai-left">' +
     '<h2 class="xai-h" id="xaiTitle">Built to add, not extract</h2>' +
     '<p class="xai-lede">Exe AI is being trained on our economic model, with one primary reward function: <b>adding value for its users.</b></p>' +
     '<ul class="xai-will">' + W.map(function (w, i) { return '<li><span class="n">' + (i + 1) + '</span><span><b>' + w[0] + '</b>' + w[1] + '</span></li>'; }).join("") + '</ul>' +
     '</div><div class="xai-right">' +
     '<div class="ax-log" data-ax-log hidden aria-live="polite"></div>' +
+    '<div class="xai-label">Try asking</div>' +
+    '<div class="xai-chips" data-ax-starters>' + Q.map(function (q) { return '<button type="button" class="ax-chip" data-ax-ask="' + q + '">' + q + '</button>'; }).join("") + '</div>' +
+    '<p class="xai-foot">Exe AI is in development and being built in public. Ask Exe AI about our project and progress: all information comes from approved sources, with links supplied.</p>' +
+    '</div></div></div>' +
+    '<div class="xai-dock">' +
     '<form class="xai-form ax-form" id="xaiForm" data-ax-form autocomplete="off"><label class="xai-sr" for="xaiIn">Ask Exe AI</label>' +
     '<input id="xaiIn" data-ax-input type="text" placeholder="Ask us anything…" maxlength="300" enterkeyhint="send">' +
     '<button type="submit" class="xai-send ax-send" aria-label="Send">' + send + '</button></form>' +
     '<p class="ax-status" data-ax-status hidden></p>' +
-    '<div class="xai-label">Try asking</div>' +
-    '<div class="xai-chips" data-ax-starters>' + Q.map(function (q) { return '<button type="button" class="ax-chip" data-ax-ask="' + q + '">' + q + '</button>'; }).join("") + '</div>' +
-    '<p class="xai-foot">Exe AI is in development and being built in public. Meanwhile, answers come from Ask Exe, our approved Q&amp;A.</p>' +
-    '</div></div></div>';
+    '</div></div>';
 
   document.body.appendChild(fab);
   document.body.appendChild(scrim);
   document.body.classList.add("has-xai");
 
   var input = scrim.querySelector("#xaiIn"), lastFocus = null;
-  var right = scrim.querySelector(".xai-right"), form = scrim.querySelector("#xaiForm");
+  var panel = scrim.querySelector(".xai"), form = scrim.querySelector("#xaiForm");
+  var touch = !!(window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
   var statusEl = scrim.querySelector("[data-ax-status]");
 
   // Ask Exe loads once, when the panel first opens. A question asked before loading finishes is kept and asked then.
@@ -74,14 +79,14 @@
       var l = document.createElement("link"); l.rel = "stylesheet"; l.href = ASK_CSS; l.setAttribute("data-ax-css", "");
       document.head.appendChild(l);
     }
-    mounting = import(ASK_JS).then(function (m) { return m.mountAskExe(right, { url: false }); }).then(function (api) {
+    mounting = import(ASK_JS).then(function (m) { return m.mountAskExe(panel, { url: false, scroll: "start" }); }).then(function (api) {
       mounted = true; form.removeAttribute("aria-busy");
       if (pending) { var q = pending; pending = ""; api.ask(q); }
       return api;
     }).catch(function (err) {
       console.warn("Exe AI panel: Ask Exe could not load", err);
       mounting = null; pending = ""; form.removeAttribute("aria-busy");
-      statusEl.innerHTML = 'Answers could not load. Check your connection and try again, or open <a href="ask.html">Ask Exe</a>.';
+      statusEl.innerHTML = 'Answers could not load. Check your connection and try again, or open the <a href="ask.html">full Exe AI page</a>.';
       statusEl.hidden = false;
     });
     return mounting;
@@ -93,18 +98,31 @@
     mountAsk();
   }
 
+  // Phones: when the on-screen keyboard opens, the visible area shrinks but the page does not. Fit the panel to the
+  // visible area, so the header stays at the top and the question box sits just above the keyboard.
+  var vv = window.visualViewport;
+  function fit() {
+    if (!vv || scrim.hidden) return;
+    if (Math.abs(vv.scale - 1) > 0.01) { scrim.style.top = scrim.style.height = scrim.style.bottom = ""; return; } // pinch-zoomed: leave alone
+    scrim.style.top = vv.offsetTop + "px"; scrim.style.height = vv.height + "px"; scrim.style.bottom = "auto";
+  }
+  if (vv) { vv.addEventListener("resize", fit); vv.addEventListener("scroll", fit); }
+
   function open() {
     lastFocus = document.activeElement;
     scrim.hidden = false;
+    fit();
     document.body.classList.add("xai-lock");
     requestAnimationFrame(function () { scrim.classList.add("open"); });
-    setTimeout(function () { input.focus({ preventScroll: true }); }, 30);
+    // On touch screens, focusing the question box would open the keyboard over the panel; focus the panel instead.
+    setTimeout(function () { (touch ? panel : input).focus({ preventScroll: true }); }, 30);
     mountAsk();
   }
   function close() {
     scrim.classList.remove("open");
     document.body.classList.remove("xai-lock");
     scrim.hidden = true;
+    scrim.style.top = scrim.style.height = scrim.style.bottom = "";
     if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
   }
   fab.addEventListener("click", open);
@@ -114,7 +132,7 @@
   scrim.addEventListener("click", function (e) { if (e.target === scrim) close(); });
   // Once Ask Exe is mounted it handles the form and the question chips itself; these cover the moment before.
   form.addEventListener("submit", function (e) { e.preventDefault(); if (!mounted) askEarly(input.value); });
-  right.addEventListener("click", function (e) {
+  panel.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest("[data-ax-ask]");
     if (b && !mounted) askEarly(b.getAttribute("data-ax-ask"));
   });

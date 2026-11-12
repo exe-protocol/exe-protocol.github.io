@@ -8,6 +8,7 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
 const SPARK = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>';
 
 // opts.url === false: do not read or write the page address (used when mounted inside the Exe AI panel).
+// opts.scroll: where a new answer lands in view, "nearest" (default) or "start" (the panel: the question at the top).
 export async function mountAskExe(root, opts = {}) {
   const useUrl = opts.url !== false;
   const form = root.querySelector("[data-ax-form]"), input = root.querySelector("[data-ax-input]");
@@ -84,7 +85,7 @@ export async function mountAskExe(root, opts = {}) {
     item.innerHTML = `<div class="ax-me">${esc(q)}</div><div class="ax-bot"><span class="ax-av">${SPARK}</span><div class="ax-card">${body}</div></div>`;
     log.appendChild(item);
     log.hidden = false;
-    item.scrollIntoView({ block: "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    item.scrollIntoView({ block: opts.scroll || "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     return item;
   }
 
