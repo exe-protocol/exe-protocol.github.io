@@ -473,6 +473,11 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
 #suite .suite-card p:not(.suite-tag){max-width:46ch}
 #suite .suite-cta{margin-top:auto;padding-top:28px;display:flex}
 #suite .suite-cta a{margin:0}
+#suite .suite-owner{margin-top:20px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px 40px;align-items:center}
+#suite .suite-owner h3{margin:0 0 10px}
+#suite .suite-owner p:not(.suite-tag){margin:0;max-width:62ch}
+#suite .suite-owner .suite-cta{margin:0;padding:0}
+@media(max-width:860px){#suite .suite-owner{grid-template-columns:1fr;margin-top:12px}}
 #suite .suite-link{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:rgba(238,242,252,.55);font-size:11px;letter-spacing:.16em;text-transform:uppercase}
 #suite .suite-link svg{width:40px;height:16px;fill:none;stroke:#1677ff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 @media(max-width:860px){#suite .suite{grid-template-columns:1fr;gap:12px}#suite .suite-link{flex-direction:row;padding:2px 0}#suite .suite-link svg{transform:rotate(90deg);width:26px}}
@@ -594,10 +599,18 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
     <article class="card suite-card xai-card">
       <p class="suite-tag">In development</p>
       <h3>Exe AI</h3>
-      <p>Exe AI is being trained on our economic model, with one primary reward function: <b>adding value for its users.</b> It values what you add, keeps fee redemption fair and explains clearly how XPR works, what yours is, and why.</p>
+      <p>Exe AI is being trained on our economic model, with one primary reward function: adding value for its users. It values what you add, keeps fee redemption fair and explains clearly how XPR works, what yours is, and why.</p>
       <div class="suite-cta"><button type="button" class="xai-cardbtn" data-xai-open aria-haspopup="dialog"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>Ask Exe AI</button></div>
     </article>
   </div>
+  <article class="card suite-owner">
+    <div>
+      <p class="suite-tag">For app owners</p>
+      <h3>Your app allocates nothing</h3>
+      <p>Your users pay gas and Exe Protocol’s fee on each transaction. Exe Protocol redeems a share of both, determined by each user’s XPR. Your app’s own fee stays with your app.</p>
+    </div>
+    <div class="suite-cta"><a class="xh-how" href="exe-protocol-specs.html#for-apps">How the fees flow</a></div>
+  </article>
 </section>
 
 <section class="pad" id="platform">

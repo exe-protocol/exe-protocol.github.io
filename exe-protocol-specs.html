@@ -61,7 +61,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px
 <body class="document-page">
 <nav><a class="logo" href="index.html"><i></i>Exe Protocol</a><a class="back" aria-label="Back to Exe Protocol" href="index.html"><span class="mobile-back-full">← Back to Exe Protocol</span><span class="mobile-back-short" aria-hidden="true">← Back</span></a></nav>
 <div class="wrap">
-  <aside class="toc"><p>On this page</p><a href="#positioning">Positioning</a><a href="#mechanism">Mechanism</a><a href="#whos-who-and-who-pays">Who’s who and who pays</a><a href="#app-funding">App funding</a><a href="#agent-payments">Agent payments</a><a href="#evidence">Evidence</a><a href="#roadmap-and-open-items">Roadmap and open items</a><a href="#pending-legal-advice">Pending legal advice</a></aside>
+  <aside class="toc"><p>On this page</p><a href="#positioning">Positioning</a><a href="#mechanism">Mechanism</a><a href="#whos-who-and-who-pays">Who’s who and who pays</a><a href="#for-apps">For apps: how the fees flow</a><a href="#app-funding">App funding</a><a href="#agent-payments">Agent payments</a><a href="#evidence">Evidence</a><a href="#roadmap-and-open-items">Roadmap and open items</a><a href="#pending-legal-advice">Pending legal advice</a></aside>
   <main>
     <p class="eyebrow">Exe Protocol · Specs · 11 November 2026</p>
     <h1>Exe Protocol <span class="fade">specs</span></h1>
@@ -117,7 +117,7 @@ across all agents. (Working with any rail is a statement of intent until built.)
 <ul>
 <li><strong>Priced by signal.</strong> A wallet’s XPR (Exe Protocol Rate), earned through verified on-chain signal, determines how much of each fee is redeemed: the stronger the signal, the higher the XPR, and the more of each fee is redeemed.</li>
 <li><strong>Funded by a shared pool.</strong> Redemption comes first
-from the payer’s own fees (up to 70% of the protocol fee they paid),
+from the payer’s own fees (up to 70% of Exe Protocol’s fee they paid),
 then from the Sponsorship Pool. In all nine stress tests (simulated, 24 months each), the pool never ran dry.</li>
 <li><strong>Determined before it happens.</strong> Pre-funded budgets,
 policy and tiers approve each payment at the quote. It is designed so a rogue agent cannot spend beyond its budget. Measured in the prototype: 0.054 ms to determine the fee relief.</li>
@@ -153,7 +153,7 @@ more as payments per agent rise. <em>Simulated.</em></li>
 <td>Wallet (person or agent)</td>
 <td>Earns an XPR (opt-in). The XPR belongs to the wallet, is calculated the same
 way everywhere and is designed to travel across apps</td>
-<td>The protocol fee (0.10% on low-fee chains, 0.25% on Ethereum) plus
+<td>Exe Protocol’s fee (0.10% on low-fee chains, 0.25% on Ethereum) plus
 gas, less what its XPR redeems</td>
 </tr>
 <tr class="even">
@@ -179,17 +179,37 @@ budget</td>
 <p>Each wallet keeps its own XPR, including each agent’s wallet; apps
 see the totals. New wallets share only a small, capped part of the pool,
 so the rules are designed to stop fresh wallets or agents farming it.</p>
+</section><section class="sec"><h2 id="for-apps">For apps: how the fees flow</h2>
+<p>An app allocates nothing for fee redemption. Exe Protocol funds fee redemption from Exe Protocol’s own fee.</p>
+<ul>
+<li><strong>Gas:</strong> what the network charges for a transaction.</li>
+<li><strong>Exe Protocol’s fee:</strong> what Exe Protocol charges on each transaction made through Exe Protocol: 0.10% on low-fee chains, 0.25% on Ethereum.</li>
+<li><strong>The app’s own fee:</strong> whatever the app charges the app’s users. Exe Protocol does not touch that fee.</li>
+<li><strong>The app’s pool:</strong> the app’s own account, held in Exe Protocol’s Sponsorship Pool.</li>
+</ul>
+<ol>
+<li>A user makes a transaction in the app, through the app’s Exe Protocol integration.</li>
+<li>The transaction carries three costs: gas, Exe Protocol’s fee and the app’s own fee.</li>
+<li>The app’s own fee goes to the app.</li>
+<li>Exe Protocol’s fee goes to Exe Protocol. Exe Protocol allocates 70% of that fee to the app’s pool, held in Exe Protocol’s Sponsorship Pool.</li>
+<li>Exe Protocol reads the user’s XPR and redeems a share of gas plus Exe Protocol’s fee. The user pays the remainder.</li>
+</ol>
+<p><strong>What an app is committed to:</strong> integrating Exe Protocol through an SDK (in development). The app allocates no budget and pays nothing for fee redemption. (Licence and integration terms are still under review.)</p>
+<p>Two options, neither required:</p>
+<ul>
+<li><strong>Account top-up:</strong> an app can add funds to the app’s pool to raise users’ fee redemption on gas and Exe Protocol’s fee, typically on an expensive chain. All funds in an app’s top-up reach the app’s users, under the same XPR rules.</li>
+<li><strong>App budget:</strong> an app can fund a budget so XPR also discounts the app’s own fee. All funds in an app’s budget reach the app’s users, under the same XPR rules.</li>
+</ul>
 </section><section class="sec"><h2 id="app-funding">App funding</h2>
 <ul>
-<li><strong>The pool:</strong> funded by 70% of Exe Protocol’s revenue, from Exeswap’s fees and the protocol fees that apps’ users pay. Users’ budgets and wallet balances never enter the pool.</li>
+<li><strong>The pool:</strong> funded by 70% of Exe Protocol’s revenue, from Exeswap’s fees and Exe Protocol’s fees that apps’ users pay. Users’ budgets and wallet balances never enter the pool.</li>
 <li><strong>One account per app:</strong> each app’s users draw on the
 revenue they generate, so no app subsidises another. Exe Protocol starts each new app’s account with about 1.9 months of its expected income; a fifth of that is a buffer that is never spent. In production, a new app’s seed is sized on its proven trading volume and paid monthly, so its first months can be weaker.</li>
 <li><strong>What an app pays:</strong> nothing is required for fee
 redemption. On a low-fee chain, the 70% of protocol revenue that funds each app’s account covers what users’ XPR earns, with room to spare. On an expensive chain gas
 dominates, for every app.</li>
 <li><strong>Optional app budgets:</strong> an app can fund a budget so
-XPR also discounts its own fee. That money goes to its users under the
-same rules.</li>
+XPR also discounts the app’s own fee. All funds in an app’s budget reach the app’s users, under the same rules.</li>
 <li><strong>Surplus:</strong> held for $XPT buybacks once legally
 cleared. Buybacks are off until legal advice.</li>
 </ul>

@@ -1100,8 +1100,8 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <p class="lede">Your activity pays for your execution.</p>
       <p class="sub">Every figure is simulated, not live data.</p>
     </div>
-    <p class="small muted rate-explanation" id="rateExplanation" hidden>Your XPR determines how much of each fee you can redeem. Redemption is paid first from your own fees, up to 70% of the protocol fee you paid. The rest comes from Exe’s pool. At 100% pool strength, you redeem everything your XPR earns. If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.</p>
-    <p class="small muted rate-explanation" id="quoteExplanation" hidden>Your XPR determines how much of each fee you can redeem. Redemption is paid first from your own fees, up to 70% of the protocol fee you paid. The rest comes from Exe’s pool. At 100% pool strength, you redeem everything your XPR earns. If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.</p>
+    <p class="small muted rate-explanation" id="rateExplanation" hidden>Your XPR determines how much of each fee you can redeem. Redemption is paid first from your own fees, up to 70% of Exe Protocol’s fee you paid. The rest comes from Exe’s pool. At 100% pool strength, you redeem everything your XPR earns. If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.</p>
+    <p class="small muted rate-explanation" id="quoteExplanation" hidden>Your XPR determines how much of each fee you can redeem. Redemption is paid first from your own fees, up to 70% of Exe Protocol’s fee you paid. The rest comes from Exe’s pool. At 100% pool strength, you redeem everything your XPR earns. If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.</p>
   </section>
 
 
@@ -1205,7 +1205,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <h2 class="hx-h2">You asked, <span class="fade">we answer.</span></h2>
       <div class="hx-faq">
       <details class="hx-q" open><summary>Do I have to use XPR?</summary><div class="hx-a">No. XPR is opt-in. Without it, Exeswap works as a regular aggregator: you get the cheapest route (to be verified before launch) and pay the normal fee.</div></details>
-      <details class="hx-q"><summary>How is fee redemption funded?</summary><div class="hx-a">First from your own fees: up to 70% of the protocol fee you paid. The rest comes from Exe’s pool, which is funded by 70% of Exe Protocol’s revenue: Exeswap’s fees and the protocol fees that apps’ users pay. Fee redemption never exceeds the fee you paid.</div></details>
+      <details class="hx-q"><summary>How is fee redemption funded?</summary><div class="hx-a">First from your own fees: up to 70% of Exe Protocol’s fee you paid. The rest comes from Exe’s pool, which is funded by 70% of Exe Protocol’s revenue: Exeswap’s fees and Exe Protocol’s fees that apps’ users pay. Fee redemption never exceeds the fee you paid.</div></details>
       <details class="hx-q"><summary>What is pool strength?</summary><div class="hx-a">How much of what your XPR earns that Exe’s pool can pay right now. At 100% pool strength, you redeem everything your XPR earns. If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.</div></details>
       <details class="hx-q"><summary>What are tiers?</summary><div class="hx-a"><b>Tier 1</b> is where everyone starts. <b>Tier 2</b> adds a budget commitment, earns more from the same XPR, and lets your XPR go up to 1.10. <b>Tier 3</b> earns more again, so your fees stay low even in a quieter month.</div></details>
       <details class="hx-q"><summary>How do I reach Tier 2?</summary><div class="hx-a">Set aside a budget in your own wallet, usually about 10% (between 5% and 25%, lower for a long, steady history) of what you trade in a month. The budget stays in your wallet, and Exe Protocol never holds it. A new budget counts once you’ve held it for 30 days. You can withdraw it at any time, and you drop back to Tier 1.</div></details>
@@ -1387,8 +1387,8 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <div class="page-header">
         <p class="sp-eyebrow">App funding</p>
         <h2 class="sp-h">App funding <span>calculator</span></h2>
-      <p class="sp-lead">When your app integrates Exe Protocol, your users get fee redemption on gas and the protocol fee – <b>at no cost to you.</b></p>
-      <p class="sp-lead">Exe Protocol keeps an account for your users in the Sponsorship Pool and funds it with 70% of the <b>protocol fee</b> your users pay.</p>
+      <p class="sp-lead">When your app integrates Exe Protocol, your users get fee redemption on gas and Exe Protocol’s fee – <b>at no cost to you.</b></p>
+      <p class="sp-lead">Exe Protocol holds an account for your app in the Sponsorship Pool and funds your app’s account with 70% of <b>Exe Protocol’s fee</b> that your users pay.</p>
       <p class="sp-lead">Optional: on an expensive chain, top up the account to raise your users’ fee redemption. If you charge a fee of your own, add a budget so XPR reduces that fee too.</p>
       </div>
       <div class="calcgrid" id="calcCtl"></div>
@@ -1426,7 +1426,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <h3>What smarter means</h3>
       <div class="mk-cards">
         <div class="mk-card"><b>Priced by signal</b><p>Higher XPR, more of the fee redeemed. Exe Protocol redeems more of the fee for stronger signal.</p><p class="mk-proof" id="mkSignal"></p></div>
-        <div class="mk-card"><b>Funded by a shared pool</b><p>First from the agent’s own fees, then from Exe’s pool, funded by protocol fees and the apps using Exe Protocol.</p><p class="mk-proof" id="mkPool"></p></div>
+        <div class="mk-card"><b>Funded by a shared pool</b><p>First from the agent’s own fees, then from Exe’s pool, funded by Exe Protocol’s fees and the apps using Exe Protocol.</p><p class="mk-proof" id="mkPool"></p></div>
         <div class="mk-card"><b>Determined before it happens</b><p>Pre-funded budgets, policy and tiers approve each payment at the quote. It’s designed so a rogue agent can’t spend beyond its budget.</p><p class="mk-proof" id="mkDecide"></p></div>
         <div class="mk-card"><b>Settled net</b><p>Only what each agent owes or is owed overall goes on-chain, so settlement grows with agents, not payments. One fingerprint per batch (a Merkle root) lets any agent check its own balance.</p><p class="mk-proof" id="mkNet"></p></div>
       </div>
@@ -1648,7 +1648,7 @@ function renderStress() {
 /* ---------- 5 · app funding calculator (every figure is a looked-up engine number) ---------- */
 const CS = Object.assign({}, C.default);
 const usdS = x => x >= 1e6 ? usdM(x) : (x < 0 ? "−$" : "$") + Math.round(Math.abs(x)).toLocaleString("en-US");
-const CALC_CTL = [["gas", "Chain"], ["size", "Trade size"], ["trades", "Trades per user"], ["fee", "Protocol fee"],
+const CALC_CTL = [["gas", "Chain"], ["size", "Trade size"], ["trades", "Trades per user"], ["fee", "Exe Protocol’s fee"],
   ["mix", "Users' signal"], ["users", "Users"], ["topup", "Account top-up"], ["app_fee", "App's own fee"]];
 function renderCalc() {
   const box = $("calcCtl");
@@ -1672,19 +1672,19 @@ function renderCalc() {
     + row("Exeswap users, Tier 1", ref.probes.tier1, "muted") + row("Exeswap users, Tier 2", ref.probes.tier2, "muted") + "</tbody>";
   $("calcNote").textContent = (full && CS.topup !== "x0" ? "This account is already at full strength, so a top-up would only add to its reserve and held surplus; figures shown without it. " : "")
     + (p.scarce ? "This account is rationing this month: everyone's share from the pool is scaled by the same factor (pro rata), so redemption stays in proportion to what XPR earns. " : "")
-    + "Fee redemption covers gas and the protocol fee. Exeswap rows: low-fee chain, $1,000 trades, 30 a month, " + C.options.fee[C.default.fee] + " fee, typical users.";
+    + "Fee redemption covers gas and Exe Protocol’s fee. Exeswap rows: low-fee chain, $1,000 trades, 30 a month, " + C.options.fee[C.default.fee] + " fee, typical users.";
   const ak = CS.app_fee, money = [
-    ["Users pay through the protocol (gas + protocol fee)", usdS(t.fees), usdS(tr.fees)],
+    ["Users pay through Exe Protocol (gas + Exe Protocol’s fee)", usdS(t.fees), usdS(tr.fees)],
     ["Fee redemption on their trades", usdS(t.relief), usdS(tr.relief)],
     ["Users' net cost", usdS(t.pays), usdS(tr.pays)],
-    ["Exe Protocol revenue (protocol fees)", usdS(t.exe_revenue), usdS(tr.exe_revenue)],
+    ["Exe Protocol revenue (Exe Protocol’s fees)", usdS(t.exe_revenue), usdS(tr.exe_revenue)],
     ["  70% of protocol revenue → this app’s account", usdS(t.to_pool), usdS(tr.to_pool)],
     ["  30% of protocol revenue → Exe Protocol operations", usdS(t.ops), usdS(tr.ops)],
     ["Surplus held from the account (for $XPT buybacks once legally cleared)", usdS(t.buyback), usdS(tr.buyback)],
     ["Starting seed from Exe Protocol (one-off total, paid monthly, never more than the account’s monthly inflow)", usdS(t.seed), usdS(tr.seed)],
     ["App's account top-up (optional; all of it goes into the account)", usdS(t.topup), "—"],
     ["App's own fee revenue (" + C.options.app_fee[ak] + ")", usdS(t.app_fee_revenue[ak]), "—"],
-    ["Optional app budget to discount its own fee by XPR", usdS(t.app_budget[ak]), "—"],
+    ["Optional app budget to discount the app’s own fee by XPR", usdS(t.app_budget[ak]), "—"],
   ];
   $("calcMoney").innerHTML = `<thead><tr><th>${esc(C.options.users[CS.users])}, per month</th><th class="r">This app</th><th class="r">Exeswap</th></tr></thead><tbody>`
     + money.map(([l, a, b]) => `<tr><td>${esc(l)}</td><td class="r num">${esc(a)}</td><td class="r num">${esc(b)}</td></tr>`).join("") + "</tbody>";
@@ -1787,7 +1787,7 @@ function renderSwap() {
     $("swNo").textContent = swUsd(q.fee); $("swYes").textContent = swUsd(paid);
     $("swSum").textContent = swUsd(q.fee) + " → " + swUsd(paid) + " · via " + via;
     $("swCost").innerHTML = [["Network fee (gas)", c.name + ", modelled at " + swUsd(c.gas), swUsd(c.gas), ""],
-      ["Exe Protocol fee", (100 * c.fee_rate).toFixed(2) + "% of " + swUsd(t), swUsd(q.fee - c.gas), ""], ["Full fee", "", swUsd(q.fee), "t"],
+      ["Exe Protocol’s fee", (100 * c.fee_rate).toFixed(2) + "% of " + swUsd(t), swUsd(q.fee - c.gas), ""], ["Full fee", "", swUsd(q.fee), "t"],
       ["Redeemed from your own fees", "XPR " + (x / 100).toFixed(2) + ", Tier " + tier, "−" + swUsd(q.own), "r"],
       ["Redeemed from the pool", "pool strength " + Math.round(100 * row[2]) + "%", "−" + swUsd(q.red - q.own), "r"], ["You pay", "", swUsd(paid), "b"]]
       .map(([l, sub, v, k]) => `<tr class="${k}"><td>${esc(l)}${sub ? `<small>${esc(sub)}</small>` : ""}</td><td>${esc(v)}</td></tr>`).join("");
@@ -1870,7 +1870,7 @@ swTokens();
   function kick() { if (!raf) raf = requestAnimationFrame(loop) }
   function fill() { const f = figs(); $("xhPct").textContent = Math.round(100 * f.pct) + "%"; $("xhSub").textContent = `you pay ${usd(f.pay)} instead of ${usd(f.full)}`;
     $("xhFull").textContent = usd(f.full); $("xhPay").textContent = usd(f.pay); $("xhVia").textContent = f.venues[0]; $("xhN").textContent = "Route, of " + f.venues.length;
-    $("xhNote").textContent = `Example route, Tier ${f.t} at XPR ${(f.x / 100).toFixed(2)}, ${(100 * SW.chains[cur].fee_rate).toFixed(2)}% protocol fee. Routing is not modelled; fees simulated. Not a live price.`;
+    $("xhNote").textContent = `Example route, Tier ${f.t} at XPR ${(f.x / 100).toFixed(2)}, Exe Protocol’s fee ${(100 * SW.chains[cur].fee_rate).toFixed(2)}%. Routing is not modelled; fees simulated. Not a live price.`;
     cv.setAttribute("aria-label", `${CH[cur][0]} to ${CH[cur][1]}: ${f.venues.length} venues compared, ${f.venues[0]} selected`);
     seg($("xhTabs"), Object.entries(SW.chains).map(([k, v]) => [k, v.name]), cur, v => { cur = v; t0 = performance.now(); fill(); geo() }) }
   fill(); window.xhFill = fill;
@@ -1924,7 +1924,7 @@ $("xtTabs").querySelectorAll("button").forEach(b => b.onclick = () => { S.tier =
     [(100 * D.exe_fee_rates.low_fee).toFixed(2) + "%", "fee per swap (MetaMask: " + (100 * mm[1]).toFixed(3) + "%)"],
     [swUsd(full.fee - full.red), "fee at XPR 1.00"],
     [held + " of " + D.stress.length, "stress tests, Exe’s pool never ran dry"],
-    ["70%", "of protocol fees fund redemption"],
+    ["70%", "of Exe Protocol’s fees fund redemption"],
   ].map(([v, l]) => `<div><b>${esc(v)}</b><span>${esc(l)}</span></div>`).join("");
   $("xhProofNote").textContent = "From our prototype, not live trading. Fees are sourced (your quote lists every comparison). $0.00 is simulated for a $1,000 trade at Tier 1, Exe’s pool at full strength. Stress tests are simulated over " + months + " months each, including bots, whales and wallet farms. 70% is Exe Protocol's design.";
 })();
@@ -2030,7 +2030,7 @@ addEventListener("popstate", () => { const h = location.hash.slice(1) || "swap";
     if (t >= 6550 && t < 7150) { c = ctr($m("xmTg")); o = win(t, 6550, 6700, 6950, 7150); sc = .75 + .25 * p(t, 6550, 6900) }
     else if (t >= 9750 && t < 11050) { c = ctr(th); o = win(t, 9750, 9950, 10850, 11050) }
     tap.style.opacity = o; if (c) { const rr = tap.offsetWidth / 2; tap.style.transform = `translate(${c.x - rr}px, ${c.y - rr}px) scale(${sc})` }
-    $m("xmS1").textContent = `${f.via}, of ${f.n} venues compared`; $m("xmS2").textContent = `Network fee + ${(100 * f.rate).toFixed(2)}% protocol fee`;
+    $m("xmS1").textContent = `${f.via}, of ${f.n} venues compared`; $m("xmS2").textContent = `Network fee + Exe Protocol’s fee (${(100 * f.rate).toFixed(2)}%)`;
     $m("xmS3").textContent = `XPR ${f.x.toFixed(2)}: ${Math.round(100 * f.red)}% of the fee redeemed`;
     for (const li of steps) { const a = +li.dataset.a, b = +li.dataset.b; li.className = t < a ? "pending" : t < b ? "active" : "done";
       li.querySelector(".xm-st").style.transform = t >= a && t < b && !reduce ? `rotate(${(t * .5) % 360}deg)` : "" }

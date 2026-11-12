@@ -47,7 +47,7 @@
     '<button type="button" class="xai-x" id="xaiClose" aria-label="Close">×</button></div>' +
     '<div class="xai-body"><div class="xai-grid"><div class="xai-left">' +
     '<h2 class="xai-h" id="xaiTitle">Built to add, not extract</h2>' +
-    '<p class="xai-lede">Exe AI is being trained on our economic model, with one primary reward function: <b>adding value for its users.</b></p>' +
+    '<p class="xai-lede">Exe AI is being trained on our economic model, with one primary reward function: adding value for its users.</p>' +
     '<ul class="xai-will">' + W.map(function (w, i) { return '<li><span class="n">' + (i + 1) + '</span><span><b>' + w[0] + '</b>' + w[1] + '</span></li>'; }).join("") + '</ul>' +
     '</div><div class="xai-right">' +
     '<div class="ax-log" data-ax-log hidden aria-live="polite"></div>' +
