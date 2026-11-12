@@ -162,7 +162,7 @@ h1{font-size:clamp(46px,5.5vw,100px);max-width:none;text-wrap:balance}
 .slide span{font-variant-numeric:tabular-nums;color:var(--ink)}
 .proofnote{margin:10px var(--gut) 0;font-size:12px;color:rgba(238,242,252,.5)}
 
-/* ticker labels (David's design): change in mint, falls in pink; the first item says the prices are illustrative */
+/* ticker labels (the owner's design): change in mint, falls in pink; the first item says the prices are illustrative */
 .tk.lab b{font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(238,242,252,.42)}
 
 /* "What your activity pays": the model's figures as meters, one ring per point, filling blue to teal as the value rises */
@@ -201,7 +201,7 @@ h1{font-size:clamp(46px,5.5vw,100px);max-width:none;text-wrap:balance}
 h1 .fade,h2 .fade{color:transparent;background:linear-gradient(100deg,var(--ink) 0%,var(--lilac) 45%,var(--mint) 100%);-webkit-background-clip:text;background-clip:text}
 
 
-/* 2026-10-16 (David): hero boxes in the simulator Home card style (.xh-card), copied exactly; ticker and background blocks
+/* 2026-10-16: hero boxes in the simulator Home card style (.xh-card), copied exactly; ticker and background blocks
    hidden for now; thinner slider (simulator colours kept); muted-blue primary button */
 .util .panel { background: linear-gradient(160deg, rgba(255,255,255,.07), rgba(255,255,255,0) 35%), rgba(5,9,22,.66) !important;
   border: 1px solid rgba(160,190,245,.32) !important;
@@ -220,15 +220,15 @@ h1 .fade,h2 .fade{color:transparent;background:linear-gradient(100deg,var(--ink)
 .slide input::-moz-range-thumb { width: 14px !important; height: 14px !important }
 .btn.solid { background: linear-gradient(120deg, #4a78c8, #2f5aa8) !important; box-shadow: 0 10px 26px -14px rgba(74,120,200,.8), inset 0 1px 0 rgba(255,255,255,.2) !important }
 
-/* 2026-10-16 (David): risk warning bar above the nav; fine line under the nav. Link target is a placeholder until our
+/* 2026-10-16: risk warning bar above the nav; fine line under the nav. Link target is a placeholder until our
    own risk page exists (legal advice pending) */
 .risk{background:#2a2f38;color:#fff;font-size:13.5px;font-weight:600;line-height:1.45;padding:12px var(--gut);text-align:center}
 .risk a{color:#ffc56b;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
 nav{border-bottom:1px solid rgba(140,170,230,.12)}
 
-/* 2026-10-20 (David): the phones are the hero image; key numbers next; the interactive XPR panel in "Try it for yourself" */
+/* 2026-10-20: the phones are the hero image; key numbers next; the interactive XPR panel in "Try it for yourself" */
 .phones{position:relative;z-index:2;display:grid;place-items:center}
-.phones img{display:block;width:88%;max-width:none;margin:0 auto;height:auto}   /* 2026-10-21 (David): two phones, level, Swap in front; same phone size as the three-phone set */
+.phones img{display:block;width:88%;max-width:none;margin:0 auto;height:auto}   /* 2026-10-21: two phones, level, Swap in front; same phone size as the three-phone set */
 /* teal glow drawn by the page, not the image: soft gradients that fade to nothing, so there is no edge or box */
 .phones::before{content:"";position:absolute;inset:-14% -18%;z-index:-1;pointer-events:none;
   background:radial-gradient(ellipse 34% 30% at 50% 26%,rgba(45,180,227,.30),rgba(45,180,227,.10) 55%,transparent 100%),
@@ -237,7 +237,7 @@ nav{border-bottom:1px solid rgba(140,170,230,.12)}
 .tryit-copy h2{margin:0 0 18px}.tryit-copy p:not(.eyebrow){color:var(--dim);font-size:18px;max-width:34ch;margin:0}
 @media (max-width:900px){.tryit{grid-template-columns:minmax(0,1fr)}.phones img{width:100%;margin:0}}
 
-/* 2026-10-21 (David): Learn / Community dropdowns, socials in the footer, Connect Wallet shows its launch note */
+/* 2026-10-21: Learn / Community dropdowns, socials in the footer, Connect Wallet shows its launch note */
 nav li.dd{position:relative}
 nav li.dd>button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
 nav li.dd>button::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);opacity:.7}
@@ -257,16 +257,16 @@ nav li.dd:hover .ddm,nav li.dd:focus-within .ddm,nav li.dd.open .ddm{opacity:1;v
 .soc{display:flex;gap:18px;flex-wrap:wrap}
 .soc a{color:var(--dim)} .soc a:hover{color:var(--ink)}
 
-/* 2026-10-21 (David): the Exe Protocol logo (modular E + Outfit Bold wordmark) replaces the old gradient square everywhere */
+/* 2026-10-21: the Exe Protocol logo (modular E + Outfit Bold wordmark) replaces the old gradient square everywhere */
 .logo{font-family:"Outfit","Hanken Grotesk",sans-serif!important;font-weight:700!important;letter-spacing:-.02em;gap:.4em!important}
 .logo i,.tok i{width:1.28em!important;height:1.13em!important;border-radius:0!important;box-shadow:none!important;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2041.4%2035.7%22%20aria-hidden%3D%22true%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22m0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23m0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23m1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23m2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2226.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2331d4ac%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/svg%3E") center/contain no-repeat!important}
 
-/* 2026-10-21 (David): back-to-top arrow, appears after scrolling down */
+/* 2026-10-21: back-to-top arrow, appears after scrolling down */
 .totop{position:fixed;right:20px;bottom:20px;z-index:60;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,16,34,.82);color:#e8eefc;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s,transform .2s,border-color .2s;backdrop-filter:blur(6px)}
 .totop.on{opacity:1;pointer-events:auto;transform:none}.totop:hover{border-color:rgba(122,168,255,.7)}
 @media (prefers-reduced-motion:reduce){.totop{transition:none}}
 
-/* 2026-10-22 (David): the prototype notice moves from a top banner to a small "Prototype" chip by the logo and a footer line */
+/* 2026-10-22: the prototype notice moves from a top banner to a small "Prototype" chip by the logo and a footer line */
 .brandrow{display:flex;align-items:center;gap:14px;min-width:0}
 .proto{position:relative;flex:none}
 .protob{font-family:inherit;font-size:11px;font-weight:600;line-height:1;letter-spacing:.12em;text-transform:uppercase;color:#ffc56b;background:rgba(255,197,107,.06);border:1px solid rgba(255,197,107,.45);border-radius:999px;padding:6px 10px;cursor:pointer}
@@ -279,10 +279,10 @@ nav li.dd:hover .ddm,nav li.dd:focus-within .ddm,nav li.dd.open .ddm{opacity:1;v
 footer .legal{flex-basis:100%;margin:6px 0 0;font-size:12.5px;line-height:1.5;color:var(--dim)}
 footer .legal a{color:inherit;text-decoration:underline;text-underline-offset:2px}
 
-/* 2026-10-22 (David): social icons beside the footer links (Simple Icons, CC0; site/assets/social) */
+/* 2026-10-22: social icons beside the footer links (Simple Icons, CC0; site/assets/social) */
 .soc a{display:inline-flex;align-items:center;gap:7px}.soc .si{width:14px;height:14px;fill:currentColor;flex:none}
 @media (max-width:700px){footer{padding-bottom:84px}}   /* room for the back-to-top arrow under the footer text on phones */
-/* Home page touches (approved 2026-10-12), v2 after David's mock-up: the original blue page, with exactly two pieces taken
+/* Home page touches (approved 2026-10-12), v2 after the owner's mock-up: the original blue page, with exactly two pieces taken
    from the simulator, then only the lightest touches around them. Everything else is the original design. */
 :root { --r1: #4d8dff; --r3: #2db4e3; --r5: #2ccfc2; --r-deep-end: #128fae }
 
@@ -650,7 +650,7 @@ h2{font-weight:600;font-size:clamp(38px,4.4vw,68px);letter-spacing:-.05em;line-h
   if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es.some(function(e){return e.isIntersecting})){fill();io.disconnect()}},{threshold:.3});io.observe($('meters'))}else fill();
   $('track').innerHTML='<div class="grp">'+items+'</div><div class="grp" aria-hidden="true">'+items+'</div>';
   $('proof').innerHTML=D.proof.map(function(p){return '<div><b>'+esc(p[0])+'</b><span>'+esc(p[1])+'</span></div>'}).join('');
-  $('proofnote').textContent=D.proof_note;   /* the XPR slider moved to the simulator's Exeswap home (2026-10-20, David) */
+  $('proofnote').textContent=D.proof_note;   /* the XPR slider moved to the simulator's Exeswap home (2026-10-20) */
 })();
 </script>
 

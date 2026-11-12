@@ -2,7 +2,7 @@ model_quantized.onnx and vocab.txt: sentence-transformers/all-MiniLM-L6-v2, int8
 Apache License 2.0. Copyright the Sentence-Transformers authors (Nils Reimers, Iryna Gurevych) and Microsoft (MiniLM).
 
 Provenance: model_quantized.onnx verified identical to the official Hugging Face file
-(huggingface.co/Xenova/all-MiniLM-L6-v2, onnx/model_quantized.onnx, downloaded by David on 11 Nov 2026):
+(huggingface.co/Xenova/all-MiniLM-L6-v2, onnx/model_quantized.onnx, downloaded by the owner on 11 Nov 2026):
 sha256 afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1, 22,972,370 bytes.
 vocab.txt: the standard 30,522-token BERT uncased vocabulary, matched against an independent copy; the tokenizer
 output matches the reference BertTokenizer on 550 test lines.

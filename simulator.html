@@ -109,9 +109,9 @@ tr.b td { font-weight: 600 } tr.muted td { color: var(--ink-3) }
 /* Swap section: the Exeswap app screen inside the simulator */
 #p-swap { display: block; min-height: calc(100vh - 150px) }
 #p-trade { display: grid; justify-items: center; align-content: start; min-height: calc(100vh - 150px); padding: clamp(24px, 6vh, 64px) 0 48px }
-/* Exeswap landing (2026-10-15, David): the home page's panel language, scoped to .xh so nothing else on the page changes */
+/* Exeswap landing (2026-10-15): the home page's panel language, scoped to .xh so nothing else on the page changes */
 .xh { justify-self: stretch; width: 100%; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 88px); align-items: center;
-  padding: clamp(28px, 6vh, 72px) 0 clamp(48px, 9vh, 96px);   /* 2026-10-19 (David): edges aligned to the top bar */ font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
+  padding: clamp(28px, 6vh, 72px) 0 clamp(48px, 9vh, 96px);   /* 2026-10-19: edges aligned to the top bar */ font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
 .xh-eye { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: rgba(238, 242, 252, .5); margin: 0 0 22px }
 .xh h2 { font-family: inherit; font-weight: 300; font-size: clamp(40px, 4.6vw, 80px); line-height: 1; letter-spacing: -.05em; margin: 0 0 28px; color: #f3f1f6; text-transform: none; max-width: 11ch }
 .xh h2 .fade { color: transparent; background: linear-gradient(100deg, #f3f1f6 0%, #7aa8ff 45%, #6ab6ff 100%); -webkit-background-clip: text; background-clip: text }
@@ -127,7 +127,7 @@ tr.b td { font-weight: 600 } tr.muted td { color: var(--ink-3) }
   background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 35%), rgba(5, 9, 22, .66); border: 1px solid rgba(160, 190, 245, .32);
   backdrop-filter: blur(34px) saturate(1.1) brightness(.5); -webkit-backdrop-filter: blur(34px) saturate(1.1) brightness(.5);
   box-shadow: 0 40px 90px -40px rgba(77, 141, 255, .2), 0 36px 80px -50px rgba(44, 207, 194, .28), inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 0 40px -12px rgba(255, 255, 255, .08) }
-.xh-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; padding: 1px;   /* 2026-10-21 (David, option A): finer edge */
+.xh-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; padding: 1px;   /* 2026-10-21 (option A): finer edge */
   background: conic-gradient(from var(--xa, 0deg), #4d8dff, #1d4fd6, #f1f6ff, #8a9bb8, #4d8dff);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: .55; animation: xspin 14s linear infinite }
 .xh-card::after { content: ""; position: absolute; width: 55%; aspect-ratio: 1; border-radius: 50%; filter: blur(46px); opacity: .16; z-index: -1; top: -30%; right: -20%; background: #2db4e3 }
@@ -151,9 +151,9 @@ tr.b td { font-weight: 600 } tr.muted td { color: var(--ink-3) }
 .xh-stats span { font-size: 14px; color: rgba(238, 242, 252, .66); white-space: nowrap }
 .xh-note { display: flex; gap: 8px; align-items: center; margin: 14px 0 0; font-size: 12.5px; color: #ffc56b; max-width: none }
 .xh-note svg { flex: none; width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round }
-@media (max-width: 1000px) { .xh { grid-template-columns: minmax(0, 1fr) } .xh-map { aspect-ratio: 16 / 6 } }   /* 2026-10-19 (David): flatter route map on smaller screens (was 16 / 9.5) */
+@media (max-width: 1000px) { .xh { grid-template-columns: minmax(0, 1fr) } .xh-map { aspect-ratio: 16 / 6 } }   /* 2026-10-19: flatter route map on smaller screens (was 16 / 9.5) */
 @media (max-width: 440px) { .xh-stats b { font-size: 19px } .xh-stats span { font-size: 11.5px } .xh-tok { font-size: 13.5px } }
-/* 2026-10-17 (David's reference): on desktop the route card is a landscape rectangle (about 1.5 : 1), same width and place;
+/* 2026-10-17 (the owner's reference): on desktop the route card is a landscape rectangle (about 1.5 : 1), same width and place;
    shorter route map, title and Example tag on one line, content slightly smaller */
 @media (min-width: 1001px) {
   .xh-card { padding: 18px 22px 14px }
@@ -212,7 +212,7 @@ tr.b td { font-weight: 600 } tr.muted td { color: var(--ink-3) }
 .myxpr .v { font-size: 24px; font-weight: 600; letter-spacing: -.01em; font-variant-numeric: tabular-nums;
   background: linear-gradient(120deg, #f1f6ff 10%, #3c9ff2 60%, #2ccfc2); -webkit-background-clip: text; background-clip: text; color: transparent }
 @media (max-width: 900px) { .myxpr .ring { width: 40px; height: 40px } .myxpr .v { font-size: 20px } .hright { gap: 10px } }
-/* 2026-10-19 (David): "How it works" panel for Exeswap users, opened from the top bar */
+/* 2026-10-19: "How it works" panel for Exeswap users, opened from the top bar */
 .how{position:fixed;inset:0;z-index:50;display:flex;justify-content:flex-end}
 .how[hidden]{display:none}
 .how-back{position:absolute;inset:0;background:rgba(2,4,12,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
@@ -241,7 +241,7 @@ tr.b td { font-weight: 600 } tr.muted td { color: var(--ink-3) }
   border-radius:999px;padding:8px 16px;cursor:pointer;white-space:nowrap}
 .how-btn:hover{border-color:rgba(200,220,255,.6)}
 @media (max-width:560px){.how-btn{padding:7px 12px;font-size:13px}}
-/* 2026-10-19 (David): big friendly "How it works" next to "Try a swap" (blue, as the home page's primary button) */
+/* 2026-10-19: big friendly "How it works" next to "Try a swap" (blue, as the home page's primary button) */
 .xh-how { margin-left: 10px; font: 500 15px "Hanken Grotesk", system-ui, sans-serif; color: #fff; border: 0; border-radius: 999px; padding: 13px 24px; cursor: pointer;
   transition: transform .2s; background: linear-gradient(120deg, #4a78c8, #2f5aa8); box-shadow: 0 10px 26px -12px rgba(74,120,200,.85), inset 0 1px 0 rgba(255,255,255,.22) }
 .xh-how:hover { transform: translateY(-2px) }
@@ -283,7 +283,7 @@ tr.b td { font-weight: 600 } tr.muted td { color: var(--ink-3) }
 .sp-bar.e .lab, .sp-bar.e .val { color: var(--ink) }
 @media (max-width: 640px) { .sp-bar { grid-template-columns: 1fr auto } .sp-bar .track { grid-column: 1 / -1; order: 3 } }
 
-/* 2026-10-20 (David): Exeswap numbers band and "Try it for yourself" under the Exeswap hero, in the home page's format */
+/* 2026-10-20: Exeswap numbers band and "Try it for yourself" under the Exeswap hero, in the home page's format */
 .xh-proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; border-top: 1px solid rgba(140, 170, 230, .18); border-bottom: 1px solid rgba(140, 170, 230, .18); font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
 .xh-proof div { padding: 30px 0; min-width: 0 }
 .xh-proof b { display: block; font-weight: 300; font-size: clamp(34px, 4vw, 60px); letter-spacing: -.05em; line-height: 1; margin-bottom: 8px }
@@ -302,7 +302,7 @@ tr.b td { font-weight: 600 } tr.muted td { color: var(--ink-3) }
 @media (max-width: 900px) { .xh-proof { grid-template-columns: 1fr 1fr } }
 @media (max-width: 520px) { .xt-grid { grid-template-columns: 1fr } .xh-proof b { font-size: 34px } }
 
-/* Swap card (2026-10-20, David): steps before you sign, one "Details" line that opens the cost breakdown and route, token dropdown */
+/* Swap card (2026-10-20): steps before you sign, one "Details" line that opens the cost breakdown and route, token dropdown */
 .swapcard { position: relative }
 .swsteps { list-style: none; margin: -2px 0 0; padding: 0 4px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px }
 .swsteps li { position: relative; font-size: 11.5px; line-height: 1.25; color: var(--ink-3); padding-top: 9px; transition: color .3s }
@@ -347,7 +347,7 @@ img.coin { background: none !important; object-fit: contain }
 .tokpop ul::-webkit-scrollbar { width: 6px } .tokpop ul::-webkit-scrollbar-track { background: transparent }
 .tokpop ul::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #3987e5, #2ccfc2); border-radius: 6px }
 
-/* Agent payments, "smarter" layout (2026-10-20, David) */
+/* Agent payments, "smarter" layout (2026-10-20) */
 .mk-stack { display: grid; gap: 8px; margin-top: 6px; max-width: 760px }
 .mk-layer { display: grid; grid-template-columns: 200px 1fr; gap: 12px; align-items: center; padding: 12px 16px; border: 1px solid rgba(140, 170, 230, .18); border-radius: 10px; background: rgba(140, 170, 230, .04) }
 .mk-layer b { font-weight: 600 } .mk-layer span { color: var(--ink-2); font-size: 14px }
@@ -362,7 +362,7 @@ img.coin { background: none !important; object-fit: contain }
 .mk-t td:first-child { color: var(--ink-2) } .mk-t td:last-child { color: var(--ink) }
 @media (max-width: 640px) { .mk-layer { grid-template-columns: 1fr; gap: 2px } }
 
-/* "How it works" band on the Exeswap home (2026-10-21, David): three steps, sticky picture on desktop, inline on phones */
+/* "How it works" band on the Exeswap home (2026-10-21): three steps, sticky picture on desktop, inline on phones */
 .xw { padding: clamp(64px, 12vh, 128px) 0 clamp(40px, 8vh, 80px); font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
 .xw-head { max-width: 46rem; margin-bottom: clamp(28px, 5vh, 56px) }
 .xw-head h2 { font-family: inherit; font-weight: 300; font-size: clamp(36px, 4vw, 64px); line-height: 1.02; letter-spacing: -.05em; margin: 0 0 22px; color: #f3f1f6; text-transform: none }
@@ -402,27 +402,27 @@ img.coin { background: none !important; object-fit: contain }
 }
 @media (prefers-reduced-motion: reduce) { .xw-fig .xw-vis { transition: none } }
 
-/* 2026-10-21 (David): the Exeswap logo (its own modular E + Outfit Bold) replaces the old gradient square everywhere */
+/* 2026-10-21: the Exeswap logo (its own modular E + Outfit Bold) replaces the old gradient square everywhere */
 .side-brand .mark, h1::before, .xh-tok i { border-radius: 0 !important; box-shadow: none !important; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2041.4%2035.7%22%20aria-hidden%3D%22true%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22m0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23m0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23m1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23m2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%220.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%232350e6%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/svg%3E") center/contain no-repeat !important }
 .side-brand .mark { width: 28px !important; height: 24px !important }
 h1::before { width: 20px !important; height: 17.5px !important }
 .xh-tok i { width: 22px !important; height: 19px !important }
 .side-brand .bt b { font-family: "Outfit", "Hanken Grotesk", sans-serif !important; font-weight: 700 !important; font-size: 17px !important; letter-spacing: -.02em !important }
 
-/* 2026-10-21 (David): "Details" reads as a link, the same as "Change XPR range" */
+/* 2026-10-21: "Details" reads as a link, the same as "Change XPR range" */
 .swmore summary .swd { font-style: normal; font-size: 13px; font-weight: 400; color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px }
 .swmore summary:hover .swd { color: var(--ink) }
-/* 2026-10-21 (David): "Three things happen before you sign." matches the other section headings */
+/* 2026-10-21: "Three things happen before you sign." matches the other section headings */
 .xw-head h2 { font-size: clamp(40px, 4.6vw, 80px); line-height: 1 }
-/* 2026-10-21 (David): one text measure across the simulator home: every section heading and lede has the same right edge */
-.xw-head { max-width: none } .xw-head h2 { max-width: none; margin-bottom: 28px } .xw-head .xh-lede { max-width: 30ch }   /* heading on two lines, broken after "happen" (David's mock-up, 21 Oct); lede keeps the shared measure */
+/* 2026-10-21: one text measure across the simulator home: every section heading and lede has the same right edge */
+.xw-head { max-width: none } .xw-head h2 { max-width: none; margin-bottom: 28px } .xw-head .xh-lede { max-width: 30ch }   /* heading on two lines, broken after "happen" (the owner's mock-up, 21 Oct); lede keeps the shared measure */
 
-/* 2026-10-21 (David): back-to-top arrow, appears after scrolling down */
+/* 2026-10-21: back-to-top arrow, appears after scrolling down */
 .totop{position:fixed;right:20px;bottom:20px;z-index:60;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,16,34,.82);color:#e8eefc;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s,transform .2s,border-color .2s;backdrop-filter:blur(6px)}
 .totop.on{opacity:1;pointer-events:auto;transform:none}.totop:hover{border-color:rgba(122,168,255,.7)}
 @media (prefers-reduced-motion:reduce){.totop{transition:none}}
 
-/* 2026-10-22 (David): phone motion in the Exeswap home hero, ported from the Exeswap Phone Motion artifact with a brand pass:
+/* 2026-10-22: phone motion in the Exeswap home hero, ported from the Exeswap Phone Motion artifact with a brand pass:
    Exeswap mark, site fonts and colours, the simulator's own figures (they follow the XPR slider), no unbacked claims,
    and it only runs while on screen. */
 .xm { margin: 0; display: flex; flex-direction: column; align-items: center; min-width: 0; position: relative }
@@ -528,11 +528,11 @@ h1::before { width: 20px !important; height: 17.5px !important }
 .xh-route { margin-top: clamp(56px, 9vh, 110px) }
 .shell { overflow-x: clip }   /* the hero glow may reach past the content column; clip only at the window edge */
 @media (max-width: 1000px) { .xm-phone { --pw: clamp(160px, 43vw, 300px) } }
-/* 2026-10-22 (David): stacked layout matches the home page: text runs the full width, and the space from the buttons to the phone is about 50px + 10% of the window */
+/* 2026-10-22: stacked layout matches the home page: text runs the full width, and the space from the buttons to the phone is about 50px + 10% of the window */
 @media (max-width: 1000px) { #p-swap .xh h2, #p-swap .xh .xh-lede, #p-swap .xw-head .xh-lede { max-width: none } #p-swap > .xh:first-child { row-gap: calc(50px + 10vw); padding-top: 2px } }   /* nav bar to eyebrow: 20px, as on the home page */   /* stacked under the text: about 0.89 x the window width tall, as the home page phones (capped near 620px) */
 @media (max-width: 1000px) { .xm { gap: 16px } .xm-under { position: static; transform: none } #p-swap > .xh:first-child { padding-bottom: 0 } }
 
-/* 2026-10-22 (David): the demo note moves into an ⓘ beside the controls (hover, focus or tap), so nothing crowds the space below the phone */
+/* 2026-10-22: the demo note moves into an ⓘ beside the controls (hover, focus or tap), so nothing crowds the space below the phone */
 .xm-under { z-index: 2 }   /* the note opens above the phone, not behind it */
 @media (max-width: 1000px) { .xm-under { padding-bottom: 32px } }   /* stacked: breathing room between the controls and the figures band */
 .xm-info { position: relative; flex: none }
@@ -807,7 +807,7 @@ tr.b td:first-child { color: var(--r3) }
 .world .wctl .ic-apps { color: #3fd8cf; filter: drop-shadow(0 0 6px rgba(63, 216, 207, .55)) }
 .world .ic { width: 18px; height: 18px; stroke-width: 1.8 }
 
-/* 2026-10-21 (David): on a narrowed desktop window the tabs fold into a menu button (current page + ☰) with a dropdown,
+/* 2026-10-21: on a narrowed desktop window the tabs fold into a menu button (current page + ☰) with a dropdown,
    instead of a scrolling row. Touch screens use the same compact menu. */
 .side-nav::-webkit-scrollbar { display: none }
 .burger, .side-more { display: none }
@@ -823,7 +823,7 @@ tr.b td:first-child { color: var(--r3) }
   .side.open .sgrp { display: grid; gap: 2px }
   .side.open .slab { display: flex }
   .side.open .side-nav button { width: 100%; border-radius: 10px; padding: 9px 12px }
-  /* one header row: logo | My XPR | menu button; Exeswap specs moves into the menu (David, 21 Oct) */
+  /* one header row: logo | My XPR | menu button; Exeswap specs moves into the menu (21 Oct) */
   .shell.compact .topbar { display: none }
   .side-brand .hright { margin-left: auto; gap: 12px }
   .side-brand .hright #specsBtn { display: none }
@@ -832,7 +832,7 @@ tr.b td:first-child { color: var(--r3) }
   .side-more a:hover { background: rgba(255, 255, 255, .05); color: var(--ink) }
 }
 @media (max-width: 560px) {
-  /* very narrow desktop window: the menu button shows only ☰ and the row tightens, so the header fits the window (David, 22 Oct) */
+  /* very narrow desktop window: the menu button shows only ☰ and the row tightens, so the header fits the window (22 Oct) */
   #burgerLab { display: none } .burger { padding: 8px 10px } .side-brand { gap: 8px } .side-brand .hright { gap: 8px }
 }
 @media (max-width: 900px) { .shell, .shell.mini { grid-template-columns: minmax(0, 1fr) } }
@@ -1158,10 +1158,10 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
         </div>
       </figure>
     </div>
-    <!-- 2026-10-20 (David): Exeswap's numbers, then the XPR slider (moved here from the home page) -->
+    <!-- 2026-10-20: Exeswap's numbers, then the XPR slider (moved here from the home page) -->
     <div class="xh-proof" id="xhProof"></div>
     <p class="xh-proofnote" id="xhProofNote"></p>
-    <!-- 2026-10-22 (David): the route card moves down a band when the phone motion takes the hero -->
+    <!-- 2026-10-22: the route card moves down a band when the phone motion takes the hero -->
     <!-- Venues: CUT -->
     <div class="xh xh-try" id="xhTry">
       <div>
@@ -1186,7 +1186,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
         <figure class="xh-card xt-small"><h3>Lower Fees</h3><p>XPR is your personalized ‘exchange rate’ — higher XPR means lower eligible fees.</p></figure>
       </div>
     </div>
-    <!-- 2026-10-21 (David): third band, for casual users: how easy it is, in three steps (scroll-led on desktop) -->
+    <!-- 2026-10-21: third band, for casual users: how easy it is, in three steps (scroll-led on desktop) -->
     <!-- equation DITCHED (slider already shows it live) -->
     <div class="xw">
       <p class="xh-eye">HOW IT WORKS</p>
@@ -1245,7 +1245,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 
   <!-- 1 YOUR RATE -->
   <section id="p-rate" class="grid2">
-    <!-- 2026-10-19 (David): "Your tier" card. Trading x your rate = Tier 2 budget; the budget can't buy a higher rate -->
+    <!-- 2026-10-19: "Your tier" card. Trading x your rate = Tier 2 budget; the budget can't buy a higher rate -->
     <div class="panel tierc" style="grid-column:1/-1">
       <div class="tierc-head"><p class="sp-eyebrow">Your tier</p><div class="tc-status"><span class="pill neutral" id="tcNow">Tier 1</span><span class="tc-sim">Simulated</span></div></div>
       <h2 class="sp-h tc-title">The three <span>tiers</span></h2>
@@ -1410,7 +1410,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 
   <!-- 6 SPEED AND FRICTION -->
   <section id="p-speed" hidden style="display:grid;gap:18px">
-    <!-- 2026-10-20 (David): agents lead with signal. x402 moves the money; Exe decides what it costs, by signal -->
+    <!-- 2026-10-20: agents lead with signal. x402 moves the money; Exe decides what it costs, by signal -->
     <div class="panel sp-hero">
       <p class="sp-eyebrow">Agent payments</p>
       <h2 class="sp-h">x402 moves the money. <span>Exe Protocol determines what it costs, by signal.</span></h2>
@@ -1757,7 +1757,7 @@ $("month").oninput = e => { stop(); S.month = +e.target.value; render() };
 /* ---------- swap (same rule and figures as app/; app/build.py checks them against the engine) ---------- */
 const SW = JSON.parse(document.getElementById("swap").textContent);
 const TOKI = JSON.parse(document.getElementById("tokicons").textContent);
-const swToks = () => swC().tokens.filter(t => TOKI[t]);   // B (2026-10-20, David): list only tokens we have icons for
+const swToks = () => swC().tokens.filter(t => TOKI[t]);   // B (2026-10-20): list only tokens we have icons for
 const tokIcon = t => TOKI[t] ? `<img class="coin" src="${TOKI[t]}" alt="" width="24" height="24">` : `<i class="coin">${t[0]}</i>`;
 const SWS = { chain: "solana", tin: "USDC", tout: null };
 const swUsd = v => "$" + v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
@@ -1806,7 +1806,7 @@ $("swIn").onchange = e => { swKeep(SWS.tin, e.target.value); SWS.tin = e.target.
 $("swOutTok").onchange = e => { SWS.tout = e.target.value; if (SWS.tout === SWS.tin) { const n = swToks().find(t => t !== SWS.tout); swKeep(SWS.tin, n); SWS.tin = n } swTokens(); render() };
 $("swFlip").onclick = () => { swKeep(SWS.tin, SWS.tout); [SWS.tin, SWS.tout] = [SWS.tout, SWS.tin]; swTokens(); render() };
 swTokens();
-/* Token picker (2026-10-20, David: option A): a dropdown on the card, not a panel over a dimmed page; a bottom sheet on phones */
+/* Token picker (2026-10-20, the owner: option A): a dropdown on the card, not a panel over a dimmed page; a bottom sheet on phones */
 (function () {
   const NAMES = { SOL: "Solana", USDC: "USD Coin", USDT: "Tether", JUP: "Jupiter", BONK: "Bonk", WIF: "dogwifhat", JTO: "Jito", PYTH: "Pyth",
     RAY: "Raydium", WBTC: "Wrapped BTC", WETH: "Wrapped Ether", ETH: "Ether", DAI: "Dai", LINK: "Chainlink", UNI: "Uniswap", AAVE: "Aave" };
@@ -1835,7 +1835,7 @@ swTokens();
   const CH = { solana: ["USDC", "SOL"], ethereum: ["USDC", "ETH"] };
   let cur = "solana", W = 0, H = 0, P = [], A, B, t0 = performance.now(), raf = 0, vis = true;
   const bez = (a, b, d, e, t) => { const u = 1 - t; return [u*u*u*a[0] + 3*u*u*t*b[0] + 3*u*t*t*d[0] + t*t*t*e[0], u*u*u*a[1] + 3*u*u*t*b[1] + 3*u*t*t*d[1] + t*t*t*e[1]] };
-  function figs() { const ch = SW.chains[cur], x = Math.min(100, S.sig), t = S.tier === 1 ? 1 : 2, q = swSplit(1000, ch.gas, ch.tiers["tier" + t][x], ch.fee_rate);   // follows the slider and My XPR (David, 21 Oct)
+  function figs() { const ch = SW.chains[cur], x = Math.min(100, S.sig), t = S.tier === 1 ? 1 : 2, q = swSplit(1000, ch.gas, ch.tiers["tier" + t][x], ch.fee_rate);   // follows the slider and My XPR (21 Oct)
     return { full: q.fee, pay: q.fee - q.red, pct: q.red / q.fee, venues: ch.venues, x, t } }
   function geo() { const r = cv.getBoundingClientRect(), k = Math.min(2, devicePixelRatio || 1), V = SW.chains[cur].venues; W = r.width; H = r.height; if (!W) return;
     cv.width = Math.round(W * k); cv.height = Math.round(H * k); c.setTransform(k, 0, 0, k, 0, 0);
@@ -1978,7 +1978,7 @@ addEventListener("popstate", () => { const h = location.hash.slice(1) || "swap";
 </script>
 <button class="totop" id="toTop" type="button" aria-label="Back to top">&uarr;</button>
 <script>(function(){var b=document.getElementById("toTop");function f(){b.classList.toggle("on",scrollY>600)}addEventListener("scroll",f,{passive:true});f();b.onclick=function(){scrollTo({top:0,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})}})();</script>
-<script>(function(){ /* 2026-10-21 (David): menu button for narrow windows and touch phones */
+<script>(function(){ /* 2026-10-21: menu button for narrow windows and touch phones */
   var side = document.querySelector(".side"), b = document.getElementById("burger"), lab = document.getElementById("burgerLab");
   function sync(){ var t = side.querySelector('.side-nav [aria-selected="true"]'); if (t) lab.textContent = t.title || t.textContent.trim() }
   function set(o){ side.classList.toggle("open", o); b.setAttribute("aria-expanded", String(o)); sync() }
@@ -1995,7 +1995,7 @@ addEventListener("popstate", () => { const h = location.hash.slice(1) || "swap";
     else { home.appendChild(hr); hr.insertBefore(xpr, wallet); shell.classList.remove("compact"); set(false) } }
   (mq.addEventListener ? mq.addEventListener("change", place) : mq.addListener(place)); place() })();</script>
 <script>
-/* 2026-10-22 (David): phone motion in the Exeswap home hero. Figures come from the same swap data as the swap card and follow the XPR slider. */
+/* 2026-10-22: phone motion in the Exeswap home hero. Figures come from the same swap data as the swap card and follow the XPR slider. */
 (function () {
   const T = 19000, $m = id => document.getElementById(id), clamp = x => Math.max(0, Math.min(1, x)),
     ease = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2, p = (t, a, b) => ease(clamp((t - a) / (b - a))),

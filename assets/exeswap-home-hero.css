@@ -1,5 +1,5 @@
 .xh { justify-self: stretch; width: 100%; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 88px); align-items: center;
-  padding: clamp(28px, 6vh, 72px) 0 clamp(48px, 9vh, 96px);   /* 2026-10-19 (David): edges aligned to the top bar */ font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
+  padding: clamp(28px, 6vh, 72px) 0 clamp(48px, 9vh, 96px);   /* 2026-10-19: edges aligned to the top bar */ font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
 .xh-eye { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: rgba(238, 242, 252, .5); margin: 0 0 22px }
 .xh h1 { font-family: inherit; font-weight: 300; font-size: clamp(40px, 4.6vw, 80px); line-height: 1; letter-spacing: -.05em; margin: 0 0 28px; color: #f3f1f6; text-transform: none; max-width: 11ch }
 .xh h1 .fade { color: transparent; background: linear-gradient(100deg, #f3f1f6 0%, #7aa8ff 45%, #6ab6ff 100%); -webkit-background-clip: text; background-clip: text }
@@ -115,11 +115,11 @@
 .xh-route { margin-top: clamp(56px, 9vh, 110px) }
 .shell { overflow-x: clip }   /* the hero glow may reach past the content column; clip only at the window edge */
 @media (max-width: 1000px) { .xm-phone { --pw: clamp(160px, 43vw, 300px) } }
-/* 2026-10-22 (David): stacked layout matches the home page: text runs the full width, and the space from the buttons to the phone is about 50px + 10% of the window */
+/* 2026-10-22: stacked layout matches the home page: text runs the full width, and the space from the buttons to the phone is about 50px + 10% of the window */
 @media (max-width: 1000px) { #p-swap .xh h1, #p-swap .xh .xh-lede, #p-swap .xw-head .xh-lede { max-width: none } #p-swap > .xh:first-child { row-gap: calc(50px + 10vw); padding-top: 2px } }   /* nav bar to eyebrow: 20px, as on the home page */   /* stacked under the text: about 0.89 x the window width tall, as the home page phones (capped near 620px) */
 @media (max-width: 1000px) { .xm { gap: 16px } .xm-under { position: static; transform: none } #p-swap > .xh:first-child { padding-bottom: 0 } }
 
-/* 2026-10-22 (David): the demo note moves into an ⓘ beside the controls (hover, focus or tap), so nothing crowds the space below the phone */
+/* 2026-10-22: the demo note moves into an ⓘ beside the controls (hover, focus or tap), so nothing crowds the space below the phone */
 .xm-under { z-index: 2 }   /* the note opens above the phone, not behind it */
 @media (max-width: 1000px) { .xm-under { padding-bottom: 32px } }   /* stacked: breathing room between the controls and the figures band */
 .xm-info { position: relative; flex: none }
