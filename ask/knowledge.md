@@ -909,6 +909,31 @@ approved: David, 13 Nov 2026
 Exe's economic model is not published yet. You can find out more in [Exe Protocol's Media Room on Medium](https://medium.com/@Exeswap), email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me), or use "Talk to our team" on the [homepage](index.html#contact).
 
 ---
+id: data-safety
+status: approved
+kind: answer
+topic: Exe Protocol
+q: Is my data safe, and what does Exe do with my data?
+also: is my data safe | what does exe do with my data | does exe collect my personal information | does exe store my data | is there a privacy policy | do I need an account to use exeswap | does exe track me | what happens to my wallet information | how does exe handle user data
+test: how does exe treat my personal information | do I have to hand over personal details to use exeswap
+keywords: data, privacy, personal information, non-custodial, opt-in, account
+source: Exeswap specs: Settlement and custody | exeswap-specs.html#settlement-and-custody
+source: Exeswap specs: How Exeswap works | exeswap-specs.html#what-it-is
+source: Exeswap simulator: questions | simulator.html#swap
+source: Exe Protocol: Contact | index.html#contact
+related: is-xpr-optional, what-is-xpr, contact-exe
+checked: Claude, 13 Nov 2026, claims from the cited site pages (non-custodial, no account, opt-in XPR); the data-statement sentence is David's, 13 Nov 2026
+approved: David, 13 Nov 2026
+
+Your wallet stays yours: you trade straight from your own wallet, and there is no account to create.
+
+XPR is opt-in. Without it, Exeswap works as a regular aggregator and you pay the normal fee. If you opt in, your XPR is calculated from your verified on-chain activity.
+
+A full statement on how Exe handles data is planned for publication on our website before launch.
+
+For further information, email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me), or use "Talk to our team" on the [homepage](index.html#contact).
+
+---
 id: exe-ai-economic-model
 status: approved
 kind: answer
@@ -989,21 +1014,6 @@ checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
 Exe AI is being trained on Exe's economic model to value what your verified on-chain activity adds to the ecosystem, and return part of that value to you. The goal is maximizing fee redemption through a clear explanation of your XPR, your Exe Protocol Rate: how XPR works, why, and how you can improve your XPR. The site does not yet publish the detailed scoring method.
-
----
-id: exe-benefit-from-activity
-status: needs-input
-kind: answer
-topic: Exe AI
-q: How does Exe Protocol benefit from my verified activity?
-also: what does exe get from my activity | what does exe do with my data | why does exe want my activity | how does exe benefit from my verified activity | what does exe protocol gain from my on-chain activity | why is my verified activity useful to exe protocol | how does user activity help exe protocol | what does my activity contribute to exe's business | how does verified activity support exe protocol
-test: what is in it for exe when users contribute useful activity | how does the protocol itself benefit from what my wallet does
-keywords: verified activity, data, benefit
-source: Homepage: The Exe product suite | index.html#suite
-related: exe-ai-values-activity
-checked: Claude, 13 Nov 2026: answer unfinished in David's document; held
-
-[PLACEHOLDER: David's answer. The document's draft stops at "increase business blah blah".]
 
 ---
 id: exe-ai-rule-authority
@@ -1564,7 +1574,7 @@ status: approved
 kind: answer
 topic: Evidence
 q: Has Exe shown that rewarding activity attracts more valuable activity?
-also: is the signal loop proven | does rewarding signal attract more activity | has exe proved the model works with real users | what is still a hypothesis | has exe tested whether rewards attract more useful activity | is exe's activity incentive hypothesis proven | has exe measured real user responses to fee redemption | what evidence shows users contribute more when exe rewards activity | has rewarding verified signal been validated with real users | what still needs a pilot in exe's activity reward model
+also: is the signal loop proven | does rewarding signal attract more activity | has exe proved the model works with real users | what is still a hypothesis | has exe tested whether rewards attract more useful activity | is exe's activity incentive hypothesis proven | has exe measured real user responses to fee redemption | what evidence shows users contribute more when exe rewards activity | has rewarding verified signal been validated with real users | what still needs a pilot in exe's activity reward model | do simulations prove that real users will behave differently | is there real-world evidence that incentives change user behaviour | have simulations shown that users will respond to fee redemption | is the incentive model proven or only simulated
 test: do the simulations show that people will actually change their behaviour | has exe demonstrated the user behaviour its incentive model aims to encourage
 keywords: hypothesis, pilot, signal, valuable activity
 source: Exe Protocol specs: Mechanism | exe-protocol-specs.html#mechanism
