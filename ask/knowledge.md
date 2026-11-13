@@ -1153,7 +1153,7 @@ related: other-paymasters, app-how-it-works, app-commitment, dumb-spend-smart-la
 checked: Claude, 13 Nov 2026, sourced by David; the Medium article did not open for Claude, so not checked
 approved: David, 13 Nov 2026
 
-Agents can already pay each other through x402 and similar rails, and those rails are fast. But nobody has solved what each payment should cost, so every payment is still a "dumb" spend.
+For your app: your users get lower fees through their XPR, and your app allocates nothing for fee redemption. The bigger picture: agents can already pay each other through x402 and similar rails, and those rails are fast. But nobody has solved what each payment should cost, so every payment is still a "dumb" spend.
 
 Exe Protocol fixes that. We price agent payments by verified on-chain activity, turning "dumb" spends into a "smart" layer, without human friction or ungoverned risk.
 
@@ -1506,7 +1506,7 @@ related: netting-comparison-baseline, net-settlement
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-No. The savings depend on the payment pattern and how many payments each agent makes. The published comparison uses a simulated workload concentrated around popular services. Exe's model shows netting savings growing as payments per agent rise; the example is not a forecast for your app.
+No. The savings depend on the payment pattern and how many payments each agent makes. The published comparison uses a simulated workload concentrated around popular services. Exe's model shows netting savings growing as payments per agent rise; the example is not a forecast for any particular app.
 
 ---
 id: offchain-approval-comparison
