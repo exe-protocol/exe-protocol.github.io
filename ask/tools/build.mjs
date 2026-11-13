@@ -18,7 +18,10 @@ ort.env.wasm.numThreads = 1;
 // Chosen to cut confidently wrong answers (24 -> 9 of 76) at the cost of more "Did you mean" (direct answers 41 -> 32);
 // all 10 off-topic probes refused. Re-check on fresh test phrasings before publishing (these were used to choose).
 // Keyword-only mode (while the model loads): answer when the entry covers half the question's words.
-const THRESHOLDS = { answer: 0.40, margin: 0.05, suggest: 0.30, keyword: 0.35, keywordCover: 0.5, keywordSuggest: 0.34 };
+// 13 Nov 2026: margin 0.05 -> 0.08. The bank grew from 41 to 106 entries, so close neighbours are more common. At 0.05 the
+// published check gave 26/208 wrong answers first (12.5%, over the 10% gate); at 0.08, 15/208 (7.2%), with the same 178/208
+// shown. Cost: 18 fewer direct answers, shown as "Did you mean" instead.
+const THRESHOLDS = { answer: 0.40, margin: 0.08, suggest: 0.30, keyword: 0.35, keywordCover: 0.5, keywordSuggest: 0.34 };
 
 const { entries, starters, errors } = parseKnowledge();
 if (errors.length) { console.error("knowledge.md has errors:\n- " + errors.join("\n- ")); process.exit(1); }
