@@ -170,10 +170,9 @@ related: xpr-lowers-fees, xpt-vs-xpr, is-xpr-optional, how-xpr-changes, what-aff
 checked: Claude, 11 Nov 2026, David's edit, against the cited site pages
 approved: David, 11 Nov 2026
 
-XPR, your Exe Protocol Rate, functions as your personalized ‘exchange rate,’ with higher XPR meaning lower fees, from 0–100%. Earned through verified on-chain signal, XPR is determined by your activity.
+XPR, your Exe Protocol Rate, functions like a personal exchange rate, with higher XPR meaning lower fees, from 0–100%. Earned through verified on-chain signal, XPR is determined by your activity.
 
 XPR powers Exeswap and is designed to carry across every app that uses Exe Protocol.
-
 ---
 id: is-xpr-optional
 status: approved
@@ -206,8 +205,7 @@ related: exeswap-frequent-traders, what-is-xpr, tier-three, xpr-range
 checked: Claude, 11 Nov 2026, David's edit, against the cited site pages
 approved: David, 11 Nov 2026
 
-Your XPR follows your verified on-chain activity: steady activity builds your XPR, and a period of less activity, even inactivity, lowers it gently. Your history counts too, so one burst of activity can’t send your XPR soaring, and one quiet period won’t wipe it out.
-
+Your XPR follows your verified on-chain activity: consistent, high-signal activity builds your XPR, while a period of less activity lowers it gently. Your history counts too, so a sudden increase in activity can’t drastically increase your XPR, and reduced activity won’t drastically lower it either.
 ---
 id: what-are-tiers
 status: approved
@@ -266,7 +264,7 @@ related: maximum-fee-redemption, tier-two, what-fees-exeswap, pool-under-load
 checked: Claude, 11 Nov 2026, David's edit, against the cited site pages
 approved: David, 11 Nov 2026
 
-Because XPR isn't the only factor. Higher tiers earn more from the same XPR, gas differs from chain to chain, and pool strength sets how much of what XPR earns Exe's pool can pay right now.
+Because XPR isn't the only factor. Higher tiers earn more from the same XPR, gas differs from chain to chain, and pool strength sets how much of what XPR earns Exe's Sponsorship Pool can pay right now.
 
 Every quote shows the full fee, what XPR redeems and what you pay.
 
@@ -287,7 +285,7 @@ related: flagged-wallet-treatment, tier-two, xpr-example, is-xpr-optional
 checked: Claude, 11 Nov 2026, David's edit, against the cited site pages
 approved: David, 11 Nov 2026
 
-At Tier 1, with Exe's pool at full strength, your fee redemption matches your XPR: XPR 0.60 redeems 60% of each trade's fee.
+At Tier 1, with Exe's Sponsorship Pool at full strength, your fee redemption matches your XPR: XPR 0.60 redeems 60% of each trade's fee.
 
 At Tier 1, XPR runs up to 1.00.
 
@@ -399,7 +397,7 @@ related: xpr-lowers-fees, what-fees-exeswap, tier-one, own-fees-and-pool
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
 
-A $1,000 trade on a low-fee chain costs $1.01: a $1.00 protocol fee plus $0.01 gas. At Tier 1, with Exe’s pool at full strength, XPR 0.60 gives a fee redemption of $0.61, all from the user's own fees. The user pays $0.40.
+A $1,000 trade on a low-fee chain costs $1.01: a $1.00 protocol fee plus $0.01 gas. At Tier 1, with Exe’s Sponsorship Pool at full strength, XPR 0.60 gives a fee redemption of $0.61, all from the user's own fees. The user pays $0.40.
 
 Simulated.
 
@@ -424,25 +422,6 @@ Every quote shows the full fee, what XPR redeems and what you pay, before you si
 See it in [Your quote](simulator.html#quote).
 
 ---
-id: cheapest-swap-status
-status: approved
-kind: answer
-topic: Exeswap
-q: Is Exeswap always the cheapest?
-also: does exeswap beat every price | have you verified the best swap price | is the cheapest route claim established | will this always cost less | is the lowest price proven yet | have you checked that it is cheapest
-test: can you promise a better price than every exchange | have the swap prices been checked on real trades
-keywords: cheapest, best price, swap comparison, intended capability
-source: Exeswap specs: How Exeswap works | exeswap-specs.html#what-it-is
-source: Exeswap specs: Status | exeswap-specs.html#status
-source: Important information: Statements of intent | important-information.html#statements-of-intent
-source: Exeswap simulator: Your quote | simulator.html#quote
-related: exeswap-solana-ecosystem, what-is-exeswap, evidence-labels, quote-shows-cost
-checked: Claude, 11 Nov 2026, David's edit, against the cited site pages
-approved: David, 11 Nov 2026
-
-That's our aim (to be verified before launch). Exeswap finds a route for each trade across exchanges, like any aggregator.
-
----
 id: what-is-sponsorship-pool
 status: approved
 kind: answer
@@ -458,10 +437,9 @@ related: pool-farming-defences, how-pool-funded, own-fees-and-pool, pool-under-l
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
 
-Exe's shared pool. Your XPR determines how much of your fee is redeemed from Exe’s pool, after what your own fees cover.
+Exe’s Sponsorship Pool pays for users’ fee redemption. Your XPR determines how much of your fee is redeemed from the pool, after what your own fees cover.
 
 The pool is funded by 70% of Exe Protocol’s revenue. Users’ budgets and wallet balances never enter the pool.
-
 ---
 id: how-pool-funded
 status: approved
@@ -479,7 +457,7 @@ approved: David, 11 Nov 2026
 
 By 70% of Exe Protocol’s revenue, from Exeswap’s fees and the protocol fees that apps’ users pay. The other 30% goes to operations.
 
-Users’ budgets and wallet balances never enter the pool.
+Users’ budgets and wallet balances never enter Exe’s Sponsorship Pool.
 
 ---
 id: own-fees-and-pool
@@ -497,17 +475,16 @@ related: app-redemption-funds, how-pool-funded, pool-under-load, xpr-example
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
 
-First from your own fees: up to 70% of the protocol fee you paid. The rest comes from Exe’s pool.
+First from your own fees: up to 70% of the protocol fee you paid, depending on your XPR. The rest comes from the Sponsorship Pool.
 
-The part from your own fees never shrinks, whatever the pool’s state. Fee redemption never exceeds the fee you paid.
-
+The part of fee redemption that comes from your own fees never goes down, whatever the pool’s state. Fee redemption never exceeds the fee you paid.
 ---
 id: pool-under-load
 status: approved
 kind: answer
 topic: Sponsorship Pool
-q: What happens when the pool cannot cover all demand?
-also: what happens when pool strength drops | can the pool pay less under load | why would shared fee support decrease
+q: What happens when the Sponsorship Pool cannot cover all demand?
+also: what happens when pool strength drops | can the pool pay less under load | why would shared fee support decrease | what happens when the pool cannot cover all demand
 test: what if too many users need fee support at once | do my fees rise when the pool is under pressure
 keywords: pool strength, load, capacity, shared support, step-down
 source: Exeswap specs: Funding | exeswap-specs.html#funding
@@ -518,10 +495,9 @@ related: pool-surplus-benefit, own-fees-and-pool, what-affects-fee-redemption, s
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
 
-If Exe’s pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.
+If the Sponsorship Pool runs low, everyone’s share from the pool shrinks equally. The part paid from your own fees depends only on your XPR, never on pool strength.
 
 Under load, the pool steps down gradually. In all nine stress tests (simulated, 24 months each), the pool never ran dry.
-
 ---
 id: app-accounts
 status: approved
@@ -537,9 +513,9 @@ related: app-pool-held, how-pool-funded, app-cost, sdk-availability
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
 
-No. Each app has its own account in the pool, built from the fees its users pay, so no app subsidises another.
+No. Each app has its own account in Exe’s Sponsorship Pool, built from the fees its users pay, so no app subsidises another.
 
-Exe Protocol starts each new app’s account with about 1.9 months of its expected income.
+Exe Protocol adds an opening balance when a new app’s account is set up: about 1.9 months of the app’s expected income. (The size and rules for real apps are not final.)
 
 ---
 id: app-cost
@@ -573,14 +549,14 @@ source: Exe Protocol specs: Roadmap and open items | exe-protocol-specs.html#roa
 source: Important information: Statements of intent | important-information.html#statements-of-intent
 source: Exe Protocol: Contact | index.html#contact
 source: Homepage: The Exe product suite | index.html#suite
+source: Medium: Why Exe is Solana's next UX primitive | https://medium.com/@Exeswap/why-exe-is-solanas-next-ux-primitive-f2c41768dedb
 related: solana-apps-sdk, app-commitment, app-cost, who-is-exe-for, contact-exe
-checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
+checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages; 13 Nov 2026: Medium source added for "other features", confirmed by David
 approved: David, 11 Nov 2026
 
-Not yet. An SDK, so any app can use Exe Protocol, is in development.
+Not yet. An SDK (in development) is designed to let any app integrate Exe Protocol's fee sponsorship system and other features.
 
-To talk about integrating, email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me).
-
+To talk about integrating, email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me), or use “Talk to our team” on the [Exe homepage](index.html#contact).
 ---
 id: who-pays-agent-fees
 status: approved
@@ -914,6 +890,23 @@ approved: David, 13 Nov 2026
 Human-AI alignment: economics determines how resources are acquired and distributed. Exe AI's primary goal is to maximize acquisition of the resources humans need for health, wealth and happiness, and the compute, energy and data AI needs to develop, train and run.
 
 ---
+id: economic-model-more-info
+status: approved
+kind: answer
+topic: Evidence
+q: Where can I find out more about Exe's economic model?
+also: where can I read about exe's economic model | is the economic model published | is there a document that explains exe's economic model | how can I learn more about how exe's model works | where do I find the economics behind exe protocol | who can I ask about exe's economic model
+test: can I read the full economics behind exe protocol | is the exe model available to read yet
+keywords: economic model, published, Media Room, Medium, learn more
+source: Exe Protocol specs: Evidence | exe-protocol-specs.html#evidence
+source: Exe Protocol: Contact | index.html#contact
+related: exe-ai-economic-model, contact-exe, is-exe-audited
+checked: Claude, 13 Nov 2026, David's text (Ask_ExeV4); "not published yet" is David's statement and is not on the site pages
+approved: David, 13 Nov 2026
+
+Exe's economic model is not published yet. You can find out more in [Exe Protocol's Media Room on Medium](https://medium.com/@Exeswap), email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me), or use “Talk to our team” on the [Exe homepage](index.html#contact).
+
+---
 id: exe-ai-economic-model
 status: approved
 kind: answer
@@ -968,8 +961,8 @@ id: exe-ai-fix-alignment
 status: approved
 kind: answer
 topic: Exe AI
-q: Is Exe AI trying to fix AI alignment?
-also: is exe solving ai alignment | does exe claim to fix alignment | how does exe make ai trustworthy | how does exe ai make deception less rewarding | what does exe ai mean by making corruption more expensive | how does exe ai make cooperation pay | why does exe focus on the economics of deception | how does exe ai change the incentives for dishonest behaviour | what does exe mean by the math for deception
+q: Is Exe trying to fix AI alignment?
+also: is exe solving ai alignment | does exe claim to fix alignment | how does exe make ai trustworthy | how does exe ai make deception less rewarding | what does exe ai mean by making corruption more expensive | how does exe ai make cooperation pay | why does exe focus on the economics of deception | how does exe ai change the incentives for dishonest behaviour | what does exe mean by the math for deception | is exe ai trying to fix ai alignment
 test: how is exe aiming to make honesty the better economic choice | why would cooperation be more worthwhile than corruption in exe's model
 keywords: alignment, deception, cooperation, corruption
 source: Medium: Alignment is a math problem, not a moral one | https://medium.com/@Exeswap/alignment-is-a-math-problem-not-a-moral-one-871fe04c0b82
@@ -977,8 +970,7 @@ related: alignment-current-approaches, exe-ai-alignment-training
 checked: Claude, 13 Nov 2026, sourced by David; the Medium article did not open for Claude, so not checked
 approved: David, 13 Nov 2026
 
-No. We're not trying to "fix" AI alignment. We're making sure the math for deception no longer adds up, by making corruption more expensive than cooperation, for humans and AI alike.
-
+No. Exe is not trying to “fix” AI alignment. Our economic model and training environment aim to ensure the math for deception no longer adds up, by making corruption more expensive than cooperation, for humans and AI alike.
 ---
 id: exe-ai-values-activity
 status: approved
@@ -1060,15 +1052,14 @@ related: what-is-xpr, xpr-example, how-xpr-changes, maximum-fee-redemption
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-XPR, your Exe Protocol Rate, works like a personal exchange rate: the higher your XPR, the less you pay in fees. Your wallet earns XPR through steady, verified on-chain activity. For example, on a simulated $1,000 trade with a full fee of $1.01, XPR 0.60 redeems 60% of the full fee, so you pay $0.40.
-
+XPR, your Exe Protocol Rate, functions like a personal exchange rate: the higher your XPR, the less you pay in fees. Your wallet earns XPR through verified on-chain activity. For example, on a simulated $1,000 trade with a full fee of $1.01, XPR 0.60 redeems 60% of the full fee, so you pay $0.40.
 ---
 id: pool-farming-defences
 status: approved
 kind: answer
 topic: Sponsorship Pool
-q: What stops bots farming the pool?
-also: how does exe stop wallet farms | can bots drain the sponsorship pool | what protects the pool from fake activity | can new wallets farm fee redemption | how does exe stop bots draining the pool | what protects the sponsorship pool from farming | how does exe limit wallets farming shared funds | what controls protect the pool from bots | how does exe restrict risky wallets using the pool | how is pool farming limited in exe
+q: What stops bots farming the Sponsorship Pool?
+also: how does exe stop wallet farms | can bots drain the sponsorship pool | what protects the pool from fake activity | can new wallets farm fee redemption | how does exe stop bots draining the pool | what protects the sponsorship pool from farming | how does exe limit wallets farming shared funds | what controls protect the pool from bots | how does exe restrict risky wallets using the pool | how is pool farming limited in exe | what stops bots farming the pool
 test: what prevents automated wallets from taking too much shared fee support | how does exe protect its shared sponsorship funds against repeated abuse
 keywords: farming, bots, flagged wallets, caps, safeguards
 source: Exeswap specs: Safeguards | exeswap-specs.html#safeguards
@@ -1077,8 +1068,7 @@ related: flagged-wallet-treatment, what-is-sponsorship-pool, stress-test-results
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-The published model limits shared support for new and risky wallets, removes shared support from flagged wallets, and caps how much one wallet can draw from the Sponsorship Pool, the shared fee redemption fund. These controls restrict access to shared funds; farm-defence scenarios have been tested against the engine.
-
+The system limits shared support for new and risky wallets, removes shared support from flagged wallets, and caps how much one wallet can draw from the pool. These controls restrict access to shared funds. Farm-defence scenarios were tested against the engine (simulated), and in all nine stress tests the pool never ran dry.
 ---
 id: agents-use-exe
 status: approved
@@ -1130,8 +1120,7 @@ related: what-is-xpr, what-can-i-try, exe-ai-generated-answers
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-Not at the moment. The prototype does not connect your wallet, and the simulator's XPR is not a measurement of your activity. You can explore how different XPR values affect fees, but the XPR shown is an example, not your personal assessment.
-
+Not at the moment. The prototype does not connect your wallet, and the simulator's XPR is not a measurement of your activity. You can explore how different XPR values affect fees [here](simulator.html#trade). (The XPR shown is an example, not your personal assessment.)
 ---
 id: protocol-business-model
 status: approved
@@ -1223,19 +1212,21 @@ Exe Protocol funds fee redemption from Exe Protocol's own fee, so an app allocat
 
 ---
 id: exe-paymaster-difference
-status: needs-input
+status: approved
 kind: answer
 topic: Apps and SDK
-q: How is Exe's paymaster different to other paymasters for apps and agents?
-also: how is exe's paymaster different | what makes exe's paymaster different | what is exe's paymaster built on | does exe use erc-4337 | how is exe's paymaster different for my app | what does exe add to a paymaster for my users | how does exe use erc-4337 for my app's payments | what makes exe's paymaster useful for my app's agents | how does xpr fit into the paymaster my app would use | how does exe build on existing paymaster rails for my app
+q: How is Exe's policy-governed paymaster different to other paymasters?
+also: how is exe's paymaster different | what makes exe's paymaster different | what is exe's paymaster built on | does exe use erc-4337 | how is exe's paymaster different for my app | what does exe add to a paymaster for my users | how does exe use erc-4337 for my app's payments | what makes exe's paymaster useful for my app's agents | how does xpr fit into the paymaster my app would use | how does exe build on existing paymaster rails for my app | how is exe's paymaster different to other paymasters for apps and agents | how is exe's paymaster different to other paymasters
 test: what changes for my app when its paymaster applies each user's exe protocol rate | how does exe's approach to sponsorship compare with the paymaster my app already uses
-keywords: paymaster, ERC-4337, policy-governed, execution layer
+keywords: paymaster, Solana, fee payer, policy-governed, execution layer
 source: Medium: Exe's paymaster evolution | https://medium.com/@Exeswap/exes-paymaster-evolution-fb051f0d2943
 related: other-paymasters, app-how-it-works
-checked: Claude, 13 Nov 2026, sourced by David; the Medium article did not open for Claude, so not checked. Held: ERC-4337 and Solana-first need reconciling
+checked: Claude, 13 Nov 2026, David's Solana-first rewrite (Ask_ExeV4 follow-up). First sentence is a general Solana fact; second sentence rests on the Medium article, which did not open for Claude: published on David's review
+approved: David, 13 Nov 2026
 
-Exe Protocol begins on battle-tested ERC-4337 infrastructure. We don't rebuild the rails: we innovate on them to create the policy-governed execution layer for the agentic economy. Our custom paymaster contract implements XPR, a user's Exe Protocol Rate, to create a smart execution layer for wallet, agent and app spends.
+Any account within a Solana transaction can pay for the transaction fees of another account, allowing for gasless experiences without needing an ERC-4337 paymaster.
 
+We don’t rebuild the rails — we innovate on them to create the policy-governed execution layer for the agentic economy. Our custom paymaster contract implements XPR, a user’s Exe Protocol Rate, to create a smart execution layer for wallet, agent and app spends.
 ---
 id: app-how-it-works
 status: approved
@@ -1257,8 +1248,8 @@ id: app-fee-who-pays
 status: approved
 kind: answer
 topic: Apps and SDK
-q: Who pays Exe Protocol's fee, and who receives the fee?
-also: who pays exe protocol's fee | does my app collect exe protocol's fee | who receives exe protocol's fee | do my users pay exe a fee | who pays exe's protocol fee in my app | who receives the protocol fee my users pay | does my app pass exe's fee on to the protocol | is exe's fee paid by my app or my users | where does the exe protocol fee charged to my users go
+q: Who pays Exe Protocol's fee for my app, and who receives the fee?
+also: who pays exe protocol's fee | does my app collect exe protocol's fee | who receives exe protocol's fee | do my users pay exe a fee | who pays exe's protocol fee in my app | who receives the protocol fee my users pay | does my app pass exe's fee on to the protocol | is exe's fee paid by my app or my users | where does the exe protocol fee charged to my users go | who pays exe protocol's fee, and who receives the fee | who pays the fee for my app and who gets it
 test: does my app handle the protocol's fee payment itself | which party pays and which party receives exe's fee when my users transact
 keywords: Exe Protocol's fee, who pays, app's own fee
 source: Exe Protocol specs: For apps | exe-protocol-specs.html#for-apps
@@ -1290,8 +1281,8 @@ id: app-funds-reach-users
 status: approved
 kind: answer
 topic: Apps and SDK
-q: How do the funds reach my users?
-also: how does fee redemption reach my app's users | how do my users receive fee redemption | what do my users see | how do my app's users benefit | how do my users receive exe fee support | where do my users see the lower transaction cost | how is exe's fee support applied to my users' transactions | how does my app's pool support show up for users | what does fee redemption look like when my users pay
+q: How do the funds reach my app users?
+also: how does fee redemption reach my app's users | how do my users receive fee redemption | what do my users see | how do my app's users benefit | how do my users receive exe fee support | where do my users see the lower transaction cost | how is exe's fee support applied to my users' transactions | how does my app's pool support show up for users | what does fee redemption look like when my users pay | how do the funds reach my users | how do the funds reach my app's users
 test: how would a user of my app notice that part of their fee was covered | does exe's support show up in the amount my users pay for each transaction
 keywords: users, lower cost, example, XPR
 source: Exe Protocol specs: For apps | exe-protocol-specs.html#for-apps
@@ -1384,7 +1375,7 @@ related: app-pool-account, app-starting-buffer, pool-under-load
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-Four rules. Each app's account is separate, so no app subsidises another. A fifth of the opening balance is a buffer that is never spent. New wallets, and wallets flagged the month before, together can draw at most 5% of a month's allocation. If the account runs low, everyone's share from the pool shrinks by the same proportion.
+Four rules. Each app's account is separate, so no app subsidises another. A fifth of the opening balance is a buffer that is never spent. New wallets, and wallets flagged the month before, together can draw at most 5% of a month's allocation. If the account runs low, everyone's share from Exe's Sponsorship Pool shrinks by the same proportion.
 
 ---
 id: app-starting-amount
@@ -1423,8 +1414,8 @@ id: pool-surplus-benefit
 status: approved
 kind: answer
 topic: Sponsorship Pool
-q: What does a pool surplus mean for my fees?
-also: what happens when the pool has a surplus | does a pool surplus lower my fees | who benefits from a pool surplus | what is the surplus factor | how does a pool surplus affect my fees | what does extra money in the sponsorship pool do for users | can a pool surplus increase fee redemption at the same xpr | how do higher tiers benefit from a pool surplus | what happens to spare funds in exe's pool | how does pool surplus support fee redemption and reserves
+q: What does a Sponsorship Pool surplus mean for my fees?
+also: what happens when the pool has a surplus | does a pool surplus lower my fees | who benefits from a pool surplus | what is the surplus factor | how does a pool surplus affect my fees | what does extra money in the sponsorship pool do for users | can a pool surplus increase fee redemption at the same xpr | how do higher tiers benefit from a pool surplus | what happens to spare funds in exe's pool | how does pool surplus support fee redemption and reserves | what does a pool surplus mean for my fees
 test: could more of my fees be covered without my exe protocol rate rising | how do tier 2 and tier 3 users benefit when the shared fee fund has spare capacity
 keywords: surplus, Tier 2, Tier 3, reserve, surplus factor
 source: Exeswap specs: Funding | exeswap-specs.html#funding
@@ -1433,8 +1424,7 @@ related: what-is-sponsorship-pool, what-are-tiers, pool-under-load
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-A surplus in the Sponsorship Pool, the shared fee fund, can increase the fee redemption earned at Tiers 2 and 3 without you needing to raise your XPR, your Exe Protocol Rate. Part of the remaining surplus builds the reserve. Fee redemption still cannot exceed the fees you paid.
-
+A surplus in the Sponsorship Pool can increase the fee redemption earned at Tiers 2 and 3 without you needing to raise your XPR, your Exe Protocol Rate. Part of the remaining surplus builds the reserve. Fee redemption still cannot exceed the fees you paid.
 ---
 id: flagged-wallet-treatment
 status: approved
@@ -1912,7 +1902,7 @@ also: what does exeswap add to existing swap services | how is exeswap different
 test: how does Exeswap bring exchange routing and xpr together | where does Exeswap sit within the existing solana swap experience
 keywords: Solana, ecosystem, aggregator, routes, fee redemption
 source: Exeswap specs: How Exeswap works | exeswap-specs.html#what-it-is
-related: what-is-exeswap, exeswap-adds-to-solana, cheapest-swap-status
+related: what-is-exeswap, exeswap-adds-to-solana
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
@@ -1923,8 +1913,8 @@ id: solana-apps-sdk
 status: approved
 kind: answer
 topic: Apps and SDK
-q: Could other Solana apps use the same system?
-also: could solana wallets and other apps offer exe fee redemption | can other solana apps integrate exe | is exe only for exeswap | could my solana app use exe's fee system | could i add exe fee sponsorship to my solana wallet app | how could my solana app offer xpr fee redemption | is an exe sdk planned for my solana app | could my users get exe fee support in another solana app | how would my solana app access the system used by Exeswap
+q: Could other Solana apps use Exe Protocol's system?
+also: could solana wallets and other apps offer exe fee redemption | can other solana apps integrate exe | is exe only for exeswap | could my solana app use exe's fee system | could i add exe fee sponsorship to my solana wallet app | how could my solana app offer xpr fee redemption | is an exe sdk planned for my solana app | could my users get exe fee support in another solana app | how would my solana app access the system used by Exeswap | could other solana apps use the same system
 test: could the fee model behind Exeswap be integrated into my own solana product | what is the expansion plan for bringing exe to my solana app's users
 keywords: Solana apps, wallets, SDK, expansion
 source: Medium: Why Exe is Solana's next UX primitive | https://medium.com/@Exeswap/why-exe-is-solanas-next-ux-primitive-f2c41768dedb
@@ -1933,8 +1923,7 @@ related: sdk-availability, app-how-it-works, exeswap-first-chain
 checked: Claude, 13 Nov 2026, sourced by David; the Medium article did not open for Claude, so not checked. "Is designed to let" matches the roadmap's "Intent"
 approved: David, 13 Nov 2026
 
-Yes, that is the expansion plan. An SDK (in development) is designed to let wallets and other Solana apps use Exe's fee-sponsorship system after validation.
-
+Yes. Exe plans to expand to other apps. An SDK (in development) is designed to let wallets and other Solana apps use Exe's fee sponsorship system and other features after validation.
 ---
 id: exeswap-launch-updates
 status: approved
