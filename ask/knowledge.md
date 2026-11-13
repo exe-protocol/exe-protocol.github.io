@@ -556,7 +556,7 @@ approved: David, 11 Nov 2026
 
 Not yet. An SDK (in development) is designed to let any app integrate Exe Protocol's fee sponsorship system and other features.
 
-To talk about integrating, email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me), or use “Talk to our team” on the [Exe homepage](index.html#contact).
+To talk about integrating, email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me), or use "Talk to our team" on the [homepage](index.html#contact).
 ---
 id: who-pays-agent-fees
 status: approved
@@ -904,7 +904,7 @@ related: exe-ai-economic-model, contact-exe, is-exe-audited
 checked: Claude, 13 Nov 2026, David's text (Ask_ExeV4); "not published yet" is David's statement and is not on the site pages
 approved: David, 13 Nov 2026
 
-Exe's economic model is not published yet. You can find out more in [Exe Protocol's Media Room on Medium](https://medium.com/@Exeswap), email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me), or use “Talk to our team” on the [Exe homepage](index.html#contact).
+Exe's economic model is not published yet. You can find out more in [Exe Protocol's Media Room on Medium](https://medium.com/@Exeswap), email the team at [Richexeswap@proton.me](mailto:Richexeswap@proton.me), or use "Talk to our team" on the [homepage](index.html#contact).
 
 ---
 id: exe-ai-economic-model
