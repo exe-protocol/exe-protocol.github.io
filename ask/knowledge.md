@@ -1273,8 +1273,8 @@ id: app-redemption-funds
 status: approved
 kind: answer
 topic: Apps and SDK
-q: Where do the funds for fee redemption come from?
-also: where does the money for my users' fee redemption come from | does my app's treasury pay for fee redemption | who funds my users' fee redemption | what funds an app's pool | what funds fee redemption for my app's users | where does the money for my users' lower fees come from | who funds the fee support my app's users receive | does my app need treasury funds for fee redemption | what pays for my users' fee redemption through exe | how is my app's fee redemption funded
+q: Where do the funds for my app users' fee redemption come from?
+also: where do the funds for fee redemption come from | where does the money for my users' fee redemption come from | does my app's treasury pay for fee redemption | who funds my users' fee redemption | what funds an app's pool | what funds fee redemption for my app's users | where does the money for my users' lower fees come from | who funds the fee support my app's users receive | does my app need treasury funds for fee redemption | what pays for my users' fee redemption through exe | how is my app's fee redemption funded | where does my app's opening balance come from | who pays for my app users' fee redemption | what pays for fee redemption for my app's users | does my app pay for its users' fee redemption
 test: whose money covers the share of fees my users do not pay | what income supplies my app's fee support account
 keywords: funds, fee redemption, app's pool, treasury, 70%
 source: Exe Protocol specs: For apps | exe-protocol-specs.html#for-apps
@@ -1283,7 +1283,7 @@ related: app-how-it-works, app-pool-account, app-cost
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-From Exe Protocol's fee. Exe Protocol allocates 70% of the fees earned from your app's users to your app's pool, and adds a starting amount. No funds are required from your app's treasury.
+From the fee your app's users pay Exe Protocol. Exe Protocol allocates 70% of the fees earned from your app's users to your app's pool. Exe Protocol adds an opening balance when a new app's account is set up. (The size and rules for real apps are not final.) No funds are required from your app's treasury.
 
 ---
 id: app-funds-reach-users
@@ -1340,16 +1340,16 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: How does an app allocate a pool?
-also: does an app set up a pool | how does my app get a pool | does my app pay into a pool | how is an app's pool account filled | who sets up my app's pool account | how is a pool account opened for my app | does my app have to create its own sponsorship pool | how does my app get an account in exe's pool | who creates and funds my app's initial pool account | how is my app's sponsorship account established
+also: does an app set up a pool | how does my app get a pool | does my app pay into a pool | how is an app's pool account filled | who sets up my app's pool account | how is a pool account opened for my app | does my app have to create its own sponsorship pool | how does my app get an account in exe's pool | who creates and funds my app's initial pool account | how is my app's sponsorship account established | does my app get an opening balance in its pool account
 test: what happens to set up fee support when my app joins exe | do i have to arrange a separate pool before my app can use exe
-keywords: app's pool, account, Sponsorship Pool, starting amount
+keywords: app's pool, account, Sponsorship Pool, opening balance, starting amount
 source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
 source: Exeswap specs: Funding | exeswap-specs.html#funding
 related: app-pool-held, app-pool-rules, app-starting-amount
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-An app doesn't set a pool up or pay into one. Exe Protocol opens an account for each app inside Exe Protocol's Sponsorship Pool, which pays for users' fee redemption. The account fills from 70% of Exe Protocol's fees that the app's own users pay, plus a starting amount from Exe Protocol.
+An app doesn't set a pool up or pay into one. Exe Protocol opens an account for each app inside Exe Protocol's Sponsorship Pool, which pays for users' fee redemption. The account fills from 70% of Exe Protocol's fees that the app's own users pay. Plus, Exe Protocol adds an opening balance. (The size and rules for real apps are not final.)
 
 ---
 id: app-pool-held
@@ -1384,39 +1384,39 @@ related: app-pool-account, app-starting-buffer, pool-under-load
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-Four rules. Each app's account is separate, so no app subsidises another. A fifth of the starting amount is a buffer that is never spent. New wallets, and wallets flagged the month before, together can draw at most 5% of a month's allocation. If the account runs low, everyone's share from the pool shrinks by the same proportion.
+Four rules. Each app's account is separate, so no app subsidises another. A fifth of the opening balance is a buffer that is never spent. New wallets, and wallets flagged the month before, together can draw at most 5% of a month's allocation. If the account runs low, everyone's share from the pool shrinks by the same proportion.
 
 ---
 id: app-starting-amount
 status: approved
 kind: answer
 topic: Apps and SDK
-q: What does a new app need to get its starting amount?
-also: how is a new app's starting amount sized | does a new app get a starting amount | how does exe fund a new app's account | when is a new app's starting amount paid | how does my app qualify for starting pool funds | what trading history does my app need for initial funding | how is my app's starting pool amount sized | what evidence must my app provide for its starting amount | how is the initial funding for my app paid out | why might my app's users get less fee support at first
+q: What does a new app need to get its opening balance?
+also: how is a new app's starting amount sized | does a new app get a starting amount | how does exe fund a new app's account | when is a new app's starting amount paid | how does my app qualify for starting pool funds | what trading history does my app need for initial funding | how is my app's starting pool amount sized | what evidence must my app provide for its starting amount | how is the initial funding for my app paid out | why might my app's users get less fee support at first | how is a new app's opening balance sized | does a new app get an opening balance | when is a new app's opening balance paid | what must my app show to get its opening balance | how is my app's opening balance paid out
 test: what must my app show before exe assigns its initial sponsorship funding | how does my app's proven trading volume affect the support available in its first months
-keywords: new app, starting amount, proven trading volume, monthly
+keywords: new app, opening balance, starting amount, proven trading volume, monthly
 source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
 related: app-pool-account, app-starting-buffer, app-pool-rules
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-Proven trading volume. Exe Protocol sizes a new app's starting amount on the trading volume the app can show, and pays the amount monthly (the planned production rule), so the app's users can get less fee redemption in the first months.
+Proven trading volume. Exe Protocol sizes a new app's opening balance on the trading volume the app can show, and pays it monthly (the planned production rule), so the app's users can get less fee redemption in the first months.
 
 ---
 id: app-starting-buffer
 status: approved
 kind: answer
 topic: Apps and SDK
-q: Is all of a new app's starting amount spendable?
-also: can a new app spend all of its starting amount | what is the buffer in an app's account | how much of an app's starting amount is held back | how much of my app's starting amount is held in reserve | is my app's entire initial pool funding available to spend | what part of my app's initial funding stays untouched | why is some of my app's starting amount unavailable | can my app's users use the starting buffer for fee redemption | how much of my app's initial pool amount is protected
+q: Is all of a new app's opening balance spendable?
+also: can a new app spend all of its starting amount | what is the buffer in an app's account | how much of an app's starting amount is held back | how much of my app's starting amount is held in reserve | is my app's entire initial pool funding available to spend | what part of my app's initial funding stays untouched | why is some of my app's starting amount unavailable | can my app's users use the starting buffer for fee redemption | how much of my app's initial pool amount is protected | can a new app spend all of its opening balance | how much of my app's opening balance is held back | why is some of my app's opening balance unavailable | what part of the opening balance is never spent
 test: does all the funding assigned at the start go towards my users' fees | what portion of my app's starting funds must remain unspent
-keywords: starting amount, buffer, a fifth, never spent
+keywords: opening balance, starting amount, buffer, a fifth, never spent
 source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
 related: app-starting-amount, app-pool-rules
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-No. Exe Protocol's model holds a fifth of each new app's starting amount as a buffer that is never spent. The starting amount therefore is not all available for fee redemption.
+No. Exe Protocol holds a fifth of each new app's opening balance as a buffer that is never spent. The opening balance therefore is not all available for fee redemption.
 
 ---
 id: pool-surplus-benefit
