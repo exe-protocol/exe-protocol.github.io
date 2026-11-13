@@ -772,10 +772,11 @@ q: Can I buy $XPT?
 also: is xpt available to buy | is exe doing a token presale | is $xpt listed
 test: where can I purchase xpt | are exe tokens for sale
 keywords: XPT, ecosystem token, availability, token enquiries
-trigger: \b(?:buy|purchase|sale|presale|pre-sale|airdrop|price|worth|tokenomics|allocation|allocations|vesting|supply|listed|listing)\b.{0,45}\$?\bxpt\b
-trigger: \$?\bxpt\b.{0,45}\b(?:buy|purchase|sale|presale|pre-sale|airdrop|price|worth|tokenomics|allocation|allocations|vesting|supply|listed|listing)\b
+trigger: \b(?:buy|purchase|sale|presale|pre-sale|airdrop|price|worth|tokenomics|allocation|allocations|vesting|supply|listed|listing|quote|quotes|valuation|cost|costs|sell|trade)\b.{0,45}\$?\bxpt\b
+trigger: \$?\bxpt\b.{0,45}\b(?:buy|purchase|sale|presale|pre-sale|airdrop|price|worth|tokenomics|allocation|allocations|vesting|supply|listed|listing|quote|quotes|valuation|cost|costs|sell|trade)\b
 trigger: \bexe(?:\s+protocol)?\b.{0,25}\btoken(?:s|omics)?\b.{0,25}\b(?:buy|purchase|sale|presale|pre-sale|airdrop|price|supply|vesting|allocations?)\b
 trigger: \bexe(?:\s+protocol)?\b.{0,15}\btoken\s+(?:presale|pre-sale|sale)\b
+trigger: \$?\bxpt\b.{0,45}\bmarket\s+(?:value|cap|capitalisation|capitalization|rate)\b|\bmarket\s+(?:value|cap|capitalisation|capitalization|rate)\b.{0,45}\$?\bxpt\b
 source: Important information: No offer of tokens or investments | important-information.html#no-offer-of-tokens-or-investments
 source: Important information: Not advice | important-information.html#not-advice
 related: xpt-what-is, token-launch-plans, is-it-live, contact-exe
@@ -798,7 +799,8 @@ keywords: invest in Exe, investment enquiry, funding round, contact
 trigger: \binvest(?:ing)?\s+in\s+(?:the\s+)?exe(?:\s+protocol)?\b
 trigger: \bexe(?:\s+protocol)?(?:'s)?\s+(?:fundrais\w*|funding\s+round|investment\s+(?:round|opportunit\w*))\b
 trigger: \b(?:funding\s+round|fundrais\w*|investment\s+(?:round|opportunit\w*))\b.{0,35}\bexe(?:\s+protocol)?\b
-trigger: \b(?:fund|funding|back|backing)\s+exe\b
+trigger: \b(?:fund|funding|back|backing)\s+(?:the\s+)?exe(?:\s+(?:protocol|project))?\b
+trigger: \bfinancial(?:ly)?\b.{0,60}\bexe\b|\bexe\b.{0,60}\bfinancial(?:ly)?\b
 trigger: \binvest(?:ing|ment|ments|or|ors)?\b.{0,60}\bexe\b|\bexe\b.{0,60}\binvest(?:ing|ment|ments|or|ors)?\b
 source: Important information: No offer of tokens or investments | important-information.html#no-offer-of-tokens-or-investments
 source: Exe Protocol: Contact | index.html#contact
