@@ -10,7 +10,7 @@
   var spark = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>';
   var send = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
   var Q = [
-    "How does Exe Protocol work for my app?",
+    "How does Exe lower fees for my app's users?",
     "What is Exe Protocol?",
     "What is XPR?",
     "What is Exeswap?",
@@ -21,8 +21,8 @@
   var W = [
     ["Values what you add", "Reads your verified on-chain signal to determine your XPR. The more value your activity adds, the more of your fees you redeem, from 0–100%."],
     ["Keeps it fair", "Spots bots and wallet farms, so fee redemption reaches genuine users, not bad actors gaming the system."],
-    ["Can’t take a bigger slice", "Exe AI can’t raise fees or change the rules. It can only grow the share of your fees you redeem."],
-    ["Explains itself", "Tells you clearly why your XPR is what it is—and how you can improve it."]
+    ["Can’t take a bigger slice", "Exe AI can’t raise fees or change Exe’s rules or policy. It can only grow the share of the fees you redeem."],
+    ["Explains itself", "Tells you clearly why your XPR is the rate it is—and how you can improve it."]
   ];
 
   var fab = document.createElement("button");

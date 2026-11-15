@@ -3,7 +3,6 @@
 import { makeEmbedder, makeKeywordIndex, rank, b64ToF32, sameQuestion, makeSpeller, smartRank } from "./ask-core.mjs";
 
 const BASE = new URL("./", import.meta.url);
-const CONTACT = { email: "mailto:Richexeswap@proton.me", telegram: "https://t.me/Exeswap" };
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const SPARK = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/></svg>';
 
@@ -103,7 +102,7 @@ export async function mountAskExe(root, opts = {}) {
     } else if (level === "suggest") {
       body = `<p class="ax-note">Did you mean one of these?</p><div class="ax-rel">${results.filter((x) => x.score >= kb.thresholds.suggest).map((x) => chip(x.entry)).join("")}</div>`;
     } else {
-      body = `<p class="ax-note">That isn't covered here yet. Try one of these, or ask the team by <a href="${CONTACT.email}">email</a> or on <a href="${CONTACT.telegram}" target="_blank" rel="noopener">Telegram</a>.</p>` +
+      body = `<p class="ax-note">That isn't covered here yet. Try one of these, or <a href="https://exe-protocol.github.io/index.html#contact">contact our team</a>.</p>` +
         `<div class="ax-rel">${kb.starters.slice(0, 4).map((id) => byId.get(id)).filter(Boolean).map(chip).join("")}</div>`;
     }
     const item = document.createElement("div");
