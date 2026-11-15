@@ -1,11 +1,21 @@
-# Exe Protocol website
+# Exe Protocol
 
-Approved static website design, 26 October 2026.
+The execution layer for apps, wallets and agents. Exe Protocol prices every payment by your XPR, your Exe Protocol Rate, earned through your verified on-chain signal.
 
-Serve these files from the repository root: `index.html`, `simulator.html`, `exe-protocol-specs.html`, `exeswap-specs.html`, `important-information.html`, `.nojekyll` and `assets/`.
+**Prototype. Every figure is simulated.**
 
-Keep the assets directory beside the HTML files. There is no build step. Homepage design styles are in `assets/homepage.css`; Exeswap styles and behavior are in `simulator.html`.
+## See it live
+- [Homepage](https://exe-protocol.github.io/)
+- [Exeswap demo](https://exe-protocol.github.io/simulator.html)
+- [Exe Protocol specs](https://exe-protocol.github.io/exe-protocol-specs.html) · [Exeswap specs](https://exe-protocol.github.io/exeswap-specs.html)
+- [Exe AI](https://exe-protocol.github.io/ask.html): ask anything about Exe Protocol, XPR, Exeswap and the Exe AI build
 
-Existing copy, numerical assumptions, model outputs and qualifications are retained. The factual review is separate from this design release.
+## What's in this repository
+The public website: static pages with no build step and no server.
 
-An older generator was not supplied with this version. Preserve this HTML/CSS treatment before regenerating the pages from any other source.
+Exe AI answers from a bank of approved Q&As, each checked against Exe's own material and linked to its source. The search runs entirely in the visitor's browser, using a small open-source language model, and needs no paid services. Every change to the bank is tested before publishing; the test reports are in `ask/`.
+
+Maintainer notes are in [`docs/site-notes.md`](docs/site-notes.md).
+
+## Contact
+Follow [@Exeswap on X](https://x.com/Exeswap), [Exe Protocol's Media Room on Medium](https://medium.com/@Exeswap), or use the community links on the [homepage](https://exe-protocol.github.io/index.html). [Contact our team](https://exe-protocol.github.io/index.html#contact) for more information.
