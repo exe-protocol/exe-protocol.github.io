@@ -1,6 +1,6 @@
 // Ask Exe: answers from the approved knowledge bank, searched in the visitor's browser.
 // No server, no LLM: every answer shown is a checked entry from ask/knowledge.md, never generated text.
-import { makeEmbedder, makeKeywordIndex, rank, b64ToF32, sameQuestion } from "./ask-core.mjs";
+import { makeEmbedder, makeKeywordIndex, rank, b64ToF32, sameQuestion, makeSpeller, smartRank } from "./ask-core.mjs";
 
 const BASE = new URL("./", import.meta.url);
 const CONTACT = { email: "mailto:Richexeswap@proton.me", telegram: "https://t.me/Exeswap" };
@@ -43,7 +43,9 @@ export async function mountAskExe(root, opts = {}) {
   startersEl.innerHTML = kb.starters.map((id) => byId.get(id)).filter(Boolean).map(chip).join("");
 
   // Smarter search: the embedding model loads in the background. Until it is ready, keyword search answers.
-  let embedder = null, loading = null;
+  let embedder = null, loading = null, speller = null;
+  // Small file (the model's word list): lets the search mend simple typos even before the model itself has loaded.
+  fetch(new URL("model/vocab.txt", BASE)).then((r) => (r.ok ? r.text() : "")).then((t) => { if (t) speller = makeSpeller(kb, t); }).catch(() => {});
   function loadModel() {
     if (loading) return loading;
     const saveData = navigator.connection && navigator.connection.saveData;
@@ -66,12 +68,14 @@ export async function mountAskExe(root, opts = {}) {
   function setStatus(t) { if (status) { status.textContent = t; status.hidden = !t; } }
 
   async function search(q) {
-    let r = rank(kb, q, embedder ? await embedder.embed(q) : null, kwIndex);
+    const prev = turns.length ? turns[turns.length - 1].q : null;
+    const find = (emb) => smartRank(async (x) => rank(kb, x, emb ? await emb.embed(x) : null, kwIndex), q, { fix: speller, prev });
+    let r = await find(embedder);
     if (r.mode === "fixed") return r;
     if (!embedder && r.level !== "answer" && loading) {
       // The model is still loading and keywords alone are not sure: wait for it (up to 20 s).
       const emb = await Promise.race([loading, new Promise((res) => setTimeout(() => res(null), 20000))]);
-      if (emb) r = rank(kb, q, await emb.embed(q), kwIndex);
+      if (emb) r = await find(emb);
     }
     return r;
   }

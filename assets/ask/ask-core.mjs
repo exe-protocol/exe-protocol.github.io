@@ -131,6 +131,46 @@ export function makeKeywordIndex(entries) {
   };
 }
 
+// ---------- Query clean-up (typos, spacing) ----------
+// Snaps a word that is neither ordinary English (per the model's own vocabulary) nor a word the bank uses to a bank word
+// one edit away. Words the bank or the model already knows are never touched.
+const near = (a, b) => {
+  if (a === b) return true;
+  if (Math.abs(a.length - b.length) > 1) return false;
+  let i = 0; while (i < a.length && i < b.length && a[i] === b[i]) i++;
+  if (a.length === b.length) {
+    if (a.slice(i + 1) === b.slice(i + 1)) return true; // one letter different
+    return a[i] === b[i + 1] && a[i + 1] === b[i] && a.slice(i + 2) === b.slice(i + 2); // two letters swapped
+  }
+  const [long, short] = a.length > b.length ? [a, b] : [b, a];
+  return long.slice(i + 1) === short.slice(i); // one letter missing or extra
+};
+export function makeSpeller(kb, vocabText) {
+  const known = new Set(vocabText.split("\n").map((x) => x.trim()).filter(Boolean));
+  const bank = new Map();
+  for (const e of kb.entries) for (const t of [e.q, ...(e.also || []), ...(e.keywords || []), e.topic || ""])
+    for (const w of String(t).toLowerCase().normalize("NFD").replace(/\p{Mn}/gu, "").split(/[^\p{L}\p{N}]+/u)) if (w.length >= 5) bank.set(w, (bank.get(w) || 0) + 1);
+  return function fix(q) {
+    return String(q)
+      .replace(/\bexe\s+swap\b/gi, "exeswap").replace(/\bx\s?p\s?r\b/gi, "xpr").replace(/\bx\s?p\s?t\b/gi, "xpt")
+      .replace(/[\p{L}]{6,}/gu, (w) => {
+        const l = w.toLowerCase();
+        if (known.has(l) || bank.has(l)) return w;
+        let best = null;
+        for (const [c, n] of bank) if (near(l, c) && (!best || n > best[1])) best = [c, n];
+        return best ? best[0] : w;
+      });
+  };
+}
+
+// ---------- Follow-ups ----------
+// A short question that leans on the one before it ("and who pays?", "is it live yet?") is searched together with that question.
+const LEAN = /^(and|but|also|then|so|what about|how about)\b|\b(it|its|they|them|their)\b|^(is|does|can|will|do|are|how|why|what|who|when|where)\s+(that|this|these|those)\b/i;
+const STRONG = /^(and|but|also|then|so|what about|how about)\b/i;
+export const leansOnPrevious = (q) => q.trim().split(/\s+/).length <= 8 && LEAN.test(q);
+export const strongFollowUp = (q) => STRONG.test(q.trim());
+export const withPrevious = (prev, q) => String(prev).replace(/[?.!\s]+$/, "") + "? " + q;
+
 // ---------- Ranking ----------
 // Two questions are "the same" when they match after lower-casing and dropping punctuation and extra spaces.
 export const sameQuestion = (s) => String(s).toLowerCase().normalize("NFKC").replace(/[^\p{L}\p{N}$]+/gu, " ").trim();
@@ -169,4 +209,23 @@ export function rank(kb, query, qvec, keywordScore) {
   if (top && qvec) level = top.score >= t.answer && gap >= (t.margin || 0) ? "answer" : top.score >= t.suggest ? "suggest" : "none";
   else if (top) level = top.cover >= t.keywordCover && top.score >= t.keyword ? "answer" : top.cover >= t.keywordSuggest ? "suggest" : "none";
   return { mode: qvec ? "semantic" : "keyword", level, ok: level === "answer", results: scored.slice(0, 3) };
+}
+
+// Runs the search, then tries a typo-corrected and a follow-up reading, and keeps one only when it gives a clearly better result:
+// a confident answer is never replaced, so a word the clean-up misjudges cannot spoil a good match.
+const LEVEL = { none: 0, suggest: 1, answer: 2 };
+export async function smartRank(run, q, { fix, prev } = {}) {
+  let r = await run(q);
+  if (r.mode === "fixed" || r.exact) return r;
+  if (fix) {
+    // The corrected text is kept only when it matches the bank clearly better than the original; a wrong correction scores lower and is dropped.
+    const f = fix(q);
+    if (f !== q) { const r2 = await run(f); if (r2.mode === "fixed" || LEVEL[r2.level] > LEVEL[r.level] || (r2.results[0] && r.results[0] && r2.results[0].score > r.results[0].score + 0.03)) r = r2; }
+  }
+  // Keyword search cannot tell what "it" refers to, so in keyword mode a follow-up always borrows the previous question's words.
+  if (prev && leansOnPrevious(q) && (r.level !== "answer" || r.mode === "keyword")) {
+    const r3 = await run(withPrevious(prev, fix ? fix(q) : q));
+    if (r3.mode === "fixed" || (r.mode === "keyword" || r.level === "none" ? r3.level !== "none" : strongFollowUp(q) && r3.level === "answer")) r = r3;
+  }
+  return r;
 }
