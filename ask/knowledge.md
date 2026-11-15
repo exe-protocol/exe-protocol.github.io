@@ -77,7 +77,7 @@ status: approved
 kind: answer
 topic: Exe Protocol
 q: Who is Exe Protocol for?
-also: who would use exe | who are your intended customers | is exe for apps or individual users | is this something a wallet company would use | are you building this for traders, app builders or bots? | I'm building a Telegram service with automated payments; am I the sort of developer Exe is aimed at?
+also: who would use exe | who are your intended customers | is exe for apps or individual users | is this something a wallet company would use | are you building this for traders, app builders or bots? | I'm building a Telegram service with automated payments; am I the sort of developer Exe is aimed at? | Do individual wallet users fit into the intended audience alongside app teams and agents?
 test: where would this fit in my business | who is supposed to benefit from exe
 keywords: users, customers, apps, wallets, agents, businesses
 source: Exe Protocol specs: Positioning | exe-protocol-specs.html#positioning
@@ -97,7 +97,7 @@ status: approved
 kind: answer
 topic: Exeswap
 q: What is Exeswap?
-also: what does exeswap do | is exeswap a dex | explain the exeswap app | how is the swap app connected to exe protocol | does exeswap find trades on other exchanges | I landed on the Exeswap page; is this a trading venue, a route finder, or something else? | Is your first app an exchange aggregator with an activity-based fee reduction?
+also: what does exeswap do | is exeswap a dex | explain the exeswap app | how is the swap app connected to exe protocol | does exeswap find trades on other exchanges | I landed on the Exeswap page; is this a trading venue, a route finder, or something else? | Is your first app an exchange aggregator with an activity-based fee reduction? | Why would a trader use Exeswap instead of just looking up a route and paying its ordinary fee?
 test: what's the swap product | is this an exchange aggregator
 keywords: Exeswap, aggregator, exchanges, swap, first app
 source: Exeswap specs: How Exeswap works | exeswap-specs.html#what-it-is
@@ -117,7 +117,7 @@ status: approved
 kind: answer
 topic: Status
 q: Is any of this live?
-also: is exe live | can I trade for real on exeswap | can I connect my wallet now | is this real money | can I use this for real now | is the trading part running yet | if I press approve will it spend anything | can I make an actual swap here today? | am I looking at a working trading service or a demo? | If I press swap in this demo, will anything happen to real tokens?
+also: is exe live | can I trade for real on exeswap | can I connect my wallet now | is this real money | can I use this for real now | is the trading part running yet | if I press approve will it spend anything | can I make an actual swap here today? | am I looking at a working trading service or a demo? | If I press swap in this demo, will anything happen to real tokens? | Can customers actually move funds through this version, or is everything shown still a demonstration?
 test: will pressing swap move my money | is the site doing actual transactions
 keywords: live, prototype, wallet connection, real money, transactions
 source: Important information: What this site is | important-information.html#what-this-site-is
@@ -159,7 +159,7 @@ status: approved
 kind: answer
 topic: XPR
 q: What is XPR?
-also: what does xpr stand for | explain the exe protocol rate | what is my xpr rate | what is that xpr number meant to tell me | is XPR something I own or a score attached to my wallet? | I'm new here, what does XPR have to do with my transaction fees? | There's an XPR number on the screen; what does it represent for me as a user? | What is the activity-based rate that is supposed to follow my wallet between Exe apps?
+also: what does xpr stand for | explain the exe protocol rate | what is my xpr rate | what is that xpr number meant to tell me | is XPR something I own or a score attached to my wallet? | I'm new here, what does XPR have to do with my transaction fees? | There's an XPR number on the screen; what does it represent for me as a user? | What is the activity-based rate that is supposed to follow my wallet between Exe apps? | What does that three-letter rate next to my fee stand for?
 test: what's this personal exchange rate | what does the number called xpr mean
 keywords: XPR, rate, personal exchange rate, signal
 source: Exeswap specs: XPR | exeswap-specs.html#xpr
@@ -212,7 +212,7 @@ status: approved
 kind: answer
 topic: Tiers
 q: What are Tiers and how do they work?
-also: What are tiers? | How do tiers work? | What's the difference between Tier 1, 2 and 3? | Explain the tiers | How many tiers are there? | what do the higher tiers give me | what is the benefit of moving up a tier | Why bother moving through the levels if I already have a good XPR?
+also: What are tiers? | How do tiers work? | What's the difference between Tier 1, 2 and 3? | Explain the tiers | How many tiers are there? | what do the higher tiers give me | what is the benefit of moving up a tier | Why bother moving through the levels if I already have a good XPR? | How do the middle and top levels improve fee support compared with where a new user begins?
 test: what do the tier levels mean | is there a higher level than tier 1
 keywords: tier, tiers, Tier 1, Tier 2, Tier 3, budget, level
 source: Exeswap simulator: questions | simulator.html#swap
@@ -251,7 +251,7 @@ status: approved
 kind: answer
 topic: XPR
 q: Why can two wallets with the same XPR pay different fees?
-also: does the same xpr always give the same fee | why is my fee different at the same rate | what else affects fee redemption | same rate why a different bill | what changes my cost besides xpr | why do two people on the same rate pay different amounts
+also: does the same xpr always give the same fee | why is my fee different at the same rate | what else affects fee redemption | same rate why a different bill | what changes my cost besides xpr | why do two people on the same rate pay different amounts | Is there enough information in the XPR number alone to work out my final charge?
 test: we have equal xpr but different costs why | is xpr the only number that matters
 keywords: same rate, tier, gas, pool strength, limits
 source: Exeswap specs: XPR | exeswap-specs.html#xpr
@@ -427,7 +427,7 @@ status: approved
 kind: answer
 topic: Sponsorship Pool
 q: What is the Sponsorship Pool?
-also: what is exes pool | what does sp mean | what is the shared sponsorship pool for | what is that shared pot | what does the pool actually do | what is the pool for | I keep seeing a shared fund mentioned alongside XPR; what is it there to pay for? | What covers the eligible part of fee redemption after the user's own fees have contributed?
+also: what is exes pool | what does sp mean | what is the shared sponsorship pool for | what is that shared pot | what does the pool actually do | what is the pool for | I keep seeing a shared fund mentioned alongside XPR; what is it there to pay for? | What covers the eligible part of fee redemption after the user's own fees have contributed? | Is the sponsorship reserve meant to hold users' savings, or to help pay eligible transaction charges?
 test: where does the shared fee support come from | explain the pool in plain english
 keywords: SP, Sponsorship Pool, shared support, app accounts
 source: Exeswap specs: Funding | exeswap-specs.html#funding
@@ -836,7 +836,7 @@ status: approved
 kind: answer
 topic: Exe AI
 q: Why do current approaches to AI alignment fall short?
-also: why are other ai companies failing at alignment | what is wrong with ai alignment today | why do guardrails not work for ai alignment | why is ai alignment not working | why do current ai alignment methods fall short | what is missing from today's ai alignment methods | why are ai guardrails not enough for alignment | what problems remain with current ai alignment training | why can ai pass evaluations without being trustworthy | what does exe think current ai alignment methods miss | What's Exe's criticism of relying on ethical instruction while leaving training incentives as they are?
+also: why are other ai companies failing at alignment | what is wrong with ai alignment today | why do guardrails not work for ai alignment | why is ai alignment not working | why do current ai alignment methods fall short | what is missing from today's ai alignment methods | why are ai guardrails not enough for alignment | what problems remain with current ai alignment training | why can ai pass evaluations without being trustworthy | what does exe think current ai alignment methods miss | What's Exe's criticism of relying on ethical instruction while leaving training incentives as they are? | Does Exe think rules and human feedback can miss the incentives driving a model's behaviour?
 test: why might an ai learn to please its testers instead of behaving reliably | what are the limits of teaching ethics through ai rules and feedback
 keywords: alignment, guardrails, RLHF, evaluators, training environment
 source: Medium: Alignment is a math problem, not a moral one | https://medium.com/@Exeswap/alignment-is-a-math-problem-not-a-moral-one-871fe04c0b82
@@ -1128,7 +1128,7 @@ status: approved
 kind: answer
 topic: Exe AI
 q: Can Exe AI calculate my XPR from my wallet?
-also: can I see my own xpr | what is my xpr | can I connect my wallet to check my xpr | does the simulator show my real xpr | can exe ai check my wallet's xpr today | can i find my actual xpr through exe ai | does exe ai measure my wallet activity yet | is the simulator showing my personal xpr | can i connect my wallet for an xpr assessment | can exe ai tell me my real exe protocol rate | Can this page assess my own transacton history yet, instead of letting me experiment with an assumed rate?
+also: can I see my own xpr | what is my xpr | can I connect my wallet to check my xpr | does the simulator show my real xpr | can exe ai check my wallet's xpr today | can i find my actual xpr through exe ai | does exe ai measure my wallet activity yet | is the simulator showing my personal xpr | can i connect my wallet for an xpr assessment | can exe ai tell me my real exe protocol rate | Can this page assess my own transacton history yet, instead of letting me experiment with an assumed rate? | Could the number shown here be a personalised score if this demo hasn't accessed my wallet?
 test: is the rate in this demo based on anything my wallet has done | where can i have my own wallet assessed for xpr right now
 keywords: my XPR, wallet, simulator, example
 source: Important information: What this site is | important-information.html#what-this-site-is
@@ -1162,7 +1162,7 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: As an app owner, what are the benefits to me in integrating Exe Protocol?
-also: why should my app integrate exe protocol | what does exe protocol do for app owners | what do I gain by integrating exe | why would an app use exe | what does my app gain from integrating exe | why should i add exe to my app | how can exe help my app's users | what benefits does exe offer my app's agent payments | why would my app use exe alongside payment rails | what does exe add to payments in my app | Why should my app care about pricing payments using verified activity when it can already send them automatically?
+also: why should my app integrate exe protocol | what does exe protocol do for app owners | what do I gain by integrating exe | why would an app use exe | what does my app gain from integrating exe | why should i add exe to my app | how can exe help my app's users | what benefits does exe offer my app's agent payments | why would my app use exe alongside payment rails | what does exe add to payments in my app | Why should my app care about pricing payments using verified activity when it can already send them automatically? | Our agents already send payments quickly; why add a system that takes their verfied history into account?
 test: what would my users gain if i connected my app to exe | how would integrating exe improve the payments my app already supports
 keywords: app owners, benefits, agent payments, smart layer, x402
 source: Medium: x402 moves the money | https://medium.com/@Exeswap/x402-moves-the-money-who-decides-what-it-costs-c27efb79dc7f
@@ -1215,7 +1215,7 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: What problem do regular paymasters have?
-also: why are other paymasters broken | what is wrong with regular paymasters | why are gas subsidies unsustainable | how do normal paymasters work | what does a regular paymaster cost my app | how is my app's gas sponsorship usually funded | why would a standard paymaster draw on my app's treasury | how does sponsoring gas affect my app's budget | what funding burden can a paymaster create for my app | how does my app pay for users' gas with a regular paymaster
+also: why are other paymasters broken | what is wrong with regular paymasters | why are gas subsidies unsustainable | how do normal paymasters work | what does a regular paymaster cost my app | how is my app's gas sponsorship usually funded | why would a standard paymaster draw on my app's treasury | how does sponsoring gas affect my app's budget | what funding burden can a paymaster create for my app | how does my app pay for users' gas with a regular paymaster | What financial tradeoff faces a project paying every sponsored transaction from its own funds?
 test: where would the money come from if my app used a conventional gas sponsor | what happens to my app's sponsorship costs as more users transact
 keywords: paymaster, gas subsidies, treasury, solvency
 source: Medium: Exe's paymaster evolution | https://medium.com/@Exeswap/exes-paymaster-evolution-fb051f0d2943
@@ -1234,7 +1234,7 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: How is Exe's policy-governed paymaster different to other paymasters?
-also: how is exe's paymaster different | what makes exe's paymaster different | what is exe's paymaster built on | does exe use erc-4337 | how is exe's paymaster different for my app | what does exe add to a paymaster for my users | how does exe use erc-4337 for my app's payments | what makes exe's paymaster useful for my app's agents | how does xpr fit into the paymaster my app would use | how does exe build on existing paymaster rails for my app | how is exe's paymaster different to other paymasters for apps and agents | how is exe's paymaster different to other paymasters
+also: how is exe's paymaster different | what makes exe's paymaster different | what is exe's paymaster built on | does exe use erc-4337 | how is exe's paymaster different for my app | what does exe add to a paymaster for my users | how does exe use erc-4337 for my app's payments | what makes exe's paymaster useful for my app's agents | how does xpr fit into the paymaster my app would use | how does exe build on existing paymaster rails for my app | how is exe's paymaster different to other paymasters for apps and agents | how is exe's paymaster different to other paymasters | What does an XPR-aware contract contribute beyond the chain's existing ability to have someone else pay gas?
 test: what changes for my app when its paymaster applies each user's exe protocol rate | how does exe's approach to sponsorship compare with the paymaster my app already uses
 keywords: paymaster, Solana, fee payer, policy-governed, execution layer
 source: Medium: Exe's paymaster evolution | https://medium.com/@Exeswap/exes-paymaster-evolution-fb051f0d2943
@@ -1251,7 +1251,7 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: How does Exe lower fees for my app's users?
-also: how does exe protocol work for my app | how does exe lower my users' fees | how does exe reduce fees for people using my app | how do my app's users pay less with exe | how does exe protocol work for my app once integrated | how does exe work for apps | what happens when my app integrates exe protocol | how do the fees flow for an app | how does exe work inside my app | what happens to my users' transactions after i integrate exe | how would exe handle fees in my app | what changes in my app's transaction flow with exe | how does my app use xpr once exe is integrated | how are fees applied to my users through exe
+also: how does exe protocol work for my app | how does exe lower my users' fees | how does exe reduce fees for people using my app | how do my app's users pay less with exe | how does exe protocol work for my app once integrated | how does exe work for apps | what happens when my app integrates exe protocol | how do the fees flow for an app | how does exe work inside my app | what happens to my users' transactions after i integrate exe | how would exe handle fees in my app | what changes in my app's transaction flow with exe | how does my app use xpr once exe is integrated | how are fees applied to my users through exe | What happens in my app to turn a user's XPR into a smaller eligible transaction bill?
 test: walk me through a user's transaction in my app with exe connected | what would the payment flow look like after my app adds exe
 keywords: app owners, integration, fee flow, gas, Exe Protocol's fee
 source: Exe Protocol specs: For apps | exe-protocol-specs.html#for-apps
@@ -1334,7 +1334,7 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: Does fee redemption cover my app's own fee?
-also: does xpr discount my app's own fee | is my app's fee affected by exe protocol | what is an app budget | can xpr reduce my app's fee | can exe reduce my app's own fee | is my app's own fee included in fee redemption | how can i offer xpr discounts on my app's fee | what budget would cover discounts on my app's own fee | does xpr apply to the separate fee my app charges | how can my app fund reductions in its own fee
+also: does xpr discount my app's own fee | is my app's fee affected by exe protocol | what is an app budget | can xpr reduce my app's fee | can exe reduce my app's own fee | is my app's own fee included in fee redemption | how can i offer xpr discounts on my app's fee | what budget would cover discounts on my app's own fee | does xpr apply to the separate fee my app charges | how can my app fund reductions in its own fee | Is our own service charge outside standard coverage unless we provide a budget specifically for it?
 test: what would my app need to contribute for users to pay less of our own charge | which optional arrangement extends xpr coverage to the fee my app keeps
 keywords: app's own fee, app budget, optional
 source: Exe Protocol specs: For apps | exe-protocol-specs.html#for-apps
@@ -1350,7 +1350,7 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: What is my app committed to?
-also: what does my app commit to | what are the terms for apps | does my app have to allocate a budget | what does integrating exe protocol cost my app | what does my app need to commit to when joining exe | what obligations does my app take on with exe | what must my app provide to integrate exe | what are my app's commitments for exe fee redemption | does my app need a required budget to use exe | what are the integration requirements for my app | What practical and financial obligations would I take on by adopting Exe for my product?
+also: what does my app commit to | what are the terms for apps | does my app have to allocate a budget | what does integrating exe protocol cost my app | what does my app need to commit to when joining exe | what obligations does my app take on with exe | what must my app provide to integrate exe | what are my app's commitments for exe fee redemption | does my app need a required budget to use exe | what are the integration requirements for my app | What practical and financial obligations would I take on by adopting Exe for my product? | Beyond connecting the SDK and users paying protocol charges, is my company required to finance the standard fee support?
 test: what would i be signing my app up for by adding exe | which responsibilities would my app take on to offer exe to users
 keywords: commitment, SDK, licence, integration terms
 source: Exe Protocol specs: For apps | exe-protocol-specs.html#for-apps
@@ -1366,7 +1366,7 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: How does an app allocate a pool?
-also: does an app set up a pool | how does my app get a pool | does my app pay into a pool | how is an app's pool account filled | who sets up my app's pool account | how is a pool account opened for my app | does my app have to create its own sponsorship pool | how does my app get an account in exe's pool | who creates and funds my app's initial pool account | how is my app's sponsorship account established | does my app get an opening balance in its pool account | When my app joins, who opens its fee-support account and arranges the opening balance? | Must our developers create a separate fund, or does Exe arrange our account and initial allocation?
+also: does an app set up a pool | how does my app get a pool | does my app pay into a pool | how is an app's pool account filled | who sets up my app's pool account | how is a pool account opened for my app | does my app have to create its own sponsorship pool | how does my app get an account in exe's pool | who creates and funds my app's initial pool account | how is my app's sponsorship account established | does my app get an opening balance in its pool account | When my app joins, who opens its fee-support account and arranges the opening balance? | Must our developers create a separate fund, or does Exe arrange our account and initial allocation? | Does Exe arrange anaccount for our customers automatically as part of onboarding the app?
 test: what happens to set up fee support when my app joins exe | do i have to arrange a separate pool before my app can use exe
 keywords: app's pool, account, Sponsorship Pool, opening balance, starting amount
 source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
@@ -1434,7 +1434,7 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: Is all of a new app's opening balance spendable?
-also: can a new app spend all of its starting amount | what is the buffer in an app's account | how much of an app's starting amount is held back | how much of my app's starting amount is held in reserve | is my app's entire initial pool funding available to spend | what part of my app's initial funding stays untouched | why is some of my app's starting amount unavailable | can my app's users use the starting buffer for fee redemption | how much of my app's initial pool amount is protected | can a new app spend all of its opening balance | how much of my app's opening balance is held back | why is some of my app's opening balance unavailable | what part of the opening balance is never spent
+also: can a new app spend all of its starting amount | what is the buffer in an app's account | how much of an app's starting amount is held back | how much of my app's starting amount is held in reserve | is my app's entire initial pool funding available to spend | what part of my app's initial funding stays untouched | why is some of my app's starting amount unavailable | can my app's users use the starting buffer for fee redemption | how much of my app's initial pool amount is protected | can a new app spend all of its opening balance | how much of my app's opening balance is held back | why is some of my app's opening balance unavailable | what part of the opening balance is never spent | How much of the starting allocation is deliberately excluded from spending on fee support?
 test: does all the funding assigned at the start go towards my users' fees | what portion of my app's starting funds must remain unspent
 keywords: opening balance, starting amount, buffer, a fifth, never spent
 source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
@@ -1450,7 +1450,7 @@ status: approved
 kind: answer
 topic: Sponsorship Pool
 q: What does a Sponsorship Pool surplus mean for my fees?
-also: what happens when the pool has a surplus | does a pool surplus lower my fees | who benefits from a pool surplus | what is the surplus factor | how does a pool surplus affect my fees | what does extra money in the sponsorship pool do for users | can a pool surplus increase fee redemption at the same xpr | how do higher tiers benefit from a pool surplus | what happens to spare funds in exe's pool | how does pool surplus support fee redemption and reserves | what does a pool surplus mean for my fees
+also: what happens when the pool has a surplus | does a pool surplus lower my fees | who benefits from a pool surplus | what is the surplus factor | how does a pool surplus affect my fees | what does extra money in the sponsorship pool do for users | can a pool surplus increase fee redemption at the same xpr | how do higher tiers benefit from a pool surplus | what happens to spare funds in exe's pool | how does pool surplus support fee redemption and reserves | what does a pool surplus mean for my fees | Where does excess shared funding go after it improves higher-tier fee support?
 test: could more of my fees be covered without my exe protocol rate rising | how do tier 2 and tier 3 users benefit when the shared fee fund has spare capacity
 keywords: surplus, Tier 2, Tier 3, reserve, surplus factor
 source: Exeswap specs: Funding | exeswap-specs.html#funding
@@ -1565,7 +1565,7 @@ status: approved
 kind: answer
 topic: Evidence
 q: What automated testing supports the economic engine?
-also: how many tests does the engine pass | has the economic engine been tested | what do the 752 tests show | how is the engine tested | what automated tests support exe's economic engine | how many engine tests has exe reported passing | what does exe's 767 test count refer to | what implementation testing has the exe prototype passed | what testing was completed at exe's engine freeze | how was exe's economic engine checked automatically
+also: how many tests does the engine pass | has the economic engine been tested | what do the 752 tests show | how is the engine tested | what automated tests support exe's economic engine | how many engine tests has exe reported passing | what does exe's 767 test count refer to | what implementation testing has the exe prototype passed | what testing was completed at exe's engine freeze | how was exe's economic engine checked automatically | Do successful code checks establish security by themselves, or is further review still required?
 test: what evidence comes from the automated checks on your prototype | how did the reported engine test count change after the agent payment work
 keywords: automated tests, 752, 767, engine freeze
 source: Exe Protocol specs: Evidence | exe-protocol-specs.html#evidence
@@ -1614,7 +1614,7 @@ status: approved
 kind: answer
 topic: Agents
 q: Where can an agent find the batch fingerprint?
-also: where is the merkle root published | where is each batch fingerprint published | how does an agent get the batch fingerprint | where will exe publish its batch fingerprints | where can an agent look up a batch merkle root | has exe specified where settlement roots will be posted | where will the batch verification record be available | where does exe plan to publish each batch root | where can i find exe's settlement batch fingerprint
+also: where is the merkle root published | where is each batch fingerprint published | how does an agent get the batch fingerprint | where will exe publish its batch fingerprints | where can an agent look up a batch merkle root | has exe specified where settlement roots will be posted | where will the batch verification record be available | where does exe plan to publish each batch root | where can i find exe's settlement batch fingerprint | Before an agent checks its proof, where is it supposed to obtain the published root?
 test: which published location should an agent use to retrieve the settlement root | has a home been chosen for the fingerprints used to check exe batches
 keywords: batch fingerprint, Merkle root, published, open item
 source: Exe Protocol specs: Roadmap and open items | exe-protocol-specs.html#roadmap-and-open-items
@@ -1648,7 +1648,7 @@ status: approved
 kind: answer
 topic: Token
 q: What is the difference between XPR and $XPT?
-also: are xpr and $xpt the same thing | is xpr a token | how do xpr and xpt differ | how are xpr and xpt different | is xpr the same thing as xpt | which is the token xpr or xpt | how does xpt differ from my exe protocol rate | what separates the xpr rate from the xpt token | why are xpr and xpt two different things | Does the XPR attached to my activity serve the same function as XPT's liquidity and governance role?
+also: are xpr and $xpt the same thing | is xpr a token | how do xpr and xpt differ | how are xpr and xpt different | is xpr the same thing as xpt | which is the token xpr or xpt | how does xpt differ from my exe protocol rate | what separates the xpr rate from the xpt token | why are xpr and xpt two different things | Does the XPR attached to my activity serve the same function as XPT's liquidity and governance role? | Should I think of the rate and the ecosystem token as two names for one asset?
 test: is my personal exe rate also the ecosystem token | explain the distinction between exe's rate and its token
 keywords: XPR, $XPT, rate, token, difference
 source: Medium: Why $XPT matters | https://medium.com/@Exeswap/why-xpt-matters-the-bridge-to-fee-free-web3-f789dcf8537c
@@ -1683,7 +1683,7 @@ status: approved
 kind: answer
 topic: Token
 q: What is $XPT's governance role?
-also: how does $xpt support governance | what do xpt holders govern | is xpt a governance token | what does xpt do for governance | how does xpt help coordinate exe's growth | what is xpt's part in policy coordination | how does xpt align long-term stakeholders | what governance purpose does xpt serve | how does xpt support coordination around exe's policies
+also: how does $xpt support governance | what do xpt holders govern | is xpt a governance token | what does xpt do for governance | how does xpt help coordinate exe's growth | what is xpt's part in policy coordination | how does xpt align long-term stakeholders | what governance purpose does xpt serve | how does xpt support coordination around exe's policies | How is XPT intended to help coordinate the ecosystem's direction and development?
 test: why is exe's token involved in coordinating long-term growth | what part does xpt play in bringing stakeholders together around policy
 keywords: $XPT, governance, policy parameters, stakeholders
 source: Medium: Why $XPT matters | https://medium.com/@Exeswap/why-xpt-matters-the-bridge-to-fee-free-web3-f789dcf8537c
@@ -1829,7 +1829,7 @@ status: approved
 kind: answer
 topic: Token
 q: Is Exe planning a TGE, IDO or ICO?
-also: when is exe's tge | where can I find exe's tokenomics | is there an exe token launch | is exe doing an ido | is exe planning a token generation event | will exe hold an ido | is exe planning an ico
+also: when is exe's tge | where can I find exe's tokenomics | is there an exe token launch | is exe doing an ido | is exe planning a token generation event | will exe hold an ido | is exe planning an ico | If official launch details aren't being released yet, where should I watch or ask for further information?
 test: where are the launch details for the exe token | has a date been shared for generating xpt
 keywords: TGE, IDO, ICO, tokenomics, launch
 source: Important information: No offer of tokens or investments | important-information.html#no-offer-of-tokens-or-investments
@@ -1866,7 +1866,7 @@ status: approved
 kind: answer
 topic: Exeswap
 q: Why is Exeswap starting on Solana?
-also: why choose solana for exeswap | how do solana's speed and costs suit exeswap's trading | why solana first | what makes solana right for exeswap | why did Exeswap choose solana | what makes solana suitable for Exeswap | why is solana a good starting network for Exeswap | what advantages make solana attractive for Exeswap | why build Exeswap on solana first | what led Exeswap to start with solana
+also: why choose solana for exeswap | how do solana's speed and costs suit exeswap's trading | why solana first | what makes solana right for exeswap | why did Exeswap choose solana | what makes solana suitable for Exeswap | why is solana a good starting network for Exeswap | what advantages make solana attractive for Exeswap | why build Exeswap on solana first | what led Exeswap to start with solana | Why does the Solana netwrok suit a product for people who swap often?
 test: which features of solana suit the trading Exeswap is built for | what is the reason behind Exeswap's choice of launch network
 keywords: Solana, low cost, fast confirmations, frequent trading, x402
 source: Medium: Why Exe is Solana's next UX primitive | https://medium.com/@Exeswap/why-exe-is-solanas-next-ux-primitive-f2c41768dedb
@@ -1900,7 +1900,7 @@ status: approved
 kind: answer
 topic: Exeswap
 q: How can Exeswap help people making small trades on Solana?
-also: what does exeswap offer smaller solana traders | is exeswap good for small trades | does exeswap help with small swaps | how can Exeswap help with small solana trades | what does Exeswap offer users trading small amounts | can Exeswap lower eligible costs for small swaps on solana | how does xpr help smaller trades on Exeswap | why might Exeswap suit small solana swaps | how can smaller traders benefit from Exeswap on solana | I'm trading modest sums rather than large positions; whymight the eligible-fee reduction be useful?
+also: what does exeswap offer smaller solana traders | is exeswap good for small trades | does exeswap help with small swaps | how can Exeswap help with small solana trades | what does Exeswap offer users trading small amounts | can Exeswap lower eligible costs for small swaps on solana | how does xpr help smaller trades on Exeswap | why might Exeswap suit small solana swaps | how can smaller traders benefit from Exeswap on solana | I'm trading modest sums rather than large positions; whymight the eligible-fee reduction be useful? | Could combining cheap network costs with XPR make repeated low-value trades less costly?
 test: what does Exeswap do for someone making modest-sized swaps on solana | how would lower eligible fees help small-volume traders using Exeswap
 keywords: small trades, Solana, lower fees
 source: Medium: Why Exe is Solana's next UX primitive | https://medium.com/@Exeswap/why-exe-is-solanas-next-ux-primitive-f2c41768dedb

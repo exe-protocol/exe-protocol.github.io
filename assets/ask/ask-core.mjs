@@ -208,7 +208,7 @@ export function rank(kb, query, qvec, keywordScore) {
   const gap = scored[1] ? top.score - scored[1].score : 1;
   if (top && qvec) level = top.score >= t.answer && gap >= (t.margin || 0) ? "answer" : top.score >= t.suggest ? "suggest" : "none";
   else if (top) level = top.cover >= t.keywordCover && top.score >= t.keyword ? "answer" : top.cover >= t.keywordSuggest ? "suggest" : "none";
-  return { mode: qvec ? "semantic" : "keyword", level, ok: level === "answer", results: scored.slice(0, 3) };
+  return { mode: qvec ? "semantic" : "keyword", level, ok: level === "answer", results: scored.slice(0, 4) };
 }
 
 // Runs the search, then tries a typo-corrected and a follow-up reading, and keeps one only when it gives a clearly better result:
