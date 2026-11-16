@@ -1,320 +1,1395 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Exeswap · Trade</title>
-<meta name="description" content="Exeswap trading screen: Solana markets, charts and swaps, with fees priced by your XPR. Prototype: every figure is simulated.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22t%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22.5%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230b1636%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23050a1c%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22url%28%23t%29%22/%3E%3Cg%20transform%3D%22translate%2813.3%2014.15%29%20scale%28.9%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22f0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23f0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23f1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23f2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2226.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2331d4ac%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/g%3E%3C/svg%3E">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Markets &amp; charts · Exeswap</title>
+<meta name="description" content="Exeswap markets and charts for Solana tokens, with fees priced by your XPR. Prototype: every figure is simulated.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22t%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22.5%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230b1636%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23050a1c%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22url%28%23t%29%22/%3E%3Cg%20transform%3D%22translate%2813.3%2014.15%29%20scale%28.9%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22f0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23f0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23f1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23f2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%220.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%232350e6%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/g%3E%3C/svg%3E">
+
+
 <style>
-:root{--bg:#050a10;--bar:#070e17;--panel:#0b1520;--well:#070e17;--line:rgba(123,153,186,.16);--line2:rgba(123,153,186,.22);
---ink:#f7f9fc;--mut:#a8b9cf;--dim:#8fa2bb;--acc:#1677ff;--acc-soft:rgba(22,119,255,.14);--up:#22c58b;--dn:#f0616d;--warn:#f3c86a;
---sans:"Hanken Grotesk",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font:14px/1.45 var(--sans);-webkit-font-smoothing:antialiased;color-scheme:dark}
-a{color:#6aa8ff}a:hover{color:#9cc4ff}
-button,input{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.mono{font-family:var(--mono)}
-.up{color:var(--up)}.dn{color:var(--dn)}
-.wrap{max-width:1480px;margin:0 auto;padding:0 24px}
-header.top{border-bottom:1px solid var(--line);background:var(--bar)}
-header.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;min-height:64px;padding-top:8px;padding-bottom:8px}
-.logo{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:600;font-size:18px;letter-spacing:-.02em}
-.logo i{width:18px;height:18px;border-radius:5px;background:conic-gradient(from 200deg,#4d8dff,#1d4fd6,#f1f6ff,#8a9bb8,#4d8dff);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
-.logo small{font-weight:400;color:var(--dim);font-size:12px;letter-spacing:0}
-nav.main{display:flex;flex-wrap:wrap;gap:4px}
-nav.main a{padding:9px 12px;border-radius:8px;color:var(--mut);text-decoration:none;font-weight:500}
-nav.main a[aria-current]{color:var(--ink);background:var(--acc-soft);font-weight:600}
-nav.main a:hover{color:var(--ink)}
-.search{flex:1 1 200px;min-width:180px;max-width:360px}
-.search input{width:100%;height:40px;border-radius:10px;border:1px solid var(--line2);background:var(--panel);padding:0 14px;font-size:13px}
-.hright{display:flex;align-items:center;gap:10px;margin-left:auto}
-.btn{height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line2);background:var(--panel);cursor:pointer}
-.btn.pri{border:0;background:var(--acc);color:#fff;font-weight:600;padding:0 18px}
-.dot{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--up);margin-right:8px}
-.banner{background:rgba(240,180,60,.10);border-bottom:1px solid rgba(240,180,60,.25);color:var(--warn);text-align:center;font-size:12px;padding:7px 16px;letter-spacing:.02em}
-.banner a{color:var(--warn)}
-.ticker{border-bottom:1px solid rgba(123,153,186,.12);overflow-x:auto}
-.ticker .wrap{display:flex;gap:28px;padding-top:10px;padding-bottom:10px;white-space:nowrap;font:12px var(--mono)}
-.ticker span span{margin-right:8px}
-main.wrap{padding-top:20px;padding-bottom:40px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
-.card h2{margin:0 0 12px;font-size:14px;font-weight:600}
-.overview{display:flex;flex-wrap:wrap;align-items:center;gap:16px 36px}
-.stat{display:grid;gap:2px}.stat b{font:400 14px var(--mono)}.stat span{color:var(--mut);font-size:12px}
-.badge{border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:#050a10;flex:none;letter-spacing:-.02em}
-.cols{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
-.left{flex:999 1 640px;min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
-.right{flex:1 1 360px;min-width:min(300px,100%);max-width:440px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
-.seg{display:flex;gap:4px;background:var(--well);border-radius:10px;padding:4px}
-.seg button{height:30px;min-width:40px;padding:0 10px;border:0;border-radius:7px;cursor:pointer;font-size:12px;font-weight:600;background:transparent;color:var(--mut)}
-.seg button[aria-pressed=true]{background:var(--acc);color:#fff}
-.chartbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px}
-.legend{display:flex;gap:14px;font-size:12px;color:var(--mut);margin-left:8px}
-.legend i{display:inline-block;width:14px;height:2px;margin-right:6px;vertical-align:middle}
-.small{height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--line2);background:transparent;color:var(--mut);cursor:pointer;font-size:12px}
-.small.on{border-color:rgba(22,119,255,.5);background:var(--acc-soft);color:var(--ink)}
-.chart{display:flex;gap:10px}
-.plot{flex:1 1 auto;min-width:0;display:grid;gap:6px}
-.price{position:relative;height:340px;border-bottom:1px solid rgba(123,153,186,.14);background-image:linear-gradient(rgba(123,153,186,.07) 1px,transparent 1px);background-size:100% 68px}
-.candles{position:absolute;inset:0;display:flex;gap:2px}
-.candles div{flex:1 1 0;position:relative;min-width:0}
-.candles i,.candles b{position:absolute;display:block}
-.candles i{left:calc(50% - .5px);width:1px}.candles b{left:14%;right:14%;border-radius:1px}
-.price svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.last{position:absolute;left:0;right:0;border-top:1px dashed rgba(22,119,255,.7)}
-.vols{height:70px;display:flex;gap:2px;align-items:flex-end}.vols i{flex:1 1 0;min-width:0;border-radius:1px 1px 0 0;opacity:.55}
-.times{display:flex;justify-content:space-between;font:11px var(--mono);color:var(--dim)}
-.axis{width:76px;position:relative;height:340px;font:11px var(--mono);color:var(--dim)}
-.axis span{position:absolute;left:6px}
-.axis .tag{left:0;right:0;padding:2px 6px;border-radius:4px;background:var(--acc);color:#fff;font-weight:600}
-.trades{display:grid;grid-template-columns:70px 1fr 1fr 1fr;gap:6px 10px;font:12px var(--mono)}
-.trades .h{color:var(--dim)}.trades .r{text-align:right}
-.venue{display:grid;gap:6px}.venue div:first-child{display:flex;justify-content:space-between;font-size:13px}
-.track{height:6px;border-radius:3px;background:#142235}.track i{display:block;height:6px;border-radius:3px;background:var(--acc)}
-.note{margin:0;color:var(--dim);font-size:11px}
-.lead{margin:0;color:var(--mut);font-size:12px;line-height:1.6}
-.tablebox{overflow-x:auto;position:relative}
-table{width:100%;border-collapse:collapse;min-width:760px;font-size:13px}
-th{padding:8px 6px;font-weight:500;color:var(--dim);font-size:12px;text-align:left}
-td{padding:10px 6px;border-top:1px solid rgba(123,153,186,.12)}
-.num{text-align:right;font-family:var(--mono)}
-.tok{display:inline-flex;align-items:center;gap:10px}.tok small{display:block;color:var(--dim);font-size:11px}
-.spark{display:flex;align-items:flex-end;gap:2px;height:24px;width:96px}.spark i{flex:1 1 0;border-radius:1px;opacity:.8}
-.trade{height:34px;padding:0 14px;border-radius:8px;border:1px solid rgba(22,119,255,.5);background:rgba(22,119,255,.12);cursor:pointer;font-size:12px;font-weight:600}
-.swap{border-radius:16px;padding:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
-.modes{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
-.modes button{height:34px;padding:0 14px;border-radius:8px;border:0;background:transparent;color:var(--mut);cursor:pointer}
-.modes button[aria-pressed=true]{background:rgba(22,119,255,.16);color:var(--ink);font-weight:600}
-.well{background:var(--well);border:1px solid rgba(123,153,186,.14);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
-.well .lab{display:flex;justify-content:space-between;color:var(--mut);font-size:12px}
-.well .row{display:flex;align-items:center;gap:10px}
-.amt{flex:1 1 auto;min-width:0;width:100%;background:transparent;border:0;font:600 26px var(--mono)}
-.pick{height:38px;display:flex;align-items:center;gap:8px;padding:0 12px;border-radius:999px;border:1px solid var(--line2);background:var(--panel);font-weight:600;cursor:pointer}
-.pick i{width:18px;height:18px;border-radius:50%}
-.pct{display:flex;gap:6px}.pct button{height:28px;padding:0 10px;border-radius:6px;border:1px solid rgba(123,153,186,.2);background:transparent;color:var(--mut);cursor:pointer;font-size:11px}
-.flip{display:flex;justify-content:center;margin:-4px 0}.flip button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line2);background:var(--panel);cursor:pointer;display:grid;place-items:center}
-.kv{display:grid;gap:6px;font-size:12px;padding:4px 2px}.kv div{display:flex;justify-content:space-between;gap:12px}.kv div span:first-child{color:var(--mut)}
-.fee{border:1px solid rgba(22,119,255,.35);background:rgba(22,119,255,.07);border-radius:12px;padding:12px 14px;display:grid;gap:7px;font-size:12px}
-.fee div{display:flex;justify-content:space-between;gap:12px}.fee div span:first-child{color:var(--mut)}
-.fee .t{font-weight:600;font-size:13px;color:var(--ink)!important}
-.chip{font:11px var(--mono);color:#9cc4ff;border:1px solid rgba(22,119,255,.5);border-radius:999px;padding:2px 8px}
-.fee .tot{border-top:1px solid rgba(123,153,186,.18);padding-top:7px;font-size:13px;font-weight:600}
-.go{height:50px;border-radius:12px;border:0;background:var(--acc);color:#fff;font-size:15px;font-weight:600;cursor:pointer}
-.msg{min-height:18px;margin:0;font-size:12px;color:var(--warn);text-align:center}
-.bar{height:8px;border-radius:4px;background:#142235;position:relative}.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
-.minis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-.mini{background:var(--well);border-radius:10px;padding:10px 12px;display:grid;gap:2px}.mini span{color:var(--dim);font-size:11px}.mini b{font:400 16px var(--mono)}
-.hold{display:flex;align-items:center;gap:10px;font-size:13px}.hold i{width:10px;height:10px;border-radius:50%}
-.alloc{height:8px;border-radius:4px;overflow:hidden;display:flex}
-footer.foot{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-wrap:wrap;gap:8px 24px;color:var(--dim);font-size:12px}
-@media (max-width:640px){.wrap{padding:0 14px}main.wrap{padding-top:14px}.overview{gap:12px 22px}.price,.axis{height:260px}.axis{width:64px}.legend{display:none}.hright .btn:not(.pri){display:none}}
+/* Layout: an exchange-desk console — a fixed rate strip on top, one working panel per tab, figures in mono. */
+:root {
+  --bg: #f3f5f7; --panel: #ffffff; --ink: #121820; --ink-2: #4a5462; --ink-3: #6b7482; --line: #dde2e8;
+  --accent: #0d6e66; --accent-soft: #dff1ee; --on-accent: #ffffff;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #7a5bd6; --ref: #8a93a0;
+  --good: #1d7f45; --warn: #a76a00; --crit: #c23b22;
+  --f-disp: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-num: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1318; --panel: #171c23; --ink: #eef1f4; --ink-2: #b6bec9; --ink-3: #8a94a1; --line: #29313b;
+  --accent: #3fb8ac; --accent-soft: #163a37; --on-accent: #06201d;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #9a7fec; --ref: #6f7a87;
+  --good: #3fae6a; --warn: #d39a2a; --crit: #e2674e; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1318; --panel: #171c23; --ink: #eef1f4; --ink-2: #b6bec9; --ink-3: #8a94a1; --line: #29313b;
+  --accent: #3fb8ac; --accent-soft: #163a37; --on-accent: #06201d;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #9a7fec; --ref: #6f7a87;
+  --good: #3fae6a; --warn: #d39a2a; --crit: #e2674e; color-scheme: dark }
+* { box-sizing: border-box }
+[hidden] { display: none !important }
+body { background: var(--bg); color: var(--ink); font: 15px/1.5 var(--f-body); margin: 0 }
+.wrap { max-width: 1120px; margin: 0 auto; padding-inline: 16px; padding-block: 18px 48px; display: grid; gap: 18px }
+h1, h2, h3 { font-family: var(--f-disp); font-weight: 600; letter-spacing: .01em; margin: 0; text-wrap: balance }
+h1 { font-size: 26px } h2 { font-size: 20px } h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2) }
+p { margin: 0; max-width: 68ch } .muted { color: var(--ink-3) } .small { font-size: 13px }
+.num { font-family: var(--f-num); font-variant-numeric: tabular-nums }
+header.top { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 18px }
+.badge { font: 600 11px/1 var(--f-disp); letter-spacing: .12em; text-transform: uppercase; color: var(--warn);
+  border: 1px solid currentColor; border-radius: 3px; padding: 5px 7px }
+.controls { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--panel) }
+.seg button { font: 500 13px var(--f-body); color: var(--ink-2); background: none; border: 0; padding: 7px 11px; cursor: pointer }
+.seg button + button { border-left: 1px solid var(--line) }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent) }
+.seg button:disabled { opacity: .4; cursor: not-allowed }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+nav.tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line) }
+nav.tabs button { font: 600 14px var(--f-disp); letter-spacing: .03em; color: var(--ink-3); background: none; border: 0;
+  border-bottom: 2px solid transparent; padding: 8px 12px; cursor: pointer }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent) }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 14px; align-content: start; min-width: 0 }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px }
+.slider-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center }
+input[type=range] { width: 100%; accent-color: var(--accent) }
+.chain { display: grid; gap: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden }
+.chain .step { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 9px 12px; align-items: baseline }
+.chain .step + .step { border-top: 1px solid var(--line) }
+.chain .step .k { color: var(--ink-2) } .chain .step .k small { display: block; color: var(--ink-3); font-size: 12px }
+.chain .step.result { background: var(--accent-soft) }
+.chain .step .v { font-family: var(--f-num); font-variant-numeric: tabular-nums; font-size: 15px }
+.hero { display: flex; flex-wrap: wrap; gap: 8px 22px; align-items: baseline }
+.hero .big { font: 500 46px/1 var(--f-num); letter-spacing: -.02em }
+.hero .lab { color: var(--ink-2); font-size: 13px }
+table { border-collapse: collapse; width: 100%; font-size: 14px }
+th, td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--line); vertical-align: top }
+th { font: 600 12px var(--f-disp); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3) }
+td.r, th.r { text-align: right } .tablewrap { overflow-x: auto }
+.pill { display: inline-flex; align-items: center; gap: 6px; font: 600 12px var(--f-disp); letter-spacing: .05em; text-transform: uppercase;
+  border-radius: 999px; padding: 3px 9px; border: 1px solid currentColor }
+.pill.good { color: var(--good) } .pill.warn { color: var(--warn) } .pill.crit { color: var(--crit) } .pill.neutral { color: var(--ink-3) }
+.pill::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor }
+.why { margin: 0; padding-left: 18px; display: grid; gap: 4px; color: var(--ink-2) }
+.btn { font: 600 14px var(--f-body); border-radius: 6px; padding: 8px 14px; cursor: pointer; border: 1px solid var(--accent);
+  background: var(--accent); color: var(--on-accent) }
+.btn.ghost { background: none; color: var(--accent) } .btn:disabled { opacity: .45; cursor: not-allowed }
+.log { font: 13px/1.5 var(--f-num); color: var(--ink-2); margin: 0; padding: 0; list-style: none; display: grid; gap: 2px }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px }
+.stat { border-top: 2px solid var(--line); padding-top: 8px; display: grid; gap: 2px }
+.stat .v { font: 500 22px/1.2 var(--f-num) } .stat .l { font-size: 12px; color: var(--ink-3) }
+.chart { position: relative; min-width: 0 }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible }
+.chart text { fill: var(--ink-3); font: 11px var(--f-num) }
+.chart .grid { stroke: var(--line); stroke-width: 1 }
+.chart .tip { position: absolute; pointer-events: none; background: var(--panel); border: 1px solid var(--line); border-radius: 6px;
+  padding: 6px 9px; font: 12px/1.45 var(--f-num); color: var(--ink); box-shadow: 0 4px 14px rgb(0 0 0 / .12); white-space: nowrap }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12px; color: var(--ink-2) }
+.legend i { display: inline-block; width: 14px; height: 2px; vertical-align: middle; margin-right: 6px }
+.legend i.dash { background: repeating-linear-gradient(90deg, var(--ref) 0 4px, transparent 4px 7px) !important; height: 2px }
+.chips { display: flex; flex-wrap: wrap; gap: 6px }
+.chips button { font: 500 13px var(--f-body); border: 1px solid var(--line); background: var(--panel); color: var(--ink-2); border-radius: 999px; padding: 5px 11px; cursor: pointer }
+.chips button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: var(--accent-soft) }
+.bars { display: grid; gap: 6px }
+.bar { display: grid; grid-template-columns: 110px 1fr 60px; gap: 10px; align-items: center; font-size: 13px }
+.bar .track { height: 10px; background: var(--bg); border-radius: 4px; overflow: hidden }
+.bar .fill { height: 100%; background: var(--s1); border-radius: 0 4px 4px 0 }
+footer { font-size: 12px; color: var(--ink-3); border-top: 1px solid var(--line); padding-top: 12px; display: grid; gap: 4px }
+@media (max-width: 520px) { .hero .big { font-size: 36px } .bar { grid-template-columns: 84px 1fr 52px } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important } }
+.tabgroup { font: 600 11px/1 var(--f-disp); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); align-self: center; padding: 0 4px 0 10px }
+.tabgroup:first-child { padding-left: 0 }
+.calcgrid { display: grid; gap: 10px }
+.calcrow { display: grid; grid-template-columns: 130px 1fr; gap: 10px; align-items: center }
+@media (max-width: 560px) { .calcrow { grid-template-columns: 1fr; gap: 4px } }
+tr.b td { font-weight: 600 } tr.muted td { color: var(--ink-3) }
+.tag { display: inline-block; margin: 2px 0; vertical-align: middle; font: 600 10px/1.3 var(--f-disp); letter-spacing: .06em; text-transform: uppercase; padding: 2px 5px; border-radius: 4px; border: 1px solid var(--line); color: var(--ink-3); white-space: nowrap }
+.tag-measured { color: var(--good); border-color: var(--good) } .tag-simulated { color: var(--s1); border-color: var(--s1) } .tag-sourced { color: var(--ink-2) } .tag-design { color: var(--warn); border-color: var(--warn) }
+
+/* Swap section: the Exeswap app screen inside the simulator */
+#p-swap { display: block; min-height: calc(100vh - 150px) }
+#p-trade { display: grid; justify-items: center; align-content: start; min-height: calc(100vh - 150px); padding: clamp(24px, 6vh, 64px) 0 48px }
+/* Exeswap landing (2026-10-15): the home page's panel language, scoped to .xh so nothing else on the page changes */
+.xh { justify-self: stretch; width: 100%; display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 88px); align-items: center;
+  padding: clamp(28px, 6vh, 72px) 0 clamp(48px, 9vh, 96px);   /* 2026-10-19: edges aligned to the top bar */ font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
+.xh-eye { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: rgba(238, 242, 252, .5); margin: 0 0 22px }
+.xh h2 { font-family: inherit; font-weight: 300; font-size: clamp(40px, 4.6vw, 80px); line-height: 1; letter-spacing: -.05em; margin: 0 0 28px; color: #f3f1f6; text-transform: none; max-width: 11ch }
+.xh h2 .fade { color: transparent; background: linear-gradient(100deg, #f3f1f6 0%, #7aa8ff 45%, #6ab6ff 100%); -webkit-background-clip: text; background-clip: text }
+.xh-lede { color: rgba(238, 242, 252, .6); font-size: 18px; line-height: 1.55; max-width: 30ch; margin: 0 0 30px }
+.xh-go { display: inline-flex; align-items: center; gap: 12px; padding: 6px 20px 6px 6px; border-radius: 999px; cursor: pointer; font: 500 15px "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6;
+  background: rgba(255, 255, 255, .05); border: 1px solid rgba(160, 190, 245, .32); transition: border-color .2s }
+.xh-go:hover { border-color: rgba(200, 220, 255, .6) }
+.xh-go i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: #f3f1f6; color: #050616 }
+.xh-go svg { width: 11px; height: 11px; margin-left: 2px }
+@property --xa { syntax: "<angle>"; inherits: false; initial-value: 0deg }
+@keyframes xspin { to { --xa: 360deg } }
+.xh-card { position: relative; margin: 0; min-width: 0; border-radius: 26px; padding: 22px 24px 18px; overflow: hidden; isolation: isolate;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 35%), rgba(5, 9, 22, .66); border: 1px solid rgba(160, 190, 245, .32);
+  backdrop-filter: blur(34px) saturate(1.1) brightness(.5); -webkit-backdrop-filter: blur(34px) saturate(1.1) brightness(.5);
+  box-shadow: 0 40px 90px -40px rgba(77, 141, 255, .2), 0 36px 80px -50px rgba(44, 207, 194, .28), inset 0 1px 0 rgba(255, 255, 255, .3), inset 0 0 40px -12px rgba(255, 255, 255, .08) }
+.xh-card::before { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; padding: 1px;   /* 2026-10-21 (option A): finer edge */
+  background: conic-gradient(from var(--xa, 0deg), #4d8dff, #1d4fd6, #f1f6ff, #8a9bb8, #4d8dff);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; opacity: .55; animation: xspin 14s linear infinite }
+.xh-card::after { content: ""; position: absolute; width: 55%; aspect-ratio: 1; border-radius: 50%; filter: blur(46px); opacity: .16; z-index: -1; top: -30%; right: -20%; background: #2db4e3 }
+.xh-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 14px }
+.xh-head > div:first-child { min-width: 0 }
+.xh-tabs { flex: none }
+@media (max-width: 560px) { .xh-head { flex-wrap: wrap } }
+.xh-tok { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; row-gap: 6px; font-size: 15px; color: rgba(238, 242, 252, .74) }
+.xh-tok i { width: 24px; height: 24px; border-radius: 7px; background: conic-gradient(from 200deg, #4d8dff, #1d4fd6, #f1f6ff, #8a9bb8, #4d8dff); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .6) }
+.xh-ex { margin-left: 8px; font-size: 10.5px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; color: #ffc56b; border: 1px solid rgba(255, 197, 107, .45); background: rgba(255, 197, 107, .08) }
+.xh-price { display: flex; align-items: baseline; gap: 12px; margin-top: 10px; flex-wrap: wrap }
+.xh-price b { font-weight: 300; font-size: clamp(38px, 3.4vw, 56px); letter-spacing: -.05em; line-height: 1 }
+.xh-price span { font-size: 14.5px; font-weight: 500; color: #6ab6ff }
+.xh-tabs { display: flex; gap: 2px; padding: 4px; border-radius: 999px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(140, 170, 230, .18) }
+.xh-tabs button { font: inherit; font-size: 13px; color: rgba(238, 242, 252, .7); background: none; border: 0; padding: 6px 13px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s }
+.xh-tabs button[aria-pressed="true"] { background: rgba(255, 255, 255, .16); color: #f3f1f6 }
+.xh-map { position: relative; aspect-ratio: 16 / 7; margin: 6px -6px 0 }
+.xh-map canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block }
+.xh-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; border-top: 1px solid rgba(140, 170, 230, .18); margin-top: 10px; padding-top: 12px }
+.xh-stats b { display: block; font-weight: 400; font-size: 22px; letter-spacing: -.02em }
+.xh-stats span { font-size: 14px; color: rgba(238, 242, 252, .66); white-space: nowrap }
+.xh-note { display: flex; gap: 8px; align-items: center; margin: 14px 0 0; font-size: 12.5px; color: #ffc56b; max-width: none }
+.xh-note svg { flex: none; width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round }
+@media (max-width: 1000px) { .xh { grid-template-columns: minmax(0, 1fr) } .xh-map { aspect-ratio: 16 / 6 } }   /* 2026-10-19: flatter route map on smaller screens (was 16 / 9.5) */
+@media (max-width: 440px) { .xh-stats b { font-size: 19px } .xh-stats span { font-size: 11.5px } .xh-tok { font-size: 13.5px } }
+/* 2026-10-17 (the owner's reference): on desktop the route card is a landscape rectangle (about 1.5 : 1), same width and place;
+   shorter route map, title and Example tag on one line, content slightly smaller */
+@media (min-width: 1001px) {
+  .xh-card { padding: 18px 22px 14px }
+  .xh-tok { flex-wrap: nowrap; font-size: 13px; white-space: nowrap }
+  .xh-tok i { width: 20px; height: 20px }
+  .xh-tabs button { font-size: 12px; padding: 5px 11px }
+  .xh-price { margin-top: 6px }
+  .xh-price b { font-size: 44px }
+  .xh-price span { font-size: 13px }
+  .xh-map { aspect-ratio: 16 / 4.2; margin: 2px -6px 0 }
+  .xh-stats { margin-top: 6px; padding-top: 10px }
+  .xh-stats b { font-size: 18px }
+  .xh-stats span { font-size: 12.5px }
+  .xh-note { margin-top: 10px; font-size: 11.5px }
+}
+@media (prefers-reduced-motion: reduce) { .xh-card::before { animation: none } }
+.swapcard { width: min(480px, 100%); align-self: start; height: auto }
+.swhead { display: flex; align-items: center; justify-content: space-between; gap: 10px }
+.swf { min-width: 0; border-radius: 18px; padding: 14px 16px; background: rgba(255, 255, 255, .04); border: 1px solid var(--line); display: grid; gap: 4px }
+.swf .lab { font-size: 13px; color: var(--ink-3); display: flex; justify-content: space-between; gap: 8px }
+.swf .row { display: flex; align-items: center; gap: 12px }
+.swf .amt { flex: 1; min-width: 0; width: 100%; background: none; border: 0; outline: 0; color: var(--ink); font: 300 34px/1.15 var(--f-body); letter-spacing: -.03em; font-variant-numeric: tabular-nums }
+.swf .tok { appearance: none; -webkit-appearance: none; border: 1px solid var(--glass-edge); border-radius: 999px; padding: 8px 32px 8px 14px; font: 600 15px var(--f-body); color: var(--ink); cursor: pointer;
+  background: rgba(255, 255, 255, .07) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23c9d6f2' stroke-width='2.5' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 12px center }
+.swf .tok option { background: #0b1226; color: #eef1f4 }
+.swapcard .flip { justify-self: center; margin: -16px 0; z-index: 1; width: 36px; height: 36px; border-radius: 11px; display: grid; place-items: center; cursor: pointer;
+  background: #0b1226; border: 1px solid var(--glass-edge); color: var(--ink-2) }
+.swapcard .flip svg, .swnote svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+.two .p { display: grid; gap: 4px; padding: 14px 16px; border-radius: 16px; border: 1px solid var(--line); background: rgba(255, 255, 255, .03) }
+.two .p span { font-size: 13px; color: var(--ink-3) } .two .p b { font-size: 28px; font-weight: 500; letter-spacing: -.02em }
+.two .off b { color: var(--ink-3) }
+.two .on { border-color: rgba(45, 180, 227, .6); background: linear-gradient(120deg, rgba(77, 141, 255, .2), rgba(37, 196, 211, .1)) }
+.two .on span { color: var(--ink-2) } .two .on em { font-style: normal; font-weight: 600; color: var(--r4) } .two .on b { color: #fff; font-weight: 600 }
+.route { white-space: nowrap; overflow: hidden; display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-2); padding: 0 4px; margin-top: -2px }
+.route svg { width: 16px; height: 16px; flex: none; fill: none; stroke: var(--r3); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round }
+.route b { color: var(--ink); font-weight: 600 } .route span.m { color: var(--ink-3) }
+.tryrow { display: flex; justify-content: flex-end; margin-top: -4px }
+.try { background: none; border: 0; padding: 0; font-size: 13px; color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px; cursor: pointer }
+.try:hover { color: var(--ink) }
+#swSlide input { width: 100% }
+#swSlide .swtierseg { display: flex; width: fit-content; margin: 10px auto 0 } .swtier { font-style: normal; opacity: .75 }
+.swcta { width: 100%; padding: 15px 18px; font-size: 16px }
+.swdone { margin: 0; text-align: center; font-size: 14px; color: var(--r4) }
+.swnote { margin: 0; display: flex; gap: 8px; align-items: center; justify-content: center; font-size: 12.5px; color: #ffc56b; text-align: center }
+@media (max-width: 420px) { .swf .amt { font-size: 28px } .two .p b { font-size: 24px } }
+
+/* My XPR: the one number users come back to check. Ring fills towards 1.00; figure in the blue-to-teal gradient. */
+.hright { display: flex; align-items: center; gap: 16px }
+.myxpr { display: inline-flex; align-items: center; gap: 12px }
+.myxpr .ring { width: 50px; height: 50px; flex: none } .myxpr svg { width: 100%; height: 100%; transform: rotate(-90deg) }
+.myxpr .trk { fill: none; stroke: rgba(255, 255, 255, .08); stroke-width: 6 }
+.myxpr .val { fill: none; stroke: url(#mxg); stroke-width: 6; stroke-linecap: round; transition: stroke-dashoffset .4s }
+.myxpr .t { display: grid; line-height: 1.15 }
+.myxpr .l { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3) }
+.myxpr .v { font-size: 24px; font-weight: 600; letter-spacing: -.01em; font-variant-numeric: tabular-nums;
+  background: linear-gradient(120deg, #f1f6ff 10%, #3c9ff2 60%, #2ccfc2); -webkit-background-clip: text; background-clip: text; color: transparent }
+@media (max-width: 900px) { .myxpr .ring { width: 40px; height: 40px } .myxpr .v { font-size: 20px } .hright { gap: 10px } }
+/* 2026-10-19: "How it works" panel for Exeswap users, opened from the top bar */
+.how{position:fixed;inset:0;z-index:50;display:flex;justify-content:flex-end}
+.how[hidden]{display:none}
+.how-back{position:absolute;inset:0;background:rgba(2,4,12,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.how-panel{position:relative;width:min(560px,100%);height:100%;overflow-y:auto;padding:44px 40px 56px;
+  background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(255,255,255,0) 30%),#070c1d;border-left:1px solid rgba(160,190,245,.25);
+  box-shadow:-30px 0 80px -30px rgba(0,0,0,.9)}
+.how-panel h2{font-weight:300;font-size:clamp(30px,3vw,40px);letter-spacing:-.04em;line-height:1.05;margin:0 0 26px}
+.how-panel h3{font-weight:500;font-size:18px;margin:34px 0 10px}
+.how-x{position:absolute;top:18px;right:18px;width:38px;height:38px;border-radius:50%;border:1px solid rgba(160,190,245,.3);
+  background:rgba(255,255,255,.04);color:#eef2fc;font-size:22px;line-height:1;cursor:pointer}
+.how-steps{list-style:none;margin:0;padding:0;counter-reset:s;display:grid;gap:14px}
+.how-steps li{counter-increment:s;position:relative;padding:14px 16px 14px 56px;border-radius:16px;border:1px solid rgba(160,190,245,.18);
+  background:rgba(255,255,255,.03);color:rgba(238,242,252,.78);font-size:15px;line-height:1.5}
+.how-steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:13px;font-weight:600;color:#050616;background:linear-gradient(120deg,#4d8dff,#6ab6ff)}
+.how-steps b{color:#f3f1f6;font-weight:500}
+.how-faq{margin:0}
+.how-faq dt{color:#f3f1f6;font-weight:500;font-size:15px;margin:16px 0 4px}
+.how-faq dd{margin:0;color:rgba(238,242,252,.7);font-size:14.5px;line-height:1.55}
+.how-faq dd b{color:#f3f1f6;font-weight:500}
+@media (max-width:600px){.how-panel{padding:40px 20px 48px}}
+.how-panel{font-family:"Hanken Grotesk",system-ui,sans-serif;color:#f3f1f6}
+.how-eye{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(238,242,252,.5);margin:0 0 18px}
+.how-fade{color:transparent;background:linear-gradient(100deg,#f3f1f6 0%,#7aa8ff 45%,#6ab6ff 100%);-webkit-background-clip:text;background-clip:text}
+.how-btn{font:500 14px "Hanken Grotesk",system-ui,sans-serif;color:#f3f1f6;background:rgba(255,255,255,.05);border:1px solid rgba(160,190,245,.3);
+  border-radius:999px;padding:8px 16px;cursor:pointer;white-space:nowrap}
+.how-btn:hover{border-color:rgba(200,220,255,.6)}
+@media (max-width:560px){.how-btn{padding:7px 12px;font-size:13px}}
+/* 2026-10-19: big friendly "How it works" next to "Try a swap" (blue, as the home page's primary button) */
+.xh-how { margin-left: 10px; font: 500 15px "Hanken Grotesk", system-ui, sans-serif; color: #fff; border: 0; border-radius: 999px; padding: 13px 24px; cursor: pointer;
+  transition: transform .2s; background: linear-gradient(120deg, #4a78c8, #2f5aa8); box-shadow: 0 10px 26px -12px rgba(74,120,200,.85), inset 0 1px 0 rgba(255,255,255,.22) }
+.xh-how:hover { transform: translateY(-2px) }
+@media (max-width: 400px) { .hright { flex-wrap: wrap; row-gap: 8px } }
+@media (max-width: 440px) { .hright { gap: 6px !important } .how-btn { padding: 6px 10px !important } .xh-how { padding: 12px 18px } }
+/* "Your tier" card (2026-10-19) */
+#p-rate { grid-template-columns: repeat(2, minmax(0, 1fr)) } @media (max-width: 760px) { #p-rate { grid-template-columns: minmax(0, 1fr) } }
+.tierc-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap } .tierc-head h2 { margin: 0 }
+.tc-sim { font-size: 10.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #ffc56b; border: 1px solid currentColor; border-radius: 3px; padding: 3px 6px }
+.tc-steps { list-style: none; margin: 18px 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px }
+.tc-steps li { border: 1px solid rgba(160, 190, 245, .18); border-radius: 14px; padding: 14px 16px; display: grid; gap: 4px; align-content: start; background: rgba(255, 255, 255, .02) }
+.tc-steps li b { font-size: 15px } .tc-steps li span { font-size: 13.5px; color: rgba(238, 242, 252, .65); line-height: 1.45 }
+.tc-steps li.on { border-color: rgba(122, 168, 255, .7); background: rgba(77, 141, 255, .08); box-shadow: inset 0 0 0 1px rgba(122, 168, 255, .25) }
+.tcx-cap { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(238, 242, 252, .5) }
+.tcx-num { font-size: 26px; font-weight: 400; letter-spacing: -.02em; display: block; margin-top: 4px }
+.tca { display: grid; grid-template-columns: 1fr auto 1.3fr auto 1.4fr; gap: 18px; align-items: center; padding: 6px 0 4px }
+.tca-cell { border: 1px solid rgba(160, 190, 245, .18); border-radius: 16px; padding: 16px 18px; background: rgba(255, 255, 255, .02); display: grid; gap: 4px; align-content: start; min-height: 132px }
+.tca-out { border-color: rgba(122, 168, 255, .6); background: rgba(77, 141, 255, .08) }
+.tca-op { font-size: 22px; color: rgba(238, 242, 252, .45) }
+.tca-dots { display: flex; gap: 6px; margin: 6px 0 2px } .tca-dots i { flex: 1; height: 6px; border-radius: 999px; background: rgba(255, 255, 255, .12) }
+.tca-dots i:nth-child(1) { background: rgba(44, 207, 194, .35) } .tca-dots i.on { background: linear-gradient(90deg, #4d8dff, #7aa8ff); box-shadow: 0 0 10px rgba(122, 168, 255, .7) }
+.tca-act { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap }
+.tca-act input { width: 120px; background: rgba(255, 255, 255, .04); border: 1px solid rgba(160, 190, 245, .3); border-radius: 999px; color: #f3f1f6; padding: 11px 14px; font: inherit }
+.tca-act button { border: 0; border-radius: 999px; padding: 12px 22px; font: 500 14px "Hanken Grotesk", system-ui, sans-serif; color: #fff; cursor: pointer; white-space: nowrap;
+  background: linear-gradient(120deg, #4a78c8, #2f5aa8); box-shadow: 0 10px 26px -12px rgba(74, 120, 200, .85) }
+@media (max-width: 900px) { .tc-steps { grid-template-columns: 1fr } .tca { grid-template-columns: 1fr } .tca-op { justify-self: center; line-height: 1 } .tca-cell { min-height: 0 } }
+.chart-why { max-width: 70ch; margin: -6px 0 14px; line-height: 1.5 } .chart-why b { color: #f3f1f6; font-weight: 500 }
+
+/* Agents paying agents (2026-10-20) */
+.tag-modelled { color: #2ccfc2; border-color: #2ccfc2 }
+.sp-eyebrow { margin: 0 0 6px; font: 600 11px/1.3 var(--f-disp); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3) }
+.sp-h { font-size: clamp(24px, 3vw, 34px); margin: 0 0 10px } .sp-h span { color: var(--s1) }
+.sp-lead { color: var(--ink-2); max-width: 70ch; margin: 0 0 18px }
+.sp-bars { display: grid; gap: 12px; margin: 16px 0 8px }
+.sp-bar { display: grid; grid-template-columns: minmax(150px, 220px) 1fr minmax(120px, 170px); gap: 12px; align-items: center }
+.sp-bar .lab { font-size: 13px; color: var(--ink-2) } .sp-bar .track { height: 12px; border-radius: 6px; background: rgba(140,170,230,.08); overflow: hidden }
+.sp-bar .fill { height: 100%; border-radius: 6px; background: var(--ink-3) } .sp-bar.x .fill { background: #7c86a8 } .sp-bar.e .fill { background: linear-gradient(90deg, var(--s1), #2ccfc2) }
+.sp-bar .val { font: 500 15px/1.2 var(--f-num); text-align: right } .sp-bar .val small { display: block; font: 400 11px/1.3 var(--f-body, inherit); color: var(--ink-3) }
+.sp-bar.e .lab, .sp-bar.e .val { color: var(--ink) }
+@media (max-width: 640px) { .sp-bar { grid-template-columns: 1fr auto } .sp-bar .track { grid-column: 1 / -1; order: 3 } }
+
+/* 2026-10-20: Exeswap numbers band and "Try it for yourself" under the Exeswap hero, in the home page's format */
+.xh-proof { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; border-top: 1px solid rgba(140, 170, 230, .18); border-bottom: 1px solid rgba(140, 170, 230, .18); font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
+.xh-proof div { padding: 30px 0; min-width: 0 }
+.xh-proof b { display: block; font-weight: 300; font-size: clamp(34px, 4vw, 60px); letter-spacing: -.05em; line-height: 1; margin-bottom: 8px }
+.xh-proof span { color: rgba(238, 242, 252, .6); font-size: 15px; line-height: 1.45; display: block }
+.xh-proofnote { margin: 10px 0 0; font-size: 12px; color: rgba(238, 242, 252, .5); max-width: none; font-family: "Hanken Grotesk", system-ui, sans-serif }
+.xh-try { padding-top: clamp(56px, 10vh, 112px) }
+.xt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; min-width: 0 }
+.xt-main { grid-column: 1 / -1 }
+.xt-small { padding: 18px 22px }
+.xt-small h3 { font: 400 22px/1.1 "Hanken Grotesk", system-ui, sans-serif; letter-spacing: -.03em; text-transform: none; color: #f3f1f6; margin: 0 0 8px }
+.xt-small h3::before { content: none !important; display: none !important }
+.xt-small p { margin: 0; color: rgba(238, 242, 252, .74); font-size: 15px }
+.xt-slide { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin: 18px 0 6px; font-size: 14px; color: rgba(238, 242, 252, .74) }
+.xt-slide input { width: 100%; accent-color: #4d8dff }
+.xt-slide span { font-variant-numeric: tabular-nums; color: #f3f1f6 }
+@media (max-width: 900px) { .xh-proof { grid-template-columns: 1fr 1fr } }
+@media (max-width: 520px) { .xt-grid { grid-template-columns: 1fr } .xh-proof b { font-size: 34px } }
+
+/* Swap card (2026-10-20): steps before you sign, one "Details" line that opens the cost breakdown and route, token dropdown */
+.swapcard { position: relative }
+.swsteps { list-style: none; margin: -2px 0 0; padding: 0 4px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px }
+.swsteps li { position: relative; font-size: 11.5px; line-height: 1.25; color: var(--ink-3); padding-top: 9px; transition: color .3s }
+.swsteps li::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; border-radius: 3px; background: var(--line); transition: background .4s }
+.swsteps.on li { color: var(--ink-2) } .swsteps.on li::before { background: linear-gradient(90deg, #3987e5, #2ccfc2) }
+.swsteps.on li:nth-child(2)::before { transition-delay: .1s } .swsteps.on li:nth-child(3)::before { transition-delay: .2s } .swsteps.on li:nth-child(4)::before { transition-delay: .3s }
+@media (max-width: 420px) { .swsteps li { font-size: 10.5px } }
+.swmore { border-top: 1px solid var(--line); padding-top: 10px }
+.swmore summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: 10px; font-size: 14px; color: var(--ink-2); font-weight: 500 }
+.swmore summary::-webkit-details-marker { display: none }
+.swmore summary span { margin-left: auto; font: 12.5px var(--f-num); color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0 }
+.swmore summary::after { content: "+"; font: 400 17px/1 var(--f-num); color: var(--ink-3) } .swmore[open] summary::after { content: "–" }
+.swct { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-top: 8px }
+.swct td { padding: 6px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: top }
+.swct td:last-child { text-align: right; font-family: var(--f-num); white-space: nowrap; padding-left: 12px }
+.swct td small { display: block; color: var(--ink-3); font-size: 12px }
+.swct tr.t td { color: var(--ink) } .swct tr.r td { color: #6ab6ff } .swct tr.b td { color: var(--ink); font-weight: 600; border-bottom: 0 }
+.swrd { display: grid; gap: 6px; margin-top: 10px; font-size: 13px; color: var(--ink-3) } .swrd p { margin: 0 }
+.swhops { display: flex; align-items: center; gap: 8px; font: 13px var(--f-num); color: var(--ink-3) }
+.swhops b { font-weight: 500; color: var(--ink); border: 1px solid var(--glass-edge); border-radius: 7px; padding: 3px 8px }
+button.tokb { flex: none; text-align: left }
+.tokpop { position: absolute; z-index: 30; width: min(300px, calc(100% - 32px)); background: #0f1522; border: 1px solid var(--glass-edge); border-radius: 16px; padding: 10px;
+  box-shadow: 0 30px 70px -20px #000; display: grid; gap: 6px; animation: tokin .16s ease-out; transform-origin: top right }
+@keyframes tokin { from { opacity: 0; transform: scale(.96) } }
+.tokpop input { width: 100%; box-sizing: border-box; border: 1px solid var(--line); background: rgba(255, 255, 255, .04); border-radius: 10px; padding: 9px 11px; color: var(--ink); font: 14px var(--f-body) }
+.tokpop ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; max-height: 300px; overflow: auto }
+.tokpop li { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; padding: 8px; border-radius: 10px; font-size: 14px; color: var(--ink); cursor: pointer }
+.tokpop li:hover, .tokpop li:focus-visible { background: rgba(255, 255, 255, .06); outline: none } .tokpop li[aria-selected="true"] { background: rgba(57, 135, 229, .16) }
+.tokpop li small { display: block; color: var(--ink-3); font-size: 12px } .tokpop li em { font-style: normal; font: 12px var(--f-num); color: var(--ink-3) }
+.tokpop li.none { cursor: default; color: var(--ink-3); grid-template-columns: 1fr }
+.tokpop .coin { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; font: 700 10px var(--f-num); font-style: normal; color: #05070b; background: linear-gradient(135deg, #9cc0ff, #2ccfc2) }
+@media (max-width: 560px) { .tokpop { position: fixed; left: 0 !important; right: 0 !important; top: auto !important; bottom: 0; width: auto; border-radius: 18px 18px 0 0; padding: 14px 14px calc(14px + env(safe-area-inset-bottom, 0px)); transform-origin: bottom center }
+  .tokpop ul { max-height: 50vh } }
+
+/* token icons on the swap card's token buttons */
+button.tokb { display: inline-flex; align-items: center; gap: 8px; padding-left: 6px }
+button.tokb .coin { width: 24px; height: 24px; border-radius: 50%; flex: none; display: grid; place-items: center; font: 700 10px var(--f-num); font-style: normal; color: #05070b; background: linear-gradient(135deg, #9cc0ff, #2ccfc2) }
+img.coin { background: none !important; object-fit: contain }
+
+/* sleek scrollbar in our colours for the token list (no grey system bar) */
+.tokpop ul { scrollbar-width: thin; scrollbar-color: rgba(77, 141, 255, .55) transparent }
+.tokpop ul::-webkit-scrollbar { width: 6px } .tokpop ul::-webkit-scrollbar-track { background: transparent }
+.tokpop ul::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #3987e5, #2ccfc2); border-radius: 6px }
+
+/* Agent payments, "smarter" layout (2026-10-20) */
+.mk-stack { display: grid; gap: 8px; margin-top: 6px; max-width: 760px }
+.mk-layer { display: grid; grid-template-columns: 200px 1fr; gap: 12px; align-items: center; padding: 12px 16px; border: 1px solid rgba(140, 170, 230, .18); border-radius: 10px; background: rgba(140, 170, 230, .04) }
+.mk-layer b { font-weight: 600 } .mk-layer span { color: var(--ink-2); font-size: 14px }
+.mk-layer.exe { border-color: rgba(57, 135, 229, .7); background: linear-gradient(90deg, rgba(57, 135, 229, .18), rgba(44, 207, 194, .10)); box-shadow: 0 0 30px rgba(57, 135, 229, .18) }
+.mk-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px }
+.mk-card { border: 1px solid rgba(140, 170, 230, .18); border-radius: 10px; padding: 14px; display: grid; gap: 8px; align-content: start }
+.mk-card b { font-size: 16px } .mk-card p { color: var(--ink-2); font-size: 14px }
+.mk-proof { color: var(--ink) !important; font-weight: 500; border-top: 1px solid rgba(140, 170, 230, .14); padding-top: 8px }
+.mk-sub { display: block; font-weight: 400; font-size: 12px; color: var(--ink-3) }
+.mk-loop { margin: 0; padding-left: 22px; display: grid; gap: 10px } .mk-loop li { color: var(--ink-2) } .mk-loop b { color: var(--ink); font-weight: 500 }
+.mk-hyp { color: #c9a0ff; border-color: #c9a0ff } .tag-arithmetic { color: var(--ink-2) }
+.mk-t td:first-child { color: var(--ink-2) } .mk-t td:last-child { color: var(--ink) }
+@media (max-width: 640px) { .mk-layer { grid-template-columns: 1fr; gap: 2px } }
+
+/* "How it works" band on the Exeswap home (2026-10-21): three steps, sticky picture on desktop, inline on phones */
+.xw { padding: clamp(64px, 12vh, 128px) 0 clamp(40px, 8vh, 80px); font-family: "Hanken Grotesk", system-ui, sans-serif; color: #f3f1f6 }
+.xw-head { max-width: 46rem; margin-bottom: clamp(28px, 5vh, 56px) }
+.xw-head h2 { font-family: inherit; font-weight: 300; font-size: clamp(36px, 4vw, 64px); line-height: 1.02; letter-spacing: -.05em; margin: 0 0 22px; color: #f3f1f6; text-transform: none }
+.xw-head h2::before { display: none !important }
+.xw-head h2 .fade { color: transparent; background: linear-gradient(100deg, #f3f1f6 0%, #7aa8ff 45%, #6ab6ff 100%); -webkit-background-clip: text; background-clip: text }
+.xw-head .xh-lede { max-width: 46ch }
+.xw-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: start }
+.xw-fig { position: sticky; top: 96px; aspect-ratio: 5 / 4; padding: 0 !important; display: block }
+.xw-fig .xw-vis { position: absolute; inset: 0; padding: 30px; display: grid; align-content: center; gap: 14px; opacity: 0; transform: translateY(10px); transition: opacity .5s, transform .5s }
+.xw-fig .xw-vis.on { opacity: 1; transform: none }
+.xw-steps { display: grid; gap: 26vh; padding: 6vh 0 22vh }
+.xw-step { display: grid; gap: 12px; padding-left: 22px; border-left: 2px solid rgba(140, 170, 230, .18); transition: border-color .4s }
+.xw-step.on { border-left-color: #3987e5 }
+.xw-k { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: rgba(238, 242, 252, .5) }
+.xw-step h3 { font: 400 clamp(24px, 2.4vw, 32px)/1.1 "Hanken Grotesk", system-ui, sans-serif; letter-spacing: -.03em; text-transform: none; color: #f3f1f6; margin: 0 }
+.xw-step h3::before { display: none !important }
+.xw-step p { color: rgba(238, 242, 252, .66); font-size: 16.5px; line-height: 1.6; max-width: 46ch; margin: 0 }
+.xw-inline { display: none }
+.xw-end { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px }
+.xw-vt { margin: 0; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(238, 242, 252, .5) }
+.xw-cap { margin: 0; font-size: 13px; color: rgba(238, 242, 252, .5) }
+.xw-route { width: 100%; height: auto; display: block }
+.xw-mini { display: grid; border: 1px solid rgba(140, 170, 230, .18); border-radius: 14px; padding: 4px 16px; background: rgba(255, 255, 255, .02) }
+.xw-mini div { display: flex; justify-content: space-between; gap: 12px; padding: 11px 0; border-bottom: 1px solid rgba(140, 170, 230, .14); font-size: 15px; color: rgba(238, 242, 252, .72) }
+.xw-mini div:last-child { border-bottom: 0 } .xw-mini b { font-weight: 500; color: #f3f1f6; font-variant-numeric: tabular-nums } .xw-mini b.xw-dim { font-weight: 400; color: rgba(238, 242, 252, .5) }
+.xw-mini .tot span, .xw-mini .tot b { color: #f3f1f6; font-weight: 600 }
+.xw-eq { display: flex; align-items: center; flex-wrap: wrap; gap: 10px }
+.xw-eq i { font-style: normal; font-size: 22px; color: rgba(238, 242, 252, .45) }
+.xw-eq .term { border: 1px solid rgba(160, 190, 245, .3); border-radius: 14px; padding: 12px 14px; display: grid; gap: 2px; min-width: 0 }
+.xw-eq .term span { font-size: 12.5px; color: rgba(238, 242, 252, .6) } .xw-eq .term b { font-weight: 300; font-size: 28px; letter-spacing: -.03em }
+.xw-eq .term.res { border-color: rgba(45, 180, 227, .6); background: linear-gradient(120deg, rgba(77, 141, 255, .2), rgba(37, 196, 211, .1)) }
+.xw-eq .term.res b { font-weight: 500; color: #fff }
+@media (max-width: 1000px) {
+  .xw-grid { grid-template-columns: minmax(0, 1fr) } .xw-fig { display: none }
+  .xw-steps { gap: 40px; padding: 0 }
+  .xw-inline { display: block; margin-top: 6px } .xw-inline .xw-vis { display: grid; gap: 12px; border: 1px solid rgba(140, 170, 230, .18); border-radius: 18px; padding: 18px; background: rgba(5, 9, 22, .5) }
+}
+@media (prefers-reduced-motion: reduce) { .xw-fig .xw-vis { transition: none } }
+
+/* 2026-10-21: the Exeswap logo (its own modular E + Outfit Bold) replaces the old gradient square everywhere */
+.side-brand .mark, h1::before, .xh-tok i { border-radius: 0 !important; box-shadow: none !important; background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2041.4%2035.7%22%20aria-hidden%3D%22true%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22m0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22m2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23m0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23m1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23m2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%220.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%232350e6%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/svg%3E") center/contain no-repeat !important }
+.side-brand .mark { width: 28px !important; height: 24px !important }
+h1::before { width: 20px !important; height: 17.5px !important }
+.xh-tok i { width: 22px !important; height: 19px !important }
+.side-brand .bt b { font-family: "Outfit", "Hanken Grotesk", sans-serif !important; font-weight: 700 !important; font-size: 17px !important; letter-spacing: -.02em !important }
+
+/* 2026-10-21: "Details" reads as a link, the same as "Change XPR range" */
+.swmore summary .swd { font-style: normal; font-size: 13px; font-weight: 400; color: var(--ink-3); text-decoration: underline; text-underline-offset: 3px }
+.swmore summary:hover .swd { color: var(--ink) }
+/* 2026-10-21: "Three things happen before you sign." matches the other section headings */
+.xw-head h2 { font-size: clamp(40px, 4.6vw, 80px); line-height: 1 }
+/* 2026-10-21: one text measure across the simulator home: every section heading and lede has the same right edge */
+.xw-head { max-width: none } .xw-head h2 { max-width: none; margin-bottom: 28px } .xw-head .xh-lede { max-width: 30ch }   /* heading on two lines, broken after "happen" (the owner's mock-up, 21 Oct); lede keeps the shared measure */
+
+/* 2026-10-21: back-to-top arrow, appears after scrolling down */
+.totop{position:fixed;right:20px;bottom:20px;z-index:60;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,16,34,.82);color:#e8eefc;font-size:18px;line-height:1;cursor:pointer;display:grid;place-items:center;opacity:0;pointer-events:none;transform:translateY(6px);transition:opacity .2s,transform .2s,border-color .2s;backdrop-filter:blur(6px)}
+.totop.on{opacity:1;pointer-events:auto;transform:none}.totop:hover{border-color:rgba(122,168,255,.7)}
+@media (prefers-reduced-motion:reduce){.totop{transition:none}}
+
+/* 2026-10-22: phone motion in the Exeswap home hero, ported from the Exeswap Phone Motion artifact with a brand pass:
+   Exeswap mark, site fonts and colours, the simulator's own figures (they follow the XPR slider), no unbacked claims,
+   and it only runs while on screen. */
+.xm { margin: 0; display: flex; flex-direction: column; align-items: center; min-width: 0; position: relative }
+.xm-glow { position: absolute; inset: 0; pointer-events: none; z-index: 0 }
+.xm-glow::before { content: ""; position: absolute; left: 50%; top: -6%; width: 190%; height: 80%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(45,180,227,.42), rgba(45,180,227,.2) 50%, rgba(45,180,227,0) 100%) }
+.xm-glow::after { content: ""; position: absolute; left: 50%; bottom: -12%; width: 190%; height: 28%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(44,207,194,.26), rgba(44,207,194,0) 100%) }
+.xm-under { position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%); width: min(340px, 100%); display: flex; flex-direction: column; align-items: center; gap: 12px }
+#p-swap > .xh:first-child { padding-bottom: 130px }   /* the glow fades out inside its own box, so nothing is clipped */   /* room for the phone's controls and note, which hang below it so the phone centres on the hero text */
+.xm-phone { --pw: clamp(136px, 15.6vw, 271px);   /* height = 7 x the hero heading size, as on the home page */ --scr: #0a1228; --sf: #111c38; --sf2: #18254a; --ln: #1f2c50; --ink: #e9effb; --mut: #8392b6;
+  --grad: linear-gradient(120deg, #2f63e0, #25c4d3); --teal: #2ccfc2;
+  /* frame proportions and colours from the home page phones (scratchpad mk_cascade.py): metal rail, black bezel, screen radius */
+  width: var(--pw); max-width: 100%; aspect-ratio: 1282 / 2644; position: relative; box-sizing: border-box; padding: calc(var(--pw) * .0172);
+  border-radius: calc(var(--pw) * .172); background: linear-gradient(180deg, #6e727c 0%, #a9adb8 30%, #b6bac6 50%, #a9adb8 70%, #6e727c 100%);
+  box-shadow: inset 0 0 0 1px rgba(235,238,245,.55), 0 40px 70px -30px rgba(0,0,0,.85); z-index: 1;
+  font-size: calc(var(--pw) / 24.7); font-family: var(--f-body); color: var(--ink); text-align: left }
+.xm-phone::before, .xm-phone::after { content: ""; position: absolute; width: calc(var(--pw) * .014); border-radius: 3px; background: #787c86 }
+.xm-phone::before { right: calc(var(--pw) * -.011); top: 31%; height: 10% }
+.xm-phone::after { left: calc(var(--pw) * -.011); top: 21%; height: 3%; box-shadow: 0 calc(var(--pw) * .25) 0 0 #787c86, 0 calc(var(--pw) * .41) 0 0 #787c86 }
+.xm-bez { width: 100%; height: 100%; box-sizing: border-box; padding: calc(var(--pw) * .0265); border-radius: calc(var(--pw) * .155); background: #08090c }
+.xm-screen { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: calc(var(--pw) * .129);
+  background: radial-gradient(130% 55% at 50% -8%, rgba(77,141,255,.2), transparent 62%), var(--scr) }
+.xm-screen::after { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 7; border-radius: inherit;
+  background: linear-gradient(to bottom right, rgba(255,255,255,.19) 0%, rgba(255,255,255,.14) 25%, rgba(255,255,255,0) 35%) }
+.xm-status { position: absolute; inset: 0 0 auto; height: 3em; display: flex; align-items: center; justify-content: space-between; padding: 0 1.9em; font-size: .82em; font-weight: 600; z-index: 5 }
+.xm-island { position: absolute; left: 50%; top: .7em; width: 7.6em; height: 2.1em; transform: translateX(-50%); border-radius: 2em; background: #000 }
+.xm-sys { display: flex; gap: .45em; align-items: center } .xm-bars { display: flex; gap: .15em; align-items: flex-end; height: .8em }
+.xm-bars i { width: .22em; background: var(--ink); border-radius: 1px } .xm-bars i:nth-child(1) { height: 35% } .xm-bars i:nth-child(2) { height: 55% } .xm-bars i:nth-child(3) { height: 78% } .xm-bars i:nth-child(4) { height: 100% }
+.xm-batt { width: 1.6em; height: .8em; border: 1.5px solid var(--ink); border-radius: .25em; padding: 1px; box-sizing: border-box } .xm-batt i { display: block; height: 100%; width: 72%; background: var(--ink); border-radius: 1px }
+.xm-layer { position: absolute; inset: 0; padding: 3.7em 1.15em 1.3em; display: flex; flex-direction: column; gap: .6em; box-sizing: border-box; visibility: hidden }
+.xm-mark { display: block; flex: none }
+.xm-center { align-items: center; justify-content: center; text-align: center }
+.xm-word { font-family: "Outfit", var(--f-body); font-weight: 700; font-size: 2.1em; letter-spacing: -.02em; margin: .35em 0 0 }
+.xm-tag { color: var(--mut); font-size: .95em; margin: .2em 0 0 }
+.xm-endl { font-weight: 300; font-size: 1.6em; line-height: 1.2; letter-spacing: -.03em; margin: .7em 0 0; max-width: 11em }
+.xm-endl em, .xm-num { font-style: normal; background: linear-gradient(100deg, #f3f1f6, #7aa8ff 45%, #6ab6ff); -webkit-background-clip: text; background-clip: text; color: transparent }
+.xm-endm { margin-top: 1.6em; display: grid; gap: .35em; font-size: .82em; color: var(--mut) } .xm-endm b { color: var(--ink); font-weight: 600 }
+.xm-handle { font-family: var(--f-num); font-size: .78em; color: var(--mut); margin-top: 1.4em }
+.xm-appbar { display: flex; align-items: center; justify-content: space-between; height: 2.4em }
+.xm-brand { display: flex; align-items: center; gap: .45em; font-family: "Outfit", var(--f-body); font-weight: 700; font-size: 1em; letter-spacing: -.02em }
+.xm-chip { display: inline-flex; align-items: center; gap: .4em; font-size: .75em; font-weight: 500; padding: .35em .7em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln); color: var(--mut) }
+.xm-chip i { width: .5em; height: .5em; border-radius: 50%; background: var(--teal) }
+.xm-pair { position: relative; display: grid; gap: .35em }
+.xm-card { background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .8em .95em }
+.xm-ct { display: flex; justify-content: space-between; font-size: .72em; color: var(--mut) }
+.xm-cr { display: flex; align-items: center; justify-content: space-between; gap: .6em; margin-top: .35em }
+.xm-amt { font-weight: 400; font-size: 1.9em; letter-spacing: -.02em; display: flex; align-items: center; min-height: 1.25em; font-variant-numeric: tabular-nums }
+.xm-amt.ph { color: var(--mut) } .xm-caret { display: inline-block; width: .07em; height: .95em; background: var(--teal); margin-left: .06em; border-radius: 1px }
+.xm-tok { display: inline-flex; align-items: center; gap: .45em; font-weight: 600; font-size: .9em; padding: .3em .75em .3em .3em; border-radius: 2em; background: var(--sf2) }
+.xm-tok img { width: 1.6em; height: 1.6em; border-radius: 50% }
+.xm-flip { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 2.3em; height: 2.3em; border-radius: .8em; background: var(--scr); border: 1px solid var(--ln); display: grid; place-items: center }
+.xm-flip svg { width: 1.05em; height: 1.05em; stroke: var(--ink); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round }
+.xm-route { position: relative; height: 2em; font-size: .78em } .xm-route > div { position: absolute; inset: 0; display: flex; align-items: center; gap: .7em; color: var(--mut) }
+.xm-rbar { flex: 1; height: .3em; border-radius: 1em; background: var(--ln); overflow: hidden } .xm-rbar i { display: block; height: 100%; width: 0; background: var(--grad) }
+.xm-best { font-weight: 600; color: var(--teal); padding: .2em .55em; border-radius: .5em; background: rgba(44,207,194,.12) }
+.xm-fees { display: flex; justify-content: space-between; align-items: baseline; font-size: .82em; color: var(--mut); padding: 0 .15em }
+.xm-fv { color: var(--ink); font-weight: 500; font-variant-numeric: tabular-nums } .xm-fv s { color: var(--mut); margin-right: .35em; font-weight: 400 }
+.xm-xpr { background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .75em .95em }
+.xm-xh { display: flex; justify-content: space-between; align-items: center; font-size: .85em; font-weight: 500 }
+.xm-tg { --k: 0; position: relative; width: 2.7em; height: 1.55em; border-radius: 1em; background: var(--ln); flex: none }
+.xm-tg::before { content: ""; position: absolute; inset: 0; border-radius: inherit; background: var(--grad); opacity: var(--k) }
+.xm-tg i { position: absolute; left: .18em; top: .18em; width: 1.19em; height: 1.19em; border-radius: 50%; background: var(--ink) }
+.xm-xb { height: 0; overflow: hidden } .xm-xi { padding-top: .7em }
+.xm-xr { display: flex; justify-content: space-between; align-items: baseline }
+.xm-num { font-weight: 300; font-size: 1.85em; letter-spacing: -.03em; font-variant-numeric: tabular-nums }
+.xm-num small { font-size: .42em; font-weight: 500; color: var(--mut); -webkit-text-fill-color: var(--mut); margin-right: .4em; letter-spacing: .08em }
+.xm-pct { font-size: .78em; font-variant-numeric: tabular-nums }
+.xm-meter { height: .38em; border-radius: 1em; background: var(--ln); margin-top: .5em; overflow: hidden } .xm-meter i { display: block; height: 100%; width: 0; background: var(--grad); border-radius: inherit }
+.xm-xl { font-size: .74em; color: var(--mut); margin: .55em 0 0 }
+.xm-swipe { margin-top: auto; position: relative; height: 3.5em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln) }
+.xm-sl { position: absolute; inset: 0; display: grid; place-items: center; font-size: .85em; font-weight: 500; color: var(--mut) }
+.xm-thumb { position: absolute; left: .3em; top: .3em; width: 2.9em; height: 2.9em; border-radius: 50%; background: var(--grad); display: grid; place-items: center }
+.xm-thumb svg { width: 1.1em; height: 1.1em; stroke: var(--scr); stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round }
+.xm-eye { font-size: .7em; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); font-weight: 600; margin: 1.6em 0 0 }
+.xm-et { font-weight: 300; font-size: 1.6em; letter-spacing: -.03em; margin: .2em 0 0 } .xm-et span { color: var(--mut) }
+.xm-es { font-size: .82em; color: var(--mut); margin: .1em 0 0 }
+.xm-steps { list-style: none; padding: 0; margin: 1.6em 0 0; display: grid; gap: 1.15em }
+.xm-steps li { position: relative; display: grid; grid-template-columns: 2.2em 1fr; align-items: start }
+.xm-steps li:not(:last-child)::before { content: ""; position: absolute; left: .79em; top: 1.75em; height: calc(100% - .4em); width: 2px; background: var(--ln) }
+.xm-steps li.done:not(:last-child)::before { background: var(--teal) }
+.xm-st { width: 1.6em; height: 1.6em; border-radius: 50%; border: 2px solid var(--ln); box-sizing: border-box; position: relative }
+.xm-steps li.active .xm-st { border-top-color: var(--teal) } .xm-steps li.done .xm-st { border: 0; background: var(--grad) }
+.xm-steps li.done .xm-st::after { content: ""; position: absolute; left: .52em; top: .32em; width: .34em; height: .64em; border: solid var(--scr); border-width: 0 2.4px 2.4px 0; transform: rotate(45deg) }
+.xm-steps b { display: block; font-size: .92em; font-weight: 600 } .xm-steps span { display: block; font-size: .74em; color: var(--mut); margin-top: .15em }
+.xm-steps li.pending { opacity: .45 }
+.xm-by { margin-top: auto; font-size: .72em; color: var(--mut); text-align: center } .xm-by b { color: var(--ink); font-weight: 500 }
+.xm-check { width: 4.4em; height: 4.4em; margin-top: 1.4em } .xm-check circle { fill: url(#xmGrad) }
+.xm-check path { fill: none; stroke: var(--scr); stroke-width: 4.2; stroke-linecap: round; stroke-linejoin: round }
+.xm-settled { font-size: .9em; color: var(--mut); margin: .9em 0 0; font-weight: 500 }
+.xm-big { font-weight: 300; font-size: 2.3em; letter-spacing: -.03em; margin: .1em 0 0; font-variant-numeric: tabular-nums }
+.xm-big small { font-size: .42em; color: var(--mut); font-weight: 500; margin-left: .25em; letter-spacing: 0 }
+.xm-sub { font-size: .78em; color: var(--mut); margin: .15em 0 0 }
+.xm-rc { width: 100%; margin: 1.3em 0 0; background: var(--sf); border: 1px solid var(--ln); border-radius: 1.15em; padding: .3em .95em; box-sizing: border-box; text-align: left }
+.xm-rc div { display: flex; justify-content: space-between; gap: 1em; padding: .62em 0; font-size: .8em } .xm-rc div + div { border-top: 1px solid var(--ln) }
+.xm-rc dt { color: var(--mut) } .xm-rc dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums } .xm-rc dd.mono { font-family: var(--f-num); font-size: .92em } .xm-rc s { color: var(--mut); font-weight: 400; margin-right: .3em }
+.xm-donebtn { margin-top: auto; width: 100%; height: 3.2em; border-radius: 2em; background: var(--sf); border: 1px solid var(--ln); display: grid; place-items: center; font-weight: 600; font-size: .9em }
+.xm-tap { position: absolute; left: 0; top: 0; width: 2.8em; height: 2.8em; border-radius: 50%; background: rgba(233,239,251,.16); border: 1.5px solid rgba(233,239,251,.5); pointer-events: none; opacity: 0; z-index: 6 }
+.xm-ctl { display: flex; align-items: center; gap: 10px; width: min(330px, 100%) }
+.xm-btn { font: 500 13px/1 var(--f-body); color: var(--ink); background: rgba(255,255,255,.04); border: 1px solid rgba(140,170,230,.22); border-radius: 999px; padding: 9px 14px; cursor: pointer; flex: none }
+.xm-btn:hover { border-color: rgba(122,168,255,.6) }
+.xm-scrub { flex: 1; min-width: 0; accent-color: #25c4d3; cursor: pointer }
+.xm-time { font: 12px var(--f-num); color: var(--ink-3); flex: none; font-variant-numeric: tabular-nums }
+.xm-note { font-size: 12px; color: var(--ink-3); text-align: center; margin: 0; max-width: 44ch; line-height: 1.5 }
+.xh-route { margin-top: clamp(56px, 9vh, 110px) }
+.shell { overflow-x: clip }   /* the hero glow may reach past the content column; clip only at the window edge */
+@media (max-width: 1000px) { .xm-phone { --pw: clamp(160px, 43vw, 300px) } }
+/* 2026-10-22: stacked layout matches the home page: text runs the full width, and the space from the buttons to the phone is about 50px + 10% of the window */
+@media (max-width: 1000px) { #p-swap .xh h2, #p-swap .xh .xh-lede, #p-swap .xw-head .xh-lede { max-width: none } #p-swap > .xh:first-child { row-gap: calc(50px + 10vw); padding-top: 2px } }   /* nav bar to eyebrow: 20px, as on the home page */   /* stacked under the text: about 0.89 x the window width tall, as the home page phones (capped near 620px) */
+@media (max-width: 1000px) { .xm { gap: 16px } .xm-under { position: static; transform: none } #p-swap > .xh:first-child { padding-bottom: 0 } }
+
+/* 2026-10-22: the demo note moves into an ⓘ beside the controls (hover, focus or tap), so nothing crowds the space below the phone */
+.xm-under { z-index: 2 }   /* the note opens above the phone, not behind it */
+@media (max-width: 1000px) { .xm-under { padding-bottom: 32px } }   /* stacked: breathing room between the controls and the figures band */
+.xm-info { position: relative; flex: none }
+.xm-ib { width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(140,170,230,.3); background: rgba(255,255,255,.04); color: var(--ink-3); font: italic 600 13px/1 Georgia, serif; cursor: pointer; display: grid; place-items: center; padding: 0 }
+.xm-ib:hover, .xm-info.open .xm-ib { border-color: rgba(122,168,255,.7); color: var(--ink) }
+.xm-pop { position: absolute; right: -6px; bottom: calc(100% + 10px); z-index: 30; width: 270px; padding: 12px 14px; border-radius: 12px; background: #0d1426; border: 1px solid rgba(140,170,230,.22);
+  box-shadow: 0 16px 40px rgba(0,0,0,.5); font-size: 12.5px; line-height: 1.5; color: var(--ink-2); text-align: left; opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity .15s, transform .15s, visibility .15s }
+.xm-info:hover .xm-pop, .xm-info:focus-within .xm-pop, .xm-info.open .xm-pop { opacity: 1; visibility: visible; transform: none }
+@media (prefers-reduced-motion: reduce) { .xm-pop { transition: none } }
+/* Exe Protocol simulator design (approved 2026-10-12), taken from the home page design: deep navy, glass panels,
+   Hanken Grotesk, one blue accent with the home page's pink / lilac / mint for chart series. Always dark, like the site. */
+html:root:not(.x) {
+  --bg: #040815; --panel: rgba(255, 255, 255, .045); --ink: #f3f1f6; --ink-2: rgba(238, 242, 252, .78);
+  --ink-3: rgba(238, 242, 252, .55); --line: rgba(140, 170, 230, .18);
+  --accent: #4d8dff; --accent-soft: rgba(77, 141, 255, .16); --on-accent: #ffffff;
+  --s1: #4d8dff; --s2: #ff8a94; --s3: #3fd8cf; --s4: #b9a2ff; --ref: rgba(238, 242, 252, .45);
+  --good: #6ad7a8; --warn: #ffc56b; --crit: #ff8a94;
+  --glass-edge: rgba(160, 190, 245, .28);
+  --f-disp: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-body: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-num: "Hanken Grotesk", system-ui, sans-serif;
+  color-scheme: dark;
+}
+body { background: var(--bg); font-size: 15.5px; -webkit-font-smoothing: antialiased }
+/* Light orbs behind the page, sized in pixels so long tabs keep them at the top and bottom without a hard edge */
+body { position: relative }
+body::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(900px 520px at 88% -60px, rgba(77, 141, 255, .22), transparent 70%),
+    radial-gradient(700px 480px at 0% 100%, rgba(63, 216, 207, .10), transparent 70%),
+    radial-gradient(640px 420px at 100% calc(100% - 200px), rgba(255, 138, 148, .08), transparent 70%);
+}
+a { color: #8fb6ff; text-decoration-color: rgba(143, 182, 255, .4); text-underline-offset: 2px }
+a:hover { color: #c3d8ff }
+.num, td.r, .stat .v, .v { font-variant-numeric: tabular-nums }
+h1 { font-weight: 500; font-size: 22px; letter-spacing: -.03em; display: flex; align-items: center; gap: 10px }
+h1::before { content: ""; width: 18px; height: 18px; border-radius: 5px; flex: none;
+  background: conic-gradient(from 200deg, #4d8dff, #1d4fd6, #f1f6ff, #8a9bb8, #4d8dff); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .7) }
+h2 { font-weight: 400; font-size: 24px; letter-spacing: -.03em }
+h3 { font-weight: 500; letter-spacing: .08em; color: var(--ink-3) }
+.panel {
+  background: linear-gradient(160deg, rgba(255, 255, 255, .07), rgba(255, 255, 255, 0) 38%), rgba(5, 9, 22, .62);
+  border: 1px solid var(--glass-edge); border-radius: 22px; padding: 22px;
+  backdrop-filter: blur(24px) saturate(1.1); -webkit-backdrop-filter: blur(24px) saturate(1.1);
+  box-shadow: 0 40px 90px -50px rgba(77, 141, 255, .35), inset 0 1px 0 rgba(255, 255, 255, .18);
+}
+.seg { border-radius: 999px; border-color: var(--line); background: rgba(255, 255, 255, .05); padding: 3px; gap: 2px }
+.seg button { border-radius: 999px; color: var(--ink-2) }
+.seg button + button { border-left: 0 }
+.seg button[aria-pressed="true"] { background: rgba(255, 255, 255, .16); color: var(--ink) }
+nav.tabs { border-bottom-color: var(--line) }
+nav.tabs button { font-weight: 500; letter-spacing: -.01em; color: var(--ink-3) }
+nav.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent) }
+.badge { border-radius: 999px; padding: 6px 12px; color: var(--ink-2); border-color: var(--glass-edge); background: rgba(255, 255, 255, .05) }
+.btn { border-radius: 999px }
+.stat { border-top-color: var(--line) }
+.stat .v { font-weight: 300; letter-spacing: -.03em }
+.step.result { background: rgba(77, 141, 255, .14) !important }
+table th { color: var(--ink-3) }
+input[type="range"] { accent-color: #4d8dff }
+.tip { background: rgba(5, 9, 22, .85); border: 1px solid var(--glass-edge); border-radius: 12px; backdrop-filter: blur(10px) }
+
+/* ---- Accents: small, purposeful colour from the home page family (electric blue, sky, coral), with amber for caution.
+   Saturation kept moderate so data colours and state pills still stand out. ---- */
+html:root:not(.x) { --blue: #4d8dff; --blue-deep: #2f63e0; --sky: #6ab6ff; --coral: #ff8a94; --amber: #ffc56b; --mint: #3fd8cf }
+
+/* Selected options: a lit blue pill, so the current setting is obvious at a glance */
+.seg button:hover:not([aria-pressed="true"]):not(:disabled) { background: rgba(255, 255, 255, .07); color: var(--ink) }
+.seg button[aria-pressed="true"] {
+  background: linear-gradient(135deg, var(--blue), var(--blue-deep)); color: #fff;
+  box-shadow: 0 6px 18px -8px rgba(77, 141, 255, .9), inset 0 1px 0 rgba(255, 255, 255, .25) }
+
+/* Tabs: the two layers get their own colour. Exeswap app (what a user sees) = coral; Exe Protocol console = blue */
+.tabgroup { color: var(--coral); opacity: .85 }
+.tabgroup ~ .tabgroup { color: var(--sky) }
+nav.tabs button { border-bottom-width: 2px; transition: color .15s }
+nav.tabs button:hover { color: var(--ink-2) }
+nav.tabs button[aria-selected="true"] { border-image: linear-gradient(90deg, var(--coral), #ffb3a8) 1 }
+.tabgroup ~ .tabgroup ~ button[aria-selected="true"] { border-image: linear-gradient(90deg, var(--blue), var(--sky)) 1 }
+
+/* Simulated label: amber, the caution colour, so nobody reads the page as live data */
+.badge { color: var(--amber); border-color: rgba(255, 197, 107, .45); background: rgba(255, 197, 107, .08) }
+
+/* Headline figure: lit from ice to sky */
+.hero .big { background: linear-gradient(120deg, #f1f6ff 10%, var(--sky) 90%); -webkit-background-clip: text; background-clip: text; color: transparent }
+.hero .big#payBig { background: none; color: var(--ink) }
+
+/* The answer row of each calculation: blue wash, blue edge, sky figure */
+.chain .step.result { background: linear-gradient(90deg, rgba(77, 141, 255, .22), rgba(77, 141, 255, .05)) !important; box-shadow: inset 3px 0 0 var(--blue) }
+.chain .step.result .v { color: var(--sky); font-weight: 600 }
+
+/* Bars: blue into sky, on a faint track */
+.bar .track { background: rgba(255, 255, 255, .06); border-radius: 999px }
+.bar .fill { background: linear-gradient(90deg, var(--blue-deep), var(--sky)); border-radius: 999px; box-shadow: 0 0 12px -2px rgba(106, 182, 255, .5) }
+
+/* Stat tiles: a short blue-to-sky rule on top instead of a grey line */
+.stat { border-top: 0; position: relative; padding-top: 10px }
+.stat::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, var(--blue), rgba(106, 182, 255, .35) 45%, rgba(140, 170, 230, .14) 70%) }
+
+/* Section labels: a small coral tick */
+h3 { display: flex; align-items: center; gap: 10px }
+h3::before { content: ""; width: 14px; height: 2px; border-radius: 2px; background: var(--coral); flex: none }
+
+/* Sliders: glowing white thumb on a blue-to-sky track ("higher is better") */
+input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; height: 22px }
+input[type="range"]::-webkit-slider-runnable-track { height: 6px; border-radius: 999px;
+  background: linear-gradient(90deg, rgba(77, 141, 255, .3), var(--blue) 60%, var(--sky)) }
+input[type="range"]::-moz-range-track { height: 6px; border-radius: 999px;
+  background: linear-gradient(90deg, rgba(77, 141, 255, .3), var(--blue) 60%, var(--sky)) }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; margin-top: -6px; border-radius: 50%;
+  background: #fff; border: 0; box-shadow: 0 0 0 4px rgba(77, 141, 255, .35), 0 0 16px rgba(106, 182, 255, .8); cursor: pointer }
+input[type="range"]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #fff; border: 0;
+  box-shadow: 0 0 0 4px rgba(77, 141, 255, .35), 0 0 16px rgba(106, 182, 255, .8); cursor: pointer }
+
+/* Buttons: primary is lit blue, secondary is glass with sky text */
+.btn { border: 0; background: linear-gradient(135deg, var(--blue), var(--blue-deep)); color: #fff; padding: 9px 18px;
+  box-shadow: 0 8px 22px -10px rgba(77, 141, 255, .9), inset 0 1px 0 rgba(255, 255, 255, .25) }
+.btn.ghost { background: rgba(255, 255, 255, .05); color: var(--sky); box-shadow: inset 0 0 0 1px var(--glass-edge) }
+.btn:not(:disabled):hover { filter: brightness(1.12) }
+.chips button[aria-pressed="true"] { border-color: var(--sky); color: var(--sky); background: rgba(106, 182, 255, .12) }
+
+/* Tables: highlighted rows keep a sky first cell; header tinted to match */
+tr.b td:first-child { color: var(--sky) }
+
+.legend i { height: 3px; border-radius: 2px }
+button:focus-visible, input:focus-visible { outline-color: var(--sky) }
+.tag-simulated { color: var(--sky); border-color: rgba(106, 182, 255, .6) }
+.tag-measured { color: var(--mint); border-color: rgba(63, 216, 207, .6) }
+.tag-design { color: var(--amber); border-color: rgba(255, 197, 107, .6) }
+
+/* ---- Blue-to-teal ramp (2026-10-12). One family, hue moving from electric blue (~255°) through azure and cyan to
+   teal (~180°), with stops sampled in OKLCH (written out, so every browser draws them) so lightness stays even and there is no muddy middle. Lower = bluer, higher =
+   tealer, so the ramp also reads as "more". Text-bearing fills end on a deep teal to keep white text legible. ---- */
+html:root:not(.x) {
+  --r0: #2f63e0; --r1: #4d8dff; --r2: #3c9ff2; --r3: #2db4e3; --r4: #25c4d3; --r5: #2ccfc2;
+  --r-deep-end: #128fae;
+}
+.seg button[aria-pressed="true"], .btn:not(.ghost) {
+  background: linear-gradient(120deg, #3b78f5, var(--r-deep-end));
+  background: linear-gradient(120deg, #3b78f5, #0084df 33%, #008cc7 67%, var(--r-deep-end));
+  box-shadow: 0 6px 18px -8px rgba(37, 160, 210, .8), inset 0 1px 0 rgba(255, 255, 255, .25) }
+.tabgroup ~ .tabgroup { color: var(--r3) }
+.tabgroup ~ .tabgroup ~ button[aria-selected="true"] { border-image: linear-gradient(90deg, var(--r1), var(--r4)) 1 }
+input[type="range"]::-webkit-slider-runnable-track { background: linear-gradient(90deg, rgba(77, 141, 255, .35), var(--r1) 35%, var(--r3) 70%, var(--r5)) }
+input[type="range"]::-moz-range-track { background: linear-gradient(90deg, rgba(77, 141, 255, .35), var(--r1) 35%, var(--r3) 70%, var(--r5)) }
+input[type="range"]::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(45, 180, 227, .35), 0 0 16px rgba(44, 207, 194, .7) }
+input[type="range"]::-moz-range-thumb { box-shadow: 0 0 0 4px rgba(45, 180, 227, .35), 0 0 16px rgba(44, 207, 194, .7) }
+/* XPR bars: each band steps further along the ramp, so higher XPR is literally further towards teal */
+.bar .fill { background: linear-gradient(90deg, var(--r0), #3871ea 33%, #427ff5 67%, var(--r1)); box-shadow: 0 0 12px -2px rgba(60, 170, 230, .45) }
+.bar:nth-child(2) .fill { background: linear-gradient(90deg, var(--r0), #2d78e7 33%, #318ced 67%, var(--r2)) }
+.bar:nth-child(3) .fill { background: linear-gradient(90deg, var(--r0), #0782e4 33%, #009ce5 67%, var(--r3)) }
+.bar:nth-child(4) .fill { background: linear-gradient(90deg, var(--r1), #0ea4f6 33%, #00b6e6 67%, var(--r4)) }
+.bar:nth-child(n+5) .fill { background: linear-gradient(90deg, var(--r1), #00aaf4 33%, #00c0dd 67%, var(--r5)); box-shadow: 0 0 14px -2px rgba(44, 207, 194, .5) }
+.stat::before { background: linear-gradient(90deg, var(--r1), var(--r4) 45%, rgba(140, 170, 230, .14) 75%) }
+.chain .step.result { background: linear-gradient(90deg, rgba(77, 141, 255, .22), rgba(37, 196, 211, .07)) !important;
+  box-shadow: inset 3px 0 0 var(--r3) }
+.chain .step.result .v { color: var(--r4) }
+.hero .big { background: linear-gradient(120deg, #f1f6ff 5%, var(--r2) 60%, var(--r5)); -webkit-background-clip: text; background-clip: text }
+.btn.ghost { color: var(--r3) }
+.chips button[aria-pressed="true"] { border-color: var(--r3); color: var(--r3); background: rgba(45, 180, 227, .12) }
+tr.b td:first-child { color: var(--r3) }
+
+/* ---- Top section (2026-10-12 redesign proposal). Reading order: who/what (top bar) → the one idea (lede + equation)
+   → where to go (two tab groups) → what the figures assume (world strip, tabs 1–3 only). One accent family; the output
+   of the equation is the only lit element, so the eye lands on Redemption first. ---- */
+.ic { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round }
+.topbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 18px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line) }
+.topbar .by { font-size: 13px; color: var(--ink-3) }
+.chip-meta { font-size: 12px; color: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px }
+
+.intro { display: grid; grid-template-columns: minmax(240px, .78fr) 1.7fr; gap: 28px; align-items: center; padding: 10px 0 4px }
+.lede { font-size: 34px; line-height: 1.08; font-weight: 400; letter-spacing: -.035em; color: var(--ink); text-wrap: balance; max-width: 14ch }
+.sub { margin-top: 10px; font-size: 14.5px; color: var(--ink-2); max-width: 40ch }
+.eq { display: flex; align-items: stretch; gap: 8px }
+.eq .tok { flex: 1 1 0; display: flex; gap: 11px; align-items: flex-start; padding: 14px 14px 13px; border-radius: 16px;
+  background: linear-gradient(160deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .015)); border: 1px solid var(--glass-edge) }
+.eq .tok .ic { width: 22px; height: 22px; color: var(--r2); margin-top: 1px }
+.eq .tok b { display: block; font-size: 15.5px; font-weight: 500; color: var(--ink); letter-spacing: -.01em }
+.eq .tok span { display: block; margin-top: 3px; font-size: 12.5px; line-height: 1.4; color: var(--ink-3) }
+.eq .op { align-self: center; font-size: 22px; font-weight: 300; color: var(--ink-3); padding: 0 2px }
+.eq .tok.out { border-color: rgba(44, 207, 194, .55);
+  background: linear-gradient(140deg, rgba(77, 141, 255, .20), rgba(37, 196, 211, .14));
+  box-shadow: 0 14px 34px -18px rgba(44, 207, 194, .55), inset 0 1px 0 rgba(255, 255, 255, .14) }
+.eq .tok.out .ic { color: var(--r5) }
+.eq .tok.out b { color: #fff }
+.eq .tok.out span { color: var(--ink-2) }
+
+.world { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 22px; padding: 10px 14px; border-radius: 16px;
+  border: 1px dashed rgba(140, 170, 230, .28); background: rgba(255, 255, 255, .02) }
+.world .wlab { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3) }
+.world .wctl { display: inline-flex; align-items: center; gap: 9px; color: var(--ink-2) }
+.world .wctl .ic { width: 16px; height: 16px; color: var(--ink-3) }
+.world .seg button { font-size: 13px; padding: 6px 12px }
+
+@media (max-width: 760px) {
+  .intro { grid-template-columns: 1fr; gap: 18px }
+  .lede { font-size: 28px; max-width: none }
+  .eq { flex-direction: column }
+  .eq .op { padding: 0; line-height: 1; text-align: center }
+  .topbar .crumb { display: none }
+  .topbar { justify-content: flex-end; padding-bottom: 0; border-bottom: 0 }
+}
+
+/* ---- Left navigation (2026-10-12 proposal): the dashboard's spine. Sections are the two products; items are icons +
+   plain names. Selected = quiet wash + teal edge, so the lit gradient stays reserved for controls the reader changes. ---- */
+.shell { display: grid; grid-template-columns: 244px minmax(0, 1fr); min-height: 100vh; transition: grid-template-columns .2s }
+.shell .wrap { max-width: 1180px; width: 100%; padding-inline: 28px }
+.side { position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 22px; padding: 18px 12px 16px;
+  border-right: 1px solid var(--line); background: rgba(4, 8, 21, .55); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); overflow: auto }
+.side-brand { display: flex; align-items: center; gap: 10px; padding: 2px 4px 14px; border-bottom: 1px solid var(--line) }
+.side-brand .mark { width: 26px; height: 26px; border-radius: 8px; flex: none;
+  background: conic-gradient(from 200deg, #4d8dff, #1d4fd6, #f1f6ff, #8a9bb8, #4d8dff); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .7) }
+.side-brand .bt { display: grid; line-height: 1.15; min-width: 0 }
+.side-brand .bt b { font-weight: 500; font-size: 15px; color: var(--ink); letter-spacing: -.01em }
+.side-brand .bt span { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3) }
+.fold { margin-left: auto; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 8px; border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .03); color: var(--ink-3); cursor: pointer }
+.fold:hover { color: var(--ink); background: rgba(255, 255, 255, .07) }
+.fold .ic { width: 15px; height: 15px; transition: transform .2s }
+.side-nav { display: grid; gap: 20px; align-content: start }
+.sgrp { display: grid; gap: 2px }
+.slab { display: flex; align-items: center; gap: 8px; padding: 0 10px 6px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase }
+.slab .ic { width: 14px; height: 14px }
+.sgrp.app .slab { color: var(--coral) }
+.sgrp.con .slab { color: var(--r3) }
+.side-nav button { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; font: 500 14.5px var(--f-body); letter-spacing: -.005em;
+  color: var(--ink-2); background: none; border: 0; border-radius: 10px; padding: 9px 10px; cursor: pointer; transition: background .15s, color .15s }
+.side-nav button .ic { color: var(--ink-3) }
+.side-nav button:hover:not([aria-selected="true"]) { background: rgba(255, 255, 255, .05); color: var(--ink) }
+.side-nav button[aria-selected="true"] { color: #fff; background: linear-gradient(90deg, rgba(77, 141, 255, .20), rgba(37, 196, 211, .06));
+  box-shadow: inset 2px 0 0 var(--r3) }
+.side-nav button[aria-selected="true"] .ic { color: var(--r4) }
+.side-foot { margin-top: auto; display: grid; gap: 8px; justify-items: start; padding: 14px 6px 0; border-top: 1px solid var(--line) }
+.side-foot .chip-meta { font-size: 11.5px }
+
+.topbar .crumb { display: flex; align-items: baseline; gap: 10px; font-size: 14px; color: var(--ink-3) }
+.topbar .crumb b { font-weight: 500; color: var(--ink) }
+.topbar .crumb .sep { opacity: .5 }
+
+/* Collapsed: icon rail */
+.shell.mini { grid-template-columns: 68px minmax(0, 1fr) }
+.shell.mini .side-brand .bt, .shell.mini .side-nav button span, .shell.mini .slab span, .shell.mini .side-foot { display: none }
+.shell.mini .side-brand { flex-direction: column; gap: 12px }
+.shell.mini .fold { margin-left: 0 }
+.shell.mini .fold .ic { transform: rotate(180deg) }
+.shell.mini .slab { justify-content: center; padding-inline: 0 }
+.shell.mini .side-nav button { justify-content: center; padding: 10px 0 }
+
+/* Phones and narrow windows: the sidebar becomes a top bar with a scrolling row of sections */
+@media (max-width: 900px) {
+  .shell, .shell.mini { grid-template-columns: 1fr }
+  .side { position: static; height: auto; flex-direction: column; gap: 12px; border-right: 0; border-bottom: 1px solid var(--line); padding: 14px 16px }
+  .side-brand { border-bottom: 0; padding-bottom: 0 }
+  .fold, .side-foot { display: none }
+  .side-nav { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none }
+  .sgrp { display: flex; gap: 4px; align-items: center }
+  .slab { display: none }
+  .side-nav button { width: auto; white-space: nowrap; padding: 8px 12px; border-radius: 999px }
+  .shell.mini .side-brand .bt, .shell.mini .side-nav button span { display: initial }
+  .shell .wrap { padding-inline: 16px }
+  .topbar .crumb { display: none }
+  .topbar { justify-content: flex-end; padding-bottom: 0; border-bottom: 0 }
+}
+
+/* World strip icons: three hues from the page family (sky, lilac, mint), each with a soft glow, so the settings that
+   change every figure are easy to spot. */
+.world .ic-world { color: #6ab6ff; filter: drop-shadow(0 0 6px rgba(106, 182, 255, .55)) }
+.world .wctl .ic-chain { color: #b9a2ff; filter: drop-shadow(0 0 6px rgba(185, 162, 255, .55)) }
+.world .wctl .ic-apps { color: #3fd8cf; filter: drop-shadow(0 0 6px rgba(63, 216, 207, .55)) }
+.world .ic { width: 18px; height: 18px; stroke-width: 1.8 }
+
+/* 2026-10-21: on a narrowed desktop window the tabs fold into a menu button (current page + ☰) with a dropdown,
+   instead of a scrolling row. Touch screens use the same compact menu. */
+.side-nav::-webkit-scrollbar { display: none }
+.burger { display: none }
+/* Links to the other Exeswap pages, below the sections; on phones they sit in the menu (16 Nov) */
+.side-more { display: grid; border-top: 1px solid var(--line); padding-top: 12px }
+.side-more a { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-radius: 10px; color: var(--ink-2); font: 500 14.5px var(--f-body); text-decoration: none }
+.side-more a:hover { background: rgba(255, 255, 255, .05); color: var(--ink) }
+.shell.mini .side-more span { display: none }
+.shell.mini .side-more a { justify-content: center; padding: 10px 0 }
+@media (max-width: 900px) {
+  .side { position: relative; z-index: 50; overflow: visible }
+  .burger { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; padding: 8px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: rgba(255, 255, 255, .04); color: var(--ink); font: 500 14px var(--f-body); cursor: pointer }
+  .burger:hover, .side.open .burger { border-color: rgba(122, 168, 255, .6); background: rgba(77, 141, 255, .12) }
+  .burger svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round }
+  .side-nav { display: none }
+  .side.open .side-nav { display: grid; gap: 14px; position: absolute; top: calc(100% - 6px); right: 16px; width: 270px; overflow: visible;
+    padding: 14px 10px; border: 1px solid var(--line); border-radius: 16px; background: #0b1328; box-shadow: 0 18px 40px rgba(0, 0, 0, .5) }
+  .side.open .sgrp { display: grid; gap: 2px }
+  .side.open .slab { display: flex }
+  .side.open .side-nav button { width: 100%; border-radius: 10px; padding: 9px 12px }
+  /* one header row: logo | My XPR | menu button; Exeswap specs moves into the menu (21 Oct) */
+  .shell.compact .topbar { display: none }
+  .side-brand .hright { margin-left: auto; gap: 12px }
+  .side-brand .hright #specsBtn { display: none }
+  .side-more { display: none }
+  .side.open .side-more { display: grid; border-top: 1px solid var(--line); padding-top: 12px }
+  .side-more a { display: flex; align-items: center; gap: 12px; padding: 9px 12px; border-radius: 10px; color: var(--ink-2); font: 500 14.5px var(--f-body); text-decoration: none }
+  .side-more a:hover { background: rgba(255, 255, 255, .05); color: var(--ink) }
+}
+@media (max-width: 560px) {
+  /* very narrow desktop window: the menu button shows only ☰ and the row tightens, so the header fits the window (22 Oct) */
+  #burgerLab { display: none } .burger { padding: 8px 10px } .side-brand { gap: 8px } .side-brand .hright { gap: 8px }
+}
+@media (max-width: 900px) { .shell, .shell.mini { grid-template-columns: minmax(0, 1fr) } }
+
 </style>
-</head>
-<body>
-<header class="top"><div class="wrap">
-<a class="logo" href="index.html"><i aria-hidden="true"></i>Exeswap <small>on Exe Protocol</small></a>
-<nav class="main" aria-label="Main">
-<a href="exeswap-trade.html" aria-current="page">Trade</a>
-<a href="#markets">Markets</a>
-<a href="#portfolio">Portfolio</a>
-<a href="#xpr">My XPR</a>
-<a href="simulator.html">Simulator</a>
-<a href="ask.html">Exe AI</a>
-</nav>
-<div class="search"><label for="search" class="sr">Search tokens</label><input id="search" placeholder="Search token"></div>
-<div class="hright"><button class="btn" type="button"><span class="dot" aria-hidden="true"></span>Solana</button><button class="btn pri demo" type="button">Connect wallet</button></div>
-</div></header>
-<div class="banner">Prototype · every price, chart and balance on this page is simulated · no real funds move · <a href="important-information.html">Important information</a></div>
-<div class="ticker" aria-label="Simulated prices"><div class="wrap" id="ticker"></div></div>
+<style>
+@font-face{font-family:ExeInter;src:url(assets/asset-29160a80ff49.ttf) format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
+body{background:#050a10}
+body::before{background:radial-gradient(ellipse 70% 65% at 80% 0%,rgba(38,63,96,.13),transparent 80%);opacity:1}
+.side{background:rgba(5,10,16,.96);border-color:rgba(123,153,186,.13)}
+.side,.topbar{font-family:ExeInter,Inter,sans-serif}
+.side-nav button,.side-brand .bt b,.crumb{font-family:ExeInter,Inter,sans-serif}
+.side-nav button[aria-selected="true"]{background:linear-gradient(90deg,rgba(22,119,255,.14),rgba(22,119,255,.025));border-left-color:#1677ff;color:#f7f9fc}
+.slab{color:#7297c9!important}
+#p-swap{font-family:ExeInter,Inter,sans-serif;color:#f7f9fc}
+#p-swap .xh,#p-swap .xw,#p-swap .xh-proof,#p-swap .xh-proofnote,#p-swap button,#p-swap h2,#p-swap h3,#p-swap .xt-small h3,#p-swap .xw-step h3{font-family:ExeInter,Inter,sans-serif}
+#p-swap .xh h2,#p-swap .xw-head h2{font-weight:600;font-size:clamp(36px,3.85vw,64px);line-height:1.07;letter-spacing:-.05em;max-width:13ch}
+#p-swap .xh-route h2,#p-swap .xh-try h2{font-size:clamp(34px,3.4vw,54px);max-width:15ch}
+#p-swap .xw-head h2{max-width:20ch;font-size:clamp(34px,3.4vw,54px)}
+#p-swap h2 .fade{background:none;color:#1677ff;-webkit-text-fill-color:#1677ff}
+#p-swap .xh-lede{font-size:16px;line-height:1.7;color:#a8b9cf;max-width:34ch}
+#p-swap .xh-eye,#p-swap .xw-k{font-size:10px;letter-spacing:.16em;color:#8b9eb6}
+#p-swap .xh-proof b{font-weight:600;font-size:clamp(30px,3.4vw,50px);letter-spacing:-.055em}
+#p-swap .xh-proof span{font-size:13px;color:#a8b9cf}
+#p-swap .xh-proof{gap:18px;border-color:rgba(123,153,186,.17)}
+#p-swap .xh-proofnote{color:#91a3bc;line-height:1.7}
+#p-swap .xh-card{border:0;background:linear-gradient(180deg,rgba(34,59,82,.83),rgba(25,47,69,.66) 34%,rgba(16,37,57,.34) 76%,rgba(9,28,46,0) 100%);border-radius:20px;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+#p-swap .xh-card::before{content:'';inset:0;position:absolute;pointer-events:none;padding:1px;border-radius:inherit;background:linear-gradient(180deg,rgba(145,174,206,.42),rgba(104,137,173,.18) 34%,rgba(74,108,145,.05) 73%,transparent 96%);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;animation:none;opacity:1}
+#p-swap .xh-card::after{display:none}
+#p-swap .xh-price b{font-weight:600;letter-spacing:-.05em}
+#p-swap .xt-small h3,#p-swap .xw-step h3{font-weight:600;font-size:23px;line-height:1.2}
+#p-swap .xt-small p,#p-swap .xw-step p{color:#a8b9cf;line-height:1.65}
+#p-swap .xh-how{background:linear-gradient(125deg,#176ee9,#1859b3);box-shadow:inset 0 1px rgba(211,229,255,.16),0 9px 23px -17px #1677ff;font-size:13px;font-weight:500}
+#p-swap .xh-go{background:linear-gradient(180deg,rgba(32,48,69,.45),rgba(15,26,41,.18));border-color:rgba(132,158,192,.25);font-size:13px}
+#p-swap .xm-glow::before{background:radial-gradient(closest-side,rgba(56,82,118,.22),rgba(32,55,88,.08) 50%,transparent)}
+#p-swap .xm-glow::after{background:radial-gradient(closest-side,rgba(33,65,108,.13),transparent)}
+#p-swap .xm-phone{--grad:linear-gradient(120deg,#1677ff,#245dba);--teal:#4f89d5}
+#p-swap .xm-scrub{accent-color:#1677ff}
+#p-swap .xt-slide input::-webkit-slider-runnable-track{background:linear-gradient(90deg,#244b7b,#1677ff,#5288c8)}
+#p-swap .xt-slide input::-moz-range-track{background:linear-gradient(90deg,#244b7b,#1677ff,#5288c8)}
+#p-swap .xt-slide input::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0 10px rgba(22,119,255,.25)}
+#p-swap .xh-tabs button[aria-pressed=true]{background:rgba(22,119,255,.22);box-shadow:inset 0 0 0 1px rgba(90,145,220,.24)}
+#p-swap .xw-step.on{border-left-color:#1677ff}
+#p-swap .xw-eq .term.res{border-color:rgba(85,139,211,.4);background:rgba(22,119,255,.08)}
+@media(max-width:1000px){#p-swap .xh h2{max-width:17ch;font-size:clamp(38px,6vw,58px)}#p-swap .xh-lede{max-width:48ch}#p-swap>.xh:first-child{row-gap:70px}}
+@media(max-width:560px){#p-swap .xh h2,#p-swap .xw-head h2{font-size:36px;line-height:1.08;max-width:15ch}#p-swap .xh-lede{font-size:15px}#p-swap .xh-how{padding:12px 17px;margin-left:6px}#p-swap .xh-go{padding-right:14px}#p-swap .xh-proof b{font-size:32px}#p-swap .xh-card{padding:20px}#p-swap .xw-fig{padding:0!important}#p-swap .xw-step h3{font-size:22px}}
+@media(prefers-reduced-motion:reduce){#p-swap .xh-card::before{animation:none}}
+</style>
 
-<main class="wrap">
-<section class="card overview" aria-label="Pair overview" id="overview"></section>
+<style>
+/* Shared interface polish; retain original chart series and state colours. */
+html:root:not(.x){--f-disp:ExeInter,Inter,system-ui,sans-serif;--f-body:ExeInter,Inter,system-ui,sans-serif;--f-num:ExeInter,Inter,system-ui,sans-serif;--bg:#050a10;--ink:#f7f9fc;--ink-2:#b7c6d9;--ink-3:#94a6bf;--accent:#1677ff;--accent-soft:rgba(22,119,255,.13)}
+h2{font-weight:600;letter-spacing:-.035em;line-height:1.2}
+h3{font-weight:600;letter-spacing:.055em;line-height:1.5}
+.intro .tagline{font-weight:600}
+.stat .v{font-weight:600;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.panel{position:relative;isolation:isolate;border:1px solid transparent;background:linear-gradient(180deg,rgba(30,51,73,.72) 0%,rgba(18,35,54,.52) 37%,rgba(9,23,38,.32) 75%,rgba(6,16,29,.04) 100%);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.panel::before{content:'';position:absolute;inset:-1px;pointer-events:none;padding:1px;border-radius:inherit;background:linear-gradient(180deg,rgba(145,174,206,.4),rgba(104,137,173,.2) 32%,rgba(74,108,145,.07) 75%,transparent 100%);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor}
+.btn:not(.ghost),.seg button[aria-pressed=true]{background:linear-gradient(125deg,#176ee9,#1859b3);box-shadow:inset 0 1px rgba(211,229,255,.16),0 8px 20px -16px rgba(22,119,255,.65);color:#fff}
+.btn.ghost{color:#8bb5ed;box-shadow:inset 0 0 0 1px rgba(132,158,192,.25)}
+.side-nav button[aria-selected=true]{box-shadow:inset 2px 0 0 #1677ff}
+.side-nav button[aria-selected=true] .ic{color:#5c9df4}
+.chips button[aria-pressed=true]{border-color:rgba(69,135,224,.65);color:#9cc6ff;background:rgba(22,119,255,.13)}
+input[type=range]::-webkit-slider-runnable-track{background:linear-gradient(90deg,#244b7b,#1677ff,#5288c8)}
+input[type=range]::-moz-range-track{background:linear-gradient(90deg,#244b7b,#1677ff,#5288c8)}
+input[type=range]::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0 10px rgba(22,119,255,.25)}
+input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0 10px rgba(22,119,255,.25)}
+.myxpr .v{color:#80b7ff;background:none;-webkit-text-fill-color:currentColor}.myxpr .val{stroke:#1677ff}
+.stat::before{height:1px;background:linear-gradient(90deg,rgba(90,147,224,.65),rgba(104,137,173,.12) 75%,transparent)}
+:focus-visible{outline:2px solid #80b7ff;outline-offset:3px}
+.sp-h span{color:#1677ff}
+/* Keep input surfaces and selected options bounded, unlike explanatory glass. */
+.swf{background:linear-gradient(180deg,rgba(29,45,65,.65),rgba(15,28,45,.6));border-color:rgba(132,158,192,.23)}
+.swapcard .swprices .p.on{border-color:rgba(76,137,220,.5)}
+/* Home remains deliberately quiet: existing subtle blue phone lighting retained. */
+@media(max-width:600px){.panel{padding:18px}h2{font-size:22px}.stat .v{overflow-wrap:anywhere}.chart{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#345475 transparent}.chart svg{min-width:560px}.chart text{font-size:14px}.chart .tip{position:fixed;left:16px!important;right:16px;top:auto!important;bottom:18px;width:auto;max-width:none;white-space:normal;z-index:60;background:#101e30;border-color:rgba(132,158,192,.3)}}
+</style>
+<style>
+/* Home-only architectural rhythm, expressed through light rather than objects. */
+#p-swap .xh-route,#p-swap .xh-try,#p-swap .xw{position:relative;isolation:isolate}
+#p-swap .xh-route{margin-top:48px;padding:88px 0 92px}
+#p-swap .xh-route::before{content:'';position:absolute;inset:0 -28px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#050a10,rgba(5,10,16,0) 14%,rgba(5,10,16,0) 84%,#050a10),radial-gradient(ellipse 62% 90% at 86% 32%,rgba(47,72,104,.22),transparent 85%),linear-gradient(110deg,#0d1929,#101d2e 58%,#0a1523)}
+#p-swap .xh-route::after{content:'';position:absolute;top:0;left:-28px;right:-28px;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(134,164,199,.12) 35%,rgba(134,164,199,.07) 75%,transparent)}
+#p-swap .xh-try{padding:96px 0 86px}
+#p-swap .xh-try::before{content:'';position:absolute;inset:0 -28px;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 43% 72% at 79% 41%,rgba(29,48,73,.17),transparent 90%),#050a10}
+#p-swap .xw{padding-top:88px;padding-bottom:76px}
+#p-swap .xw::before{content:'';position:absolute;inset:0 -28px;z-index:-1;pointer-events:none;background:linear-gradient(180deg,#050a10,transparent 8%,transparent 89%,#050a10),radial-gradient(ellipse 100% 58% at 20% 22%,rgba(43,64,91,.21),transparent 85%),linear-gradient(120deg,#0f1b2b,#091321 64%,#07101b)}
+#p-swap .xw-steps{gap:18vh;padding:3vh 0 14vh}
+#p-swap .xh-proof{background:linear-gradient(180deg,rgba(24,39,58,.18),rgba(12,24,39,.08));padding:0 16px;border-color:rgba(123,153,186,.14)}
+#p-swap .xh-proofnote{padding-left:16px;padding-right:16px}
+@media(max-width:900px){#p-swap .xh-route{padding-top:68px;padding-bottom:68px}#p-swap .xh-try{padding-top:72px;padding-bottom:66px}#p-swap .xw{padding-top:70px;padding-bottom:56px}#p-swap .xh-route::before,#p-swap .xh-try::before,#p-swap .xw::before{left:-16px;right:-16px}#p-swap .xh-route::after{left:-16px;right:-16px}#p-swap .xw-steps{gap:56px;padding:0}#p-swap .xh-proof{padding:0 6px}#p-swap .xh-proofnote{padding-left:6px;padding-right:6px}}
+</style>
+<style>
+/* Use one compact header on touch phones and narrow desktop windows. */
+@media(max-width:900px){
+ .side-brand{flex-wrap:nowrap;min-width:0}
+ .side-brand .hright{flex:none}
+ .burger{flex:none}
+ .shell.compact>.wrap{padding-top:14px}
+}
+@media(max-width:560px){
+ .side-brand{gap:8px;padding:2px 0 0}
+ .side-brand .hright{gap:8px}
+ .myxpr{gap:7px}
+ .myxpr .ring{width:32px;height:32px}
+ .myxpr .l{font-size:9px;letter-spacing:.12em}
+ .myxpr .v{font-size:20px}
+ .burger{width:40px;height:40px;justify-content:center;padding:0;margin-left:0}
+}
+@media(max-width:360px){
+ .side{padding-inline:12px}
+ .side-brand{gap:7px}
+ .myxpr{gap:6px}
+ .myxpr .ring{width:28px;height:28px}
+ .myxpr .v{font-size:18px}
+ .myxpr .l{font-size:8px}
+}
+</style>
+<link rel="stylesheet" href="assets/mobile-layout.css">
+<link rel="stylesheet" href="assets/final-polish.css">
+<style id="hx-reorg">
+#p-swap #xhTry::before{background:linear-gradient(180deg,#050a10,rgba(5,10,16,0) 14%,rgba(5,10,16,0) 84%,#050a10),radial-gradient(ellipse 62% 90% at 86% 32%,rgba(47,72,104,.22),transparent 85%),linear-gradient(110deg,#0d1929,#101d2e 58%,#0a1523) !important}
 
-<div class="cols">
-<div class="left">
-<section class="card" aria-label="Price chart">
-<div class="chartbar">
-<div class="seg" role="group" aria-label="Timeframe" id="tfs"></div>
-<div class="legend"><span><i style="background:#f3c86a"></i>MA 20</span><span><i style="background:#b48cff"></i>MA 50</span></div>
-<div style="margin-left:auto;display:flex;gap:6px"><button class="small" type="button">Indicators</button><button class="small" type="button">Line</button><button class="small on" type="button">Candles</button></div>
-</div>
-<div class="chart">
-<div class="plot">
-<div class="price"><div class="candles" id="candles"></div>
-<svg viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><polyline id="ma20" fill="none" stroke="#f3c86a" stroke-width="1.6" vector-effect="non-scaling-stroke"></polyline><polyline id="ma50" fill="none" stroke="#b48cff" stroke-width="1.6" vector-effect="non-scaling-stroke"></polyline></svg>
-<div class="last" id="last"></div></div>
-<div class="vols" id="vols" aria-hidden="true"></div>
-<div class="times" id="times"></div>
-</div>
-<div class="axis" id="axis" aria-hidden="true"></div>
-</div>
-</section>
+#p-swap .xw:not(.hx-band)::before{background:linear-gradient(180deg,#050a10,#070c14 7%,#070c14 93%,#050a10) !important}
+#p-swap .hx-band::before{background:linear-gradient(180deg,#050a10,rgba(5,10,16,0) 14%,rgba(5,10,16,0) 84%,#050a10),radial-gradient(ellipse 62% 90% at 86% 32%,rgba(47,72,104,.22),transparent 85%),linear-gradient(110deg,#0d1929,#101d2e 58%,#0a1523) !important}
 
-<div class="cols" style="align-items:stretch">
-<section class="card" style="flex:1 1 320px;min-width:0" aria-label="Recent trades"><h2>Recent trades</h2><div class="trades" id="trades"></div></section>
-<section class="card" style="flex:1 1 320px;min-width:0;display:grid;gap:12px;align-content:start" aria-label="Routing">
-<h2 style="margin:0">Where your trade can route</h2>
-<p class="lead">Exeswap checks liquidity across Solana venues and splits an order where that gets a better price.</p>
-<div id="venues" style="display:grid;gap:12px"></div>
-<p class="note">Venues shown for illustration. No partnership is implied.</p>
-</section>
-</div>
+#p-swap .hx-h2{font-weight:600;font-size:clamp(34px,3.4vw,54px);line-height:1.08;max-width:20ch;letter-spacing:-.03em;margin:6px 0 4px}
+#p-swap .xw .xh-eye{display:block}
+#p-swap .hx-steps{list-style:none;counter-reset:s;padding:0;margin:30px 0 0;display:grid;gap:14px}
+#p-swap .hx-steps li{counter-increment:s;background:linear-gradient(180deg,rgba(34,59,82,.5),rgba(16,37,57,.22));border:1px solid rgba(123,153,186,.18);border-radius:14px;padding:18px 20px 18px 64px;position:relative;color:#a8b9cf;line-height:1.6}
+#p-swap .hx-steps li::before{content:counter(s);position:absolute;left:18px;top:17px;width:30px;height:30px;border-radius:50%;background:rgba(22,119,255,.18);border:1px solid rgba(22,119,255,.5);color:#8fb4ff;font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center}
+#p-swap .hx-steps li b{color:#f3f1f6}
+#p-swap .hx-faq{display:grid;gap:10px;margin-top:26px}
+#p-swap .hx-q{border:1px solid rgba(123,153,186,.18);border-radius:12px;background:rgba(255,255,255,.025);overflow:hidden}
+#p-swap .hx-q>summary{cursor:pointer;list-style:none;padding:16px 18px;font-weight:600;color:#f3f1f6;display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:16px}
+#p-swap .hx-q>summary::-webkit-details-marker{display:none}
+#p-swap .hx-q>summary::after{content:"+";color:#1677ff;font-size:20px;line-height:1}
+#p-swap .hx-q[open]>summary::after{content:"–"}
+#p-swap .hx-a{padding:0 18px 16px;color:#a8b9cf;line-height:1.6}
+#p-swap .hx-a b{color:#c7cedd}
+</style>
+<style id="clarity-review-layout">
+.rate-explanation{margin:0;line-height:1.65}
+.tierc .tc-intro{margin:20px 0 0}
+.tierc .tc-section{display:flex;align-items:center;gap:12px;margin:32px 0 18px;font-size:14px;text-transform:none;letter-spacing:0}
+.tierc .tc-section::before{content:"";width:12px;height:2px;background:var(--coral);flex:none}
+.tierc .tc-budget-note{max-width:68ch;margin:0 0 24px;line-height:1.65}
+.tierc .tc-steps{margin:0 0 34px}
+.tierc #tcNote{margin-top:22px;line-height:1.65}
+#calcAssume{white-space:pre-line;line-height:1.65}
+#stressStats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;align-items:start}
+#stressStats .stat{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;min-width:0;text-align:left}
+#stressStats .stat .v{display:block;line-height:1.2;margin:0 0 18px}
+#stressStats .stat .l{display:block;line-height:1.55;overflow-wrap:break-word}
+#stressStats .stress-label{display:block;color:var(--ink);font-weight:600}
+#stressStats .stress-description{display:block;margin-top:6px;color:var(--ink-3);font-weight:400}
+@media(max-width:1200px){#stressStats{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:30px}}
+@media(max-width:760px){#stressStats{grid-template-columns:1fr;gap:24px}#stressStats .stat .v{margin-bottom:12px}.tierc .tc-section{margin-top:26px}}
+</style>
 
-<section class="card" id="markets" aria-label="Markets">
-<div class="chartbar"><h2 style="margin:0 12px 0 0;font-size:16px">Solana markets</h2><div class="seg" role="group" aria-label="Sort markets" id="tabs"></div></div>
-<div class="tablebox"><table><thead><tr><th>Token</th><th class="num">Price</th><th class="num">24h</th><th>7 days</th><th class="num">24h volume</th><th class="num">Liquidity</th><th><span class="sr">Action</span></th></tr></thead><tbody id="markets-body"></tbody></table></div>
-</section>
-</div>
-
-<aside class="right">
-<section class="card swap" aria-label="Swap">
-<div class="modes"><button type="button" aria-pressed="true">Swap</button><button type="button" aria-pressed="false" class="demo">Limit</button><button type="button" aria-pressed="false" class="demo">Recurring</button><button class="small demo" type="button" style="margin-left:auto">Slippage 0.5%</button></div>
-<div class="well"><div class="lab"><span>You pay</span><span>Balance 4,820.00 USDC</span></div>
-<div class="row"><label for="pay" class="sr">Amount to pay in USDC</label><input id="pay" class="amt" inputmode="decimal" value="1,000.00"><button class="pick" type="button"><i style="background:#2775ca" aria-hidden="true"></i>USDC</button></div>
-<div class="pct"><button type="button" data-pct=".25">25%</button><button type="button" data-pct=".5">50%</button><button type="button" data-pct="1">Max</button></div></div>
-<div class="flip"><button type="button" aria-label="Switch tokens" class="demo"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 2v11M5 13l-3-3M5 13l3-3M11 14V3M11 3L8 6M11 3l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div>
-<div class="well"><div class="lab"><span>You receive (estimated)</span><span id="bal-to"></span></div>
-<div class="row"><span class="amt" id="recv" aria-live="polite"></span><button class="pick" type="button" id="to-pick"></button></div></div>
-<div class="kv"><div><span>Rate</span><span class="mono" id="rate"></span></div><div><span>Price impact</span><span class="mono up">&lt; 0.01%</span></div><div><span>Minimum received</span><span class="mono" id="minr"></span></div><div><span>Route</span><span>3 venues · 2 hops</span></div></div>
-<div class="fee" aria-live="polite">
-<div><span class="t">Your fee, by XPR</span><span class="chip">XPR 0.60 · Tier 1</span></div>
-<div><span>Exe fee (0.10%)</span><span class="mono" id="f-exe"></span></div>
-<div><span>Network fee (gas)</span><span class="mono">$0.01</span></div>
-<div><span>Fee redemption at XPR 0.60</span><span class="mono up" id="f-red"></span></div>
-<div class="tot"><span style="color:var(--ink)">You pay in fees</span><span class="mono" id="f-pay"></span></div>
-<span class="note">Locked in when you sign. Fully supported Sponsorship Pool assumed.</span>
-</div>
-<button class="go demo" type="button">Connect wallet to swap</button>
-<p class="msg" id="msg" role="status"></p>
-</section>
-
-<section class="card" id="xpr" aria-label="Your XPR" style="display:grid;gap:12px">
-<div style="display:flex;justify-content:space-between;align-items:baseline"><h2 style="margin:0">Your XPR</h2><span class="note">Example rate</span></div>
-<div style="display:flex;align-items:baseline;gap:10px"><span class="mono" style="font-size:34px;font-weight:600">0.60</span><span class="up" style="font-size:12px">▲ 0.04 this month</span></div>
-<div class="bar"><i style="width:60%"></i></div>
-<div style="display:flex;justify-content:space-between" class="note mono"><span>0.00</span><span>Tier 1 range up to 1.00</span></div>
-<div class="minis"><div class="mini"><span>Fees redeemed this month</span><b>$38.20</b></div><div class="mini"><span>Trades this month</span><b>94</b></div></div>
-<p class="lead">Higher XPR means a larger share of eligible fees redeemed. Steady, verified activity builds it. XPR is opt-in.</p>
-<a href="ask.html?q=What%20is%20XPR%3F" style="font-size:12px;font-weight:600">How XPR works →</a>
-</section>
-
-<section class="card" id="portfolio" aria-label="Portfolio" style="display:grid;gap:10px">
-<div style="display:flex;justify-content:space-between;align-items:baseline"><h2 style="margin:0">Portfolio</h2><span class="mono" style="font-size:16px;font-weight:600" id="port-total"></span></div>
-<div id="holdings" style="display:grid;gap:10px"></div>
-<div class="alloc" id="alloc" aria-hidden="true"></div>
-</section>
+<style id="tier-layout-concept">
+/* Agent payments is the typography reference; card-only scope for this mockup. */
+#p-rate .tierc{display:block;padding:28px;gap:0}
+#p-rate .tierc-head{justify-content:space-between;align-items:center;gap:14px;margin:0 0 12px}
+#p-rate .tierc-head .sp-eyebrow{margin:0}
+#p-rate .tc-status{display:flex;gap:10px;align-items:center}
+#p-rate .tc-title{margin:0 0 10px;font-size:clamp(24px,3vw,34px);font-weight:600;letter-spacing:-.035em;line-height:1.2}
+#p-rate .tc-title span{color:#1677ff}
+#p-rate .tierc .tc-intro{font-size:15px;line-height:1.6;color:var(--ink-2);max-width:70ch;margin:0 0 24px}
+#p-rate .tierc .tc-steps{margin:0 0 28px;gap:14px}
+#p-rate .tc-steps li{padding:18px;gap:7px;border-radius:14px}
+#p-rate .tc-steps li b{font-size:17px;line-height:1.3;color:var(--ink)}
+#p-rate .tc-steps li span{font-size:14px;line-height:1.55;color:var(--ink-2)}
+#p-rate .tierc .tc-section{display:block;margin:0 0 8px;font-size:24px;font-weight:600;line-height:1.25;letter-spacing:-.035em;color:var(--ink);text-transform:none}
+#p-rate .tc-section::before{display:none}
+#p-rate .tc-section span{color:#1677ff}
+#p-rate .tierc .tc-budget-note{font-size:15px;line-height:1.6;max-width:85ch;margin:0 0 18px;color:var(--ink-2)}
+#p-rate .tca{grid-template-columns:minmax(0,1fr) auto minmax(0,1.1fr) auto minmax(0,1.25fr);align-items:stretch;gap:14px;padding:0}
+#p-rate .tca-cell{padding:18px;min-height:154px;gap:5px;align-content:start}
+#p-rate .tcx-cap{font-size:10.5px;line-height:1.5;letter-spacing:.13em;color:var(--ink-3)}
+#p-rate .tcx-num{font-size:32px;font-weight:500;line-height:1.15;margin-top:4px;color:var(--ink)}
+#p-rate .tca-cell .small{font-size:12px;line-height:1.5}
+#p-rate .tca-op{align-self:center;font-size:22px}
+#p-rate .tca-act{flex-wrap:nowrap;gap:8px;margin-top:8px}
+#p-rate .tca-act input{min-width:0;width:104px;padding:10px 12px;font-size:13px;flex:1}
+#p-rate .tca-act button{white-space:nowrap;padding:10px 16px;font-size:13px;flex:none}
+#p-rate .tierc #tcNote{font-size:13px;line-height:1.6;max-width:none;margin:18px 0 0;color:var(--ink-3)}
+@media(max-width:900px){
+ #p-rate .tierc{padding:22px}
+ #p-rate .tierc .tc-steps{grid-template-columns:1fr;gap:10px;margin-bottom:24px}
+ #p-rate .tc-steps li{padding:16px}
+ #p-rate .tca{grid-template-columns:minmax(0,1fr);gap:10px}
+ #p-rate .tca-cell{min-width:0;min-height:0;padding:16px}
+ #p-rate .tca-op{line-height:1;margin:0}
+ #p-rate .tierc .tc-section{font-size:23px}
+}
+@media(max-width:420px){
+ #p-rate .tierc{padding:18px}
+ #p-rate .tierc-head{gap:10px}
+ #p-rate .tc-status{gap:7px}
+ #p-rate .tc-status .pill{font-size:10px;padding:3px 7px}
+ #p-rate .tc-status .tc-sim{font-size:9px}
+ #p-rate .tierc .tc-intro,#p-rate .tierc .tc-budget-note{font-size:14px}
+ #p-rate .tierc .tc-intro{margin-bottom:20px}
+ #p-rate .tcx-num{font-size:30px}
+}
+</style>
+<style id="sidebar-header-concept">
+/* Locked Agent payments / Your tier hierarchy; only the three requested headers. */
+#p-pool>.panel:first-child,#p-stress>.panel:first-child,#p-calc>.panel:first-child{padding:28px}
+.page-header{display:block;margin:0 0 10px;min-width:0}
+.page-header .sp-eyebrow{margin:0 0 14px}
+.page-header .sp-h{font-size:clamp(24px,3vw,34px);font-weight:600;line-height:1.2;letter-spacing:-.035em;margin:0 0 12px;text-wrap:balance}
+.page-header .sp-h span{color:#1677ff}
+.page-header .sp-lead{font-size:15px;line-height:1.6;max-width:70ch;color:var(--ink-2);margin:0}
+.sp-flowlink{color:#6ab6ff;text-decoration:none;border-bottom:1px solid rgba(106,182,255,.4);white-space:nowrap}
+.sp-flowlink:hover,.sp-flowlink:focus-visible{border-bottom-color:#6ab6ff}
+.page-header .sp-lead+.sp-lead{margin-top:12px}
+@media(max-width:900px){#p-pool>.panel:first-child,#p-stress>.panel:first-child,#p-calc>.panel:first-child{padding:22px}}
+@media(max-width:420px){#p-pool>.panel:first-child,#p-stress>.panel:first-child,#p-calc>.panel:first-child{padding:18px}.page-header .sp-eyebrow{margin-bottom:12px}.page-header .sp-h{font-size:26px}.page-header .sp-lead{font-size:14px}}
+</style>
+<style id="fix-2026-10-30">
+/* Exeswap mobile hero: same side margins as the Exe Protocol homepage (32px on phones, about 47px at tablet width) */
+@media (max-width: 900px){#p-swap > .xh > div:first-child{padding-inline:max(16px, calc(6.1vw - 16px));box-sizing:border-box}}
+/* Exeswap mobile/narrow hero heading: use the full text width (no desktop width cap), and never split "fee-free." at its hyphen */
+@media (max-width: 900px){#p-swap .xh h2{max-width:none !important;text-wrap:wrap !important}}
+#p-swap .xh h2 .fade{white-space:nowrap}
+</style>
+<link rel="stylesheet" href="assets/exe-ai.css">
+<style id="headings-2026-11-04">#p-swap .xh h2,#p-swap .xw-head h2,#p-swap .xh-route h2,#p-swap .xh-try h2,#p-swap .hx-h2{font-size:clamp(36px,3.85vw,60px)}@media (max-width:1000px){#p-swap .xh h2,#p-swap .xw-head h2,#p-swap .xh-route h2,#p-swap .xh-try h2,#p-swap .hx-h2{font-size:clamp(38px,6vw,58px)}}@media (max-width:560px){#p-swap .xh h2,#p-swap .xw-head h2,#p-swap .xh-route h2,#p-swap .xh-try h2,#p-swap .hx-h2{font-size:36px}}</style>
+</head><body>
+<style id="markets-2026-11-16">
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* Markets & charts: built on the simulator's own shell, panels and swap card; only the market pieces are new. */
+.side-more a[aria-current="page"]{color:#fff;background:linear-gradient(90deg,rgba(77,141,255,.20),rgba(37,196,211,.06));box-shadow:inset 2px 0 0 var(--r3)}
+.side-more a[aria-current="page"] .ic{color:var(--r4)}
+#p-markets{display:grid;gap:22px;padding:clamp(20px,4vh,40px) 0 48px;grid-template-columns:minmax(0,1fr)}
+#p-markets .mk-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:18px 48px;align-items:end}
+#p-markets .mk-intro h2{font-size:clamp(30px,3.2vw,40px);font-weight:400;line-height:1.08;letter-spacing:-.045em;margin:0 0 10px}
+#p-markets .mk-intro h2 span{color:#1677ff}
+#p-markets .mk-intro p{margin:0;color:var(--ink-2);line-height:1.6;font-size:14.5px}
+#p-markets .mk-intro .side-copy{font-size:13.5px;max-width:62ch}
+#p-markets .num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+#p-markets .up{color:var(--good)} #p-markets .dn{color:var(--crit)}
+#p-markets .coin{width:24px;height:24px;border-radius:50%;flex:none;display:grid;place-items:center;font:700 10px var(--f-num);font-style:normal;color:#05070b;background:linear-gradient(135deg,#8fb6ff,#3fd8cf)}
+#p-markets img.coin{background:none;object-fit:contain}
+#p-markets .coin.lg{width:40px;height:40px;font-size:15px}
+#p-markets .pairbar{display:flex;flex-wrap:wrap;align-items:center;gap:18px 40px;padding:20px 24px}
+#p-markets .pairbar .who{display:flex;align-items:center;gap:14px}
+#p-markets .pairbar .who b{display:block;font-size:20px;font-weight:600;letter-spacing:-.02em}
+#p-markets .pairbar .who span{color:var(--ink-3);font-size:12.5px}
+#p-markets .pairbar .px{display:grid;gap:2px}
+#p-markets .pairbar .px b{font-size:30px;font-weight:500;letter-spacing:-.03em}
+#p-markets .pairbar .px span{font-size:13px}
+#p-markets .kstat{display:grid;gap:4px}
+#p-markets .kstat .sp-eyebrow{margin:0}
+#p-markets .kstat b{font-weight:500;font-size:15.5px}
+#p-markets .pairbar .tc-sim{margin-left:auto}
+#p-markets .mk-main{display:grid;grid-template-columns:minmax(0,1fr) min(440px,100%);gap:22px;align-items:start}
+#p-markets .chartp{padding:20px 22px}
+#p-markets .chartbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-bottom:14px}
+#p-markets .legend{display:flex;gap:16px;font-size:12.5px;color:var(--ink-3)}
+#p-markets .legend i{display:inline-block;width:16px;height:2px;margin-right:7px;vertical-align:middle;border-radius:2px}
+#p-markets .plotwrap{display:flex;gap:12px}
+#p-markets .plot{flex:1 1 auto;min-width:0;display:grid;gap:8px}
+#p-markets .price{position:relative;height:340px;border-bottom:1px solid var(--line);background-image:linear-gradient(rgba(140,170,230,.08) 1px,transparent 1px);background-size:100% 85px}
+#p-markets .candles{position:absolute;inset:0;display:flex;gap:2px}
+#p-markets .candles div{flex:1 1 0;position:relative;min-width:0}
+#p-markets .candles i,#p-markets .candles b{position:absolute;display:block}
+#p-markets .candles i{left:calc(50% - .5px);width:1px}
+#p-markets .candles b{left:16%;right:16%;border-radius:1.5px}
+#p-markets .price svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#p-markets .last{position:absolute;left:0;right:0;border-top:1px dashed rgba(77,141,255,.75)}
+#p-markets .vols{height:64px;display:flex;gap:2px;align-items:flex-end}
+#p-markets .vols i{flex:1 1 0;min-width:0;border-radius:1.5px 1.5px 0 0;opacity:.45}
+#p-markets .times{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-3)}
+#p-markets .axis{width:78px;position:relative;height:340px;font-size:11.5px;color:var(--ink-3)}
+#p-markets .axis span{position:absolute;left:4px}
+#p-markets .axis .tag{left:0;right:0;padding:3px 7px;border-radius:6px;background:#1677ff;color:#fff;font-weight:600}
+#p-markets .swapcard{width:100%}
+#p-markets .swapcard .amt{font-family:inherit}
+#p-markets .swapcard a.swcta{display:flex;align-items:center;justify-content:center;text-decoration:none}
+#p-markets .swapcard .seg{display:inline-flex}
+#p-markets .mk-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+#p-markets .panel h3{font-size:18px;font-weight:500;letter-spacing:-.02em;margin:0}
+#p-markets .trades{display:grid;grid-template-columns:76px 1fr 1fr 1fr;gap:9px 12px;font-size:13px}
+#p-markets .trades .h{color:var(--ink-3);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+#p-markets .trades .r{text-align:right}
+#p-markets .venue{display:grid;gap:7px}
+#p-markets .venue div:first-child{display:flex;justify-content:space-between;font-size:14px}
+#p-markets .track{height:6px;border-radius:3px;background:rgba(140,170,230,.12)}
+#p-markets .track i{display:block;height:6px;border-radius:3px;background:linear-gradient(90deg,#2f63e0,#25c4d3)}
+#p-markets .muted{color:var(--ink-3);font-size:12.5px;margin:0;line-height:1.6}
+#p-markets .tablebox{overflow-x:auto;position:relative}
+#p-markets table{width:100%;border-collapse:collapse;min-width:760px;font-size:14px}
+#p-markets th{padding:10px 8px;color:var(--ink-3);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-align:left;border-bottom:1px solid var(--line)}
+#p-markets td{padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+#p-markets tr:last-child td{border-bottom:0}
+#p-markets td.r,#p-markets th.r{text-align:right}
+#p-markets .tok-cell{display:inline-flex;align-items:center;gap:12px}
+#p-markets .tok-cell small{display:block;color:var(--ink-3);font-size:12px}
+#p-markets .spark{display:flex;align-items:flex-end;gap:2px;height:26px;width:104px}
+#p-markets .spark i{flex:1 1 0;border-radius:1px;opacity:.75}
+#p-markets .rowbtn{font:600 13px var(--f-body);color:var(--ink);background:rgba(77,141,255,.12);border:1px solid rgba(77,141,255,.45);border-radius:999px;padding:7px 16px;cursor:pointer}
+#p-markets .rowbtn:hover{background:rgba(77,141,255,.22)}
+#p-markets .mk-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;margin-bottom:6px}
+#p-markets .xprp .big{font-size:40px;font-weight:400;letter-spacing:-.04em}
+#p-markets .bar{height:8px;border-radius:4px;background:rgba(140,170,230,.12);position:relative;margin:4px 0}
+#p-markets .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:linear-gradient(90deg,#2f63e0,#25c4d3)}
+#p-markets .minis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#p-markets .mini{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:4px}
+#p-markets .mini b{font-size:20px;font-weight:500}
+#p-markets .hold{display:flex;align-items:center;gap:12px;font-size:14px}
+#p-markets .hold .q{color:var(--ink-3);flex:1 1 auto}
+#p-markets .alloc{height:8px;border-radius:4px;overflow:hidden;display:flex;margin-top:4px}
+#p-markets .mk-foot{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:12.5px;color:var(--ink-3);border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:1150px){#p-markets .mk-main{grid-template-columns:minmax(0,1fr)}#p-markets .swapcard{max-width:520px;justify-self:center}}
+@media (max-width:900px){#p-markets .mk-intro,#p-markets .mk-row{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){#p-markets .price,#p-markets .axis{height:260px}#p-markets .axis{width:64px}#p-markets .legend{display:none}#p-markets .pairbar{padding:18px;gap:14px 26px}#p-markets .pairbar .tc-sim{margin-left:0}}
+</style>
+<div class="shell" id="shell">
+<aside class="side" aria-label="Navigation">
+  <div class="side-brand"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="sideNav" aria-label="Menu"><span id="burgerLab">Markets &amp; charts</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <button class="fold" id="fold" aria-label="Collapse navigation" title="Collapse"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/><path d="M19 6l-6 6 6 6" opacity=".5"/></svg></button></div>
+  <nav class="side-nav" id="sideNav"><div class="mobile-xpr-row" id="mobileXprSlot"></div>
+    <div class="sgrp app"><div class="slab"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></svg><span>Exeswap</span></div>
+      <button type="button" data-go="simulator.html#swap" title="Home"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6.5 8 6.5"/><path d="M6.5 9.5V19h11V9.5"/><path d="M10 19v-5h4v5"/></svg><span>Home</span></button>
+      <button type="button" data-go="simulator.html#trade" title="Swap"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8 10h7.5l-2-2M16 14H8.5l2 2"/></svg><span>Swap</span></button>
+      <button type="button" data-go="simulator.html#rate" title="Your rate"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4.5-6"/><circle cx="12" cy="17" r="1.4"/></svg><span>Your rate</span></button>
+      <button type="button" data-go="simulator.html#quote" title="Your quote"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><span>Your quote</span></button></div>
+    <div class="sgrp con"><div class="slab"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2.5"/><path d="M7 9l3 2.5L7 14M12.5 14H17"/></svg><span>Exe Protocol</span></div>
+      <button type="button" data-go="simulator.html#pool" title="Sponsorship Pool"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 15c2.2 0 2.2-1.5 4.5-1.5S9.8 15 12 15s2.2-1.5 4.5-1.5S18.8 15 21 15"/><path d="M3 19c2.2 0 2.2-1.5 4.5-1.5S9.8 19 12 19s2.2-1.5 4.5-1.5S18.8 19 21 19"/><path d="M12 3c2.5 3 4 5.2 4 7a4 4 0 0 1-8 0c0-1.8 1.5-4 4-7z"/></svg><span>Sponsorship Pool</span></button>
+      <button type="button" data-go="simulator.html#stress" title="Stress test"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span>Stress test</span></button>
+      <button type="button" data-go="simulator.html#calc" title="App funding"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></svg><span>App funding</span></button>
+      <button type="button" data-go="simulator.html#speed" title="Agent payments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg><span>Agent payments</span></button></div>
+    <div class="side-more"><a href="exeswap-trade.html" title="Markets &amp; charts" aria-current="page"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"/><path d="M7 15V9M7 9V6M12 16v-8M17 13V5"/><rect x="5.5" y="9" width="3" height="5" rx=".6"/><rect x="10.5" y="8" width="3" height="6" rx=".6"/><rect x="15.5" y="6" width="3" height="5" rx=".6"/></svg><span>Markets &amp; charts</span></a><a href="exeswap-specs.html" title="Exeswap specs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/></svg><span>Exeswap specs</span></a></div>
+  </nav>
+  <div class="side-foot"><span class="chip-meta">Master Doc Revision 010.8</span></div>
 </aside>
+<div class="wrap">
+  <header class="topbar">
+    <div class="crumb"><span id="crumbG">Exeswap</span><span class="sep">/</span><b id="crumbT">Markets &amp; charts</b></div>
+    <div class="hright">
+      <span class="myxpr" title="Your XPR: earned through verified on-chain activity. Higher XPR, lower fees.">
+        <span class="ring"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f63e0"/><stop offset="1" stop-color="#25c4d3"/></linearGradient></defs>
+          <circle cx="30" cy="30" r="25" class="trk"/><circle cx="30" cy="30" r="25" class="val" id="myXprRing" stroke-dasharray="157.1" stroke-dashoffset="62.8"/></svg></span>
+        <span class="t"><span class="l">My XPR</span><span class="v" id="myXpr">0.6000</span></span>
+      </span>
+      <span class="wallet-action"><button class="wallet-connect" id="swapConnectWallet" type="button" aria-describedby="swapWalletNote">Connect Wallet</button><span class="wallet-note" id="swapWalletNote" role="status" hidden>Wallet connection arrives at launch.</span></span>
+    </div>
+  </header>
+  <section id="p-markets" aria-label="Markets and charts">
+    <div class="mk-intro">
+      <div><h2>Markets &amp; <span>charts</span></h2><p>Prices, charts and routes for Solana tokens. Every figure is simulated, not live data.</p></div>
+      <p class="side-copy">Pick a market, read the chart, then trade. Exeswap finds the route across Solana venues, and your XPR sets how much of the eligible fee you redeem, shown on the quote before you sign.</p>
+    </div>
+
+    <div class="panel pairbar" id="pairbar" aria-label="Selected market"></div>
+
+    <div class="mk-main">
+      <div class="panel chartp" aria-label="Price chart">
+        <div class="chartbar">
+          <div class="seg" role="group" aria-label="Timeframe" id="tfs"></div>
+          <div class="legend"><span><i style="background:#ffc56b"></i>MA 20</span><span><i style="background:#3fd8cf"></i>MA 50</span></div>
+          <span class="tc-sim" style="margin-left:auto">Simulated</span>
+        </div>
+        <div class="plotwrap">
+          <div class="plot">
+            <div class="price"><div class="candles" id="candles"></div>
+              <svg viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><polyline id="ma20" fill="none" stroke="#ffc56b" stroke-width="1.6" vector-effect="non-scaling-stroke"></polyline><polyline id="ma50" fill="none" stroke="#3fd8cf" stroke-width="1.6" vector-effect="non-scaling-stroke"></polyline></svg>
+              <div class="last" id="last"></div></div>
+            <div class="vols" id="vols" aria-hidden="true"></div>
+            <div class="times num" id="times"></div>
+          </div>
+          <div class="axis num" id="axis" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="panel swapcard" aria-label="Swap">
+        <div class="swhead"><h2>Swap</h2><div class="seg" role="group" aria-label="Chain"><button type="button" aria-pressed="true">Solana</button><button type="button" aria-pressed="false" disabled title="This screen shows Solana markets">Ethereum</button></div></div>
+        <div class="swf"><div class="lab"><span>You sell</span><span class="num" id="inUsd"></span></div>
+          <div class="row"><input class="amt" id="pay" inputmode="decimal" value="1000" aria-label="Amount of USDC to sell"><button class="tok tokb" type="button" data-go="simulator.html#trade" aria-label="Choose token to sell in the swap screen"><img class="coin" src="assets/asset-7281e8cadfe9.svg" alt="" width="24" height="24">USDC</button></div></div>
+        <button class="flip" type="button" aria-label="Switch tokens" disabled><svg viewBox="0 0 24 24"><path d="M8 4v15M8 19l-3-3M8 19l3-3M16 20V5M16 5l-3 3M16 5l3 3"/></svg></button>
+        <div class="swf"><div class="lab"><span>You receive</span><span class="num" id="outUsd"></span></div>
+          <div class="row"><input class="amt" id="recv" readonly tabindex="-1" aria-label="Amount to receive"><button class="tok tokb" type="button" id="outTok" data-go="simulator.html#trade" aria-label="Choose token to receive in the swap screen"></button></div></div>
+        <ol class="swsteps" aria-label="Before you sign"><li>Route selected</li><li>Costs calculated</li><li>Fee redemption checked</li><li>Ready for review</li></ol>
+        <div class="two">
+          <div class="p off"><span>Swap cost without XPR</span><b class="num" id="costNo"></b></div>
+          <div class="p on"><span>Swap cost with your XPR <em class="num">0.60</em> <i class="swtier">Tier 1</i></span><b class="num" id="costYes"></b></div>
+        </div>
+        <a class="btn swcta" href="simulator.html#trade">Review this swap</a>
+        <p class="swnote"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>Prototype: simulated prices. Costs use Exe's fee of 0.10% on Solana and an example XPR.</p>
+      </div>
+    </div>
+
+    <div class="mk-row">
+      <div class="panel" aria-label="Recent trades"><h3 id="tradesTitle">Recent trades · SOL / USDC</h3><div class="trades num" id="trades"></div></div>
+      <div class="panel" aria-label="Where your trade can route"><h3>Where your trade can route</h3>
+        <p class="muted">Exeswap checks liquidity across Solana venues and splits an order where that gets a better price.</p>
+        <div id="venues" style="display:grid;gap:14px"></div>
+        <p class="muted">Venues shown for illustration. No partnership is implied.</p></div>
+    </div>
+
+    <div class="panel" id="markets" aria-label="Solana markets">
+      <div class="mk-head"><h3>Solana markets</h3><div class="seg" role="group" aria-label="Sort markets" id="tabs" style="margin-left:auto"></div></div>
+      <div class="tablebox"><table><thead><tr><th>Token</th><th class="r">Price</th><th class="r">24h</th><th>7 days</th><th class="r">24h volume</th><th class="r">Liquidity</th><th><span class="sr-only">Action</span></th></tr></thead><tbody id="mkBody"></tbody></table></div>
+    </div>
+
+    <div class="mk-row">
+      <div class="panel xprp" aria-label="Your XPR"><div class="tierc-head"><p class="sp-eyebrow" style="margin:0">Your XPR</p><div class="tc-status"><span class="pill neutral">Tier 1</span><span class="tc-sim">Example</span></div></div>
+        <div style="display:flex;align-items:baseline;gap:12px"><span class="big num">0.60</span><span class="up" style="font-size:13px">▲ 0.04 this month</span></div>
+        <div class="bar"><i style="width:60%"></i></div>
+        <div class="minis"><div class="mini"><span class="sp-eyebrow" style="margin:0">Fees redeemed this month</span><b class="num">$38.20</b></div><div class="mini"><span class="sp-eyebrow" style="margin:0">Trades this month</span><b class="num">94</b></div></div>
+        <p class="muted">Higher XPR means a larger share of eligible fees redeemed. Steady, verified activity builds it. XPR is opt-in. <a href="simulator.html#rate">See your rate</a></p></div>
+      <div class="panel" aria-label="Example wallet"><div class="tierc-head"><p class="sp-eyebrow" style="margin:0">Example wallet</p><div class="tc-status"><span class="tc-sim">Simulated</span></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><h3>Holdings</h3><b class="num" style="font-size:22px;font-weight:500" id="portTotal"></b></div>
+        <div id="holdings" style="display:grid;gap:12px"></div><div class="alloc" id="alloc" aria-hidden="true"></div></div>
+    </div>
+
+    <div class="mk-foot"><span>Exeswap is built on Exe Protocol. Prototype: every figure on this page is simulated.</span><a href="exeswap-specs.html">Exeswap specs</a><a href="exe-protocol-specs.html">Exe Protocol specs</a><a href="important-information.html">Important information</a></div>
+  </section>
 </div>
-
-<footer class="foot"><span>Exeswap is built on Exe Protocol. Prototype: every figure on this page is simulated.</span><a href="exe-protocol-specs.html">Exe Protocol specs</a><a href="exeswap-specs.html">Exeswap specs</a><a href="important-information.html">Important information</a></footer>
-</main>
-
+</div>
+<script type="application/json" id="tokicons">{"AAVE":"assets/asset-0884e64b1b44.svg","DAI":"assets/asset-030fdb32f156.svg","ETH":"assets/asset-1f94df8533f6.svg","LINK":"assets/asset-2457990f68e3.svg","RAY":"assets/asset-8e1f9652252c.svg","SOL":"assets/asset-94e47e7c108a.svg","UNI":"assets/asset-2a3192f07ade.svg","USDC":"assets/asset-7281e8cadfe9.svg","USDT":"assets/asset-cddba428a029.svg","WBTC":"assets/asset-3a57d25e32ac.svg"}</script>
 <script>
 (() => {
-const UP = '#22c58b', DN = '#f0616d';
+const $ = (id) => document.getElementById(id);
+const UP = '#6ad7a8', DN = '#ff8a94';
+const TOKI = JSON.parse($('tokicons').textContent);
+const icon = (t, lg) => TOKI[t] ? `<img class="coin${lg ? ' lg' : ''}" src="${TOKI[t]}" alt="" width="${lg ? 40 : 24}" height="${lg ? 40 : 24}">` : `<i class="coin${lg ? ' lg' : ''}" aria-hidden="true">${t[0]}</i>`;
+// Prices match the simulator's own simulated prices, so the two screens agree.
 const T = [
-  { sym: 'SOL', name: 'Solana', price: 182.40, chg: 3.42, vol: '$1.84B', liq: '$612M', mcap: '$87.9B', col: '#9b6bff' },
-  { sym: 'JUP', name: 'Jupiter', price: 0.9412, chg: -1.85, vol: '$214M', liq: '$96.4M', mcap: '$1.27B', col: '#3cd3a3' },
-  { sym: 'BONK', name: 'Bonk', price: 0.00002314, chg: 8.71, vol: '$388M', liq: '$41.2M', mcap: '$1.79B', col: '#f2a33a' },
-  { sym: 'WIF', name: 'dogwifhat', price: 1.862, chg: -4.20, vol: '$302M', liq: '$38.9M', mcap: '$1.86B', col: '#c98f6b' },
-  { sym: 'RAY', name: 'Raydium', price: 3.118, chg: 2.05, vol: '$96.1M', liq: '$58.0M', mcap: '$905M', col: '#5a7bff' },
-  { sym: 'JTO', name: 'Jito', price: 2.447, chg: 0.64, vol: '$71.8M', liq: '$29.7M', mcap: '$771M', col: '#7fd0c4' },
-  { sym: 'PYTH', name: 'Pyth Network', price: 0.3104, chg: -0.92, vol: '$58.3M', liq: '$22.1M', mcap: '$1.12B', col: '#c86bff' },
-  { sym: 'ORCA', name: 'Orca', price: 2.016, chg: 5.33, vol: '$24.6M', liq: '$15.8M', mcap: '$121M', col: '#ffd15c' },
+  { sym: 'SOL', name: 'Solana', price: 212.6, chg: 3.42, vol: '$1.84B', liq: '$612M', mcap: '$101.2B' },
+  { sym: 'JUP', name: 'Jupiter', price: 0.92, chg: -1.85, vol: '$214M', liq: '$96.4M', mcap: '$1.24B' },
+  { sym: 'BONK', name: 'Bonk', price: 0.000024, chg: 8.71, vol: '$388M', liq: '$41.2M', mcap: '$1.85B' },
+  { sym: 'WIF', name: 'dogwifhat', price: 1.86, chg: -4.20, vol: '$302M', liq: '$38.9M', mcap: '$1.86B' },
+  { sym: 'RAY', name: 'Raydium', price: 3.42, chg: 2.05, vol: '$96.1M', liq: '$58.0M', mcap: '$992M' },
+  { sym: 'JTO', name: 'Jito', price: 2.74, chg: 0.64, vol: '$71.8M', liq: '$29.7M', mcap: '$864M' },
+  { sym: 'PYTH', name: 'Pyth', price: 0.31, chg: -0.92, vol: '$58.3M', liq: '$22.1M', mcap: '$1.12B' },
+  { sym: 'USDT', name: 'Tether', price: 1.0, chg: 0.01, vol: '$1.12B', liq: '$402M', mcap: '$142B' },
 ];
 const S = { pair: 'SOL', tf: '1H', tab: 'trending', pay: 1000 };
-const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const fmtP = (p) => p >= 100 ? p.toFixed(2) : p >= 1 ? p.toFixed(3) : p >= 0.01 ? p.toFixed(4) : p.toFixed(8);
+const fmtP = (p) => p >= 100 ? p.toFixed(2) : p >= 1 ? p.toFixed(3) : p >= 0.01 ? p.toFixed(4) : p.toFixed(7);
 const fmtC = (c) => (c >= 0 ? '+' : '−') + Math.abs(c).toFixed(2) + '%';
 const usd = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-const qty = (n) => n >= 1000 ? n.toLocaleString('en-US', { maximumFractionDigits: 0 }) : n.toFixed(4);
-const badge = (t, s) => `<span class="badge" aria-hidden="true" style="width:${s}px;height:${s}px;font-size:${Math.round(s / 4)}px;background:${t.col}">${t.sym}</span>`;
 const seedOf = (s) => { let h = 2166136261; for (const ch of s) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
 const rng = (seed) => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
 const END = Date.UTC(2026, 10, 16, 9, 0);
 const pair = () => T.find((t) => t.sym === S.pair) || T[0];
+const segBtns = (opts, cur, key) => opts.map(([id, l]) => `<button type="button" data-${key}="${id}" aria-pressed="${id === cur}">${l}</button>`).join('');
 
-function header() {
+function pairbar() {
   const p = pair();
-  $('ticker').innerHTML = T.map((t) => `<span><span style="color:var(--mut)">${t.sym}</span><span>${fmtP(t.price)}</span><span class="${t.chg >= 0 ? 'up' : 'dn'}">${fmtC(t.chg)}</span></span>`).join('');
-  $('overview').innerHTML = `<div style="display:flex;align-items:center;gap:12px">${badge(p, 40)}<div class="stat"><b style="font:700 18px var(--sans)">${p.sym} / USDC</b><span>${esc(p.name)} · routed across Solana venues</span></div></div>
-  <div class="stat"><b style="font-size:24px;font-weight:600">${fmtP(p.price)}</b><span class="${p.chg >= 0 ? 'up' : 'dn'} mono" style="font-size:13px">${fmtC(p.chg)} (24h)</span></div>
-  <div class="stat"><span>24h high</span><b>${fmtP(p.price * 1.025)}</b></div><div class="stat"><span>24h low</span><b>${fmtP(p.price * 0.954)}</b></div>
-  <div class="stat"><span>24h volume</span><b>${p.vol}</b></div><div class="stat"><span>Liquidity</span><b>${p.liq}</b></div><div class="stat"><span>Market cap</span><b>${p.mcap}</b></div>
-  <button class="btn" type="button" style="margin-left:auto">☆ Watchlist</button>`;
+  $('pairbar').innerHTML = `<div class="who">${icon(p.sym, true)}<div><b>${p.sym} / USDC</b><span>${esc(p.name)} · routed across Solana venues</span></div></div>
+  <div class="px"><b class="num">${fmtP(p.price)}</b><span class="num ${p.chg >= 0 ? 'up' : 'dn'}">${fmtC(p.chg)} · 24h</span></div>
+  <div class="kstat"><span class="sp-eyebrow">24h high</span><b class="num">${fmtP(p.price * 1.025)}</b></div>
+  <div class="kstat"><span class="sp-eyebrow">24h low</span><b class="num">${fmtP(p.price * 0.954)}</b></div>
+  <div class="kstat"><span class="sp-eyebrow">24h volume</span><b class="num">${p.vol}</b></div>
+  <div class="kstat"><span class="sp-eyebrow">Liquidity</span><b class="num">${p.liq}</b></div>
+  <div class="kstat"><span class="sp-eyebrow">Market cap</span><b class="num">${p.mcap}</b></div>`;
 }
 
 function chart() {
   const p = pair(), N = 64, r = rng(seedOf(p.sym + S.tf));
-  const vola = { '1m': 0.002, '5m': 0.004, '15m': 0.006, '1H': 0.011, '4H': 0.02, '1D': 0.04 }[S.tf];
+  const vola = { '1m': 0.002, '5m': 0.004, '15m': 0.006, '1H': 0.011, '4H': 0.02, '1D': 0.04 }[S.tf] * (p.sym === 'USDT' ? 0.03 : 1);
   const raw = []; let x = 1;
-  for (let i = 0; i < N; i++) { const o = x; x = x * (1 + (r() - 0.48) * vola * 2); const hi = Math.max(o, x) * (1 + r() * vola * 0.8); const lo = Math.min(o, x) * (1 - r() * vola * 0.8); raw.push({ o, c: x, hi, lo, v: 0.3 + r() * (0.7 + Math.abs(x - o) / o / vola) }); }
+  for (let i = 0; i < N; i++) { const o = x; x = x * (1 + (r() - 0.48) * vola * 2); const hi = Math.max(o, x) * (1 + r() * vola * 0.8), lo = Math.min(o, x) * (1 - r() * vola * 0.8); raw.push({ o, c: x, hi, lo, v: 0.3 + r() * (0.7 + Math.abs(x - o) / o / vola) }); }
   const k = p.price / raw[N - 1].c; raw.forEach((d) => { d.o *= k; d.c *= k; d.hi *= k; d.lo *= k; });
   const max = Math.max(...raw.map((d) => d.hi)) * 1.004, min = Math.min(...raw.map((d) => d.lo)) * 0.996, rg = max - min;
   const y = (v) => ((max - v) / rg) * 100, vmax = Math.max(...raw.map((d) => d.v));
   $('candles').innerHTML = raw.map((d) => { const col = d.c >= d.o ? UP : DN, top = y(Math.max(d.o, d.c)), bot = y(Math.min(d.o, d.c));
     return `<div><i style="background:${col};top:${y(d.hi).toFixed(2)}%;height:${Math.max(0.3, y(d.lo) - y(d.hi)).toFixed(2)}%"></i><b style="background:${col};top:${top.toFixed(2)}%;height:${Math.max(0.35, bot - top).toFixed(2)}%"></b></div>`; }).join('');
   $('vols').innerHTML = raw.map((d) => `<i style="background:${d.c >= d.o ? UP : DN};height:${((d.v / vmax) * 100).toFixed(1)}%"></i>`).join('');
-  const ma = (n) => raw.map((d, i) => { const s = raw.slice(Math.max(0, i - n + 1), i + 1); const m = s.reduce((a, b) => a + b.c, 0) / s.length; return ((i + 0.5) / N * 1000).toFixed(1) + ',' + y(m).toFixed(2); }).join(' ');
+  const ma = (n) => raw.map((d, i) => { const s = raw.slice(Math.max(0, i - n + 1), i + 1), m = s.reduce((a, b) => a + b.c, 0) / s.length; return ((i + 0.5) / N * 1000).toFixed(1) + ',' + y(m).toFixed(2); }).join(' ');
   $('ma20').setAttribute('points', ma(20)); $('ma50').setAttribute('points', ma(50));
   const ly = y(p.price); $('last').style.top = ly.toFixed(2) + '%';
-  $('axis').innerHTML = [0, 1, 2, 3, 4].map((i) => `<span style="top:calc(${i * 25}% - 7px)">${fmtP(max - (rg * i) / 4)}</span>`).join('') + `<span class="tag" style="top:calc(${ly.toFixed(2)}% - 9px)">${fmtP(p.price)}</span>`;
+  $('axis').innerHTML = [0, 1, 2, 3, 4].map((i) => `<span style="top:calc(${i * 25}% - 8px)">${fmtP(max - (rg * i) / 4)}</span>`).join('') + `<span class="tag" style="top:calc(${ly.toFixed(2)}% - 10px)">${fmtP(p.price)}</span>`;
   const step = { '1m': 1, '5m': 5, '15m': 15, '1H': 60, '4H': 240, '1D': 1440 }[S.tf];
   $('times').innerHTML = [0, 1, 2, 3, 4, 5].map((i) => { const t = new Date(END - (N - 1 - i * 12.6) * step * 60000); return `<span>${step >= 1440 ? t.toUTCString().slice(5, 11) : t.toISOString().slice(11, 16)}</span>`; }).join('');
-  $('tfs').innerHTML = ['1m', '5m', '15m', '1H', '4H', '1D'].map((f) => `<button type="button" data-tf="${f}" aria-pressed="${f === S.tf}">${f}</button>`).join('');
+  $('tfs').innerHTML = segBtns(['1m', '5m', '15m', '1H', '4H', '1D'].map((f) => [f, f]), S.tf, 'tf');
 }
 
 function side() {
   const p = pair(), tr = rng(seedOf(p.sym + 'trades'));
+  $('tradesTitle').textContent = 'Recent trades · ' + p.sym + ' / USDC';
   $('trades').innerHTML = '<span class="h">Time</span><span class="h">Side</span><span class="h r">Price</span><span class="h r">Value</span>' + Array.from({ length: 9 }, (_, i) => {
     const buy = tr() > 0.45, px = p.price * (1 + (tr() - 0.5) * 0.002), val = 50 + tr() * 4800, t = new Date(END - (i * 17 + tr() * 15) * 1000);
-    return `<span style="color:var(--mut)">${t.toISOString().slice(11, 19)}</span><span class="${buy ? 'up' : 'dn'}">${buy ? 'Buy' : 'Sell'}</span><span class="r">${fmtP(px)}</span><span class="r">$${Math.round(val).toLocaleString('en-US')}</span>`; }).join('');
-  $('venues').innerHTML = [['Orca', 46], ['Raydium', 31], ['Meteora', 15], ['Phoenix', 8]].map(([n, s]) => `<div class="venue"><div><span>${n}</span><span class="mono" style="color:var(--mut)">${s}%</span></div><div class="track"><i style="width:${s}%"></i></div></div>`).join('');
+    return `<span style="color:var(--ink-3)">${t.toISOString().slice(11, 19)}</span><span class="${buy ? 'up' : 'dn'}">${buy ? 'Buy' : 'Sell'}</span><span class="r">${fmtP(px)}</span><span class="r">$${Math.round(val).toLocaleString('en-US')}</span>`; }).join('');
+  $('venues').innerHTML = [['Orca', 46], ['Raydium', 31], ['Meteora', 15], ['Phoenix', 8]].map(([n, s]) => `<div class="venue"><div><span>${n}</span><span class="num" style="color:var(--ink-3)">${s}%</span></div><div class="track"><i style="width:${s}%"></i></div></div>`).join('');
 }
 
 function markets() {
   const volN = (s) => parseFloat(s.replace(/[$,]/g, '')) * (s.endsWith('B') ? 1000 : 1);
   const order = T.slice(); if (S.tab === 'gainers') order.sort((a, b) => b.chg - a.chg); if (S.tab === 'volume') order.sort((a, b) => volN(b.vol) - volN(a.vol));
-  $('tabs').innerHTML = [['trending', 'Trending'], ['gainers', 'Top gainers'], ['volume', 'Volume']].map(([id, l]) => `<button type="button" data-tab="${id}" aria-pressed="${id === S.tab}">${l}</button>`).join('');
-  $('markets-body').innerHTML = order.map((t) => { const rr = rng(seedOf(t.sym + 'spark')); let v = 1; const pts = []; for (let i = 0; i < 14; i++) { v *= 1 + (rr() - 0.5 + t.chg / 400) * 0.08; pts.push(v); }
+  $('tabs').innerHTML = segBtns([['trending', 'Trending'], ['gainers', 'Top gainers'], ['volume', 'Volume']], S.tab, 'tab');
+  $('mkBody').innerHTML = order.map((t) => { const rr = rng(seedOf(t.sym + 'spark')); let v = 1; const pts = []; for (let i = 0; i < 14; i++) { v *= 1 + (rr() - 0.5 + t.chg / 400) * (t.sym === 'USDT' ? 0.002 : 0.08); pts.push(v); }
     const lo = Math.min(...pts), hi = Math.max(...pts), col = pts[13] >= pts[0] ? UP : DN;
-    return `<tr><td><span class="tok">${badge(t, 30)}<span><b>${t.sym}</b><small>${esc(t.name)}</small></span></span></td><td class="num">$${fmtP(t.price)}</td><td class="num ${t.chg >= 0 ? 'up' : 'dn'}">${fmtC(t.chg)}</td>
+    return `<tr><td><span class="tok-cell">${icon(t.sym)}<span><b>${t.sym}</b><small>${esc(t.name)}</small></span></span></td><td class="r num">$${fmtP(t.price)}</td><td class="r num ${t.chg >= 0 ? 'up' : 'dn'}">${fmtC(t.chg)}</td>
     <td><span class="spark" aria-hidden="true">${pts.map((q) => `<i style="background:${col};height:${(20 + ((q - lo) / (hi - lo || 1)) * 80).toFixed(0)}%"></i>`).join('')}</span></td>
-    <td class="num">${t.vol}</td><td class="num">${t.liq}</td><td style="text-align:right"><button type="button" class="trade" data-pair="${t.sym}">Trade<span class="sr"> ${t.sym}</span></button></td></tr>`; }).join('');
+    <td class="r num">${t.vol}</td><td class="r num">${t.liq}</td><td class="r"><button type="button" class="rowbtn" data-pair="${t.sym}">Trade<span class="sr-only"> ${t.sym}</span></button></td></tr>`; }).join('');
 }
 
 function swap() {
   const p = pair(), amt = S.pay, recv = amt / p.price;
-  $('recv').textContent = qty(recv); $('minr').textContent = qty(recv * 0.995) + ' ' + p.sym; $('rate').textContent = `1 ${p.sym} = ${fmtP(p.price)} USDC`;
-  $('to-pick').innerHTML = `<i style="background:${p.col}" aria-hidden="true"></i>${p.sym}`; $('bal-to').textContent = 'Balance ' + ({ SOL: '12.40', JUP: '1,850', BONK: '21,000,000' }[p.sym] || '0.00') + ' ' + p.sym;
-  // Same rule as the site's worked example: Exe fee 0.10% plus gas, XPR 0.60 at Tier 1 with a fully supported pool.
-  const exe = amt * 0.001, gas = 0.01, red = (exe + gas) * 0.6;
-  $('f-exe').textContent = usd(exe); $('f-red').textContent = '−' + usd(red); $('f-pay').textContent = usd(exe + gas - red);
+  $('inUsd').textContent = '≈ ' + usd(amt);
+  $('recv').value = recv.toLocaleString('en-US', { maximumFractionDigits: p.price >= 10 ? 4 : p.price >= 0.01 ? 2 : 0 });
+  $('outTok').innerHTML = icon(p.sym) + p.sym;
+  // The simulator's worked example: Exe's fee 0.10% on Solana plus about $0.01 gas; XPR 0.60 at Tier 1 with a fully supported pool redeems 60%.
+  const fee = amt * 0.001 + 0.01, paid = fee * 0.4;
+  $('outUsd').textContent = '≈ ' + usd(amt - paid) + ' after fees';
+  $('costNo').textContent = usd(fee); $('costYes').textContent = usd(paid);
 }
 
-function portfolio() {
-  const hold = [['USDC', 4820, 1, '#2775ca'], ['SOL', 12.4, 182.4, '#9b6bff'], ['JUP', 1850, 0.9412, '#3cd3a3'], ['BONK', 21000000, 0.00002314, '#f2a33a']];
-  const tot = hold.reduce((a, h) => a + h[1] * h[2], 0); $('port-total').textContent = usd(tot);
-  $('holdings').innerHTML = hold.map(([s, q, px, c]) => `<div class="hold"><i style="background:${c}" aria-hidden="true"></i><b style="width:50px">${s}</b><span class="mono" style="color:var(--mut);flex:1 1 auto">${q.toLocaleString('en-US', { maximumFractionDigits: 2 })}</span><span class="mono">${usd(q * px)}</span></div>`).join('');
+function wallet() {
+  const hold = [['USDC', 4820, 1, '#2775ca'], ['SOL', 12.4, 212.6, '#3fd8cf'], ['JUP', 1850, 0.92, '#4d8dff'], ['BONK', 21000000, 0.000024, '#ffc56b']];
+  const tot = hold.reduce((a, h) => a + h[1] * h[2], 0); $('portTotal').textContent = usd(tot);
+  $('holdings').innerHTML = hold.map(([s, q, px]) => `<div class="hold">${icon(s)}<b style="width:54px">${s}</b><span class="num q">${q.toLocaleString('en-US', { maximumFractionDigits: 2 })}</span><span class="num">${usd(q * px)}</span></div>`).join('');
   $('alloc').innerHTML = hold.map(([, q, px, c]) => `<span style="background:${c};width:${((q * px) / tot * 100).toFixed(1)}%"></span>`).join('');
 }
 
-function all() { header(); chart(); side(); markets(); swap(); }
+function all() { pairbar(); chart(); side(); markets(); swap(); }
 document.addEventListener('click', (e) => {
   const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.go) { location.href = b.dataset.go; return; }
   if (b.dataset.tf) { S.tf = b.dataset.tf; chart(); }
   else if (b.dataset.tab) { S.tab = b.dataset.tab; markets(); }
-  else if (b.dataset.pair) { S.pair = b.dataset.pair; all(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
-  else if (b.dataset.pct) { S.pay = Math.round(4820 * Number(b.dataset.pct) * 100) / 100; $('pay').value = S.pay.toLocaleString('en-US', { minimumFractionDigits: 2 }); swap(); }
-  else if (b.classList.contains('demo')) { $('msg').textContent = 'Prototype: wallets, orders and swaps are not connected yet.'; }
+  else if (b.dataset.pair) { S.pair = b.dataset.pair; all(); $('pairbar').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 });
-$('pay').addEventListener('input', (e) => { const v = parseFloat(e.target.value.replace(/[^0-9.]/g, '')); S.pay = isFinite(v) ? Math.min(v, 10000000) : 0; swap(); });
-$('search').addEventListener('keydown', (e) => { if (e.key !== 'Enter') return; const q = e.target.value.trim().toUpperCase(); const t = T.find((x) => x.sym === q || x.name.toUpperCase() === q); if (t) { S.pair = t.sym; all(); } });
-all(); portfolio();
+$('pay').addEventListener('input', (e) => { const v = parseFloat(e.target.value.replace(/[^0-9.]/g, '')); S.pay = isFinite(v) ? Math.min(v, 1e7) : 0; swap(); });
+all(); wallet();
+
+// Shell behaviour copied from the simulator: wallet note, collapsible sidebar, and the phone menu.
+const store = { get(k, d) { try { return localStorage.getItem(k) ?? d } catch { return d } }, set(k, v) { try { localStorage.setItem(k, v) } catch {} } };
+$('swapConnectWallet').onclick = () => { const n = $('swapWalletNote'); n.hidden = !n.hidden; };
+const setFold = (m) => { $('shell').classList.toggle('mini', m); $('fold').setAttribute('aria-label', m ? 'Expand navigation' : 'Collapse navigation'); store.set('exe.fold', m ? '1' : '0'); };
+setFold(store.get('exe.fold', '0') === '1');
+$('fold').onclick = () => setFold(!$('shell').classList.contains('mini'));
+const sideEl = document.querySelector('.side'), burger = $('burger');
+const setOpen = (o) => { sideEl.classList.toggle('open', o); burger.setAttribute('aria-expanded', String(o)); };
+burger.onclick = (e) => { e.stopPropagation(); setOpen(!sideEl.classList.contains('open')); };
+document.addEventListener('click', (e) => { if (!sideEl.contains(e.target)) setOpen(false); });
+addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+const shell = $('shell'), hr = document.querySelector('.hright'), home = hr.parentNode, mq = matchMedia('(max-width: 900px)');
+const xpr = hr.querySelector('.myxpr'), slot = $('mobileXprSlot'), walletEl = hr.querySelector('.wallet-action');
+function place() { if (mq.matches) { sideEl.querySelector('.side-brand').insertBefore(hr, burger); slot.appendChild(xpr); shell.classList.add('compact'); }
+  else { home.appendChild(hr); hr.insertBefore(xpr, walletEl); shell.classList.remove('compact'); setOpen(false); } }
+(mq.addEventListener ? mq.addEventListener('change', place) : mq.addListener(place)); place();
 })();
 </script>
 <script src="assets/exe-ai.js" defer></script>
