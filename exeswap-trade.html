@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Exeswap · Trade</title>
+<meta name="description" content="Exeswap trading screen: Solana markets, charts and swaps, with fees priced by your XPR. Prototype: every figure is simulated.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22t%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%22.5%22%20y2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%230b1636%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23050a1c%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22url%28%23t%29%22/%3E%3Cg%20transform%3D%22translate%2813.3%2014.15%29%20scale%28.9%29%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22f0%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%232350e6%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%234d8dff%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f1%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2325b0e8%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%235fe3ec%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id%3D%22f2%22%20x1%3D%220%22%20x2%3D%221%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2331d4ac%22/%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%23b8fbe2%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20x%3D%2214.25%22%20y%3D%220.35%22%20width%3D%2226.8%22%20height%3D%229%22%20fill%3D%22url%28%23f0%29%22%20stroke%3D%22%236b9bff%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2213.35%22%20width%3D%2215.3%22%20height%3D%229%22%20fill%3D%22url%28%23f1%29%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%2214.25%22%20y%3D%2226.35%22%20width%3D%2222.3%22%20height%3D%229%22%20fill%3D%22url%28%23f2%29%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2213.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2325b0e8%22%20stroke%3D%22%236fe6f2%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3Crect%20x%3D%22.35%22%20y%3D%2226.35%22%20width%3D%229.9%22%20height%3D%229%22%20fill%3D%22%2331d4ac%22%20stroke%3D%22%23c4fbe8%22%20stroke-opacity%3D%22.5%22%20stroke-width%3D%22.7%22/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root{--bg:#050a10;--bar:#070e17;--panel:#0b1520;--well:#070e17;--line:rgba(123,153,186,.16);--line2:rgba(123,153,186,.22);
+--ink:#f7f9fc;--mut:#a8b9cf;--dim:#8fa2bb;--acc:#1677ff;--acc-soft:rgba(22,119,255,.14);--up:#22c58b;--dn:#f0616d;--warn:#f3c86a;
+--sans:"Hanken Grotesk",Inter,system-ui,-apple-system,"Segoe UI",sans-serif;--mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink);font:14px/1.45 var(--sans);-webkit-font-smoothing:antialiased;color-scheme:dark}
+a{color:#6aa8ff}a:hover{color:#9cc4ff}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.mono{font-family:var(--mono)}
+.up{color:var(--up)}.dn{color:var(--dn)}
+.wrap{max-width:1480px;margin:0 auto;padding:0 24px}
+header.top{border-bottom:1px solid var(--line);background:var(--bar)}
+header.top .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;min-height:64px;padding-top:8px;padding-bottom:8px}
+.logo{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:600;font-size:18px;letter-spacing:-.02em}
+.logo i{width:18px;height:18px;border-radius:5px;background:conic-gradient(from 200deg,#4d8dff,#1d4fd6,#f1f6ff,#8a9bb8,#4d8dff);box-shadow:inset 0 0 0 1px rgba(255,255,255,.7)}
+.logo small{font-weight:400;color:var(--dim);font-size:12px;letter-spacing:0}
+nav.main{display:flex;flex-wrap:wrap;gap:4px}
+nav.main a{padding:9px 12px;border-radius:8px;color:var(--mut);text-decoration:none;font-weight:500}
+nav.main a[aria-current]{color:var(--ink);background:var(--acc-soft);font-weight:600}
+nav.main a:hover{color:var(--ink)}
+.search{flex:1 1 200px;min-width:180px;max-width:360px}
+.search input{width:100%;height:40px;border-radius:10px;border:1px solid var(--line2);background:var(--panel);padding:0 14px;font-size:13px}
+.hright{display:flex;align-items:center;gap:10px;margin-left:auto}
+.btn{height:40px;padding:0 14px;border-radius:10px;border:1px solid var(--line2);background:var(--panel);cursor:pointer}
+.btn.pri{border:0;background:var(--acc);color:#fff;font-weight:600;padding:0 18px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--up);margin-right:8px}
+.banner{background:rgba(240,180,60,.10);border-bottom:1px solid rgba(240,180,60,.25);color:var(--warn);text-align:center;font-size:12px;padding:7px 16px;letter-spacing:.02em}
+.banner a{color:var(--warn)}
+.ticker{border-bottom:1px solid rgba(123,153,186,.12);overflow-x:auto}
+.ticker .wrap{display:flex;gap:28px;padding-top:10px;padding-bottom:10px;white-space:nowrap;font:12px var(--mono)}
+.ticker span span{margin-right:8px}
+main.wrap{padding-top:20px;padding-bottom:40px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.card h2{margin:0 0 12px;font-size:14px;font-weight:600}
+.overview{display:flex;flex-wrap:wrap;align-items:center;gap:16px 36px}
+.stat{display:grid;gap:2px}.stat b{font:400 14px var(--mono)}.stat span{color:var(--mut);font-size:12px}
+.badge{border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:700;color:#050a10;flex:none;letter-spacing:-.02em}
+.cols{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-start}
+.left{flex:999 1 640px;min-width:0;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.right{flex:1 1 360px;min-width:min(300px,100%);max-width:440px;display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.seg{display:flex;gap:4px;background:var(--well);border-radius:10px;padding:4px}
+.seg button{height:30px;min-width:40px;padding:0 10px;border:0;border-radius:7px;cursor:pointer;font-size:12px;font-weight:600;background:transparent;color:var(--mut)}
+.seg button[aria-pressed=true]{background:var(--acc);color:#fff}
+.chartbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--mut);margin-left:8px}
+.legend i{display:inline-block;width:14px;height:2px;margin-right:6px;vertical-align:middle}
+.small{height:34px;padding:0 12px;border-radius:8px;border:1px solid var(--line2);background:transparent;color:var(--mut);cursor:pointer;font-size:12px}
+.small.on{border-color:rgba(22,119,255,.5);background:var(--acc-soft);color:var(--ink)}
+.chart{display:flex;gap:10px}
+.plot{flex:1 1 auto;min-width:0;display:grid;gap:6px}
+.price{position:relative;height:340px;border-bottom:1px solid rgba(123,153,186,.14);background-image:linear-gradient(rgba(123,153,186,.07) 1px,transparent 1px);background-size:100% 68px}
+.candles{position:absolute;inset:0;display:flex;gap:2px}
+.candles div{flex:1 1 0;position:relative;min-width:0}
+.candles i,.candles b{position:absolute;display:block}
+.candles i{left:calc(50% - .5px);width:1px}.candles b{left:14%;right:14%;border-radius:1px}
+.price svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.last{position:absolute;left:0;right:0;border-top:1px dashed rgba(22,119,255,.7)}
+.vols{height:70px;display:flex;gap:2px;align-items:flex-end}.vols i{flex:1 1 0;min-width:0;border-radius:1px 1px 0 0;opacity:.55}
+.times{display:flex;justify-content:space-between;font:11px var(--mono);color:var(--dim)}
+.axis{width:76px;position:relative;height:340px;font:11px var(--mono);color:var(--dim)}
+.axis span{position:absolute;left:6px}
+.axis .tag{left:0;right:0;padding:2px 6px;border-radius:4px;background:var(--acc);color:#fff;font-weight:600}
+.trades{display:grid;grid-template-columns:70px 1fr 1fr 1fr;gap:6px 10px;font:12px var(--mono)}
+.trades .h{color:var(--dim)}.trades .r{text-align:right}
+.venue{display:grid;gap:6px}.venue div:first-child{display:flex;justify-content:space-between;font-size:13px}
+.track{height:6px;border-radius:3px;background:#142235}.track i{display:block;height:6px;border-radius:3px;background:var(--acc)}
+.note{margin:0;color:var(--dim);font-size:11px}
+.lead{margin:0;color:var(--mut);font-size:12px;line-height:1.6}
+.tablebox{overflow-x:auto;position:relative}
+table{width:100%;border-collapse:collapse;min-width:760px;font-size:13px}
+th{padding:8px 6px;font-weight:500;color:var(--dim);font-size:12px;text-align:left}
+td{padding:10px 6px;border-top:1px solid rgba(123,153,186,.12)}
+.num{text-align:right;font-family:var(--mono)}
+.tok{display:inline-flex;align-items:center;gap:10px}.tok small{display:block;color:var(--dim);font-size:11px}
+.spark{display:flex;align-items:flex-end;gap:2px;height:24px;width:96px}.spark i{flex:1 1 0;border-radius:1px;opacity:.8}
+.trade{height:34px;padding:0 14px;border-radius:8px;border:1px solid rgba(22,119,255,.5);background:rgba(22,119,255,.12);cursor:pointer;font-size:12px;font-weight:600}
+.swap{border-radius:16px;padding:16px;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.modes{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.modes button{height:34px;padding:0 14px;border-radius:8px;border:0;background:transparent;color:var(--mut);cursor:pointer}
+.modes button[aria-pressed=true]{background:rgba(22,119,255,.16);color:var(--ink);font-weight:600}
+.well{background:var(--well);border:1px solid rgba(123,153,186,.14);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr);gap:8px}
+.well .lab{display:flex;justify-content:space-between;color:var(--mut);font-size:12px}
+.well .row{display:flex;align-items:center;gap:10px}
+.amt{flex:1 1 auto;min-width:0;width:100%;background:transparent;border:0;font:600 26px var(--mono)}
+.pick{height:38px;display:flex;align-items:center;gap:8px;padding:0 12px;border-radius:999px;border:1px solid var(--line2);background:var(--panel);font-weight:600;cursor:pointer}
+.pick i{width:18px;height:18px;border-radius:50%}
+.pct{display:flex;gap:6px}.pct button{height:28px;padding:0 10px;border-radius:6px;border:1px solid rgba(123,153,186,.2);background:transparent;color:var(--mut);cursor:pointer;font-size:11px}
+.flip{display:flex;justify-content:center;margin:-4px 0}.flip button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line2);background:var(--panel);cursor:pointer;display:grid;place-items:center}
+.kv{display:grid;gap:6px;font-size:12px;padding:4px 2px}.kv div{display:flex;justify-content:space-between;gap:12px}.kv div span:first-child{color:var(--mut)}
+.fee{border:1px solid rgba(22,119,255,.35);background:rgba(22,119,255,.07);border-radius:12px;padding:12px 14px;display:grid;gap:7px;font-size:12px}
+.fee div{display:flex;justify-content:space-between;gap:12px}.fee div span:first-child{color:var(--mut)}
+.fee .t{font-weight:600;font-size:13px;color:var(--ink)!important}
+.chip{font:11px var(--mono);color:#9cc4ff;border:1px solid rgba(22,119,255,.5);border-radius:999px;padding:2px 8px}
+.fee .tot{border-top:1px solid rgba(123,153,186,.18);padding-top:7px;font-size:13px;font-weight:600}
+.go{height:50px;border-radius:12px;border:0;background:var(--acc);color:#fff;font-size:15px;font-weight:600;cursor:pointer}
+.msg{min-height:18px;margin:0;font-size:12px;color:var(--warn);text-align:center}
+.bar{height:8px;border-radius:4px;background:#142235;position:relative}.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:4px;background:var(--acc)}
+.minis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.mini{background:var(--well);border-radius:10px;padding:10px 12px;display:grid;gap:2px}.mini span{color:var(--dim);font-size:11px}.mini b{font:400 16px var(--mono)}
+.hold{display:flex;align-items:center;gap:10px;font-size:13px}.hold i{width:10px;height:10px;border-radius:50%}
+.alloc{height:8px;border-radius:4px;overflow:hidden;display:flex}
+footer.foot{border-top:1px solid var(--line);padding-top:16px;display:flex;flex-wrap:wrap;gap:8px 24px;color:var(--dim);font-size:12px}
+@media (max-width:640px){.wrap{padding:0 14px}main.wrap{padding-top:14px}.overview{gap:12px 22px}.price,.axis{height:260px}.axis{width:64px}.legend{display:none}.hright .btn:not(.pri){display:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="logo" href="index.html"><i aria-hidden="true"></i>Exeswap <small>on Exe Protocol</small></a>
+<nav class="main" aria-label="Main">
+<a href="exeswap-trade.html" aria-current="page">Trade</a>
+<a href="#markets">Markets</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#xpr">My XPR</a>
+<a href="simulator.html">Simulator</a>
+<a href="ask.html">Exe AI</a>
+</nav>
+<div class="search"><label for="search" class="sr">Search tokens</label><input id="search" placeholder="Search token"></div>
+<div class="hright"><button class="btn" type="button"><span class="dot" aria-hidden="true"></span>Solana</button><button class="btn pri demo" type="button">Connect wallet</button></div>
+</div></header>
+<div class="banner">Prototype · every price, chart and balance on this page is simulated · no real funds move · <a href="important-information.html">Important information</a></div>
+<div class="ticker" aria-label="Simulated prices"><div class="wrap" id="ticker"></div></div>
+
+<main class="wrap">
+<section class="card overview" aria-label="Pair overview" id="overview"></section>
+
+<div class="cols">
+<div class="left">
+<section class="card" aria-label="Price chart">
+<div class="chartbar">
+<div class="seg" role="group" aria-label="Timeframe" id="tfs"></div>
+<div class="legend"><span><i style="background:#f3c86a"></i>MA 20</span><span><i style="background:#b48cff"></i>MA 50</span></div>
+<div style="margin-left:auto;display:flex;gap:6px"><button class="small" type="button">Indicators</button><button class="small" type="button">Line</button><button class="small on" type="button">Candles</button></div>
+</div>
+<div class="chart">
+<div class="plot">
+<div class="price"><div class="candles" id="candles"></div>
+<svg viewBox="0 0 1000 100" preserveAspectRatio="none" aria-hidden="true"><polyline id="ma20" fill="none" stroke="#f3c86a" stroke-width="1.6" vector-effect="non-scaling-stroke"></polyline><polyline id="ma50" fill="none" stroke="#b48cff" stroke-width="1.6" vector-effect="non-scaling-stroke"></polyline></svg>
+<div class="last" id="last"></div></div>
+<div class="vols" id="vols" aria-hidden="true"></div>
+<div class="times" id="times"></div>
+</div>
+<div class="axis" id="axis" aria-hidden="true"></div>
+</div>
+</section>
+
+<div class="cols" style="align-items:stretch">
+<section class="card" style="flex:1 1 320px;min-width:0" aria-label="Recent trades"><h2>Recent trades</h2><div class="trades" id="trades"></div></section>
+<section class="card" style="flex:1 1 320px;min-width:0;display:grid;gap:12px;align-content:start" aria-label="Routing">
+<h2 style="margin:0">Where your trade can route</h2>
+<p class="lead">Exeswap checks liquidity across Solana venues and splits an order where that gets a better price.</p>
+<div id="venues" style="display:grid;gap:12px"></div>
+<p class="note">Venues shown for illustration. No partnership is implied.</p>
+</section>
+</div>
+
+<section class="card" id="markets" aria-label="Markets">
+<div class="chartbar"><h2 style="margin:0 12px 0 0;font-size:16px">Solana markets</h2><div class="seg" role="group" aria-label="Sort markets" id="tabs"></div></div>
+<div class="tablebox"><table><thead><tr><th>Token</th><th class="num">Price</th><th class="num">24h</th><th>7 days</th><th class="num">24h volume</th><th class="num">Liquidity</th><th><span class="sr">Action</span></th></tr></thead><tbody id="markets-body"></tbody></table></div>
+</section>
+</div>
+
+<aside class="right">
+<section class="card swap" aria-label="Swap">
+<div class="modes"><button type="button" aria-pressed="true">Swap</button><button type="button" aria-pressed="false" class="demo">Limit</button><button type="button" aria-pressed="false" class="demo">Recurring</button><button class="small demo" type="button" style="margin-left:auto">Slippage 0.5%</button></div>
+<div class="well"><div class="lab"><span>You pay</span><span>Balance 4,820.00 USDC</span></div>
+<div class="row"><label for="pay" class="sr">Amount to pay in USDC</label><input id="pay" class="amt" inputmode="decimal" value="1,000.00"><button class="pick" type="button"><i style="background:#2775ca" aria-hidden="true"></i>USDC</button></div>
+<div class="pct"><button type="button" data-pct=".25">25%</button><button type="button" data-pct=".5">50%</button><button type="button" data-pct="1">Max</button></div></div>
+<div class="flip"><button type="button" aria-label="Switch tokens" class="demo"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 2v11M5 13l-3-3M5 13l3-3M11 14V3M11 3L8 6M11 3l3 3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></button></div>
+<div class="well"><div class="lab"><span>You receive (estimated)</span><span id="bal-to"></span></div>
+<div class="row"><span class="amt" id="recv" aria-live="polite"></span><button class="pick" type="button" id="to-pick"></button></div></div>
+<div class="kv"><div><span>Rate</span><span class="mono" id="rate"></span></div><div><span>Price impact</span><span class="mono up">&lt; 0.01%</span></div><div><span>Minimum received</span><span class="mono" id="minr"></span></div><div><span>Route</span><span>3 venues · 2 hops</span></div></div>
+<div class="fee" aria-live="polite">
+<div><span class="t">Your fee, by XPR</span><span class="chip">XPR 0.60 · Tier 1</span></div>
+<div><span>Exe fee (0.10%)</span><span class="mono" id="f-exe"></span></div>
+<div><span>Network fee (gas)</span><span class="mono">$0.01</span></div>
+<div><span>Fee redemption at XPR 0.60</span><span class="mono up" id="f-red"></span></div>
+<div class="tot"><span style="color:var(--ink)">You pay in fees</span><span class="mono" id="f-pay"></span></div>
+<span class="note">Locked in when you sign. Fully supported Sponsorship Pool assumed.</span>
+</div>
+<button class="go demo" type="button">Connect wallet to swap</button>
+<p class="msg" id="msg" role="status"></p>
+</section>
+
+<section class="card" id="xpr" aria-label="Your XPR" style="display:grid;gap:12px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><h2 style="margin:0">Your XPR</h2><span class="note">Example rate</span></div>
+<div style="display:flex;align-items:baseline;gap:10px"><span class="mono" style="font-size:34px;font-weight:600">0.60</span><span class="up" style="font-size:12px">▲ 0.04 this month</span></div>
+<div class="bar"><i style="width:60%"></i></div>
+<div style="display:flex;justify-content:space-between" class="note mono"><span>0.00</span><span>Tier 1 range up to 1.00</span></div>
+<div class="minis"><div class="mini"><span>Fees redeemed this month</span><b>$38.20</b></div><div class="mini"><span>Trades this month</span><b>94</b></div></div>
+<p class="lead">Higher XPR means a larger share of eligible fees redeemed. Steady, verified activity builds it. XPR is opt-in.</p>
+<a href="ask.html?q=What%20is%20XPR%3F" style="font-size:12px;font-weight:600">How XPR works →</a>
+</section>
+
+<section class="card" id="portfolio" aria-label="Portfolio" style="display:grid;gap:10px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><h2 style="margin:0">Portfolio</h2><span class="mono" style="font-size:16px;font-weight:600" id="port-total"></span></div>
+<div id="holdings" style="display:grid;gap:10px"></div>
+<div class="alloc" id="alloc" aria-hidden="true"></div>
+</section>
+</aside>
+</div>
+
+<footer class="foot"><span>Exeswap is built on Exe Protocol. Prototype: every figure on this page is simulated.</span><a href="exe-protocol-specs.html">Exe Protocol specs</a><a href="exeswap-specs.html">Exeswap specs</a><a href="important-information.html">Important information</a></footer>
+</main>
+
+<script>
+(() => {
+const UP = '#22c58b', DN = '#f0616d';
+const T = [
+  { sym: 'SOL', name: 'Solana', price: 182.40, chg: 3.42, vol: '$1.84B', liq: '$612M', mcap: '$87.9B', col: '#9b6bff' },
+  { sym: 'JUP', name: 'Jupiter', price: 0.9412, chg: -1.85, vol: '$214M', liq: '$96.4M', mcap: '$1.27B', col: '#3cd3a3' },
+  { sym: 'BONK', name: 'Bonk', price: 0.00002314, chg: 8.71, vol: '$388M', liq: '$41.2M', mcap: '$1.79B', col: '#f2a33a' },
+  { sym: 'WIF', name: 'dogwifhat', price: 1.862, chg: -4.20, vol: '$302M', liq: '$38.9M', mcap: '$1.86B', col: '#c98f6b' },
+  { sym: 'RAY', name: 'Raydium', price: 3.118, chg: 2.05, vol: '$96.1M', liq: '$58.0M', mcap: '$905M', col: '#5a7bff' },
+  { sym: 'JTO', name: 'Jito', price: 2.447, chg: 0.64, vol: '$71.8M', liq: '$29.7M', mcap: '$771M', col: '#7fd0c4' },
+  { sym: 'PYTH', name: 'Pyth Network', price: 0.3104, chg: -0.92, vol: '$58.3M', liq: '$22.1M', mcap: '$1.12B', col: '#c86bff' },
+  { sym: 'ORCA', name: 'Orca', price: 2.016, chg: 5.33, vol: '$24.6M', liq: '$15.8M', mcap: '$121M', col: '#ffd15c' },
+];
+const S = { pair: 'SOL', tf: '1H', tab: 'trending', pay: 1000 };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const fmtP = (p) => p >= 100 ? p.toFixed(2) : p >= 1 ? p.toFixed(3) : p >= 0.01 ? p.toFixed(4) : p.toFixed(8);
+const fmtC = (c) => (c >= 0 ? '+' : '−') + Math.abs(c).toFixed(2) + '%';
+const usd = (n) => '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const qty = (n) => n >= 1000 ? n.toLocaleString('en-US', { maximumFractionDigits: 0 }) : n.toFixed(4);
+const badge = (t, s) => `<span class="badge" aria-hidden="true" style="width:${s}px;height:${s}px;font-size:${Math.round(s / 4)}px;background:${t.col}">${t.sym}</span>`;
+const seedOf = (s) => { let h = 2166136261; for (const ch of s) { h ^= ch.charCodeAt(0); h = Math.imul(h, 16777619); } return h >>> 0; };
+const rng = (seed) => () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+const END = Date.UTC(2026, 10, 16, 9, 0);
+const pair = () => T.find((t) => t.sym === S.pair) || T[0];
+
+function header() {
+  const p = pair();
+  $('ticker').innerHTML = T.map((t) => `<span><span style="color:var(--mut)">${t.sym}</span><span>${fmtP(t.price)}</span><span class="${t.chg >= 0 ? 'up' : 'dn'}">${fmtC(t.chg)}</span></span>`).join('');
+  $('overview').innerHTML = `<div style="display:flex;align-items:center;gap:12px">${badge(p, 40)}<div class="stat"><b style="font:700 18px var(--sans)">${p.sym} / USDC</b><span>${esc(p.name)} · routed across Solana venues</span></div></div>
+  <div class="stat"><b style="font-size:24px;font-weight:600">${fmtP(p.price)}</b><span class="${p.chg >= 0 ? 'up' : 'dn'} mono" style="font-size:13px">${fmtC(p.chg)} (24h)</span></div>
+  <div class="stat"><span>24h high</span><b>${fmtP(p.price * 1.025)}</b></div><div class="stat"><span>24h low</span><b>${fmtP(p.price * 0.954)}</b></div>
+  <div class="stat"><span>24h volume</span><b>${p.vol}</b></div><div class="stat"><span>Liquidity</span><b>${p.liq}</b></div><div class="stat"><span>Market cap</span><b>${p.mcap}</b></div>
+  <button class="btn" type="button" style="margin-left:auto">☆ Watchlist</button>`;
+}
+
+function chart() {
+  const p = pair(), N = 64, r = rng(seedOf(p.sym + S.tf));
+  const vola = { '1m': 0.002, '5m': 0.004, '15m': 0.006, '1H': 0.011, '4H': 0.02, '1D': 0.04 }[S.tf];
+  const raw = []; let x = 1;
+  for (let i = 0; i < N; i++) { const o = x; x = x * (1 + (r() - 0.48) * vola * 2); const hi = Math.max(o, x) * (1 + r() * vola * 0.8); const lo = Math.min(o, x) * (1 - r() * vola * 0.8); raw.push({ o, c: x, hi, lo, v: 0.3 + r() * (0.7 + Math.abs(x - o) / o / vola) }); }
+  const k = p.price / raw[N - 1].c; raw.forEach((d) => { d.o *= k; d.c *= k; d.hi *= k; d.lo *= k; });
+  const max = Math.max(...raw.map((d) => d.hi)) * 1.004, min = Math.min(...raw.map((d) => d.lo)) * 0.996, rg = max - min;
+  const y = (v) => ((max - v) / rg) * 100, vmax = Math.max(...raw.map((d) => d.v));
+  $('candles').innerHTML = raw.map((d) => { const col = d.c >= d.o ? UP : DN, top = y(Math.max(d.o, d.c)), bot = y(Math.min(d.o, d.c));
+    return `<div><i style="background:${col};top:${y(d.hi).toFixed(2)}%;height:${Math.max(0.3, y(d.lo) - y(d.hi)).toFixed(2)}%"></i><b style="background:${col};top:${top.toFixed(2)}%;height:${Math.max(0.35, bot - top).toFixed(2)}%"></b></div>`; }).join('');
+  $('vols').innerHTML = raw.map((d) => `<i style="background:${d.c >= d.o ? UP : DN};height:${((d.v / vmax) * 100).toFixed(1)}%"></i>`).join('');
+  const ma = (n) => raw.map((d, i) => { const s = raw.slice(Math.max(0, i - n + 1), i + 1); const m = s.reduce((a, b) => a + b.c, 0) / s.length; return ((i + 0.5) / N * 1000).toFixed(1) + ',' + y(m).toFixed(2); }).join(' ');
+  $('ma20').setAttribute('points', ma(20)); $('ma50').setAttribute('points', ma(50));
+  const ly = y(p.price); $('last').style.top = ly.toFixed(2) + '%';
+  $('axis').innerHTML = [0, 1, 2, 3, 4].map((i) => `<span style="top:calc(${i * 25}% - 7px)">${fmtP(max - (rg * i) / 4)}</span>`).join('') + `<span class="tag" style="top:calc(${ly.toFixed(2)}% - 9px)">${fmtP(p.price)}</span>`;
+  const step = { '1m': 1, '5m': 5, '15m': 15, '1H': 60, '4H': 240, '1D': 1440 }[S.tf];
+  $('times').innerHTML = [0, 1, 2, 3, 4, 5].map((i) => { const t = new Date(END - (N - 1 - i * 12.6) * step * 60000); return `<span>${step >= 1440 ? t.toUTCString().slice(5, 11) : t.toISOString().slice(11, 16)}</span>`; }).join('');
+  $('tfs').innerHTML = ['1m', '5m', '15m', '1H', '4H', '1D'].map((f) => `<button type="button" data-tf="${f}" aria-pressed="${f === S.tf}">${f}</button>`).join('');
+}
+
+function side() {
+  const p = pair(), tr = rng(seedOf(p.sym + 'trades'));
+  $('trades').innerHTML = '<span class="h">Time</span><span class="h">Side</span><span class="h r">Price</span><span class="h r">Value</span>' + Array.from({ length: 9 }, (_, i) => {
+    const buy = tr() > 0.45, px = p.price * (1 + (tr() - 0.5) * 0.002), val = 50 + tr() * 4800, t = new Date(END - (i * 17 + tr() * 15) * 1000);
+    return `<span style="color:var(--mut)">${t.toISOString().slice(11, 19)}</span><span class="${buy ? 'up' : 'dn'}">${buy ? 'Buy' : 'Sell'}</span><span class="r">${fmtP(px)}</span><span class="r">$${Math.round(val).toLocaleString('en-US')}</span>`; }).join('');
+  $('venues').innerHTML = [['Orca', 46], ['Raydium', 31], ['Meteora', 15], ['Phoenix', 8]].map(([n, s]) => `<div class="venue"><div><span>${n}</span><span class="mono" style="color:var(--mut)">${s}%</span></div><div class="track"><i style="width:${s}%"></i></div></div>`).join('');
+}
+
+function markets() {
+  const volN = (s) => parseFloat(s.replace(/[$,]/g, '')) * (s.endsWith('B') ? 1000 : 1);
+  const order = T.slice(); if (S.tab === 'gainers') order.sort((a, b) => b.chg - a.chg); if (S.tab === 'volume') order.sort((a, b) => volN(b.vol) - volN(a.vol));
+  $('tabs').innerHTML = [['trending', 'Trending'], ['gainers', 'Top gainers'], ['volume', 'Volume']].map(([id, l]) => `<button type="button" data-tab="${id}" aria-pressed="${id === S.tab}">${l}</button>`).join('');
+  $('markets-body').innerHTML = order.map((t) => { const rr = rng(seedOf(t.sym + 'spark')); let v = 1; const pts = []; for (let i = 0; i < 14; i++) { v *= 1 + (rr() - 0.5 + t.chg / 400) * 0.08; pts.push(v); }
+    const lo = Math.min(...pts), hi = Math.max(...pts), col = pts[13] >= pts[0] ? UP : DN;
+    return `<tr><td><span class="tok">${badge(t, 30)}<span><b>${t.sym}</b><small>${esc(t.name)}</small></span></span></td><td class="num">$${fmtP(t.price)}</td><td class="num ${t.chg >= 0 ? 'up' : 'dn'}">${fmtC(t.chg)}</td>
+    <td><span class="spark" aria-hidden="true">${pts.map((q) => `<i style="background:${col};height:${(20 + ((q - lo) / (hi - lo || 1)) * 80).toFixed(0)}%"></i>`).join('')}</span></td>
+    <td class="num">${t.vol}</td><td class="num">${t.liq}</td><td style="text-align:right"><button type="button" class="trade" data-pair="${t.sym}">Trade<span class="sr"> ${t.sym}</span></button></td></tr>`; }).join('');
+}
+
+function swap() {
+  const p = pair(), amt = S.pay, recv = amt / p.price;
+  $('recv').textContent = qty(recv); $('minr').textContent = qty(recv * 0.995) + ' ' + p.sym; $('rate').textContent = `1 ${p.sym} = ${fmtP(p.price)} USDC`;
+  $('to-pick').innerHTML = `<i style="background:${p.col}" aria-hidden="true"></i>${p.sym}`; $('bal-to').textContent = 'Balance ' + ({ SOL: '12.40', JUP: '1,850', BONK: '21,000,000' }[p.sym] || '0.00') + ' ' + p.sym;
+  // Same rule as the site's worked example: Exe fee 0.10% plus gas, XPR 0.60 at Tier 1 with a fully supported pool.
+  const exe = amt * 0.001, gas = 0.01, red = (exe + gas) * 0.6;
+  $('f-exe').textContent = usd(exe); $('f-red').textContent = '−' + usd(red); $('f-pay').textContent = usd(exe + gas - red);
+}
+
+function portfolio() {
+  const hold = [['USDC', 4820, 1, '#2775ca'], ['SOL', 12.4, 182.4, '#9b6bff'], ['JUP', 1850, 0.9412, '#3cd3a3'], ['BONK', 21000000, 0.00002314, '#f2a33a']];
+  const tot = hold.reduce((a, h) => a + h[1] * h[2], 0); $('port-total').textContent = usd(tot);
+  $('holdings').innerHTML = hold.map(([s, q, px, c]) => `<div class="hold"><i style="background:${c}" aria-hidden="true"></i><b style="width:50px">${s}</b><span class="mono" style="color:var(--mut);flex:1 1 auto">${q.toLocaleString('en-US', { maximumFractionDigits: 2 })}</span><span class="mono">${usd(q * px)}</span></div>`).join('');
+  $('alloc').innerHTML = hold.map(([, q, px, c]) => `<span style="background:${c};width:${((q * px) / tot * 100).toFixed(1)}%"></span>`).join('');
+}
+
+function all() { header(); chart(); side(); markets(); swap(); }
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('button'); if (!b) return;
+  if (b.dataset.tf) { S.tf = b.dataset.tf; chart(); }
+  else if (b.dataset.tab) { S.tab = b.dataset.tab; markets(); }
+  else if (b.dataset.pair) { S.pair = b.dataset.pair; all(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  else if (b.dataset.pct) { S.pay = Math.round(4820 * Number(b.dataset.pct) * 100) / 100; $('pay').value = S.pay.toLocaleString('en-US', { minimumFractionDigits: 2 }); swap(); }
+  else if (b.classList.contains('demo')) { $('msg').textContent = 'Prototype: wallets, orders and swaps are not connected yet.'; }
+});
+$('pay').addEventListener('input', (e) => { const v = parseFloat(e.target.value.replace(/[^0-9.]/g, '')); S.pay = isFinite(v) ? Math.min(v, 10000000) : 0; swap(); });
+$('search').addEventListener('keydown', (e) => { if (e.key !== 'Enter') return; const q = e.target.value.trim().toUpperCase(); const t = T.find((x) => x.sym === q || x.name.toUpperCase() === q); if (t) { S.pair = t.sym; all(); } });
+all(); portfolio();
+})();
+</script>
+<script src="assets/exe-ai.js" defer></script>
+</body>
+</html>
