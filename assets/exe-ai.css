@@ -73,3 +73,6 @@ body.xai-lock{overflow:hidden}
 .xai-cardbtn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;background:#1677ff;color:#fff;font-family:inherit;font-weight:500;font-size:15px;line-height:1;border-radius:999px;padding:14px 22px;transition:background .2s}
 .xai-cardbtn:hover{background:#2b85ff}
 .xai-cardbtn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* "Clear history" stays visible while the answers scroll (16 Nov) */
+.xai .ax-histbar{--ax-histbar-bg:#0b1427;top:-22px}
+@media (max-width:820px){.xai .ax-histbar{top:-18px}}

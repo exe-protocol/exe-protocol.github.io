@@ -595,7 +595,7 @@ approved: David, 11 Nov 2026
 
 x402 moves the money; Exe Protocol determines what it costs, by signal.
 
-x402 is the pipe, not the rival. Exe Protocol adds what x402 does not have: fees priced by the payer’s signal, budgets and policy set before each payment, a shared pool that funds fee redemption, and settlement netted across all agents. (Working with any rail is a statement of intent until built.)
+x402 is the pipe, not the rival. Exe Protocol adds what x402 does not have: fees priced by the payer’s signal, budgets and policy set before each payment, Exe’s Sponsorship Pool, which funds fee redemption, and settlement netted across all agents. (Working with any rail is a statement of intent until built.)
 
 ---
 id: net-settlement
@@ -707,7 +707,7 @@ approved: David, 11 Nov 2026
 
 Not yet. The economic model has been independently reviewed by two AI reviewers. It has not been audited.
 
-A developer review and security audit come before any real funds, after fundraising.
+After fundraising, a developer review and security audit will be undertaken before any real funds are used.
 
 ---
 id: prototype-speed

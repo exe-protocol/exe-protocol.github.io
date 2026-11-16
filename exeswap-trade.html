@@ -780,6 +780,13 @@ tr.b td:first-child { color: var(--r3) }
 .shell.mini { grid-template-columns: 68px minmax(0, 1fr) }
 .shell.mini .side-brand .bt, .shell.mini .side-nav button span, .shell.mini .slab span, .shell.mini .side-foot { display: none }
 .shell.mini .side-brand { flex-direction: column; gap: 12px }
+.xback { font-size: 14px; font-weight: 500; color: #e6eaf3; text-decoration: none; border: 1px solid rgba(160,190,245,.22); border-radius: 999px; padding: 9px 16px; white-space: nowrap; display: inline-flex; align-items: center }
+.xback:hover { border-color: #4d8dff; color: #fff }
+.side-brand .hright .xback { display: none }
+.side-more a.to-exe { display: none }
+@media (max-width: 900px) { .side.open .side-more a.to-exe { display: flex } }
+.side-brand .brand-home { display: flex; align-items: center; gap: inherit; color: inherit; text-decoration: none; min-width: 0; border-radius: 8px }
+.shell.mini .side-brand .brand-home { flex-direction: column }
 .shell.mini .fold { margin-left: 0 }
 .shell.mini .fold .ic { transform: rotate(180deg) }
 .shell.mini .slab { justify-content: center; padding-inline: 0 }
@@ -1174,7 +1181,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
 </style>
 <div class="shell" id="shell">
 <aside class="side" aria-label="Navigation">
-  <div class="side-brand"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div>
+  <div class="side-brand"><a class="brand-home" href="simulator.html#swap" aria-label="Exeswap home" title="Exeswap home"><span class="mark" aria-hidden="true"></span><div class="bt"><b>Exeswap</b><span>Simulator</span></div></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="sideNav" aria-label="Menu"><span id="burgerLab">Markets &amp; charts</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
     <button class="fold" id="fold" aria-label="Collapse navigation" title="Collapse"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 6l-6 6 6 6"/><path d="M19 6l-6 6 6 6" opacity=".5"/></svg></button></div>
   <nav class="side-nav" id="sideNav"><div class="mobile-xpr-row" id="mobileXprSlot"></div>
@@ -1188,7 +1195,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
       <button type="button" data-go="simulator.html#stress" title="Stress test"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2.5-6 4 12 2.5-6H21"/></svg><span>Stress test</span></button>
       <button type="button" data-go="simulator.html#calc" title="App funding"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.6"/></svg><span>App funding</span></button>
       <button type="button" data-go="simulator.html#speed" title="Agent payments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3M20 16H7l3 3"/></svg><span>Agent payments</span></button></div>
-    <div class="side-more"><a href="exeswap-trade.html" title="Markets &amp; charts" aria-current="page"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"/><path d="M7 15V9M7 9V6M12 16v-8M17 13V5"/><rect x="5.5" y="9" width="3" height="5" rx=".6"/><rect x="10.5" y="8" width="3" height="6" rx=".6"/><rect x="15.5" y="6" width="3" height="5" rx=".6"/></svg><span>Markets &amp; charts</span></a><a href="exeswap-specs.html" title="Exeswap specs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/></svg><span>Exeswap specs</span></a></div>
+    <div class="side-more"><a class="to-exe" href="index.html" title="Back to Exe Protocol"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg><span>Back to Exe Protocol</span></a><a href="exeswap-trade.html" title="Markets &amp; charts" aria-current="page"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16"/><path d="M7 15V9M7 9V6M12 16v-8M17 13V5"/><rect x="5.5" y="9" width="3" height="5" rx=".6"/><rect x="10.5" y="8" width="3" height="6" rx=".6"/><rect x="15.5" y="6" width="3" height="5" rx=".6"/></svg><span>Markets &amp; charts</span></a><a href="exeswap-specs.html" title="Exeswap specs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l3 3v15H6z"/><path d="M9 10h6M9 14h6M9 18h4"/></svg><span>Exeswap specs</span></a></div>
   </nav>
   <div class="side-foot"><span class="chip-meta">Master Doc Revision 010.8</span></div>
 </aside>
@@ -1197,6 +1204,7 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
   <header class="topbar">
     <div class="crumb"><span id="crumbG">Exeswap</span><span class="sep">/</span><b id="crumbT">Markets &amp; charts</b></div>
     <div class="hright">
+      <a class="xback" href="index.html">← Back to Exe Protocol</a>
       <span class="myxpr" title="Your XPR: earned through verified on-chain activity. Higher XPR, lower fees.">
         <span class="ring"><svg viewBox="0 0 60 60" aria-hidden="true"><defs><linearGradient id="mxg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f63e0"/><stop offset="1" stop-color="#25c4d3"/></linearGradient></defs>
           <circle cx="30" cy="30" r="25" class="trk"/><circle cx="30" cy="30" r="25" class="val" id="myXprRing" stroke-dasharray="157.1" stroke-dashoffset="62.8"/></svg></span>
@@ -1242,10 +1250,10 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
         <ol class="swsteps" aria-label="Before you sign"><li>Route selected</li><li>Costs calculated</li><li>Fee redemption checked</li><li>Ready for review</li></ol>
         <div class="two">
           <div class="p off"><span>Swap cost without XPR</span><b class="num" id="costNo"></b></div>
-          <div class="p on"><span>Swap cost with your XPR <em class="num">0.60</em> <i class="swtier">Tier 1</i></span><b class="num" id="costYes"></b></div>
+          <div class="p on"><span>Swap cost with your XPR <em class="num" id="feeX">0.60</em> <i class="swtier" id="feeT">Tier 1</i></span><b class="num" id="costYes"></b></div>
         </div>
         <a class="btn swcta" href="simulator.html#trade">Review this swap</a>
-        <p class="swnote"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>Prototype: simulated prices. Costs use Exe's fee of 0.10% on Solana and an example XPR.</p>
+        <p class="swnote"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg>Prototype: simulated prices. Costs use Exe's fee of 0.10% on Solana and the XPR set with the slider on the Exeswap home.</p>
       </div>
     </div>
 
@@ -1263,9 +1271,9 @@ input[type=range]::-moz-range-thumb{box-shadow:0 0 0 4px rgba(22,119,255,.2),0 0
     </div>
 
     <div class="mk-row">
-      <div class="panel xprp" aria-label="Your XPR"><div class="tierc-head"><p class="sp-eyebrow" style="margin:0">Your XPR</p><div class="tc-status"><span class="pill neutral">Tier 1</span><span class="tc-sim">Example</span></div></div>
-        <div style="display:flex;align-items:baseline;gap:12px"><span class="big num">0.60</span><span class="up" style="font-size:13px">▲ 0.04 this month</span></div>
-        <div class="bar"><i style="width:60%"></i></div>
+      <div class="panel xprp" aria-label="Your XPR"><div class="tierc-head"><p class="sp-eyebrow" style="margin:0">Your XPR</p><div class="tc-status"><span class="pill neutral" id="cardT">Tier 1</span><span class="tc-sim">Simulated</span></div></div>
+        <div style="display:flex;align-items:baseline;gap:12px"><span class="big num" id="cardX">0.60</span><a href="simulator.html#swap" style="font-size:13px">Change it on the Exeswap home</a></div>
+        <div class="bar"><i id="cardBar" style="width:60%"></i></div>
         <div class="minis"><div class="mini"><span class="sp-eyebrow" style="margin:0">Fees redeemed this month</span><b class="num">$38.20</b></div><div class="mini"><span class="sp-eyebrow" style="margin:0">Trades this month</span><b class="num">94</b></div></div>
         <p class="muted">Higher XPR means a larger share of eligible fees redeemed. Steady, verified activity builds it. XPR is opt-in. <a href="simulator.html#rate">See your rate</a></p></div>
       <div class="panel" aria-label="Example wallet"><div class="tierc-head"><p class="sp-eyebrow" style="margin:0">Example wallet</p><div class="tc-status"><span class="tc-sim">Simulated</span></div></div>
@@ -1296,6 +1304,9 @@ const T = [
   { sym: 'USDT', name: 'Tether', price: 1.0, chg: 0.01, vol: '$1.12B', liq: '$402M', mcap: '$142B' },
 ];
 const S = { pair: 'SOL', tf: '1H', tab: 'trending', pay: 1000 };
+const RT = {"gas":0.01,"rate":0.001,"t1":[[0,1,1,1,0],[0.010000000000000009,1,1,1,0.009999999999999998],[0.020000000000000018,1,1,1,0.019999999999999997],[0.030000000000000027,1,1,1,0.03],[0.040000000000000036,1,1,1,0.039999999999999994],[0.050000000000000044,1,1,1,0.049999999999999996],[0.06000000000000005,1,1,1,0.06],[0.07000000000000006,1,1,1,0.07],[0.07999999999999996,1,1,1,0.07999999999999999],[0.08999999999999997,1,1,1,0.09],[0.09999999999999998,1,1,1,0.09999999999999999],[0.10999999999999999,1,1,1,0.11],[0.12,1,1,1,0.12],[0.13,1,1,1,0.13],[0.14,1,1,1,0.14],[0.15000000000000002,1,1,1,0.15],[0.15999999999999992,1,1,1,0.15999999999999998],[0.16999999999999993,1,1,1,0.16999999999999998],[0.17999999999999994,1,1,1,0.18],[0.18999999999999995,1,1,1,0.18999999999999997],[0.19999999999999996,1,1,1,0.19999999999999998],[0.20999999999999996,1,1,1,0.21],[0.21999999999999997,1,1,1,0.22],[0.22999999999999998,1,1,1,0.23],[0.24,1,1,1,0.24],[0.25,1,1,1,0.25],[0.26,1,1,1,0.26],[0.27,1,1,1,0.27],[0.28,1,1,1,0.28],[0.29000000000000004,1,1,1,0.29],[0.30000000000000004,1,1,1,0.3],[0.31000000000000005,1,1,1,0.31],[0.31999999999999995,1,1,1,0.31999999999999995],[0.32999999999999996,1,1,1,0.32999999999999996],[0.33999999999999997,1,1,1,0.33999999999999997],[0.35,1,1,1,0.35],[0.36,1,1,1,0.36],[0.37,1,1,1,0.37],[0.3799999999999999,1,1,1,0.37999999999999995],[0.3899999999999999,1,1,1,0.38999999999999996],[0.3999999999999999,1,1,1,0.39999999999999997],[0.4099999999999999,1,1,1,0.41],[0.41999999999999993,1,1,1,0.42],[0.42999999999999994,1,1,1,0.43],[0.43999999999999995,1,1,1,0.44],[0.44999999999999996,1,1,1,0.45],[0.45999999999999996,1,1,1,0.46],[0.47,1,1,1,0.47],[0.48,1,1,1,0.48],[0.49,1,1,1,0.49],[0.5,1,1,1,0.5],[0.51,1,1,1,0.51],[0.52,1,1,1,0.52],[0.53,1,1,1,0.53],[0.54,1,1,1,0.54],[0.55,1,1,1,0.55],[0.56,1,1,1,0.56],[0.57,1,1,1,0.57],[0.58,1,1,1,0.58],[0.59,1,1,1,0.59],[0.6,1,1,1,0.6],[0.61,1,1,1,0.61],[0.62,1,1,1,0.62],[0.6299999999999999,1,1,1,0.6299999999999999],[0.6399999999999999,1,1,1,0.6399999999999999],[0.6499999999999999,1,1,1,0.6499999999999999],[0.6599999999999999,1,1,1,0.6599999999999999],[0.6699999999999999,1,1,1,0.6699999999999999],[0.6799999999999999,1,1,1,0.6799999999999999],[0.69,1,1,1,0.69],[0.7,1,1,1,0.7],[0.71,1,0.9999999999999961,1,0.71],[0.72,1,0.9999999999999987,1,0.72],[0.73,1,0.9999999999999998,1,0.73],[0.74,1,1,1,0.74],[0.7499999999999999,1,1,1,0.7499999999999999],[0.7599999999999999,1,0.9999999999999996,1,0.7599999999999999],[0.7699999999999999,1,0.9999999999999984,1,0.7699999999999999],[0.7799999999999999,1,0.999999999999999,1,0.7799999999999999],[0.7899999999999999,1,0.9999999999999994,1,0.7899999999999999],[0.7999999999999999,1,0.9999999999999998,1,0.7999999999999999],[0.8099999999999999,1,1,1,0.8099999999999999],[0.82,1,1,1,0.82],[0.83,1,1,1,0.83],[0.84,1,0.9999999999999998,1,0.84],[0.85,1,1,1,0.85],[0.86,1,0.9999999999999994,1,0.86],[0.87,1,0.9999999999999997,1,0.87],[0.88,1,0.9999999999999999,1,0.88],[0.89,1,1,1,0.89],[0.9,1,0.9999999999999996,1,0.9],[0.91,1,0.9999999999999998,1,0.91],[0.92,1,0.9999999999999999,1,0.92],[0.93,1,1,1,0.93],[0.94,1,1,1,0.94],[0.95,1,1,1,0.95],[0.96,1,1,1,0.96],[0.97,1,0.9999999999999996,1,0.97],[0.98,1,0.9999999999999996,1,0.98],[0.99,1,0.9999999999999998,1,0.99],[1,1,1,1,1]],"t2":[[0,1,1,1,0],[0.039403990000000055,1,0.9999999999999998,1,0.009999999999999998],[0.07763184000000012,1,1,1,0.019999999999999997],[0.11470719000000007,1,1,1,0.03],[0.15065344000000014,1,0.9999999999999999,1,0.039999999999999994],[0.18549375000000012,1,1,1,0.049999999999999996],[0.21925104000000017,1,1,1,0.06],[0.25194799000000023,1,1,1,0.07],[0.2836070399999999,1,1,1,0.07999999999999999],[0.3142503899999999,1,1,1,0.09],[0.3439,1,1,1,0.09999999999999999],[0.37257759,1,0.9999999999999999,1,0.11],[0.40030464,1,1,1,0.12],[0.42710239000000005,1,0.9999999999999998,1,0.13],[0.45299184000000003,1,1,1,0.14],[0.4779937500000001,1,1,1,0.15],[0.5021286399999998,1,1,1,0.15999999999999998],[0.5254167899999999,1,0.9999999999999999,1,0.16999999999999998],[0.5478782399999998,1,0.9999999999999999,1,0.18],[0.5695327899999999,1,0.9999999999999999,1,0.18999999999999997],[0.5903999999999999,1,1,1,0.19999999999999998],[0.6104991899999999,1,1,1,0.21],[0.6298494399999999,1,1,1,0.22],[0.6484695899999999,1,0.9999999999999999,1,0.23],[0.66637824,1,1,1,0.24],[0.68359375,1,1,1,0.25],[0.70013424,1,0.9999999999999999,1,0.26],[0.7160175900000001,1,1,1,0.27],[0.73126144,1,1,1,0.28],[0.74588319,1,1,1,0.29],[0.7599,1,0.9999999999999999,1,0.3],[0.7733287900000001,1,0.9999999999999998,1,0.31],[0.7861862399999999,1,1,1,0.31999999999999995],[0.79848879,1,1,1,0.32999999999999996],[0.81025264,1,1,1,0.33999999999999997],[0.8214937499999999,1,0.9999999999999999,1,0.35],[0.83222784,1,1,1,0.36],[0.84247039,1,0.9999999999999999,1,0.37],[0.8522366399999999,1,0.9999999999999999,1,0.37999999999999995],[0.8615415899999999,1,1,1,0.38999999999999996],[0.8704,1,1,1,0.39999999999999997],[0.87882639,1,0.9999999999999999,1,0.41],[0.8868350399999999,1,1,1,0.42],[0.89443999,1,1,1,0.43],[0.90165504,1,1,1,0.44],[0.90849375,1,1,1,0.45],[0.91496944,1,1,1,0.46],[0.92109519,1,1,1,0.47],[0.92688384,1,0.9999999999999999,1,0.48],[0.93234799,1,0.9999999999999999,1,0.49],[0.9375,1,0.9999999999999999,1,0.5],[0.94235199,1,1,1,0.51],[0.94691584,1,1,1,0.52],[0.95120319,1,0.9999999999999997,1,0.53],[0.95522544,1,1,1,0.54],[0.95899375,1,1,1,0.55],[0.96251904,1,1,1,0.56],[0.96581199,1,1,1,0.57],[0.96888304,1,1,1,0.58],[0.97174239,1,1,1,0.59],[0.9744,1,1,1,0.6],[0.97686559,1,1,1,0.61],[0.97914864,1,0.9999999999999997,1,0.62],[0.9812583899999999,1,0.9999999999999994,1,0.6299999999999999],[0.9832038399999999,1,0.9999999999999998,1,0.6399999999999999],[0.98499375,1,1,1,0.6499999999999999],[0.98663664,1,1,1,0.6599999999999999],[0.98814079,1,1,1,0.6699999999999999],[0.98951424,1,1,1,0.6799999999999999],[0.99076479,1,0.9999999999999998,1,0.69],[0.9919,1,1,1,0.7],[0.99292719,1,0.9999999999999998,1,0.71],[0.99385344,1,1,1,0.72],[0.99468559,1,0.9999999999999998,1,0.73],[0.99543024,1,1,1,0.74],[0.99609375,1,0.9999999999999997,1,0.7499999999999999],[0.9966822399999999,1,1,1,0.7599999999999999],[0.99720159,1,0.9999999999999998,1,0.7699999999999999],[0.99765744,1,1,1,0.7799999999999999],[0.99805519,1,1,1,0.7899999999999999],[0.9984,1,1,1,0.7999999999999999],[0.99869679,1,0.9999999999999994,1,0.8099999999999999],[0.99895024,1,1,1,0.82],[0.99916479,1,1,1,0.83],[0.99934464,1,0.9999999999999997,1,0.84],[0.99949375,1,1,1,0.85],[0.99961584,1,0.9999999999999998,1,0.86],[0.99971439,1,0.9999999999999997,1,0.87],[0.99979264,1,1,1,0.88],[0.99985359,1,0.9999999999999998,1,0.89],[0.9999,1,0.9999999999999997,1,0.9],[0.99993439,1,1,1,0.91],[0.99995904,1,0.9999999999999997,1,0.92],[0.99997599,1,1,1,0.93],[0.99998704,1,0.9999999999999998,1,0.94],[0.99999375,1,1,1,0.95],[0.99999744,1,0.9999999999999997,1,0.96],[0.99999919,1,1,1,0.97],[0.99999984,1,1,1,0.98],[0.99999999,1,0.9999999999999997,1,0.99],[1,1,1,1,1]]};
+function swSplit(trade, gas, r, rate) { const exe = rate * trade, fee = gas + exe, own = Math.min(r[3] * fee * r[4], fee, 0.7 * exe);
+  const ideal = Math.min(r[1] * fee * r[0], fee * Math.min(1, r[0])); return { fee, own, red: own + r[2] * Math.max(0, ideal - own) } }
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmtP = (p) => p >= 100 ? p.toFixed(2) : p >= 1 ? p.toFixed(3) : p >= 0.01 ? p.toFixed(4) : p.toFixed(7);
 const fmtC = (c) => (c >= 0 ? '+' : '−') + Math.abs(c).toFixed(2) + '%';
@@ -1362,12 +1373,25 @@ function swap() {
   $('inUsd').textContent = '≈ ' + usd(amt);
   $('recv').value = recv.toLocaleString('en-US', { maximumFractionDigits: p.price >= 10 ? 4 : p.price >= 0.01 ? 2 : 0 });
   $('outTok').innerHTML = icon(p.sym) + p.sym;
-  // The simulator's worked example: Exe's fee 0.10% on Solana plus about $0.01 gas; XPR 0.60 at Tier 1 with a fully supported pool redeems 60%.
-  const fee = amt * 0.001 + 0.01, paid = fee * 0.4;
+  // Same tables and rule as the simulator's swap card, at the XPR set on the Exeswap home (shared through localStorage).
+  const X = readXpr(), row = (X.tier === 1 ? RT.t1 : RT.t2)[Math.min(100, X.sig)], q = swSplit(amt, RT.gas, row, RT.rate), fee = q.fee, paid = q.fee - q.red;
   $('outUsd').textContent = '≈ ' + usd(amt - paid) + ' after fees';
   $('costNo').textContent = usd(fee); $('costYes').textContent = usd(paid);
 }
 
+function readXpr() {
+  let sig = 60, tier = 1, my = null;
+  try { const g = localStorage.getItem('exe.sig'), t = localStorage.getItem('exe.tier'), m = localStorage.getItem('exe.myxpr');
+    if (g !== null && +g >= 0 && +g <= 110) sig = Math.round(+g); if (t !== null && +t >= 1 && +t <= 3) tier = Math.round(+t); if (m !== null && isFinite(+m)) my = +m; } catch (e) {}
+  if (tier === 3 && sig < 75) tier = 2;
+  return { sig, tier, my: my ?? Math.min(1, sig / 100) };
+}
+function showXpr() {
+  const X = readXpr(), x = (Math.min(100, X.sig) / 100).toFixed(2);
+  $('feeX').textContent = x; $('feeT').textContent = 'Tier ' + X.tier; $('cardT').textContent = 'Tier ' + X.tier;
+  $('cardX').textContent = x; $('cardBar').style.width = Math.min(100, X.sig) + '%';
+  $('myXpr').textContent = X.my.toFixed(4); $('myXprRing').setAttribute('stroke-dashoffset', (157.1 * (1 - Math.min(1, X.my))).toFixed(1));
+}
 function wallet() {
   const hold = [['USDC', 4820, 1, '#2775ca'], ['SOL', 12.4, 212.6, '#3fd8cf'], ['JUP', 1850, 0.92, '#4d8dff'], ['BONK', 21000000, 0.000024, '#ffc56b']];
   const tot = hold.reduce((a, h) => a + h[1] * h[2], 0); $('portTotal').textContent = usd(tot);
@@ -1389,7 +1413,9 @@ document.addEventListener('click', (e) => {
   else if (b.dataset.pair) { S.pair = b.dataset.pair; all(); $('pairbar').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
 });
 $('pay').addEventListener('input', (e) => { const v = parseFloat(e.target.value.replace(/[^0-9.]/g, '')); S.pay = isFinite(v) ? Math.min(v, 1e7) : 0; swap(); });
-all(); wallet(); ticker();
+all(); wallet(); ticker(); showXpr();
+addEventListener('pageshow', () => { swap(); showXpr(); });
+addEventListener('storage', (e) => { if (/^exe\.(sig|tier|myxpr)$/.test(e.key || '')) { swap(); showXpr(); } });
 
 // Shell behaviour copied from the simulator: wallet note, collapsible sidebar, and the phone menu.
 const store = { get(k, d) { try { return localStorage.getItem(k) ?? d } catch { return d } }, set(k, v) { try { localStorage.setItem(k, v) } catch {} } };

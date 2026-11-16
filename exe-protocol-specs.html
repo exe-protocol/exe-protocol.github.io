@@ -94,8 +94,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--line);padding:24px
 <td><strong>Exe Protocol</strong></td>
 <td><strong>Prices each payment by verified signal, within budgets set
 in advance, and settles net</strong></td>
-<td><strong>Fee redemption, budgets and policy, shared pool,
-netting</strong></td>
+<td><strong>Fee redemption, budgets and policy, Exe’s Sponsorship Pool, netting</strong></td>
 </tr>
 <tr class="odd">
 <td>Rails</td>
@@ -110,13 +109,13 @@ netting</strong></td>
 </tbody>
 </table></div>
 <p>x402 is the pipe, not the rival: it moves money between agents. Exe Protocol adds what x402 does not have: fees
-priced by the payer’s signal, budgets and policy set before each payment, a shared pool that funds redemption, and settlement netted
+priced by the payer’s signal, budgets and policy set before each payment, Exe’s Sponsorship Pool, which funds redemption, and settlement netted
 across all agents. (Working with any rail is a statement of intent until built.)</p>
 </section><section class="sec"><h2 id="mechanism">Mechanism</h2>
 <p>Exe Protocol makes every payment smarter: faster and cheaper follow from that.</p>
 <ul>
 <li><strong>Priced by signal.</strong> A wallet’s XPR (Exe Protocol Rate), earned through verified on-chain signal, determines how much of each fee is redeemed: the stronger the signal, the higher the XPR, and the more of each fee is redeemed.</li>
-<li><strong>Funded by a shared pool.</strong> Redemption comes first
+<li><strong>Funded by Exe’s Sponsorship Pool.</strong> Redemption comes first
 from the payer’s own fees (up to 70% of Exe Protocol’s fee they paid),
 then from the Sponsorship Pool. In all nine stress tests (simulated, 24 months each), the pool never ran dry.</li>
 <li><strong>Determined before it happens.</strong> Pre-funded budgets,
@@ -128,8 +127,7 @@ goes on-chain. One fingerprint per batch (a Merkle root) lets any agent check it
 <p>The loop, and how far each step is proven:</p>
 <ol type="1">
 <li>Strong verified signal gives a higher XPR. <em>Design.</em></li>
-<li>A higher XPR redeems more of each fee, from the payer’s own fees and
-the shared pool. <em>Tested in simulation.</em></li>
+<li>A higher XPR redeems more of each fee, from the payer’s own fees and Exe’s Sponsorship Pool. <em>Tested in simulation.</em></li>
 <li>Rewarding the most valuable activity is designed to attract more of that activity. <em>Hypothesis, for a pilot.</em></li>
 <li>More activity means more fees funding redemption, and netting saves
 more as payments per agent rise. <em>Simulated.</em></li>
@@ -239,7 +237,7 @@ a day mostly to popular services, settled hourly.</p>
 <tr class="even">
 <td>Fee priced by the payer’s signal</td>
 <td>No</td>
-<td>Yes: XPR redeems the fee, to zero at XPR 1.00 (Tier 1, Exe’s pool at full strength)</td>
+<td>Yes: XPR redeems the fee, to zero at XPR 1.00 (Tier 1, Sponsorship Pool at full strength)</td>
 </tr>
 <tr class="odd">
 <td>Protocol fee</td>
@@ -323,8 +321,8 @@ bots, whales and wallet farms (simulated)</td>
 </tr>
 <tr class="even">
 <td>Audit</td>
-<td>Not audited. A developer review and security audit come before any
-real funds, after fundraising</td>
+<td>Not audited. After fundraising, a developer review and security audit
+will be undertaken before any real funds are used</td>
 </tr>
 </tbody>
 </table></div>

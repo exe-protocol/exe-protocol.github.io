@@ -19,7 +19,7 @@
 .ax-chip:hover{background:rgba(22,119,255,.18);border-color:rgba(22,119,255,.55)}
 .ax-log{display:flex;flex-direction:column;gap:18px;margin:0 0 20px}
 .ax-log[hidden]{display:none}
-.ax-histbar{display:flex;justify-content:flex-end;margin:0 0 8px}
+.ax-histbar{display:flex;justify-content:flex-end;margin:0 0 8px;position:sticky;top:0;z-index:3;background:var(--ax-histbar-bg,#040815);box-shadow:0 8px 10px -8px rgba(0,0,0,.6)}
 .ax-histbar[hidden]{display:none}
 .ax-clear{font:inherit;font-size:12.5px;line-height:1.2;color:#7f93ad;background:none;border:0;padding:6px 2px;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
 .ax-clear:hover{color:#a8b9cf}

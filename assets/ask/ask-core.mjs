@@ -173,7 +173,8 @@ export const withPrevious = (prev, q) => String(prev).replace(/[?.!\s]+$/, "") +
 
 // ---------- Ranking ----------
 // Two questions are "the same" when they match after lower-casing and dropping punctuation and extra spaces.
-export const sameQuestion = (s) => String(s).toLowerCase().normalize("NFKC").replace(/[^\p{L}\p{N}$]+/gu, " ").trim();
+// "$XPT" and "XPT" read as the same question.
+export const sameQuestion = (s) => String(s).toLowerCase().normalize("NFKC").replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 // The keyword index must be built over the same kb.entries list.
 // Thresholds are set in ask/tools/check.mjs against the held-out test phrasings and recorded in knowledge.json.
 export function rank(kb, query, qvec, keywordScore) {
@@ -195,8 +196,11 @@ export function rank(kb, query, qvec, keywordScore) {
   const t = kb.thresholds;
   // A question typed or clicked exactly as an entry's own question always gets that entry's answer. Without this,
   // two entries with similar questions ("What is Exe Protocol?" / "Who is Exe Protocol for?") tie and neither answers.
-  const nq = sameQuestion(query);
-  const exact = nq ? scored.findIndex((r) => sameQuestion(r.entry.q) === nq) : -1;
+  // An entry's approved alternative phrasings count as its question too.
+  const loose = sameQuestion;
+  const nq = loose(query);
+  let exact = nq ? scored.findIndex((r) => loose(r.entry.q) === nq) : -1;
+  if (exact < 0 && nq) exact = scored.findIndex((r) => (r.entry.also || []).some((a) => loose(a) === nq));
   if (exact >= 0) {
     const hit = scored.splice(exact, 1)[0];
     return { mode: qvec ? "semantic" : "keyword", level: "answer", ok: true, exact: true, results: [hit, ...scored.slice(0, 2)] };

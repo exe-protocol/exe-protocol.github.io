@@ -136,6 +136,10 @@
   panel.addEventListener("click", function (e) {
     var b = e.target.closest && e.target.closest("[data-ax-ask]");
     if (b && !mounted) askEarly(b.getAttribute("data-ax-ask"));
+    // A link in an answer to another screen of this same page only changes the address after "#",
+    // so the page stays put behind the panel: close the panel so the visitor sees where the link went.
+    var a = e.target.closest && e.target.closest("a[href]");
+    if (a && !a.target && a.origin === location.origin && a.pathname === location.pathname && a.hash) close();
   });
   document.addEventListener("keydown", function (e) {
     if (scrim.hidden) return;
