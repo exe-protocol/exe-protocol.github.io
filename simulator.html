@@ -1686,6 +1686,8 @@ function renderCalc() {
   const full = !C.grid[key(CS, CS.topup)];                       // already at full strength: top-ups not run
   const p = C.grid[key(CS, full ? "x0" : CS.topup)], ref = C.grid[key(C.default, "x0")];
   const t = p.totals[CS.users], tr = ref.totals[CS.users];
+  // Top-up funds are ring-fenced for this app's users: none of a top-up becomes surplus for $XPT buybacks (Revision 010.9)
+  const t0 = C.grid[key(CS, "x0")].totals[CS.users], topHeld = full ? 0 : Math.max(0, t.buyback - t0.buyback), buyShown = t.buyback - topHeld;
   $("calcHead").innerHTML = [
     ["Pool strength", pct(p.strength, 0), p.strength > 0.999 ? "pays everything users' XPR earns" : "share of what users' XPR earns that the account can pay"],
     ["Fee redemption, all users", pct(p.redemption, 1), "Exeswap: " + pct(ref.redemption, 1)],
@@ -1695,7 +1697,7 @@ function renderCalc() {
   const row = (label, arr, cls) => `<tr class="${cls || ""}"><td>${esc(label)}</td>${arr.map(v => `<td class="r num">${pct(v, v > 0.99 && v < 1 ? 1 : 0)}</td>`).join("")}</tr>`;
   $("calcXpr").innerHTML = head + "<tbody>" + row("This app's users, Tier 1", p.probes.tier1, "b") + row("This app's users, Tier 2", p.probes.tier2, "b")
     + row("Exeswap users, Tier 1", ref.probes.tier1, "muted") + row("Exeswap users, Tier 2", ref.probes.tier2, "muted") + "</tbody>";
-  $("calcNote").textContent = (full && CS.topup !== "x0" ? "This account is already at full strength, so a top-up would only add to its reserve and held surplus; figures shown without it. " : "")
+  $("calcNote").textContent = (full && CS.topup !== "x0" ? "This account is already at full strength, so a top-up isn’t needed; any top-up funds stay in the app’s account for its users. Figures shown without it. " : "")
     + (p.scarce ? "This account is rationing this month: everyone's share from the pool is scaled by the same factor (pro rata), so redemption stays in proportion to what XPR earns. " : "")
     + "Fee redemption covers gas and Exe Protocol’s fee. Exeswap rows: low-fee chain, $1,000 trades, 30 a month, " + C.options.fee[C.default.fee] + " fee, typical users.";
   const ak = CS.app_fee, money = [
@@ -1705,8 +1707,9 @@ function renderCalc() {
     ["Exe Protocol revenue (Exe Protocol’s fees)", usdS(t.exe_revenue), usdS(tr.exe_revenue)],
     ["  70% of protocol revenue → this app’s account", usdS(t.to_pool), usdS(tr.to_pool)],
     ["  30% of protocol revenue → Exe Protocol operations", usdS(t.ops), usdS(tr.ops)],
-    ["Surplus held from the account (for $XPT buybacks once legally cleared)", usdS(t.buyback), usdS(tr.buyback)],
+    ["Surplus held from the account (for $XPT buybacks once legally cleared)", usdS(buyShown), usdS(tr.buyback)],
     ["App's account top-up (optional; all of it goes into the account)", usdS(t.topup), "—"],
+    ...(topHeld > 0 ? [["  Top-up not needed this month (stays in the account for this app’s users)", usdS(topHeld), "—"]] : []),
     ["App's own fee revenue (" + C.options.app_fee[ak] + ")", usdS(t.app_fee_revenue[ak]), "—"],
     ["Optional app budget to discount the app’s own fee by XPR", usdS(t.app_budget[ak]), "—"],
   ];
