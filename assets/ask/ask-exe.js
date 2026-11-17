@@ -107,12 +107,46 @@ export async function mountAskExe(root, opts = {}) {
     }
     const item = document.createElement("div");
     item.className = "ax-turn";
-    item.innerHTML = `<div class="ax-me">${esc(q)}</div><div class="ax-bot"><span class="ax-av">${SPARK}</span><div class="ax-card">${body}</div></div>`;
+    item.innerHTML = `<div class="ax-mewrap"><div class="ax-me">${esc(q)}</div></div><div class="ax-bot"><span class="ax-av">${SPARK}</span><div class="ax-card">${body}</div></div>`;
     log.appendChild(item);
     log.hidden = false;
     bar.hidden = false;
-    if (scroll) item.scrollIntoView({ block: opts.scroll || "nearest", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+    if (scroll) place(item);
     return item;
+  }
+
+  // The question is king (17 Nov): a new question lands just under "Clear history", and each question stays
+  // pinned there while its answer scrolls past, on the Exe AI page and in the panel alike.
+  function scroller() {
+    for (let el = log.parentElement; el && el !== document.body; el = el.parentElement) {
+      const o = getComputedStyle(el).overflowY;
+      if (o === "auto" || o === "scroll") return el;
+    }
+    return null;
+  }
+  function stickTop() {
+    const sc = scroller();
+    // the question band meets the bar with no gap; if the bar sits outside the scrolling area (phone panel header), the band goes to the very top
+    const v = sc && !sc.contains(bar) ? -(parseFloat(getComputedStyle(sc).paddingTop) || 0) : (parseFloat(getComputedStyle(bar).top) || 0) + bar.offsetHeight;
+    root.style.setProperty("--ax-stick", v + "px");
+    return v;
+  }
+  function place(item) {
+    const st = stickTop(), sc = scroller(), wrap = item.firstElementChild;
+    const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+    log.style.paddingBottom = "0px";
+    if (sc) {
+      const pad = parseFloat(getComputedStyle(sc).paddingTop) || 0;
+      const top = sc.scrollTop + wrap.getBoundingClientRect().top - sc.getBoundingClientRect().top - pad - st;
+      const room = top + sc.clientHeight - sc.scrollHeight;   // room for a short last answer to reach the top
+      if (room > 0) log.style.paddingBottom = Math.ceil(room) + "px";
+      sc.scrollTo({ top, behavior });
+    } else {
+      const top = scrollY + wrap.getBoundingClientRect().top - st;
+      const room = top + innerHeight - document.documentElement.scrollHeight;
+      if (room > 0) log.style.paddingBottom = Math.ceil(room) + "px";
+      scrollTo({ top, behavior });
+    }
   }
 
   // Rebuild a saved turn from the current bank. A turn whose answer entry is gone is dropped.
@@ -128,6 +162,7 @@ export async function mountAskExe(root, opts = {}) {
     store.save(turns);
   }
   function clearHistory() {
+    log.style.paddingBottom = "";
     turns = []; store.clear();
     log.replaceChildren(); log.hidden = true; bar.hidden = true;
     if (useUrl) { const u = new URL(location.href); if (u.searchParams.has("q")) { u.searchParams.delete("q"); history.replaceState(null, "", u); } } // a reload must not bring the last question back

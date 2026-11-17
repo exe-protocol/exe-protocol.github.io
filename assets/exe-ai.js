@@ -82,6 +82,11 @@
     }
     mounting = import(ASK_JS).then(function (m) { return m.mountAskExe(panel, { url: false, scroll: "start" }); }).then(function (api) {
       mounted = true; form.removeAttribute("aria-busy");
+      // Phones (one column): "Clear history" sits in the panel header, top right, from the start (17 Nov).
+      var bar = panel.querySelector(".ax-histbar"), head = panel.querySelector(".xai-head"), x = panel.querySelector("#xaiClose");
+      var home = bar && bar.parentNode, after = bar && bar.nextSibling, narrow = matchMedia("(max-width:820px)");
+      function placeBar() { if (!bar) return; if (narrow.matches) head.insertBefore(bar, x); else if (bar.parentNode !== home) home.insertBefore(bar, after); }
+      placeBar(); if (narrow.addEventListener) narrow.addEventListener("change", placeBar); else narrow.addListener(placeBar);
       if (pending) { var q = pending; pending = ""; api.ask(q); }
       return api;
     }).catch(function (err) {

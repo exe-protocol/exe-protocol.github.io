@@ -19,12 +19,13 @@
 .ax-chip:hover{background:rgba(22,119,255,.18);border-color:rgba(22,119,255,.55)}
 .ax-log{display:flex;flex-direction:column;gap:18px;margin:0 0 20px}
 .ax-log[hidden]{display:none}
-.ax-histbar{display:flex;justify-content:flex-end;margin:0 0 8px;position:sticky;top:0;z-index:3;background:var(--ax-histbar-bg,#040815);box-shadow:0 8px 10px -8px rgba(0,0,0,.6)}
+.ax-histbar{display:flex;justify-content:flex-end;margin:0 0 8px;position:sticky;top:0;z-index:3;background:var(--ax-histbar-bg,#040815);}
 .ax-histbar[hidden]{display:none}
 .ax-clear{font:inherit;font-size:12.5px;line-height:1.2;color:#7f93ad;background:none;border:0;padding:6px 2px;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
 .ax-clear:hover{color:#a8b9cf}
 .ax-clear:focus-visible{outline:2px solid #6fa8ff;outline-offset:2px;border-radius:4px}
 .ax-turn{display:flex;flex-direction:column;gap:10px}
+.ax-mewrap{position:sticky;top:var(--ax-stick,40px);z-index:2;display:flex;justify-content:flex-end;padding:6px 0 10px;margin:-6px 0 -10px;background:var(--ax-histbar-bg,#040815);box-shadow:0 10px 12px -10px rgba(0,0,0,.65)}
 .ax-me{align-self:flex-end;background:#1677ff;color:#fff;border-radius:16px 16px 4px 16px;padding:10px 14px;font-size:15px;line-height:1.4;max-width:85%;overflow-wrap:anywhere}
 .ax-bot{display:flex;gap:10px;max-width:100%}
 .ax-av{flex:none;width:30px;height:30px;border-radius:10px;background:rgba(22,119,255,.15);color:#6fa8ff;display:grid;place-items:center}
@@ -49,3 +50,5 @@
 .ax-foot a{color:#a8b9cf}
 @media (max-width:600px){.ax-wrap{padding-top:28px}.ax-panel{padding:16px;border-radius:18px}.ax-card{padding:12px 13px;font-size:14.5px}.ax-av{display:none}}
 @media (prefers-reduced-motion:reduce){.ax-chip{transition:none}}
+/* The Exe AI page card: the bar and the pinned question take its colour (17 Nov) */
+.ax-panel{--ax-histbar-bg:#0c152c}

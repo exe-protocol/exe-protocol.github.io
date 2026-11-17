@@ -122,7 +122,7 @@ test: will pressing swap move my money | is the site doing actual transactions
 keywords: live, prototype, wallet connection, real money, transactions
 source: Important information: What this site is | important-information.html#what-this-site-is
 source: Important information: Every figure is simulated | important-information.html#every-figure-is-simulated
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: exeswap-launch-updates, what-can-i-try, is-exe-audited, roadmap-open-items
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
@@ -183,7 +183,7 @@ also: can I use exeswap without xpr | is xpr compulsory | do I need to opt in | 
 test: what if I don't want a rate | can I skip xpr and just swap
 keywords: opt in, optional, normal fee, participation
 source: Exeswap specs: How Exeswap works | exeswap-specs.html#what-it-is
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: xpr-lowers-fees, what-is-xpr, what-is-exeswap, what-fees-exeswap
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
@@ -215,7 +215,7 @@ q: What are Tiers and how do they work?
 also: What are tiers? | How do tiers work? | What's the difference between Tier 1, 2 and 3? | Explain the tiers | How many tiers are there? | what do the higher tiers give me | what is the benefit of moving up a tier | Why bother moving through the levels if I already have a good XPR? | How do the middle and top levels improve fee support compared with where a new user begins?
 test: what do the tier levels mean | is there a higher level than tier 1
 keywords: tier, tiers, Tier 1, Tier 2, Tier 3, budget, level
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 source: Exeswap specs: Tiers | exeswap-specs.html#tiers
 source: Exeswap simulator: Your rate | simulator.html#rate
 related: pool-surplus-benefit, tier-one, tier-two, tier-three
@@ -259,7 +259,7 @@ source: Exeswap specs: Fees | exeswap-specs.html#fees
 source: Exeswap specs: Funding | exeswap-specs.html#funding
 source: Exeswap specs: Safeguards | exeswap-specs.html#safeguards
 source: Exe Protocol specs: Who pays | exe-protocol-specs.html#whos-who-and-who-pays
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: maximum-fee-redemption, tier-two, what-fees-exeswap, pool-under-load
 checked: Claude, 11 Nov 2026, David's edit, against the cited site pages
 approved: David, 11 Nov 2026
@@ -280,7 +280,7 @@ keywords: Tier 1, starting tier, base rate, first tier, starting tier
 source: Exeswap specs: Tiers | exeswap-specs.html#tiers
 source: Exeswap specs: XPR | exeswap-specs.html#xpr
 source: Exeswap specs: Funding | exeswap-specs.html#funding
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: flagged-wallet-treatment, tier-two, xpr-example, is-xpr-optional
 checked: Claude, 11 Nov 2026, David's edit, against the cited site pages
 approved: David, 11 Nov 2026
@@ -300,7 +300,7 @@ test: what would I have to set aside for the second tier | how big is the tier t
 keywords: Tier 2, budget, qualification, commitment, second tier
 source: Exeswap specs: Tiers | exeswap-specs.html#tiers
 source: Exeswap simulator: Your rate | simulator.html#rate
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: pool-surplus-benefit, budget-increases-xpr, withdraw-tier-budget, tier-three
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
@@ -320,7 +320,7 @@ test: how many strong months to reach the highest tier | what happens after two 
 keywords: Tier 3, sustained activity, 0.75, four months, two months, third tier, highest tier, top tier
 source: Exeswap specs: Tiers | exeswap-specs.html#tiers
 source: Exeswap simulator: Your rate | simulator.html#rate
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: pool-surplus-benefit, tier-two, how-xpr-changes, withdraw-tier-budget
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
@@ -358,7 +358,7 @@ keywords: withdraw, budget commitment, tier reversion
 source: Exeswap specs: Tiers | exeswap-specs.html#tiers
 source: Exeswap simulator: Your rate | simulator.html#rate
 source: Exeswap specs: Settlement and custody | exeswap-specs.html#settlement-and-custody
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: tier-one, tier-two, tier-three
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
@@ -470,7 +470,7 @@ test: why are there separate own fees and pool columns | which part comes from w
 keywords: own fees, shared support, protocol fees, 70 percent
 source: Exeswap specs: Fees | exeswap-specs.html#fees
 source: Exeswap specs: Funding | exeswap-specs.html#funding
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: app-redemption-funds, how-pool-funded, pool-under-load, xpr-example
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
@@ -490,7 +490,7 @@ keywords: pool strength, load, capacity, shared support, step-down
 source: Exeswap specs: Funding | exeswap-specs.html#funding
 source: Exeswap simulator: Sponsorship Pool | simulator.html#pool
 source: Exe Protocol specs: Evidence | exe-protocol-specs.html#evidence
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 related: pool-surplus-benefit, own-fees-and-pool, what-affects-fee-redemption, stress-test-results
 checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pages
 approved: David, 11 Nov 2026
@@ -514,8 +514,6 @@ checked: Claude, 10 Nov 2026, site-first: wording lifted from the cited site pag
 approved: David, 11 Nov 2026
 
 No. Each app has its own account in Exe’s Sponsorship Pool, built from the fees its users pay, so no app subsidises another.
-
-Exe Protocol adds an opening balance when a new app’s account is set up: about 1.9 months of the app’s expected income. (The size and rules for real apps are not final.)
 
 ---
 id: app-cost
@@ -925,7 +923,7 @@ test: how does exe treat my personal information | do I have to hand over person
 keywords: data, privacy, personal information, non-custodial, opt-in, account
 source: Exeswap specs: Settlement and custody | exeswap-specs.html#settlement-and-custody
 source: Exeswap specs: How Exeswap works | exeswap-specs.html#what-it-is
-source: Exeswap simulator: questions | simulator.html#swap
+source: Exeswap simulator: questions | simulator.html#faq
 source: Exe Protocol: Contact | index.html#contact
 related: is-xpr-optional, what-is-xpr, contact-exe
 checked: Claude, 13 Nov 2026, claims from the cited site pages (non-custodial, no account, opt-in XPR); the data-statement sentence is David's, 13 Nov 2026
@@ -1309,7 +1307,7 @@ related: app-how-it-works, app-pool-account, app-cost
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-From the fee your app's users pay Exe Protocol. Exe Protocol allocates 70% of the fees earned from your app's users to your app's pool. Exe Protocol adds an opening balance when a new app's account is set up. (The size and rules for real apps are not final.) No funds are required from your app's treasury.
+From the fee your app's users pay Exe Protocol. Exe Protocol allocates 70% of the fees earned from your app's users to your app's pool. No funds are required from your app's treasury.
 
 ---
 id: app-funds-reach-users
@@ -1366,16 +1364,16 @@ status: approved
 kind: answer
 topic: Apps and SDK
 q: How does an app allocate a pool?
-also: does an app set up a pool | how does my app get a pool | does my app pay into a pool | how is an app's pool account filled | who sets up my app's pool account | how is a pool account opened for my app | does my app have to create its own sponsorship pool | how does my app get an account in exe's pool | who creates and funds my app's initial pool account | how is my app's sponsorship account established | does my app get an opening balance in its pool account | When my app joins, who opens its fee-support account and arranges the opening balance? | Must our developers create a separate fund, or does Exe arrange our account and initial allocation? | Does Exe arrange anaccount for our customers automatically as part of onboarding the app?
+also: does an app set up a pool | how does my app get a pool | does my app pay into a pool | how is an app's pool account filled | who sets up my app's pool account | how is a pool account opened for my app | does my app have to create its own sponsorship pool | how does my app get an account in exe's pool | who creates and funds my app's initial pool account | how is my app's sponsorship account established | does my app get an opening balance in its pool account | When my app joins, who opens its fee-support account and arranges the opening balance? | Must our developers create a separate fund, or does Exe arrange our account and initial allocation? | Does Exe arrange anaccount for our customers automatically as part of onboarding the app? | how does exe fund a new app's account | how is a new app's account funded | does a new app's account start with funds | how are my app's first months funded
 test: what happens to set up fee support when my app joins exe | do i have to arrange a separate pool before my app can use exe
-keywords: app's pool, account, Sponsorship Pool, opening balance, starting amount
+keywords: app's pool, account, Sponsorship Pool
 source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
 source: Exeswap specs: Funding | exeswap-specs.html#funding
-related: app-pool-held, app-pool-rules, app-starting-amount
+related: app-pool-held, app-pool-rules
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-An app doesn't set a pool up or pay into one. Exe Protocol opens an account for each app inside Exe Protocol's Sponsorship Pool, which pays for users' fee redemption. The account fills from 70% of Exe Protocol's fees that the app's own users pay. Plus, Exe Protocol adds an opening balance. (The size and rules for real apps are not final.)
+An app doesn't set a pool up or pay into one. Exe Protocol opens an account for each app inside Exe Protocol's Sponsorship Pool, which pays for users' fee redemption. The account fills from 70% of Exe Protocol's fees that the app's own users pay.
 
 ---
 id: app-pool-held
@@ -1402,47 +1400,15 @@ topic: Apps and SDK
 q: What rules govern an app's pool account?
 also: what are the rules for an app's pool | how is an app's pool account protected | what limits apply to an app's pool | what rules apply to my app's pool account | what spending controls govern my app's pool | how is access to my app's shared support limited | what happens under the rules when my app's pool runs low | which safeguards apply to my app's sponsorship account | how does exe manage my app's pool allocation | How are wallets flagged in the previous month treated within my app's monthly pool allocation?
 test: what restrictions govern the money set aside for my app's users | how are shared fee support limits applied within my app's account
-keywords: app's pool, rules, buffer, 5%, flagged wallets
+keywords: app's pool, rules, 5%, flagged wallets
 source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
 source: Exeswap specs: Funding | exeswap-specs.html#funding
 source: Exeswap specs: Safeguards | exeswap-specs.html#safeguards
-related: app-pool-account, app-starting-buffer, pool-under-load
+related: app-pool-account, pool-under-load
 checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
 approved: David, 13 Nov 2026
 
-Four rules. Each app's account is separate, so no app subsidises another. A fifth of the opening balance is a buffer that is never spent. New wallets, and wallets flagged the month before, together can draw at most 5% of a month's allocation. If the account runs low, everyone's share from Exe's Sponsorship Pool shrinks by the same proportion.
-
----
-id: app-starting-amount
-status: approved
-kind: answer
-topic: Apps and SDK
-q: What does a new app need to get its opening balance?
-also: how is a new app's starting amount sized | does a new app get a starting amount | how does exe fund a new app's account | when is a new app's starting amount paid | how does my app qualify for starting pool funds | what trading history does my app need for initial funding | how is my app's starting pool amount sized | what evidence must my app provide for its starting amount | how is the initial funding for my app paid out | why might my app's users get less fee support at first | how is a new app's opening balance sized | does a new app get an opening balance | when is a new app's opening balance paid | what must my app show to get its opening balance | how is my app's opening balance paid out
-test: what must my app show before exe assigns its initial sponsorship funding | how does my app's proven trading volume affect the support available in its first months
-keywords: new app, opening balance, starting amount, proven trading volume, monthly
-source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
-related: app-pool-account, app-starting-buffer, app-pool-rules
-checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
-approved: David, 13 Nov 2026
-
-Proven trading volume. Exe Protocol sizes a new app's opening balance on the trading volume the app can show, and pays it monthly (the planned production rule), so the app's users can get less fee redemption in the first months.
-
----
-id: app-starting-buffer
-status: approved
-kind: answer
-topic: Apps and SDK
-q: Is all of a new app's opening balance spendable?
-also: can a new app spend all of its starting amount | what is the buffer in an app's account | how much of an app's starting amount is held back | how much of my app's starting amount is held in reserve | is my app's entire initial pool funding available to spend | what part of my app's initial funding stays untouched | why is some of my app's starting amount unavailable | can my app's users use the starting buffer for fee redemption | how much of my app's initial pool amount is protected | can a new app spend all of its opening balance | how much of my app's opening balance is held back | why is some of my app's opening balance unavailable | what part of the opening balance is never spent | How much of the starting allocation is deliberately excluded from spending on fee support?
-test: does all the funding assigned at the start go towards my users' fees | what portion of my app's starting funds must remain unspent
-keywords: opening balance, starting amount, buffer, a fifth, never spent
-source: Exe Protocol specs: App funding | exe-protocol-specs.html#app-funding
-related: app-starting-amount, app-pool-rules
-checked: Claude, 13 Nov 2026, David's batch 2 copy, against the cited site pages
-approved: David, 13 Nov 2026
-
-No. Exe Protocol holds a fifth of each new app's opening balance as a buffer that is never spent. The opening balance therefore is not all available for fee redemption.
+Three rules. Each app's account is separate, so no app subsidises another. New wallets, and wallets flagged the month before, together can draw at most 5% of a month's allocation. If the account runs low, everyone's share from Exe's Sponsorship Pool shrinks by the same proportion.
 
 ---
 id: pool-surplus-benefit
