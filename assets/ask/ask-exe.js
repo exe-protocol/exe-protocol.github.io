@@ -131,22 +131,55 @@ export async function mountAskExe(root, opts = {}) {
     root.style.setProperty("--ax-stick", v + "px");
     return v;
   }
+  // Lock a new answer under its question, and keep it there (17 Nov). The target is worked out from the answer's own
+  // position, not the sticky question, so it holds whether or not the question is already pinned. After the scroll
+  // settles, and whenever the layout moves (the window or phone keyboard resizing, late layout changes), the position
+  // is corrected again. The lock lets go only when the visitor scrolls, touches or presses a key.
+  let lock = null;
+  function releaseLock() { if (lock) { lock.stop(); lock = null; } }
   function place(item) {
-    const st = stickTop(), sc = scroller(), wrap = item.firstElementChild;
-    const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
-    log.style.paddingBottom = "0px";
-    if (sc) {
-      const pad = parseFloat(getComputedStyle(sc).paddingTop) || 0;
-      const top = sc.scrollTop + wrap.getBoundingClientRect().top - sc.getBoundingClientRect().top - pad - st;
-      const room = top + sc.clientHeight - sc.scrollHeight;   // room for a short last answer to reach the top
-      if (room > 0) log.style.paddingBottom = Math.ceil(room) + "px";
-      sc.scrollTo({ top, behavior });
-    } else {
-      const top = scrollY + wrap.getBoundingClientRect().top - st;
-      const room = top + innerHeight - document.documentElement.scrollHeight;
-      if (room > 0) log.style.paddingBottom = Math.ceil(room) + "px";
-      scrollTo({ top, behavior });
-    }
+    releaseLock();
+    const sc = scroller(), root_ = sc || document.documentElement;
+    root_.style.overflowAnchor = "none";                     // the browser must not shift the view by itself
+    const wrap = item.firstElementChild;
+    const delta = parseFloat(getComputedStyle(wrap).marginTop) || 0;   // the question's own offset; never read from its sticky position
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const pos = () => (sc ? sc.scrollTop : scrollY);
+    const target = () => {
+      const st = stickTop();
+      if (sc) {
+        const pad = parseFloat(getComputedStyle(sc).paddingTop) || 0;
+        return pos() + item.getBoundingClientRect().top + delta - sc.getBoundingClientRect().top - pad - st;
+      }
+      return pos() + item.getBoundingClientRect().top + delta - st;
+    };
+    const go = (top, behavior) => (sc ? sc.scrollTo({ top, behavior }) : scrollTo({ top, behavior }));
+    const room = (top) => {                                   // room for a short last answer to reach the top
+      const h = sc ? sc.clientHeight : innerHeight, sh = sc ? sc.scrollHeight : document.documentElement.scrollHeight;
+      const have = parseFloat(log.style.paddingBottom) || 0, r = top + h - (sh - have);
+      log.style.paddingBottom = r > 0 ? Math.ceil(r) + "px" : "0px";
+    };
+    const align = (behavior) => { const t = target(); room(t); if (behavior === "auto" ? Math.abs(pos() - t) > 1 : true) go(t, behavior); };
+    let moving = true, raf = 0, timer = 0;
+    const fix = () => { if (!moving) align("auto"); };       // late layout changes: snap back, no animation
+    const settle = () => {                                    // wait until the smooth scroll has stopped, then check once
+      let last = -1, still = 0, frames = 0;
+      const tick = () => {
+        const y = pos(); still = y === last ? still + 1 : 0; last = y;
+        if (still >= 6 || ++frames > 120) { moving = false; align("auto"); return; }
+        raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+    };
+    const ro = typeof ResizeObserver === "function" ? new ResizeObserver(fix) : null;
+    ro && (ro.observe(log), sc && ro.observe(sc));
+    const ev = ["wheel", "touchstart", "keydown", "mousedown"], vv = window.visualViewport;
+    const user = (e) => { if (e.type === "keydown" && e.target.closest && e.target.closest("form")) return; releaseLock(); };
+    ev.forEach((n) => addEventListener(n, user, { capture: true, passive: true }));
+    addEventListener("resize", fix); vv && vv.addEventListener("resize", fix);
+    lock = { stop() { cancelAnimationFrame(raf); clearTimeout(timer); ro && ro.disconnect(); ev.forEach((n) => removeEventListener(n, user, true)); removeEventListener("resize", fix); vv && vv.removeEventListener("resize", fix); } };
+    align(reduced ? "auto" : "smooth");
+    reduced ? (moving = false) : settle();
   }
 
   // Rebuild a saved turn from the current bank. A turn whose answer entry is gone is dropped.
@@ -162,6 +195,7 @@ export async function mountAskExe(root, opts = {}) {
     store.save(turns);
   }
   function clearHistory() {
+    releaseLock();
     log.style.paddingBottom = "";
     turns = []; store.clear();
     log.replaceChildren(); log.hidden = true; bar.hidden = true;
@@ -184,8 +218,8 @@ export async function mountAskExe(root, opts = {}) {
     busy = true; input.value = ""; form.setAttribute("aria-busy", "true");
     try {
       const r = await search(q);
+      remember(q, r);                          // drops the oldest turn first, so nothing moves after the new answer is placed
       draw(q, r.level, r.results, true);
-      remember(q, r);
       if (useUrl) { const u = new URL(location.href); u.searchParams.set("q", q); u.hash = ""; history.replaceState(null, "", u); }
     } finally { busy = false; form.removeAttribute("aria-busy"); }
   }
