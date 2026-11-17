@@ -234,5 +234,28 @@ export async function mountAskExe(root, opts = {}) {
   if (turns.length !== saved.length) store.save(turns);
   const q0 = useUrl ? new URL(location.href).searchParams.get("q") : null;
   if (q0 && !(turns.length && sameQuestion(q0) === sameQuestion(turns[turns.length - 1].q))) ask(q0);
-  return { ask };
+
+  // Remember where the visitor was in the thread, so closing the panel or moving to another page and reopening it
+  // brings them back to the same spot, with the pinned question in its right place (17 Nov).
+  const SCROLL_KEY = "exe-ask-scroll-v1";
+  const sc0 = scroller();
+  const saveScroll = () => {
+    if (!sc0 || !sc0.offsetParent || !turns.length) return;   // hidden panel reads 0: never save that
+    try { sessionStorage.setItem(SCROLL_KEY, JSON.stringify({ top: Math.round(sc0.scrollTop), pad: parseFloat(root.style.paddingBottom) || 0, n: turns.length, q: turns[turns.length - 1].q })); } catch (e) {}
+  };
+  let saveT = 0;
+  sc0 && sc0.addEventListener("scroll", () => { clearTimeout(saveT); saveT = setTimeout(saveScroll, 120); }, { passive: true });
+  addEventListener("pagehide", saveScroll);
+  const resume = () => {
+    if (!log.hidden && bar) stickTop();                       // the pinned question's offset, measured now that the panel is on screen
+    if (!sc0 || !turns.length) return;
+    let st = null; try { st = JSON.parse(sessionStorage.getItem(SCROLL_KEY) || "null"); } catch (e) {}
+    if (!st || st.n !== turns.length || st.q !== turns[turns.length - 1].q) return;   // a different thread: leave it
+    releaseLock();
+    root.style.paddingBottom = st.pad ? st.pad + "px" : "";
+    sc0.style.scrollBehavior = "auto"; sc0.scrollTop = st.top;
+  };
+  if (typeof ResizeObserver === "function" && sc0) { const r2 = new ResizeObserver(() => { if (sc0.offsetParent && !log.hidden) stickTop(); }); r2.observe(sc0); r2.observe(bar); }
+  bar.addEventListener("click", () => { try { sessionStorage.removeItem(SCROLL_KEY); } catch (e) {} });
+  return { ask, resume, saveScroll };
 }

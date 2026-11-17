@@ -73,7 +73,7 @@
   var statusEl = scrim.querySelector("[data-ax-status]");
 
   // Ask Exe loads once, when the panel first opens. A question asked before loading finishes is kept and asked then.
-  var mounting = null, mounted = false, pending = "";
+  var mounting = null, mounted = false, pending = "", askApi = null;
   function mountAsk() {
     if (mounting) return mounting;
     if (!document.querySelector('link[data-ax-css]')) {
@@ -81,7 +81,7 @@
       document.head.appendChild(l);
     }
     mounting = import(ASK_JS).then(function (m) { return m.mountAskExe(panel, { url: false, scroll: "start" }); }).then(function (api) {
-      mounted = true; form.removeAttribute("aria-busy");
+      mounted = true; askApi = api; form.removeAttribute("aria-busy");
       // Phones (one column): "Clear history" sits in the panel header, top right, from the start (17 Nov).
       var bar = panel.querySelector(".ax-histbar"), head = panel.querySelector(".xai-head"), x = panel.querySelector("#xaiClose");
       var home = bar && bar.parentNode, after = bar && bar.nextSibling, narrow = matchMedia("(max-width:820px)");
@@ -122,9 +122,10 @@
     requestAnimationFrame(function () { scrim.classList.add("open"); });
     // On touch screens, focusing the question box would open the keyboard over the panel; focus the panel instead.
     setTimeout(function () { (touch ? panel : input).focus({ preventScroll: true }); }, 30);
-    mountAsk();
+    mountAsk().then(function (api) { if (api && api.resume) api.resume(); });
   }
   function close() {
+    if (askApi && askApi.saveScroll) askApi.saveScroll();   // before the panel is hidden, while its scroll position can still be read
     scrim.classList.remove("open");
     document.body.classList.remove("xai-lock");
     scrim.hidden = true;
