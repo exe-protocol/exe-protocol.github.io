@@ -156,8 +156,8 @@ export async function mountAskExe(root, opts = {}) {
     const go = (top, behavior) => (sc ? sc.scrollTo({ top, behavior }) : scrollTo({ top, behavior }));
     const room = (top) => {                                   // room for a short last answer to reach the top
       const h = sc ? sc.clientHeight : innerHeight, sh = sc ? sc.scrollHeight : document.documentElement.scrollHeight;
-      const have = parseFloat(log.style.paddingBottom) || 0, r = top + h - (sh - have);
-      log.style.paddingBottom = r > 0 ? Math.ceil(r) + "px" : "0px";
+      const have = parseFloat(root.style.paddingBottom) || 0, r = top + h - (sh - have);
+      root.style.paddingBottom = r > 0 ? Math.ceil(r) + "px" : "0px";
     };
     const align = (behavior) => { const t = target(); room(t); if (behavior === "auto" ? Math.abs(pos() - t) > 1 : true) go(t, behavior); };
     let moving = true, raf = 0, timer = 0;
@@ -196,7 +196,7 @@ export async function mountAskExe(root, opts = {}) {
   }
   function clearHistory() {
     releaseLock();
-    log.style.paddingBottom = "";
+    root.style.paddingBottom = "";
     turns = []; store.clear();
     log.replaceChildren(); log.hidden = true; bar.hidden = true;
     if (useUrl) { const u = new URL(location.href); if (u.searchParams.has("q")) { u.searchParams.delete("q"); history.replaceState(null, "", u); } } // a reload must not bring the last question back
