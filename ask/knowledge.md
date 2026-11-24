@@ -38,7 +38,7 @@ status: approved
 kind: answer
 topic: Exe Protocol
 q: What is Exe Protocol?
-also: what does exe do | explain exe protocol simply | what is the exe execution layer | what sort of product are you building here | If my wallet uses several apps built on Exe, what connects my activity to the cost of using them? | Give me the basic idea behind charging for execution according to a wallet's activity.
+also: what does exe do | explain exe protocol simply | what is the exe execution layer | what sort of product are you building here | If my wallet uses several apps built on Exe, what connects my activity to the cost of using them? | Give me the basic idea behind charging for execution according to a wallet's activity. | what is the underlying exe system meant to do | what does exe protocol do behind the trading app
 test: give me the short version of exe | what's this protocol about
 keywords: protocol, execution layer, apps, wallets, agents
 source: Exe Protocol specs: Positioning | exe-protocol-specs.html#positioning
@@ -274,7 +274,7 @@ status: approved
 kind: answer
 topic: XPR
 q: What does Tier 1 give me?
-also: how does tier one work | what is the starting tier | what do I get at the basic tier | what does the entry tier cover when the pool is full | what fee treatment do I start with when I opt in | Before making any budget commitment, what fee coverage and XPR ceiling does the basic tier offer?
+also: how does tier one work | what is the starting tier | what do I get at the basic tier | what does the entry tier cover when the pool is full | what fee treatment do I start with when I opt in | Before making any budget commitment, what fee coverage and XPR ceiling does the basic tier offer? | what is the highest rate on the basic tier | how does the covered fraction relate to the rate on the default tier
 test: what happens before I qualify for higher tiers | explain the first tier
 keywords: Tier 1, starting tier, base rate, first tier, starting tier
 source: Exeswap specs: Tiers | exeswap-specs.html#tiers
@@ -743,7 +743,7 @@ approved: David, 11 Nov 2026
 
 - **In development:** the SDK, so any app can use Exe Protocol; working with x402 and other rails; escrow custody for agent budgets.
 - **Open:** wallet linking (one person’s wallets and agents under one XPR); XPR across chains.
-- **For a pilot:** cold start, and whether XPR predicts valuable activity.
+- **For a pilot:** cold start, and measuring how closely XPR predicts valuable activity.
 
 ---
 id: contact-exe
@@ -1042,7 +1042,7 @@ status: approved
 kind: answer
 topic: XPR
 q: How much of my fees can I redeem?
-also: can I redeem 100% of my fees | what is the most fee redemption I can earn | can my fees go to zero | is full fee redemption possible | what is the maximum fee redemption with xpr | how much of a transaction fee can xpr cover | can xpr cover my entire eligible fee | what is the upper limit on exe fee redemption | can exe fee redemption cover 100 percent of eligible fees | how far can xpr reduce my eligible transaction fee
+also: can I redeem 100% of my fees | what is the most fee redemption I can earn | can my fees go to zero | is full fee redemption possible | what is the maximum fee redemption with xpr | how much of a transaction fee can xpr cover | can xpr cover my entire eligible fee | what is the upper limit on exe fee redemption | can exe fee redemption cover 100 percent of eligible fees | how far can xpr reduce my eligible transaction fee | is the ceiling the eligible fee itself even for a very strong rate
 test: could my whole eligible fee be covered through exe | where does exe cap the share of fees covered
 keywords: fee redemption, 100%, maximum, pool, limits
 source: Exeswap specs: Fees | exeswap-specs.html#fees
@@ -1597,7 +1597,7 @@ status: approved
 kind: answer
 topic: Token
 q: What is $XPT?
-also: what purpose does $xpt serve | what is the xpt token for | what does $xpt do | what purpose does xpt serve | what role does xpt have in exe | what does exe's ecosystem token do | how would you describe xpt | what is xpt used for in the ecosystem
+also: what purpose does $xpt serve | what is the xpt token for | what does $xpt do | what purpose does xpt serve | what role does xpt have in exe | what does exe's ecosystem token do | how would you describe xpt | what is xpt used for in the ecosystem | what does the exe ecosystem token connect and support | what job does the exe ecosystem token do
 test: explain the purpose of exe protocol's token | why does the exe ecosystem include xpt
 keywords: $XPT, ecosystem token, external liquidity, governance
 source: Medium: Why $XPT matters | https://medium.com/@Exeswap/why-xpt-matters-the-bridge-to-fee-free-web3-f789dcf8537c

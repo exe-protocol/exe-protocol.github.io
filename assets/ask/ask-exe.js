@@ -66,6 +66,29 @@ export async function mountAskExe(root, opts = {}) {
   }
   function setStatus(t) { if (status) { status.textContent = t; status.hidden = !t; } }
 
+  // Router (24 Nov 2026): when the search is unsure, a small AI service picks the best approved entry. It never writes an answer.
+  // Only unsure typed questions leave the browser. Any failure, delay or limit falls back to the search result unchanged.
+  const ROUTER_URL = "";                      // set to the router address to switch the router on; "" keeps the search only
+  const ROUTER_MAX = 25, ROUTER_WAIT = 4000;
+  let routerUsed = 0;
+  const plain = (h) => String(h || "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 220);
+  async function route(q, r) {
+    if (!ROUTER_URL || r.mode === "fixed" || r.level === "answer" || !r.results || !r.results.length || routerUsed >= ROUTER_MAX) return r;
+    routerUsed++;
+    const cands = r.results.slice(0, 6).map((x) => ({ id: x.entry.id, q: x.entry.q, also: (x.entry.also || []).slice(0, 5), a: plain(x.entry.html) }));
+    const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), ROUTER_WAIT);
+    try {
+      const res = await fetch(ROUTER_URL, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question: q, candidates: cands }), signal: ctl.signal });
+      if (!res.ok) return r;
+      const j = await res.json(), id = j.picks && j.picks[0], e = id && byId.get(id);
+      if (!e || !cands.some((c) => c.id === id)) return r;
+      const rest = r.results.filter((x) => x.entry.id !== id);
+      const first = r.results.find((x) => x.entry.id === id) || { entry: e, score: 1 };
+      return j.sure ? { ...r, level: "answer", results: [{ ...first, score: Math.max(first.score, 1) }, ...rest.slice(0, 2)] }
+                    : { ...r, level: "suggest", results: [{ ...first, score: Math.max(first.score, 1) }, ...rest] };
+    } catch (e) { return r; } finally { clearTimeout(timer); }
+  }
+
   async function search(q) {
     const prev = turns.length ? turns[turns.length - 1].q : null;
     const find = (emb) => smartRank(async (x) => rank(kb, x, emb ? await emb.embed(x) : null, kwIndex), q, { fix: speller, prev });
@@ -217,7 +240,8 @@ export async function mountAskExe(root, opts = {}) {
     if (!q || busy) return;
     busy = true; input.value = ""; form.setAttribute("aria-busy", "true");
     try {
-      const r = await search(q);
+      let r = await search(q);
+      r = await route(q, r);
       remember(q, r);                          // drops the oldest turn first, so nothing moves after the new answer is placed
       draw(q, r.level, r.results, true);
       if (useUrl) { const u = new URL(location.href); u.searchParams.set("q", q); u.hash = ""; history.replaceState(null, "", u); }
